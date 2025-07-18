@@ -482,5 +482,24 @@
       "signupCount": 1
     },
     "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T06:00:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T06:00:00.010Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 56511.208696583,
+      "memory": {
+        "rss": 42303488,
+        "heapTotal": 14450688,
+        "heapUsed": 12951936,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
   }
 ]
