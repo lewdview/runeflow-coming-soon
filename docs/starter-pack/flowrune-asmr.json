@@ -1,0 +1,639 @@
+{
+  "name": "⚡ FlowRune: Viral ASMR Creator",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "runeflow-flowrune-asmr-v1",
+    "RuneFlow": {
+      "rune": "ᛚᚱ",
+      "rune_name": "Laguz-Raidho (FlowRune)",
+      "provider": "RuneFlow - Ancient Automation Mastery",
+      "contact": "support@runeflow.co",
+      "website": "https://runeflow.co",
+      "discord": "discord.gg/runeflow",
+      "category": "AI & Research",
+      "template_name": "Viral_ASMR_Creator",
+      "description": "AI-powered viral ASMR video generation with multi-platform automation",
+      "value": "$97",
+      "difficulty": "Intermediate",
+      "setup_time": "15 minutes",
+      "features": [
+        "Viral ASMR video generation",
+        "Multi-platform auto-posting",
+        "AI-powered content creation",
+        "Glass-cutting aesthetic",
+        "4-layer sound optimization",
+        "YouTube, TikTok, Instagram automation",
+        "Dynamic content tracking",
+        "Scheduled video creation"
+      ],
+      "tags": ["asmr", "viral", "automation", "ai", "video", "social-media"],
+      "version": "1.0.0"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "⚡ RuneFlow FlowRune Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-1100, -600],
+      "parameters": {
+        "color": 2,
+        "width": 500,
+        "height": 400,
+        "content": "⚡ RUNEFLOW FLOWRUNE TEMPLATE ⚡\n\n🔮 Rune: ᛚᚱ Laguz-Raidho (FlowRune)\n📋 Template: Viral ASMR Creator\n📁 Category: AI & Research\n💰 Value: $97 (Starter Pack)\n\n🔮 ANCIENT AUTOMATION POWER 🔮\n\n✨ Features:\n• Viral ASMR video generation\n• Multi-platform auto-posting\n• AI-powered content creation\n• Glass-cutting aesthetic\n• 4-layer sound optimization\n\n👨‍💻 Created by: RuneFlow Masters\n📧 Contact: support@runeflow.co\n🌐 Website: https://runeflow.co\n💬 Discord: discord.gg/runeflow\n\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "setup-guide-note",
+      "name": "📚 Setup Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-1100, -150],
+      "parameters": {
+        "color": 4,
+        "width": 500,
+        "height": 350,
+        "content": "📚 FLOWRUNE SETUP GUIDE 📚\n\n⚡ Prerequisites:\n• OpenRouter API key (for AI agents)\n• Fal AI API key (for video generation)\n• Blotato API key (for social posting)\n• Google Sheets access\n• Account IDs for YouTube, TikTok, Instagram\n\n🔧 Setup Steps:\n1. Connect OpenRouter for AI agents\n2. Add Fal AI credentials for video generation\n3. Configure Blotato for social media posting\n4. Set up Google Sheets tracking\n5. Test the workflow\n\n⏰ Execution Schedule:\n• Runs every 8 hours automatically\n• Generates unique glass object ideas\n• Creates hyper-realistic ASMR videos\n• Posts to all social platforms\n\n📊 Expected Results:\n• High engagement ASMR content\n• Viral video potential\n• Automated content pipeline\n• Multi-platform growth"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "schedule-trigger",
+      "name": "⏰ Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [-460, -400],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 8
+            }
+          ]
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "get-past-objects",
+      "name": "📊 Get Past Objects",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [-260, -400],
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "typeVersion": 4.6
+    },
+    {
+      "id": "aggregate-data",
+      "name": "🔄 Aggregate Data",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [-80, -400],
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "set-object-list",
+      "name": "📝 Set Object List",
+      "type": "n8n-nodes-base.set",
+      "position": [100, -400],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "object-list",
+              "name": "objects",
+              "value": "=[\"{{ $json.data[0].Object }}\",\"{{ $json.data[1].Object }}\",\"{{ $json.data[2].Object }}\",\"{{ $json.data[3].Object }}\",\"{{ $json.data[4].Object }}\",\"{{ $json.data[5].Object }}\",\"{{ $json.data[6].Object }}\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 3.4
+    },
+    {
+      "id": "gpt-ai-model",
+      "name": "🤖 GPT AI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "position": [280, -320],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "idea-agent",
+      "name": "💡 Idea Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [280, -440],
+      "parameters": {
+        "promptType": "define",
+        "text": "=Objects: {{ $json.objects.join(\", \") }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "# FlowRune ASMR Idea Generator\n\nYou are the FlowRune's AI agent that creates unique glass object ideas for viral ASMR content.\n\n## Your Task\nYou will receive a list of 7 previously used glass objects. Generate ONE new glass object that:\n- Is NOT in the provided list\n- Has a clear, recognizable shape\n- Would look stunning when made of translucent colored glass\n- Is physically feasible to cut with a knife\n- Has viral ASMR potential\n\n## FlowRune Aesthetic\nFocus on objects that create:\n- Satisfying cutting sounds\n- Beautiful visual breaks\n- Interesting textures\n- Compelling shapes\n- Viral appeal\n\n## Output Format\nReturn JSON with:\n{\n  \"object\": \"Glass [Object Name]\",\n  \"caption\": \"Glass [Object Name] ASMR\"\n}\n\n## Examples\n- Glass Dragon Fruit\n- Glass Honeycomb\n- Glass Lotus Pod\n- Glass Starfruit\n\nCreate something visually stunning and aurally satisfying!"
+        }
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "object-caption-parser",
+      "name": "🎯 Object & Caption Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [460, -320],
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"object\": {\n      \"type\": \"string\",\n      \"description\": \"A glass object name in format 'Glass [Object]'\"\n    },\n    \"caption\": {\n      \"type\": \"string\",\n      \"description\": \"ASMR caption matching the object\"\n    }\n  },\n  \"required\": [\"object\", \"caption\"]\n}"
+      },
+      "typeVersion": 1.3
+    },
+    {
+      "id": "prompt-agent",
+      "name": "🎬 Prompt Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [-460, -60],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output.object }}",
+        "options": {
+          "systemMessage": "# FlowRune ASMR Video Prompt Generator\n\nYou are the FlowRune's master prompt creator for viral ASMR videos using Google Veo 3.\n\n## Your Mission\nGenerate hyper-realistic, sensory-rich video prompts for glass object cutting scenes that will go viral on social media.\n\n## Input\nYou'll receive a glass object name (e.g., \"Glass Dragon Fruit\").\n\n## FlowRune Requirements\n- 9:16 aspect ratio (mobile-optimized)\n- Cinematic, photorealistic quality\n- Close-up shot on dark wooden cutting board\n- Heavy steel knife with controlled cuts\n- Colored glass (not transparent)\n- Clean breaks, no shattering\n- Hands visible but minimal\n\n## 4-Layer ASMR Sound Design\n1. **Initial Contact**: Sharp, crisp knife-glass tap\n2. **Cutting Sound**: Smooth slicing through glass\n3. **Board Impact**: Muted wooden thud\n4. **Piece Landing**: Delicate glass clink\n\n## Output Format\n**Subject**: Hyper-detailed [glass object] on dark wooden cutting board\n**Setting**: Static close-up, soft natural lighting, minimal background\n**Action**: Large steel knife slowly slices through [object], creating perfect segments\n**Style**: Cinematic ASMR realism, photorealistic textures\n**Sound**: Four-layer audio - (1) ultra-sharp knife-glass contact, (2) smooth slicing, (3) wooden thud, (4) precise clink. Initial tap especially prominent.\n**Camera**: Fixed with slight focus shifts\n**Composition**: Centered object, knife enters from edge\n**Ambiance**: Pin-drop silence except cutting sounds\n**Aspect Ratio**: 9:16\n\nMake it irresistibly satisfying and viral-worthy!"
+        }
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "generate-video",
+      "name": "🎥 Generate Video",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [-140, -60],
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/veo3",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "prompt",
+              "value": "={{ $json.output.replace(/\\n/g, '').replace(/\"/g, '') }}"
+            },
+            {
+              "name": "aspect_ratio",
+              "value": "9:16"
+            },
+            {
+              "name": "generate_audio",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wait-5-minutes",
+      "name": "⏳ Wait 5 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "position": [0, -60],
+      "parameters": {
+        "unit": "minutes"
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "get-result",
+      "name": "📥 Get Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [140, -60],
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/veo3/requests/{{ $json.request_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "id": "wait-30-seconds",
+      "name": "⏳ Wait 30 Seconds",
+      "type": "n8n-nodes-base.wait",
+      "position": [300, -60],
+      "parameters": {
+        "amount": 30
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "extract-video-url",
+      "name": "🔗 Extract Video URL",
+      "type": "n8n-nodes-base.set",
+      "position": [460, -60],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "video-url",
+              "name": "Video URL",
+              "value": "={{ $json.video.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 3.4
+    },
+    {
+      "id": "delete-first-row",
+      "name": "🗑️ Delete First Row",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [-420, 260],
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        }
+      },
+      "typeVersion": 4.6
+    },
+    {
+      "id": "append-object",
+      "name": "➕ Append Object",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [-240, 260],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Object": "={{ $('Idea Agent').item.json.output.object }}",
+            "URL": "={{ $('Extract Video URL').item.json['Video URL'] }}"
+          }
+        },
+        "options": {}
+      },
+      "typeVersion": 4.6
+    },
+    {
+      "id": "upload-to-blotato",
+      "name": "📤 Upload to Blotato",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [-60, 260],
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/media",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.URL }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "post-to-youtube",
+      "name": "🎬 Post to YouTube",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [120, 260],
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"post\": {\n    \"target\": {\n      \"targetType\": \"youtube\",\n      \"title\": \"{{ $('Idea Agent').item.json.output.caption }}\",\n      \"privacyStatus\": \"public\",\n      \"shouldNotifySubscribers\": false\n    },\n    \"content\": {\n      \"text\": \"{{ $('Idea Agent').item.json.output.caption }}\",\n      \"platform\": \"youtube\",\n      \"mediaUrls\": [\"{{ $json.url }}\"]\n    },\n    \"accountId\": \"YOUR_YOUTUBE_ACCOUNT_ID\"\n  }\n}",
+        "options": {}
+      },
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "post-to-instagram",
+      "name": "📸 Post to Instagram",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [300, 260],
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"post\": {\n    \"target\": {\n      \"targetType\": \"instagram\"\n    },\n    \"content\": {\n      \"text\": \"{{ $('Idea Agent').item.json.output.caption }}\",\n      \"platform\": \"instagram\",\n      \"mediaUrls\": [\"{{ $json.url }}\"]\n    },\n    \"accountId\": \"YOUR_INSTAGRAM_ACCOUNT_ID\"\n  }\n}",
+        "options": {}
+      },
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "post-to-tiktok",
+      "name": "🎵 Post to TikTok",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [480, 260],
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"post\": {\n    \"target\": {\n      \"targetType\": \"tiktok\",\n      \"isYourBrand\": false,\n      \"disabledDuet\": false,\n      \"privacyLevel\": \"PUBLIC_TO_EVERYONE\",\n      \"isAiGenerated\": true,\n      \"disabledStitch\": false,\n      \"disabledComments\": false,\n      \"isBrandedContent\": false\n    },\n    \"content\": {\n      \"text\": \"{{ $('Idea Agent').item.json.output.caption }}\",\n      \"platform\": \"tiktok\",\n      \"mediaUrls\": [\"{{ $json.url }}\"]\n    },\n    \"accountId\": \"YOUR_TIKTOK_ACCOUNT_ID\"\n  }\n}",
+        "options": {}
+      },
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "workflow-sections",
+      "name": "📋 Workflow Sections",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-520, -500],
+      "parameters": {
+        "content": "🔮 FLOWRUNE WORKFLOW PHASES 🔮\n\n⚡ Phase 1: Idea Generation\n• Analyze past objects\n• Generate new glass concept\n• Create viral-worthy ideas\n\n⚡ Phase 2: Video Creation\n• AI prompt generation\n• Fal AI video creation\n• Quality optimization\n\n⚡ Phase 3: Social Distribution\n• Multi-platform posting\n• Optimized for virality\n• Analytics tracking",
+        "height": 300,
+        "width": 320,
+        "color": 4
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "video-generation-section",
+      "name": "🎥 Video Generation",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-520, -180],
+      "parameters": {
+        "content": "🎬 VIDEO GENERATION PHASE 🎬\n\n✨ Features:\n• 9:16 mobile-optimized\n• Photorealistic quality\n• 4-layer ASMR audio\n• Viral aesthetics\n• Glass-cutting theme\n\n⚡ Process:\n1. AI generates detailed prompt\n2. Fal AI creates video\n3. Quality validation\n4. URL extraction",
+        "height": 300,
+        "width": 320,
+        "color": 5
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "social-posting-section",
+      "name": "📱 Social Posting",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-520, 140],
+      "parameters": {
+        "content": "📱 SOCIAL DISTRIBUTION PHASE 📱\n\n🚀 Platforms:\n• YouTube (Long-form)\n• Instagram (Reels)\n• TikTok (Short-form)\n\n⚡ Automation:\n• Simultaneous posting\n• Optimized captions\n• Viral hashtags\n• Engagement tracking\n\n📊 Analytics:\n• View counts\n• Engagement rates\n• Viral metrics\n• ROI tracking",
+        "height": 300,
+        "width": 320,
+        "color": 6
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "schedule-trigger": {
+      "main": [
+        [
+          {
+            "node": "get-past-objects",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get-past-objects": {
+      "main": [
+        [
+          {
+            "node": "aggregate-data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aggregate-data": {
+      "main": [
+        [
+          {
+            "node": "set-object-list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set-object-list": {
+      "main": [
+        [
+          {
+            "node": "idea-agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-ai-model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "prompt-agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "idea-agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "idea-agent": {
+      "main": [
+        [
+          {
+            "node": "prompt-agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "object-caption-parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "idea-agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prompt-agent": {
+      "main": [
+        [
+          {
+            "node": "generate-video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate-video": {
+      "main": [
+        [
+          {
+            "node": "wait-5-minutes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wait-5-minutes": {
+      "main": [
+        [
+          {
+            "node": "get-result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get-result": {
+      "main": [
+        [
+          {
+            "node": "extract-video-url",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "wait-30-seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wait-30-seconds": {
+      "main": [
+        [
+          {
+            "node": "get-result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "extract-video-url": {
+      "main": [
+        [
+          {
+            "node": "delete-first-row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete-first-row": {
+      "main": [
+        [
+          {
+            "node": "append-object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "append-object": {
+      "main": [
+        [
+          {
+            "node": "upload-to-blotato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upload-to-blotato": {
+      "main": [
+        [
+          {
+            "node": "post-to-youtube",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "post-to-instagram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "post-to-tiktok",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "runeflow-flowrune-asmr-v1",
+  "tags": ["runeflow", "flowrune", "asmr", "viral", "automation", "ai"],
+  "runeflow_category": "AI & Research",
+  "runeflow_description": "Viral ASMR video automation with AI-powered content creation",
+  "runeflow_contact": "support@runeflow.co",
+  "runeflow_website": "https://runeflow.co",
+  "runeflow_tagline": "Ancient Power. Modern Automation."
+}

@@ -1,0 +1,372 @@
+{
+  "name": "🔥 RuneFlow: Automated Email Sender",
+  "nodes": [
+    {
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\n\n📋 Template: Automated Email Sender\n📁 Category: Email Marketing & CRM\n👨‍💻 Created by: RuneFlow\n📧 Contact: bryan@runeflow.co\n🌐 Website: https://runeflow.co\n📞 Support: \n\n⚡ automation mastery THROUGH AUTOMATION ⚡\n\n🎯 Need custom automation?\nContact RuneFlow for enterprise solutions!\n\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-1000, -500],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "email-signup",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Email Signup Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [200, 300],
+      "typeVersion": 1,
+      "webhookId": "email-signup-webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.body.email }}",
+              "operation": "regex",
+              "value2": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+            }
+          ]
+        }
+      },
+      "id": "email-validator",
+      "name": "Validate Email Format",
+      "type": "n8n-nodes-base.if",
+      "position": [400, 300],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "email",
+              "value": "={{ $json.body.email }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name || 'Valued Customer' }}"
+            },
+            {
+              "name": "company",
+              "value": "={{ $json.body.company || 'RuneFlow' }}"
+            },
+            {
+              "name": "signup_source",
+              "value": "={{ $json.body.source || 'website' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "extract-data",
+      "name": "Extract User Data",
+      "type": "n8n-nodes-base.set",
+      "position": [600, 200],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEETS_ID",
+          "mode": "list"
+        },
+        "sheetName": "Email Subscribers",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $json.email }}",
+            "Name": "={{ $json.name }}",
+            "Company": "={{ $json.company }}",
+            "Source": "={{ $json.signup_source }}",
+            "Timestamp": "={{ $now }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "save-to-sheets",
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [800, 200],
+      "typeVersion": 4,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "🔥 Welcome to RuneFlow - Your Automation Journey Begins!",
+        "message": "Dear {{ $json.name }},\n\nWelcome to the RuneFlow family! 🎉\n\nYou've just taken the first step toward mastering Norse Automation. Here's what awaits you:\n\n🗲 **Immediate Access**: Your starter runes are ready for deployment\n🗲 **Community Power**: Join 10,000+ automation warriors\n🗲 **Ancient Wisdom**: Transform modern challenges with timeless solutions\n🗲 **Expert Support**: Our Automation Masters are here to guide you\n\n**Your Next Steps:**\n1. Choose your first rune from our starter collection\n2. Follow the setup guide (sent separately)\n3. Join our Discord community for support\n4. Start automating and scaling your business\n\n**Starter Runes Available:**\n• ᚠ FlowRune: Viral ASMR Creator\n• ᚨ Ansuz: The Messenger (Email Marketing)\n• ᛚ Laguz: The Intelligent Qualifier (Lead Gen)\n\nReady to begin your automation mastery?\n\n**[ACCESS YOUR RUNES →](https://runeflow.co/starter-runes)**\n\nMay the power of automation guide your path to success!\n\nSkål! 🍺\n\nThe RuneFlow Team\n\n---\n\n*Questions? Reply to this email or join our Discord: https://discord.gg/runeflow*\n\n*Unsubscribe: https://runeflow.co/unsubscribe*",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "send-welcome-email",
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.gmail",
+      "position": [1000, 200],
+      "typeVersion": 2,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "id": "wait-5-minutes",
+      "name": "Wait 5 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "position": [1200, 200],
+      "typeVersion": 1,
+      "webhookId": "wait-5-minutes-webhook"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Extract User Data').item.json.email }}",
+        "subject": "🎯 Your RuneFlow Setup Guide is Here!",
+        "message": "Hello {{ $('Extract User Data').item.json.name }},\n\nYour RuneFlow automation journey continues! 🚀\n\nAs promised, here's your comprehensive setup guide to get started with your first rune:\n\n**📋 QUICK START CHECKLIST:**\n□ Download your chosen rune template\n□ Set up your n8n workspace\n□ Configure your first automation\n□ Test your workflow\n□ Deploy and monitor\n\n**🎯 RECOMMENDED FIRST RUNE:**\nBased on your signup source ({{ $('Extract User Data').item.json.signup_source }}), we recommend starting with:\n\n**ᚨ Ansuz - The Messenger**\n• Perfect for email marketing automation\n• Beginner-friendly setup (15 minutes)\n• Immediate ROI potential\n• Great for building customer relationships\n\n**📚 DETAILED SETUP GUIDES:**\n• [Ansuz Setup Guide](https://runeflow.co/guides/ansuz)\n• [FlowRune Setup Guide](https://runeflow.co/guides/flowrune)\n• [Laguz Setup Guide](https://runeflow.co/guides/laguz)\n\n**🎮 NEED HELP?**\n• Join our Discord: https://discord.gg/runeflow\n• Book a 1-on-1 setup call: https://calendly.com/runeflow\n• Email us: support@runeflow.co\n\n**🔥 BONUS RESOURCES:**\n• Automation cheat sheet (attached)\n• Video tutorials playlist\n• Community templates library\n\nRemember: Every automation master started with their first rune. You're closer than you think!\n\nReady to unleash the power of Norse automation?\n\n**[START YOUR SETUP →](https://runeflow.co/setup)**\n\nWarrior's regards,\nBryan & The RuneFlow Team\n\n---\n\n*P.S. Reply to this email if you get stuck - we're here to help!*",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "send-setup-guide",
+      "name": "Send Setup Guide",
+      "type": "n8n-nodes-base.gmail",
+      "position": [1400, 200],
+      "typeVersion": 2,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "days"
+      },
+      "id": "wait-1-day",
+      "name": "Wait 1 Day",
+      "type": "n8n-nodes-base.wait",
+      "position": [1600, 200],
+      "typeVersion": 1,
+      "webhookId": "wait-1-day-webhook"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Extract User Data').item.json.email }}",
+        "subject": "⚡ Quick Win: Your First Automation Success Story",
+        "message": "Hey {{ $('Extract User Data').item.json.name }},\n\nBryan here, founder of RuneFlow! 👋\n\nI wanted to personally check in and share something exciting with you...\n\n**🎉 SUCCESS STORY ALERT:**\nJust yesterday, Sarah from Denver used the Ansuz rune to automate her entire customer onboarding process. Result? She's now processing 10x more leads with LESS effort!\n\n**Her secret? She started exactly where you are now.** ✨\n\n**Here's what I want you to do in the next 24 hours:**\n\n1. **Pick ONE rune** (don't overthink this!)\n2. **Follow the setup guide** (it's easier than you think)\n3. **Send me a screenshot** of your first successful automation\n4. **Get featured** in our success stories!\n\n**CHOOSE YOUR WEAPON:**\n\n🎵 **FlowRune** - Perfect if you create content\n→ Automate viral ASMR content creation\n→ 15-minute setup, immediate results\n\n📧 **Ansuz** - Perfect if you have customers to nurture\n→ Automate email marketing like a pro\n→ 10-minute setup, proven templates\n\n🎯 **Laguz** - Perfect if you generate leads\n→ AI-powered lead qualification\n→ 20-minute setup, game-changing results\n\n**EXCLUSIVE OFFER:**\nReply to this email with \"READY\" and I'll personally help you choose the perfect rune for your specific situation. (No sales pitch, just genuine help!)\n\n**🚀 ONE-CLICK SETUP:**\n[Choose FlowRune →](https://runeflow.co/setup/flowrune)\n[Choose Ansuz →](https://runeflow.co/setup/ansuz)\n[Choose Laguz →](https://runeflow.co/setup/laguz)\n\n**THE TRUTH:**\nMost people get stuck in \"learning mode\" forever. The winners? They pick a rune and START. Imperfect action beats perfect inaction every time.\n\nYour automation empire is waiting. What's it going to be?\n\nSkål! 🍺\nBryan\n\nP.S. - I read and respond to every email personally. Hit reply if you need anything!\n\n---\n\n*🎯 Ready to level up? Join our VIP Discord: https://discord.gg/runeflow-vip*",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "send-motivation-email",
+      "name": "Send Motivation Email",
+      "type": "n8n-nodes-base.gmail",
+      "position": [1800, 200],
+      "typeVersion": 2,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "❌ Invalid Email Format",
+        "options": {}
+      },
+      "id": "invalid-email-response",
+      "name": "Invalid Email Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [400, 500],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "message": "✅ Email Signup Successful! Check your inbox for your RuneFlow welcome series.",
+        "options": {}
+      },
+      "id": "success-response",
+      "name": "Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [2000, 200],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "color": 5,
+        "width": 400,
+        "height": 200,
+        "content": "📧 EMAIL AUTOMATION SEQUENCE\n\n1. Welcome Email (Immediate)\n2. Setup Guide (5 minutes later)\n3. Motivation Email (1 day later)\n\nEach email is personalized with user data and contains specific CTAs to drive engagement."
+      },
+      "id": "email-sequence-note",
+      "name": "Email Sequence Info",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [1200, 50],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "color": 3,
+        "width": 400,
+        "height": 200,
+        "content": "🔧 SETUP REQUIREMENTS\n\n1. Replace YOUR_GOOGLE_SHEETS_ID with actual sheet ID\n2. Replace YOUR_GMAIL_CREDENTIAL_ID with actual credential ID\n3. Replace YOUR_GOOGLE_SHEETS_CREDENTIAL_ID with actual credential ID\n4. Test webhook URL: https://your-n8n-instance.com/webhook/email-signup"
+      },
+      "id": "setup-requirements-note",
+      "name": "Setup Requirements",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [200, 50],
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Email Signup Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate Email Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Email Format": {
+      "main": [
+        [
+          {
+            "node": "Extract User Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Invalid Email Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract User Data": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Send Welcome Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Welcome Email": {
+      "main": [
+        [
+          {
+            "node": "Wait 5 Minutes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Send Setup Guide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Setup Guide": {
+      "main": [
+        [
+          {
+            "node": "Wait 1 Day",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 1 Day": {
+      "main": [
+        [
+          {
+            "node": "Send Motivation Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Motivation Email": {
+      "main": [
+        [
+          {
+            "node": "Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "createdAt": "2024-01-17T08:38:15.000Z",
+  "updatedAt": "2024-01-17T08:38:15.000Z",
+  "id": "email-automation-workflow",
+  "tags": [
+    {
+      "id": "email-automation",
+      "name": "Email Automation"
+    },
+    {
+      "id": "runeflow",
+      "name": "RuneFlow"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "runeflow-coming-soon",
+  "version": "1.0.0",
+  "description": "RuneFlow Coming Soon Page",
+  "main": "automation/server.js",
+  "scripts": {
+    "start": "node automation/server.js",
+    "install-deps": "npm install --production"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.8",
+    "coinbase-commerce-node": "^1.0.4",
+    "stripe": "^14.21.0",
+    "crypto": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

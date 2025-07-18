@@ -1,0 +1,134 @@
+[
+  {
+    "timestamp": "2025-07-17T14:00:02.415Z",
+    "campaignType": "launch_announcement",
+    "content": "🔥 The automation revolution is here! RuneFlow.co - the ultimate n8n template marketplace is awakening. Join 1000+ automation masters on the waitlist! #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "edit_history_tweet_ids": [
+            "1945845946191118482"
+          ],
+          "id": "1945845946191118482",
+          "text": "🔥 The automation revolution is here! https://t.co/ACkQxCEwyS - the ultimate n8n template marketplace is awakening. Join 1000+ automation masters on the waitlist! #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-17T14:17:17.052Z",
+    "campaignType": "launch_announcement",
+    "content": "🧙‍♂️ Calling all automation wizards! RuneFlow.co is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "🧙‍♂️ Calling all automation wizards! https://t.co/ACkQxCEwyS is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+          "edit_history_tweet_ids": [
+            "1945850285790024003"
+          ],
+          "id": "1945850285790024003"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-17T14:17:28.340Z",
+    "campaignType": "milestone_posts",
+    "content": "🔥 847 runes claimed! Each signup brings us closer to unleashing the full power of RuneFlow.co #RuneFlow #automation #n8n\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "edit_history_tweet_ids": [
+            "1945850333181452521"
+          ],
+          "text": "🔥 847 runes claimed! Each signup brings us closer to unleashing the full power of https://t.co/ACkQxCEwyS #RuneFlow #automation #n8n\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+          "id": "1945850333181452521"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-17T14:17:45.506Z",
+    "campaignType": "launch_announcement",
+    "content": "🧙‍♂️ Calling all automation wizards! RuneFlow.co is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": null,
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": false
+  },
+  {
+    "timestamp": "2025-07-17T16:00:02.352Z",
+    "campaignType": "product_highlights",
+    "content": "🏆 4,000+ n8n templates ready for battle! AI & Research: 1,412 templates | Data Analysis: 1,255 templates | Email & Communication: 486 templates #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "🏆 4,000+ n8n templates ready for battle! AI &amp; Research: 1,412 templates | Data Analysis: 1,255 templates | Email &amp; Communication: 486 templates #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+          "edit_history_tweet_ids": [
+            "1945876145213464741"
+          ],
+          "id": "1945876145213464741"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-17T16:00:02.368Z",
+    "campaignType": "product_highlights",
+    "content": "⚡ One-click deployment magic! RuneFlow templates are pre-configured and ready to deploy in 5 minutes. No more starting from scratch! #n8n #automation #productivity\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "⚡ One-click deployment magic! RuneFlow templates are pre-configured and ready to deploy in 5 minutes. No more starting from scratch! #n8n #automation #productivity\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+          "id": "1945876145192480921",
+          "edit_history_tweet_ids": [
+            "1945876145192480921"
+          ]
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-17T19:00:02.485Z",
+    "campaignType": "social_proof",
+    "content": "⚡ 'I've been waiting for something like RuneFlow for years!' - Automation expert testimonial #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://runeflow.co",
+    "results": {
+      "twitter": {
+        "data": {
+          "id": "1945921444057325933",
+          "text": "⚡ 'I've been waiting for something like RuneFlow for years!' - Automation expert testimonial #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+          "edit_history_tweet_ids": [
+            "1945921444057325933"
+          ]
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  }
+]
