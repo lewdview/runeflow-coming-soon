@@ -1,4 +1,4 @@
-# RuneFlow Deployment Guide
+# RuneFlow.xyz Deployment Guide
 
 ## 🚀 Quick Deploy Options
 
@@ -10,8 +10,8 @@
    ```bash
    PORT=3000
    NODE_ENV=production
-   SMTP_HOST=mail.webhalla.com
-   SMTP_USER=bryan@webhalla.com
+   SMTP_HOST=mail.runeflow.xyz
+   SMTP_USER=hello@runeflow.xyz
    SMTP_PASS=your_password
    COINBASE_API_KEY=your_coinbase_key
    COINBASE_WEBHOOK_SECRET=your_webhook_secret
@@ -34,8 +34,8 @@
 3. **Set environment variables**:
    ```bash
    heroku config:set NODE_ENV=production
-   heroku config:set SMTP_HOST=mail.webhalla.com
-   heroku config:set SMTP_USER=bryan@webhalla.com
+   heroku config:set SMTP_HOST=mail.runeflow.xyz
+   heroku config:set SMTP_USER=hello@runeflow.xyz
    heroku config:set SMTP_PASS=your_password
    heroku config:set COINBASE_API_KEY=your_coinbase_key
    heroku config:set COINBASE_WEBHOOK_SECRET=your_webhook_secret
@@ -115,12 +115,12 @@ PORT=3000
 NODE_ENV=production
 
 # Email
-SMTP_HOST=mail.webhalla.com
+SMTP_HOST=mail.runeflow.xyz
 SMTP_PORT=587
-SMTP_USER=bryan@webhalla.com
+SMTP_USER=hello@runeflow.xyz
 SMTP_PASS=your_password
-FROM_EMAIL=bryan@webhalla.com
-FROM_NAME=Bryan Meason - RuneFlow
+FROM_EMAIL=hello@runeflow.xyz
+FROM_NAME=RuneFlow Team
 
 # Crypto Payments
 COINBASE_API_KEY=your_coinbase_api_key
@@ -143,14 +143,14 @@ LINKEDIN_ACCESS_TOKEN=your_linkedin_token
 
 2. **Test email functionality**:
    ```bash
-   curl -X POST http://localhost:3000/api/waitlist \
+   curl -X POST http://localhost:3000/capture-email \
      -H "Content-Type: application/json" \
      -d '{"email":"test@example.com"}'
    ```
 
 3. **Test payment endpoints**:
    ```bash
-   curl http://localhost:3000/api/crypto/health
+   curl http://localhost:3000/health
    curl http://localhost:3000/api/crypto/supported-currencies
    ```
 
@@ -165,7 +165,7 @@ LINKEDIN_ACCESS_TOKEN=your_linkedin_token
 
 ### Health Check Endpoint:
 ```bash
-curl https://your-domain.com/health
+curl https://runeflow.xyz/health
 ```
 
 ## 🌐 Custom Domain Setup
@@ -180,9 +180,9 @@ curl https://your-domain.com/health
 ## 📱 Social Media Integration
 
 After deployment, configure webhooks:
-1. **Twitter**: Set webhook URL to `https://your-domain.com/webhooks/twitter`
-2. **Facebook**: Set webhook URL to `https://your-domain.com/webhooks/facebook`
-3. **LinkedIn**: Set webhook URL to `https://your-domain.com/webhooks/linkedin`
+1. **Twitter**: Set webhook URL to `https://runeflow.xyz/webhooks/twitter`
+2. **Facebook**: Set webhook URL to `https://runeflow.xyz/webhooks/facebook`
+3. **LinkedIn**: Set webhook URL to `https://runeflow.xyz/webhooks/linkedin`
 
 ## 🚀 Post-Deployment
 
@@ -195,4 +195,4 @@ After deployment, configure webhooks:
 
 ---
 
-**Need help?** Contact bryan@webhalla.com
+**Need help?** Contact hello@runeflow.xyz

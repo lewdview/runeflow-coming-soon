@@ -1,255 +1,180 @@
-# ᚨ Ansuz - The Messenger: Setup Guide
+# ᚨ Ansuz - The Messenger: Preview Setup Guide
 
-## Ancient Wisdom Meets Modern Communication
+## Preview Template for RuneFlow's Upcoming Platform
 
-*"Words have power. When spoken with intention and delivered with precision, they shape reality itself."*
+*"Experience the foundation of intelligent communication automation."*
 
-Welcome to **Ansuz - The Messenger**, your gateway to mastering automated communication. This rune embodies the Norse god Odin's wisdom in communication, transforming how you connect with your audience through intelligent email automation.
-
----
-
-## 🎯 **What This Rune Accomplishes**
-
-Ansuz - The Messenger automates your entire email marketing workflow:
-
-- **Welcome New Subscribers**: Automatically send personalized welcome sequences
-- **Intelligent Tagging**: Categorize contacts based on behavior and preferences
-- **Follow-up Sequences**: Nurture leads with targeted email campaigns
-- **Engagement Tracking**: Monitor open rates, click-through rates, and conversions
-- **CRM Integration**: Sync data seamlessly with your existing systems
+Welcome to **Ansuz - The Messenger Preview**, your first look at RuneFlow's approach to email automation templates. This preview template demonstrates the structure and methodology that will be available in the full platform launching in approximately 2 months.
 
 ---
 
-## 🏛️ **The Mythological Foundation**
+## 🎯 **What This Preview Demonstrates**
 
-**Ansuz** (ᚨ) represents communication, wisdom, and divine inspiration. In Norse mythology, this rune is associated with Odin, the All-Father, who gifted humanity with language and wisdom. Just as Odin's ravens carried messages across the nine realms, this rune carries your messages across the digital landscape with precision and purpose.
+The Ansuz Preview Template shows you:
+
+- **Template Structure**: How RuneFlow workflows are organized
+- **Email Automation Flow**: Basic welcome email sequence
+- **Integration Patterns**: How systems will connect in the full platform
+- **Design Philosophy**: Our approach to automation design
+- **Preview Functionality**: Core workflow capabilities
 
 ---
 
-## 🛠️ **Prerequisites**
+## 🏛️ **The Template Foundation**
 
-Before summoning this rune, ensure you have:
+**Ansuz** (ᚨ) represents communication and wisdom in Norse mythology. This preview template embodies these principles through clean, efficient email automation workflows that will form the foundation of our full platform.
+
+---
+
+## 🛠️ **Preview Requirements**
+
+To test this preview template, you'll need:
 
 - [ ] **n8n account** (self-hosted or cloud)
-- [ ] **Email service provider** (Gmail, Outlook, SendGrid, etc.)
-- [ ] **CRM system** (HubSpot, Pipedrive, Airtable, etc.)
-- [ ] **Basic understanding** of email marketing concepts
+- [ ] **Email service provider** (Gmail, Outlook, etc.)
+- [ ] **Basic understanding** of workflow concepts
+
+Note: This is a preview template with limited functionality compared to the full platform.
 
 ---
 
-## 🔧 **Step-by-Step Setup**
+## 🔧 **Preview Setup Steps**
 
-### Phase 1: Prepare Your Digital Realm
+### Phase 1: Import the Preview Template
 
 1. **Access Your n8n Workspace**
    - Log into your n8n instance
    - Navigate to the workflows section
    - Click "Create New Workflow"
 
-2. **Import the Ansuz Template**
-   - Download the `ansuz_messenger.json` file from your RuneFlow package
+2. **Import the Ansuz Preview**
+   - Locate the `ansuz_messenger_preview.json` file from your preview package
    - In n8n, click "Import from JSON"
    - Select the downloaded file
    - Click "Import"
 
-### Phase 2: Configure the Communication Channels
+### Phase 2: Basic Configuration
 
-3. **Set Up Email Credentials**
-   - Click on the "Gmail" or "Email" node
+3. **Set Up Email Service**
+   - Click on the "Email" node in the workflow
    - Configure your email service credentials
-   - Test the connection to ensure it's working
+   - Test the connection
 
-4. **Configure CRM Integration**
-   - Select your CRM node (HubSpot, Pipedrive, etc.)
-   - Add your CRM API credentials
-   - Map the required fields for contact management
+4. **Customize Email Template**
+   - Edit the welcome email content
+   - Update sender information
+   - Adjust branding elements
 
-### Phase 3: Customize Your Message Templates
+### Phase 3: Test the Preview
 
-5. **Welcome Email Sequence**
-   - Edit the "Welcome Email" node
-   - Customize the subject line and email content
-   - Add your brand voice and personality
-   - Include relevant call-to-action buttons
-
-6. **Follow-up Campaign Templates**
-   - Modify the "Follow-up Email" nodes
-   - Create a sequence that matches your sales funnel
-   - Set appropriate delays between emails
-
-### Phase 4: Configure Automation Triggers
-
-7. **Set Up Form Triggers**
-   - Configure the webhook or form trigger
-   - Connect to your website forms or landing pages
-   - Test the trigger to ensure it captures new subscribers
-
-8. **Define Contact Segmentation**
-   - Set up tagging rules based on subscriber behavior
-   - Create segments for different audience types
-   - Configure automated tag assignments
-
-### Phase 5: Test and Activate
-
-9. **Run Test Sequences**
-   - Create test contacts with sample data
-   - Execute the workflow manually
-   - Verify all emails are sent correctly
-   - Check CRM integration and tagging
-
-10. **Activate the Rune**
-    - Enable the workflow
-    - Set up monitoring and alerts
-    - Begin tracking performance metrics
+5. **Run Test Sequence**
+   - Create a test webhook trigger
+   - Submit test data
+   - Verify email is sent correctly
+   - Check workflow execution logs
 
 ---
 
-## 📊 **Performance Tracking Dashboard**
+## 📊 **Preview Limitations**
 
-Monitor your Ansuz rune's performance with these key metrics:
+This preview template includes:
 
-### Email Performance Metrics
-- **Open Rate**: Target 25-35%
-- **Click-through Rate**: Target 3-7%
-- **Conversion Rate**: Target 1-5%
-- **Unsubscribe Rate**: Keep below 2%
+✅ **Included:**
+- Basic email automation workflow
+- Simple welcome email template
+- Webhook trigger example
+- Template structure demonstration
 
-### CRM Integration Metrics
-- **Contact Sync Success**: Target 99%+
-- **Tag Accuracy**: Target 95%+
-- **Follow-up Completion**: Target 90%+
-- **Lead Qualification Time**: Reduce by 50%
-
-### Automation Health Metrics
-- **Workflow Uptime**: Target 99.9%
-- **Error Rate**: Keep below 1%
-- **Processing Time**: Monitor average execution time
-- **Resource Usage**: Track system performance
+❌ **Not Included (Available in Full Platform):**
+- Advanced CRM integrations
+- Complex email sequences
+- AI-powered personalization
+- Advanced analytics
+- Enterprise features
+- Professional support
 
 ---
 
-## 🎨 **Customization Options**
+## 🚀 **Full Platform Coming Soon**
 
-### Branding and Voice
-- **Email Templates**: Customize colors, fonts, and layout
-- **Brand Voice**: Adjust tone and messaging style
-- **Visual Elements**: Add logos, images, and design elements
+The complete RuneFlow platform will include:
 
-### Advanced Segmentation
-- **Behavioral Triggers**: Set up actions based on email engagement
-- **Dynamic Content**: Personalize emails based on user data
-- **A/B Testing**: Test different subject lines and content variations
+- **Advanced Templates**: Comprehensive automation libraries
+- **AI-Powered Features**: Intelligent workflow optimization
+- **Enterprise Integration**: Advanced CRM and tool connections
+- **Professional Support**: Dedicated customer success
+- **Community Features**: Template marketplace and sharing
+- **Continuous Updates**: Regular new template releases
 
-### Integration Enhancements
-- **Multi-CRM Support**: Connect multiple CRM systems
-- **Analytics Integration**: Add Google Analytics or similar tools
-- **Social Media Sync**: Connect with social media platforms
+**Expected Launch**: Approximately 2 months from now
 
 ---
 
-## 🚨 **Troubleshooting Common Issues**
+## 🎨 **Preview Customization**
 
-### Email Delivery Problems
-- **Issue**: Emails not being sent
-- **Solution**: Check email service credentials and limits
-- **Prevention**: Set up proper authentication and monitoring
+Feel free to modify this preview template:
 
-### CRM Sync Failures
-- **Issue**: Contacts not syncing to CRM
-- **Solution**: Verify API credentials and field mappings
-- **Prevention**: Test connections regularly and set up alerts
-
-### Performance Issues
-- **Issue**: Slow workflow execution
-- **Solution**: Optimize node configurations and reduce API calls
-- **Prevention**: Monitor resource usage and set up performance alerts
+- **Email Content**: Update messaging and branding
+- **Workflow Logic**: Adjust trigger conditions
+- **Integration Points**: Test with your existing tools
+- **Template Structure**: Understand our design approach
 
 ---
 
-## 📈 **Success Metrics Timeline**
+## 📈 **Preview Success Metrics**
 
-### Week 1-2: Foundation
-- [ ] Setup completed successfully
-- [ ] First welcome emails sent
-- [ ] Basic CRM integration working
-- [ ] Initial contacts tagged and segmented
+Use this preview to:
 
-### Week 3-4: Optimization
-- [ ] 50+ contacts processed
-- [ ] Open rates above 20%
-- [ ] Click-through rates above 2%
-- [ ] Follow-up sequences triggered
+### Week 1: Setup and Test
+- [ ] Successfully import the template
+- [ ] Configure email service
+- [ ] Send test emails
+- [ ] Understand workflow structure
 
-### Month 2: Mastery
-- [ ] 200+ contacts in system
-- [ ] Open rates above 25%
-- [ ] Click-through rates above 3%
-- [ ] Conversion tracking implemented
-
-### Month 3: Excellence
-- [ ] 500+ contacts managed
-- [ ] Open rates above 30%
-- [ ] Click-through rates above 5%
-- [ ] Advanced segmentation active
+### Week 2: Customization
+- [ ] Customize email templates
+- [ ] Test with real data
+- [ ] Document learnings
+- [ ] Provide feedback
 
 ---
 
-## 🔮 **Advanced Techniques**
+## 🔮 **Preparing for Full Launch**
 
-### The Odin's Wisdom Enhancement
-- **Predictive Analytics**: Use AI to predict best send times
-- **Dynamic Personalization**: Adjust content based on user behavior
-- **Automated A/B Testing**: Continuously optimize email performance
+Use this preview to:
 
-### The Raven's Network Integration
-- **Multi-channel Campaigns**: Coordinate email with social media
-- **Cross-platform Tracking**: Unified analytics across all channels
-- **Behavioral Automation**: Trigger actions based on combined data
-
-### The Valhalla Scale Protocol
-- **Enterprise Features**: Handle thousands of contacts
-- **Advanced Workflows**: Multi-step automation sequences
-- **Team Collaboration**: Multiple users managing the system
+- **Understand Our Approach**: See how RuneFlow templates work
+- **Plan Your Implementation**: Think about how you'll use the full platform
+- **Join the Community**: Connect with other preview users
+- **Stay Updated**: Get notified when the full platform launches
 
 ---
 
-## 🎭 **The Ansuz Advantage**
+## 🌟 **Preview Community**
 
-By mastering Ansuz - The Messenger, you will:
+Connect with other preview users:
 
-- **Reduce Manual Work**: Automate 80% of your email marketing tasks
-- **Increase Engagement**: Achieve 40-60% higher open rates
-- **Improve Conversions**: Generate 3-5x more qualified leads
-- **Scale Effortlessly**: Handle unlimited contacts with ease
-- **Gain Insights**: Deep analytics into customer behavior
+- **Discord Community**: Share experiences and get updates
+- **Preview Feedback**: Help shape the final platform
+- **Launch Updates**: Stay informed about platform progress
+- **Exclusive Access**: Preview users get special launch benefits
 
 ---
 
 ## 📚 **Next Steps**
 
-1. **Complete the Setup**: Follow all steps in this guide
-2. **Start Small**: Begin with a simple welcome sequence
-3. **Monitor Performance**: Track metrics daily for the first week
-4. **Iterate and Improve**: Continuously optimize based on results
-5. **Expand Capabilities**: Add more advanced features as you grow
+1. **Complete the Preview Setup**: Follow the steps above
+2. **Test and Experiment**: Try different configurations
+3. **Document Your Experience**: Note what works and what you need
+4. **Stay Connected**: Join our community for updates
+5. **Prepare for Launch**: Get ready for the full platform
 
 ---
 
-## 🌟 **Join the Community**
+*"This preview is the first chapter of your automation journey. The full story launches soon."* - RuneFlow Preview Team
 
-Share your success with Ansuz - The Messenger:
-
-- **Discord Community**: Connect with other RuneFlow users
-- **Success Stories**: Share your automation wins
-- **Template Exchange**: Discover new email templates
-- **Expert Support**: Get help from automation masters
+**Full Platform Launch Coming in ~2 months. Stay tuned!** 🚀
 
 ---
 
-*"The wise messenger knows that every word carries weight, every timing matters, and every connection shapes destiny."* - Ansuz Wisdom
-
-**May your communications flow like the wisdom of the All-Father, reaching every corner of your digital realm with purpose and power.**
-
----
-
-Ready to begin your journey with Ansuz - The Messenger? Your automated communication empire awaits! 🚀
+Questions about this preview? Contact: support@runeflow.co

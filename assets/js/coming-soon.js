@@ -282,8 +282,13 @@ window.openPaymentModal = function(paymentType, packageType) {
         if (cryptoForm) cryptoForm.style.display = 'block';
     }
     
-    modal.classList.add('show');
     document.body.style.overflow = 'hidden';
+    
+    // Show modal with proper animation
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+    
     console.log('Modal should be visible now');
 };
 
@@ -519,7 +524,8 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         const modal = document.createElement('div');
-        modal.className = 'modal show';
+        modal.className = 'modal';
+        modal.style.display = 'flex';
         modal.innerHTML = `
             <div class="modal-content">
                 <h3><span class="rune-icon">${runeIcons[selectedRune]}</span> ${runeNames[selectedRune]} Ready!</h3>
@@ -532,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="download-actions">
-                        <button class="download-btn" onclick="downloadSelectedRune()">Download Package</button>
+                        <button class="download-btn" onclick="downloadSelectedRune()">📦 Download ZIP Package</button>
                         <p class="download-note">Complete ZIP Package • n8n Workflow + Setup Guide</p>
                     </div>
                 </div>
@@ -542,6 +548,12 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Trigger animation after DOM insertion
+        requestAnimationFrame(() => {
+            modal.classList.add('show');
+        });
         
         // Add celebration effect
         createCelebrationEffect();
@@ -551,9 +563,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.closeFreeDownloadModal = function() {
         const modal = document.querySelector('.modal.show');
         if (modal) {
-            modal.remove();
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Remove modal after animation completes
+            setTimeout(() => {
+                if (modal.parentNode) {
+                    modal.remove();
+                }
+            }, 300); // Match CSS transition duration
         }
-        document.body.style.overflow = 'auto';
     };
     
     // Download selected rune
@@ -2129,30 +2148,30 @@ function loadJSZip() {
 // Get welcome email HTML template
 function getWelcomeEmailHTML() {
     return `<html>
-<body style="font-family: Arial, sans-serif; background-color: #0a0a0a; color: #e0e1dd; padding: 20px;">
+<body style="font-family: Arial, sans-serif; background-color: #0a0a0a; color: #ffffff; padding: 20px;">
   <div style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 15px; padding: 40px; border: 2px solid #ff6b35;">
     <h1 style="color: #ff6b35; text-align: center; font-size: 2.5rem; margin-bottom: 20px;">ᚱᚢᚾᛖᚠᛚᛟᚹ</h1>
-    <h2 style="color: #d4af37; text-align: center; margin-bottom: 30px;">Welcome, {{ $json.name }}!</h2>
+    <h2 style="color: #ffab00; text-align: center; margin-bottom: 30px;">Welcome, {{ $json.name }}!</h2>
     
-    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">The ancient runes have spoken, and your automation journey begins now.</p>
+    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">Welcome to the exclusive preview of RuneFlow's automation templates.</p>
     
     <div style="background: rgba(255, 107, 53, 0.1); border-left: 4px solid #ff6b35; padding: 20px; margin: 30px 0; border-radius: 8px;">
-      <h3 style="color: #ff6b35; margin-bottom: 15px;">🎯 Your Starter Rune \"Ansuz\" is Ready!</h3>
-      <p>You've just received one of our most powerful email automation templates. This workflow will help you:</p>
+      <h3 style="color: #ff6b35; margin-bottom: 15px;">🎯 Your Preview Starter Rune \"Ansuz\" is Ready!</h3>
+      <p>You've received early access to one of our most sophisticated email automation templates. This preview workflow will empower you to:</p>
       <ul style="margin: 15px 0; padding-left: 20px;">
-        <li>Automatically welcome new subscribers</li>
-        <li>Tag contacts in your CRM</li>
-        <li>Trigger follow-up sequences</li>
-        <li>Track engagement metrics</li>
+        <li>Experience our automation template approach</li>
+        <li>Test integration capabilities</li>
+        <li>Prepare for the full platform launch</li>
+        <li>Join our preview community</li>
       </ul>
     </div>
     
     <div style="text-align: center; margin: 40px 0;">
-      <a href="https://runeflow.co/dashboard" style="background: linear-gradient(135deg, #ff6b35, #d4af37); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">Access Your Dashboard</a>
+      <a href="https://runeflow.co/dashboard" style="background: linear-gradient(135deg, #ff6b35, #ffab00); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">Stay Updated on Launch</a>
     </div>
     
     <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333;">
-      <p style="color: #888; font-size: 0.9rem;">May the runes guide your automation journey,<br>The RuneFlow Team</p>
+      <p style="color: #aaaaaa; font-size: 0.9rem;">Ancient Power. Modern Automation.<br>The RuneFlow Team</p>
     </div>
   </div>
 </body>
@@ -2237,17 +2256,17 @@ With this automation, you should see:
 
 // Get email template HTML
 function getEmailTemplateHTML() {
-    return `<!DOCTYPE html>
+return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to RuneFlow</title>
+    <title>Welcome to RuneFlow Preview</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #0a0a0a;
-            color: #e0e1dd;
+            color: #ffffff;
             padding: 20px;
         }
         .container {
@@ -2265,7 +2284,7 @@ function getEmailTemplateHTML() {
             margin-bottom: 20px;
         }
         .cta-button {
-            background: linear-gradient(135deg, #ff6b35, #d4af37);
+            background: linear-gradient(135deg, #ff6b35, #ffab00);
             color: white;
             padding: 15px 30px;
             text-decoration: none;
@@ -2278,12 +2297,12 @@ function getEmailTemplateHTML() {
 <body>
     <div class="container">
         <div class="logo">ᚱᚢᚾᛖᚠᛚᛟᚹ</div>
-        <h1 style="color: #d4af37; text-align: center;">Welcome, {{name}}!</h1>
-        <p>The ancient runes have spoken, and your automation journey begins now.</p>
+        <h1 style="color: #ffab00; text-align: center;">Welcome to the Preview, {{name}}!</h1>
+        <p>You've joined the exclusive preview of RuneFlow's automation templates. Experience what's coming to the full platform.</p>
         <div style="text-align: center; margin: 40px 0;">
-            <a href="https://runeflow.co/dashboard" class="cta-button">Access Your Dashboard</a>
+            <a href="https://runeflow.xyz" class="cta-button">Stay Updated on Launch</a>
         </div>
-        <p style="text-align: center; color: #888; font-size: 0.9rem;">May the runes guide your automation journey,<br>The RuneFlow Team</p>
+        <p style="text-align: center; color: #aaaaaa; font-size: 0.9rem;">Ancient Power. Modern Automation.<br>The RuneFlow Team</p>
     </div>
 </body>
 </html>`;

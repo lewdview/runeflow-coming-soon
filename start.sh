@@ -274,9 +274,9 @@ case ${1:-start} in
     start)
         start_services
         print_status "🚀 RuneFlow is running!"
-        print_info "Main server: http://localhost:3000"
-        print_info "Analytics: http://localhost:3000/analytics"
-        print_info "Email export: http://localhost:3000/export-emails"
+        print_info "Main server: http://localhost:3000 (local) | https://runeflow.xyz (production)"
+        print_info "Analytics: http://localhost:3000/analytics (local) | https://runeflow.xyz/analytics (production)"
+        print_info "Email export: http://localhost:3000/export-emails (local) | https://runeflow.xyz/export-emails (production)"
         print_info ""
         print_info "Press Ctrl+C to stop all services"
         

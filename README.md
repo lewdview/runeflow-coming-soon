@@ -1,4 +1,4 @@
-# RuneFlow.co - Coming Soon Landing Page
+# RuneFlow.xyz - Coming Soon Landing Page
 
 🔥 **The Ultimate n8n Template Marketplace** - Deployment-Ready Landing Page with Automated Social Media Campaigns
 
@@ -147,12 +147,12 @@ Create a `.env` file based on `.env.example`:
 
 ```env
 # Email Configuration
-SMTP_HOST=mail.webhalla.com
+SMTP_HOST=mail.runeflow.xyz
 SMTP_PORT=587
-SMTP_USER=bryan@webhalla.com
+SMTP_USER=hello@runeflow.xyz
 SMTP_PASS=your_password
-FROM_EMAIL=bryan@webhalla.com
-FROM_NAME=Bryan Meason - RuneFlow
+FROM_EMAIL=hello@runeflow.xyz
+FROM_NAME=RuneFlow Team
 
 # Social Media APIs
 TWITTER_API_KEY=your_twitter_api_key
@@ -243,15 +243,19 @@ npm run deploy [platform]
 ### View Analytics Dashboard
 
 ```bash
-# Open browser to analytics endpoint
+# Open browser to analytics endpoint (local development)
 curl http://localhost:3000/analytics
+# Or for production:
+curl https://runeflow.xyz/analytics
 ```
 
 ### Export Email List
 
 ```bash
-# Download CSV of all emails
+# Download CSV of all emails (local development)
 curl http://localhost:3000/export-emails > emails.csv
+# Or for production:
+curl https://runeflow.xyz/export-emails > emails.csv
 ```
 
 ### Analytics Data Includes
@@ -327,8 +331,10 @@ cd dist && zip -r ../deploy.zip . && echo "Manual zip created"
 ### Health Check
 
 ```bash
-# Check server health
+# Check server health (local development)
 curl http://localhost:3000/health
+# Or for production:
+curl https://runeflow.xyz/health
 ```
 
 ### Log Files
@@ -406,4 +412,4 @@ MIT License - see LICENSE file for details
 
 **Built by automation masters, for automation masters** 🧙‍♂️
 
-© 2025 RuneFlow.co - Forged by WebHalla
+© 2025 RuneFlow.xyz - A division of WebHalla

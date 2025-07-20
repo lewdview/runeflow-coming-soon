@@ -1,0 +1,305 @@
+# RuneFlow.xyz - Official Deployment Documentation
+
+## 🌟 OFFICIAL DOMAIN UPDATE
+
+**We are now officially working with runeflow.xyz!**
+
+This is the official documentation for the RuneFlow.xyz domain deployment, managed by WebHalla.
+
+---
+
+## 📋 Project Overview
+
+**RuneFlow.xyz** is the ultimate n8n template marketplace, providing automation masters with powerful Norse-themed workflow templates. This deployment package contains everything needed to launch the complete RuneFlow ecosystem.
+
+### 🎯 Official Details
+- **Domain**: runeflow.xyz
+- **Email**: hello@runeflow.xyz
+- **Support**: support@runeflow.xyz
+- **Division**: A division of WebHalla
+- **Status**: Production Ready
+
+---
+
+## 🚀 Quick Deploy Guide
+
+### 1. Environment Configuration
+```bash
+# Email Configuration
+SMTP_HOST=mail.runeflow.xyz
+SMTP_PORT=587
+SMTP_USER=hello@runeflow.xyz
+FROM_EMAIL=hello@runeflow.xyz
+FROM_NAME=RuneFlow Team
+
+# Coinbase Commerce (for crypto payments)
+COINBASE_COMMERCE_API_KEY=your_coinbase_api_key
+COINBASE_COMMERCE_WEBHOOK_SECRET=your_webhook_secret
+
+# Webhook URLs
+DISCORD_WEBHOOK_URL=your_discord_webhook
+SLACK_WEBHOOK_URL=your_slack_webhook
+```
+
+### 2. Domain Setup
+Point your DNS records to:
+- **A Record**: runeflow.xyz → Your server IP
+- **CNAME**: www.runeflow.xyz → runeflow.xyz
+- **MX Record**: mail.runeflow.xyz → Your mail server
+
+### 3. SSL Certificate
+```bash
+# Using Certbot (recommended)
+certbot --nginx -d runeflow.xyz -d www.runeflow.xyz
+```
+
+### 4. Launch
+```bash
+npm install
+npm run build
+npm start
+```
+
+---
+
+## 📧 Email System Configuration
+
+### SMTP Settings
+```env
+SMTP_HOST=mail.runeflow.xyz
+SMTP_PORT=587
+SMTP_USER=hello@runeflow.xyz
+FROM_EMAIL=hello@runeflow.xyz
+FROM_NAME=RuneFlow Team
+ADMIN_EMAIL=hello@runeflow.xyz
+```
+
+### Email Automation Features
+- ✅ Welcome email automation
+- ✅ Admin notifications
+- ✅ Payment confirmations
+- ✅ Launch access notifications
+
+---
+
+## 💰 Payment Processing
+
+### Coinbase Commerce Integration
+- **Webhook URL**: `https://runeflow.xyz/webhook/coinbase-commerce`
+- **Supported Currencies**: BTC, ETH, USDC, LTC, BCH
+- **Payment Packages**:
+  - Blind Founder Package
+  - Launch Access Package
+
+### Configuration
+```env
+COINBASE_COMMERCE_API_KEY=your_api_key
+COINBASE_COMMERCE_WEBHOOK_SECRET=your_webhook_secret
+
+# Security Keys
+SPLICE_KEY_1=your_splice_key_1
+SPLICE_KEY_2=your_splice_key_2
+SPLICE_KEY_3=your_splice_key_3
+```
+
+---
+
+## 🌐 Social Media Integration
+
+### Supported Platforms
+- Twitter/X
+- LinkedIn
+- Facebook
+- Instagram
+- Discord notifications
+
+### Automation Features
+- Milestone celebrations
+- Launch announcements
+- User signup alerts
+- Social proof campaigns
+
+---
+
+## 📊 Analytics & Tracking
+
+### Built-in Analytics
+- Email capture tracking
+- Conversion rates
+- Referrer analysis
+- User behavior metrics
+
+### External Integrations
+```env
+GOOGLE_ANALYTICS_ID=GA_MEASUREMENT_ID
+GOOGLE_TAG_MANAGER_ID=GTM_CONTAINER_ID
+```
+
+---
+
+## 🔧 Deployment Options
+
+### Option 1: Netlify (Recommended)
+```bash
+npm run deploy netlify
+```
+
+### Option 2: Vercel
+```bash
+npm run deploy vercel
+```
+
+### Option 3: Self-Hosted
+```bash
+npm run build
+# Upload dist/ folder to your web server
+```
+
+---
+
+## 🛡️ Security Features
+
+### Webhook Security
+- HMAC-SHA256 signature verification
+- Splice key validation
+- Rate limiting
+- CORS protection
+
+### Data Protection
+- Email encryption
+- Secure payment processing
+- User privacy compliance
+
+---
+
+## 📂 Project Structure
+
+```
+runeflow_deployment/
+├── automation/
+│   ├── server.js                 # Main Express server
+│   └── crypto-payment-service.js # Coinbase Commerce integration
+├── assets/
+│   ├── css/coming-soon.css      # Styles
+│   ├── js/coming-soon.js        # Frontend JS
+│   └── images/                  # Assets
+├── social-media-campaigns/
+│   └── social-blast.js          # Social automation
+├── data/                        # Runtime data
+│   ├── emails.json             # Email list
+│   └── analytics.json          # Analytics data
+├── .env.example                # Environment template
+├── index.html                  # Landing page
+├── package.json               # Dependencies
+└── webhalla.runeflow_deployment.readme  # This file
+```
+
+---
+
+## 🚦 Health Checks
+
+### Server Health
+```bash
+curl https://runeflow.xyz/health
+```
+
+### Webhook Testing
+```bash
+curl -X POST https://runeflow.xyz/webhook/test \
+  -H "Content-Type: application/json" \
+  -d '{"test": "data"}'
+```
+
+---
+
+## 🎯 Launch Checklist
+
+### Pre-Launch
+- [ ] Domain configured (runeflow.xyz)
+- [ ] SSL certificate installed
+- [ ] Email system tested
+- [ ] Payment processing verified
+- [ ] Social media connected
+- [ ] Analytics configured
+
+### Launch Day
+- [ ] Deploy to production
+- [ ] Monitor server health
+- [ ] Verify all endpoints
+- [ ] Test email capture
+- [ ] Activate social automation
+
+### Post-Launch
+- [ ] Monitor signup metrics
+- [ ] Track payment conversions
+- [ ] Analyze user behavior
+- [ ] Optimize performance
+
+---
+
+## 📞 Support Contacts
+
+### Technical Support
+- **Email**: support@runeflow.xyz
+- **Response Time**: 24-48 hours
+- **Status Page**: https://status.runeflow.xyz (when available)
+
+### Business Inquiries
+- **Email**: hello@runeflow.xyz
+- **Partnership**: partners@runeflow.xyz
+
+---
+
+## 📈 Performance Metrics
+
+### Target Metrics
+- **Page Load**: < 2 seconds
+- **Email Capture Rate**: > 15%
+- **Payment Conversion**: > 5%
+- **Uptime**: > 99.9%
+
+### Monitoring
+- Server health checks
+- Error tracking
+- Performance monitoring
+- User analytics
+
+---
+
+## 🔄 Update History
+
+### v1.0.0 - Official Launch
+- ✅ Official runeflow.xyz domain
+- ✅ Coinbase Commerce integration
+- ✅ Email automation system
+- ✅ Social media automation
+- ✅ Analytics dashboard
+
+---
+
+## 🏆 Success Metrics
+
+### Phase 1: Pre-Launch (Week 1-2)
+- Target: 1,000 email signups
+- Social media buzz
+- Community building
+
+### Phase 2: Launch (Week 3-4)
+- Payment system activation
+- First revenue targets
+- User onboarding
+
+### Phase 3: Growth (Month 2+)
+- Scale infrastructure
+- Feature expansion
+- Market penetration
+
+---
+
+**Built by automation masters, for automation masters** 🧙‍♂️
+
+© 2025 RuneFlow.xyz - A division of WebHalla
+
+---
+
+*This documentation is maintained by the WebHalla team. For updates or questions about this deployment, contact hello@runeflow.xyz*

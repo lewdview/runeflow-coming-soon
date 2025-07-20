@@ -2555,7 +2555,9 @@ a:hover {
 
 /* Modal */
 .modal {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -2564,13 +2566,14 @@ a:hover {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
   z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 .modal.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal-content {
@@ -2582,6 +2585,12 @@ a:hover {
   width: 90%;
   text-align: center;
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  transform: scale(0.7) translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1) translateY(0);
 }
 
 .modal-content h3 {

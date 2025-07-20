@@ -9,6 +9,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const archiver = require('archiver');
 const nodemailer = require('nodemailer');
 const CryptoPaymentService = require('./crypto-payment-service');
 require('dotenv').config();
@@ -23,12 +24,12 @@ app.use(express.static(path.join(__dirname, '..')));
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'mail.webhalla.com',
+    host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
     port: process.env.SMTP_PORT || 587,
     secure: false,
     auth: {
-        user: process.env.SMTP_USER || 'bryan@webhalla.com',
-        pass: process.env.SMTP_PASS || 'giveME1221!sex'
+        user: process.env.SMTP_USER || 'hello@runeflow.xyz',
+        pass: process.env.SMTP_PASS || 'your_password'
     }
 });
 
@@ -485,7 +486,7 @@ app.get('/download/rune/:runeName', (req, res) => {
         });
     }
     
-    // Define rune file mappings
+    // Define rune file mappings - ALWAYS use .zip extension
     const runeFiles = {
         'flowrune': 'FlowRune-Automation-Template.zip',
         'ansuz': 'Ansuz-Messenger-Template.zip',
@@ -495,24 +496,55 @@ app.get('/download/rune/:runeName', (req, res) => {
     const fileName = runeFiles[runeName];
     const filePath = path.join(__dirname, '..', 'assets', 'downloads', fileName);
     
-    // Check if file exists
+    // Check if ZIP file exists, if not check for PDF and warn
     if (!fs.existsSync(filePath)) {
-        console.error('❌ Rune file not found:', filePath);
+        console.error('❌ ZIP file not found:', filePath);
+        
+        // Check if PDF exists instead and warn
+        const pdfFileName = fileName.replace('.zip', '.pdf');
+        const pdfFilePath = path.join(__dirname, '..', 'assets', 'downloads', pdfFileName);
+        
+        if (fs.existsSync(pdfFilePath)) {
+            console.warn('⚠️ Found PDF file instead of ZIP:', pdfFileName);
+            console.warn('⚠️ Please convert PDF to ZIP format for proper delivery');
+        }
+        
         return res.status(404).json({
-            error: 'Rune file not found',
+            error: 'ZIP template file not found. Please ensure the template is packaged as a ZIP file.',
             success: false
         });
     }
     
-    // Set headers for ZIP download
+    // Verify it's actually a ZIP file by checking file stats
+    const stats = fs.statSync(filePath);
+    console.log('📊 File stats:', { size: stats.size, name: fileName });
+    
+    // Set headers for ZIP download with proper MIME type
     res.setHeader('Content-Type', 'application/zip');
     res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+    res.setHeader('Content-Length', stats.size);
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     
-    // Stream the file
+    // Stream the file with error handling
     const fileStream = fs.createReadStream(filePath);
+    
+    fileStream.on('error', (error) => {
+        console.error('❌ File stream error:', error);
+        if (!res.headersSent) {
+            res.status(500).json({
+                error: 'Failed to stream ZIP file',
+                success: false
+            });
+        }
+    });
+    
+    fileStream.on('end', () => {
+        console.log('✅ ZIP file download completed:', fileName);
+    });
+    
     fileStream.pipe(res);
     
-    console.log('✅ Rune ZIP download started:', fileName);
+    console.log('✅ Rune ZIP download started:', fileName, 'Size:', stats.size, 'bytes');
 });
 
 // ==================== HELPER FUNCTIONS ====================
@@ -568,41 +600,41 @@ async function saveEmailList() {
 
 async function sendWelcomeEmail(email, selectedRune = null) {
     const mailOptions = {
-        from: `${process.env.FROM_NAME || 'Bryan Meason - RuneFlow'} <${process.env.FROM_EMAIL || 'bryan@webhalla.com'}>`,
+        from: `${process.env.FROM_NAME || 'RuneFlow Team'} <${process.env.FROM_EMAIL || 'hello@runeflow.xyz'}>`,
         to: email,
-        subject: '🔥 Your RuneFlow Starter Rune is Ready!',
+subject: '🌟 Welcome to RuneFlow - Your Automation Journey Begins!',
         html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #022b3a; color: #e0e1dd; padding: 20px;">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; padding: 20px;">
                 <div style="text-align: center; margin-bottom: 30px;">
-                    <h1 style="color: #d4af37; font-size: 2.5em; margin-bottom: 10px;">RuneFlow</h1>
-                    <p style="color: #46b29d; font-size: 1.2em;">Ancient Power. Modern Automation.</p>
+                    <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">RuneFlow</h1>
+                    <p style="color: #ffab00; font-size: 1.2em;">Ancient Power. Modern Automation.</p>
                 </div>
-                
-                <div style="background: rgba(70, 178, 157, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h2 style="color: #46b29d; margin-bottom: 15px;">🎉 Welcome to the Revolution!</h2>
-                    <p>You've just secured your spot among the first 1000 automation masters to experience RuneFlow.</p>
-                    <p>Your <strong>FREE Starter Rune</strong> is attached to this email - the viral ASMR automation template that's taking the internet by storm.</p>
+
+                <div style="background: rgba(255, 107, 53, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h2 style="color: #ff6b35; margin-bottom: 15px;">🎉 Welcome to the Preview!</h2>
+                    <p>You've joined the exclusive preview of RuneFlow's most powerful automation templates.</p>
+                    <p>Your <strong>FREE Starter Rune</strong> gives you early access to what's coming in our full launch.</p>
                 </div>
-                
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: #d4af37;">What's Next?</h3>
+
+                <div style="background: rgba(255, 171, 0, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #ffab00;">Preview Benefits</h3>
                     <ul style="line-height: 1.6;">
-                        <li>🔥 <strong>Founding Member Benefits</strong> - Lock in 40% off lifetime pricing</li>
-                        <li>⚡ <strong>Launch Day Access</strong> - Get instant access to 4,000+ templates</li>
-                        <li>🎯 <strong>Exclusive Updates</strong> - Be the first to know about new releases</li>
-                        <li>🧙‍♂️ <strong>Master Community</strong> - Join our Discord for automation wizards</li>
+                        <li>🎯 <strong>Early Access</strong> - First to experience our starter templates</li>
+                        <li>📧 <strong>Launch Updates</strong> - Get notified when the full platform releases</li>
+                        <li>💰 <strong>Founder Pricing</strong> - Lock in special rates before public launch</li>
+                        <li>🏆 <strong>Preview Community</strong> - Join other early adopters</li>
                     </ul>
                 </div>
-                
+
                 <div style="text-align: center; margin: 30px 0;">
-                    <a href="https://runeflow.co" style="background: linear-gradient(135deg, #46b29d 0%, #3a9688 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
-                        🚀 Secure Your Launch Access
+                    <a href="https://runeflow.xyz" style="background: linear-gradient(135deg, #ff6b35, #ffab00); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+                        🚀 Stay Updated on Launch
                     </a>
                 </div>
-                
-                <div style="border-top: 1px solid #46b29d; padding-top: 20px; margin-top: 30px; text-align: center; opacity: 0.8;">
-                    <p>Built by automation masters, for automation masters</p>
-                    <p>© 2025 RuneFlow.co - Forged by WebHalla</p>
+
+                <div style="border-top: 1px solid #ff6b35; padding-top: 20px; margin-top: 30px; text-align: center; opacity: 0.8;">
+                    <p>Ancient Power. Modern Automation.</p>
+                    <p>© 2025 RuneFlow - Launching Soon</p>
                 </div>
             </div>
         `
@@ -613,8 +645,8 @@ async function sendWelcomeEmail(email, selectedRune = null) {
 
 async function sendAdminNotification(emailEntry) {
     const mailOptions = {
-        from: `RuneFlow System <${process.env.FROM_EMAIL || 'bryan@webhalla.com'}>`,
-        to: process.env.ADMIN_EMAIL || 'bryan@webhalla.com',
+        from: `RuneFlow System <${process.env.FROM_EMAIL || 'hello@runeflow.xyz'}>`,
+        to: process.env.ADMIN_EMAIL || 'hello@runeflow.xyz',
         subject: `🎯 New RuneFlow Signup: ${emailEntry.email}`,
         html: `
             <h2>New Email Captured!</h2>
