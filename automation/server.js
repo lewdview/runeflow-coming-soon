@@ -44,6 +44,7 @@ try {
 
 // In-memory storage for development (replace with database in production)
 let emailList = [];
+let emailSet = new Set(); // Add this for O(1) duplicate checking
 let analyticsData = {
     totalSignups: 0,
     dailySignups: {},
@@ -80,9 +81,8 @@ app.post('/capture-email', async (req, res) => {
         });
     }
     
-    // Check for duplicates
-    const existingEmail = emailList.find(entry => entry.email === email);
-    if (existingEmail) {
+    // Check for duplicates using Set for O(1) lookup
+    if (emailSet.has(email)) {
         return res.status(200).json({
             message: 'Email already registered',
             success: true,
@@ -103,6 +103,7 @@ app.post('/capture-email', async (req, res) => {
     };
     
     emailList.push(emailEntry);
+    emailSet.add(email); // Add to Set for future duplicate checking
     
     // Update analytics
     analyticsData.totalSignups++;
@@ -483,6 +484,7 @@ async function loadExistingData() {
         
         if (fs.existsSync(emailsPath)) {
             emailList = JSON.parse(await fs.promises.readFile(emailsPath, 'utf8'));
+            emailSet = new Set(emailList.map(entry => entry.email));
         }
         
         if (fs.existsSync(analyticsPath)) {
