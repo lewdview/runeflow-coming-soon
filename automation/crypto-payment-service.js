@@ -18,8 +18,16 @@ class CryptoPaymentService {
             process.env.SPLICE_KEY_3
         ];
         
-        if (!this.apiKey) {
-            throw new Error('COINBASE_COMMERCE_API_KEY is required');
+        // Check if we have valid API credentials or if we're in demo mode
+        this.isDemo = !this.apiKey || 
+            this.apiKey === 'your_coinbase_api_key' || 
+            this.apiKey === 'demo_coinbase_key_replace_with_real_key' || 
+            this.apiKey.includes('demo_coinbase');
+        
+        if (this.isDemo) {
+            console.log('🚧 CryptoPaymentService running in DEMO mode (no real Coinbase API keys)');
+        } else {
+            console.log('✅ CryptoPaymentService running with real Coinbase Commerce API');
         }
     }
 
@@ -37,7 +45,63 @@ class CryptoPaymentService {
         try {
             const { name, description, amount, currency = 'USD', metadata = {} } = options;
             
-            // Add splice key validation
+            // If in demo mode, return mock charge data
+            if (this.isDemo) {
+                console.log('🚧 Creating DEMO crypto charge (not real):', { name, amount, currency });
+                
+                const mockChargeId = 'demo_' + crypto.randomUUID().substring(0, 8);
+                const mockCharge = {
+                    id: mockChargeId,
+                    code: mockChargeId.toUpperCase(),
+                    name,
+                    description,
+                    pricing_type: 'fixed_price',
+                    local_price: {
+                        amount: amount.toString(),
+                        currency: currency
+                    },
+                    pricing: {
+                        local: {
+                            amount: amount.toString(),
+                            currency: currency
+                        },
+                        bitcoin: {
+                            amount: '0.00025',
+                            currency: 'BTC'
+                        },
+                        ethereum: {
+                            amount: '0.015',
+                            currency: 'ETH'
+                        }
+                    },
+                    metadata: {
+                        ...metadata,
+                        created_at: new Date().toISOString(),
+                        runeflow_version: '1.0.0',
+                        demo_mode: true
+                    },
+                    timeline: [
+                        {
+                            time: new Date().toISOString(),
+                            status: 'NEW'
+                        }
+                    ],
+                    hosted_url: `https://commerce.coinbase.com/demo/charges/${mockChargeId}`,
+                    created_at: new Date().toISOString(),
+                    expires_at: new Date(Date.now() + 30 * 60 * 1000).toISOString(), // 30 minutes
+                    confirmed_at: null,
+                    checkout: {
+                        id: 'demo_checkout_' + crypto.randomUUID().substring(0, 8)
+                    },
+                    support_email: 'support@runeflow.com',
+                    logo_url: null
+                };
+                
+                console.log('✅ DEMO crypto charge created:', mockCharge.id);
+                return mockCharge;
+            }
+            
+            // Add splice key validation for real charges
             const spliceSignature = this.generateSpliceSignature(amount, metadata);
             
             const chargeData = {

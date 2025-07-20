@@ -501,5 +501,2017 @@
       "signupCount": 1
     },
     "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T06:30:00.030Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T06:30:00.027Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 58311.211891875,
+      "memory": {
+        "rss": 26984448,
+        "heapTotal": 14450688,
+        "heapUsed": 13343768,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T07:00:00.027Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T07:00:00.025Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 60111.246400958,
+      "memory": {
+        "rss": 30261248,
+        "heapTotal": 14450688,
+        "heapUsed": 12750024,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T07:30:00.025Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T07:30:00.023Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 61911.228667958,
+      "memory": {
+        "rss": 30638080,
+        "heapTotal": 14450688,
+        "heapUsed": 12950464,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T08:00:00.035Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T08:00:00.034Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 63711.217601125,
+      "memory": {
+        "rss": 31539200,
+        "heapTotal": 14450688,
+        "heapUsed": 13370008,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T08:30:00.021Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T08:30:00.015Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 65511.197804083,
+      "memory": {
+        "rss": 31817728,
+        "heapTotal": 14450688,
+        "heapUsed": 12740192,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T09:00:00.018Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T09:00:00.012Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 67311.228073916,
+      "memory": {
+        "rss": 31883264,
+        "heapTotal": 14450688,
+        "heapUsed": 13007584,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T09:30:00.048Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T09:30:00.045Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 69111.221739041,
+      "memory": {
+        "rss": 31965184,
+        "heapTotal": 14450688,
+        "heapUsed": 13429208,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T10:00:00.020Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T10:00:00.017Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 70911.181408791,
+      "memory": {
+        "rss": 31997952,
+        "heapTotal": 14450688,
+        "heapUsed": 12788704,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T10:30:00.022Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T10:30:00.016Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 72711.232533916,
+      "memory": {
+        "rss": 25657344,
+        "heapTotal": 14450688,
+        "heapUsed": 13033536,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T11:00:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T11:00:00.012Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 74511.251939,
+      "memory": {
+        "rss": 28442624,
+        "heapTotal": 14450688,
+        "heapUsed": 13511864,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T11:30:00.015Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T11:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 76311.255633083,
+      "memory": {
+        "rss": 28000256,
+        "heapTotal": 14450688,
+        "heapUsed": 12788040,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T12:00:00.050Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T12:00:00.050Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 78111.249676,
+      "memory": {
+        "rss": 27852800,
+        "heapTotal": 15499264,
+        "heapUsed": 13009184,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T12:30:00.012Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T12:30:00.008Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 79911.229126416,
+      "memory": {
+        "rss": 28065792,
+        "heapTotal": 14450688,
+        "heapUsed": 13462872,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T13:00:00.055Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T13:00:00.041Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 81711.247485583,
+      "memory": {
+        "rss": 41418752,
+        "heapTotal": 15761408,
+        "heapUsed": 12849120,
+        "external": 3545388,
+        "arrayBuffers": 91384
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T13:00:02.619Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "morning",
+      "campaignType": "launch_announcement",
+      "results": {
+        "twitter": {
+          "data": {
+            "id": "1946193235443171422",
+            "text": "🧙‍♂️ Calling all automation wizards! https://t.co/ACkQxCEwyS is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "edit_history_tweet_ids": [
+              "1946193235443171422"
+            ]
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T13:30:00.020Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T13:30:00.019Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 83511.212393291,
+      "memory": {
+        "rss": 38862848,
+        "heapTotal": 14712832,
+        "heapUsed": 13528648,
+        "external": 3567017,
+        "arrayBuffers": 92660
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T14:00:00.026Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T14:00:00.019Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 85311.201028666,
+      "memory": {
+        "rss": 29769728,
+        "heapTotal": 14712832,
+        "heapUsed": 12871608,
+        "external": 3546664,
+        "arrayBuffers": 92660
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T14:30:00.019Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T14:30:00.013Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 87111.249682833,
+      "memory": {
+        "rss": 30195712,
+        "heapTotal": 14712832,
+        "heapUsed": 13037704,
+        "external": 3546664,
+        "arrayBuffers": 92660
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T15:00:02.800Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T15:00:02.799Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 88913.9893185,
+      "memory": {
+        "rss": 37158912,
+        "heapTotal": 15761408,
+        "heapUsed": 13663680,
+        "external": 3546664,
+        "arrayBuffers": 92660
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T15:00:05.320Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "morning",
+      "campaignType": "launch_announcement",
+      "results": {
+        "twitter": {
+          "data": {
+            "edit_history_tweet_ids": [
+              "1946223445018382594"
+            ],
+            "text": "🔥 The automation revolution is here! https://t.co/ACkQxCEwyS - the ultimate n8n template marketplace is awakening. Join 1000+ automation masters on the waitlist! #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "id": "1946223445018382594"
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T15:30:00.019Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T15:30:00.016Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 90711.197680625,
+      "memory": {
+        "rss": 38649856,
+        "heapTotal": 14712832,
+        "heapUsed": 13229064,
+        "external": 3568218,
+        "arrayBuffers": 110328
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T16:00:00.022Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T16:00:00.022Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 92511.224461416,
+      "memory": {
+        "rss": 38846464,
+        "heapTotal": 14712832,
+        "heapUsed": 13692976,
+        "external": 3564332,
+        "arrayBuffers": 110328
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T16:00:05.230Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "afternoon",
+      "campaignType": "product_highlights",
+      "results": {
+        "twitter": {
+          "data": {
+            "id": "1946238544483344606",
+            "text": "🎯 From rookie to master in minutes! RuneFlow templates handle everything from simple automations to complex enterprise workflows #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "edit_history_tweet_ids": [
+              "1946238544483344606"
+            ]
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T16:30:00.014Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T16:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 94311.241468333,
+      "memory": {
+        "rss": 39108608,
+        "heapTotal": 14974976,
+        "heapUsed": 13179368,
+        "external": 3585881,
+        "arrayBuffers": 131877
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T17:00:00.030Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T17:00:00.030Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 96111.243323416,
+      "memory": {
+        "rss": 41549824,
+        "heapTotal": 14974976,
+        "heapUsed": 13547488,
+        "external": 3581993,
+        "arrayBuffers": 127989
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T17:30:00.014Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T17:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 97911.254221416,
+      "memory": {
+        "rss": 41680896,
+        "heapTotal": 14974976,
+        "heapUsed": 12923408,
+        "external": 3581993,
+        "arrayBuffers": 127989
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T18:00:02.799Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T18:00:02.798Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 99714.01124725,
+      "memory": {
+        "rss": 41762816,
+        "heapTotal": 15237120,
+        "heapUsed": 14121928,
+        "external": 3581993,
+        "arrayBuffers": 127989
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T18:30:00.024Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T18:30:00.022Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 101511.222071375,
+      "memory": {
+        "rss": 42172416,
+        "heapTotal": 15237120,
+        "heapUsed": 13034296,
+        "external": 3581993,
+        "arrayBuffers": 127989
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T19:00:02.791Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T19:00:02.790Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 103313.970550083,
+      "memory": {
+        "rss": 42237952,
+        "heapTotal": 16285696,
+        "heapUsed": 13065816,
+        "external": 3581993,
+        "arrayBuffers": 127989
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T19:00:05.185Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "evening",
+      "campaignType": "social_proof",
+      "results": {
+        "twitter": {
+          "data": {
+            "edit_history_tweet_ids": [
+              "1946283843012759760"
+            ],
+            "text": "🎯 'These templates are insane! Finally, n8n workflows that actually work out of the box' - Early access member #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "id": "1946283843012759760"
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T19:30:00.015Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T19:30:00.013Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 105111.188449625,
+      "memory": {
+        "rss": 42319872,
+        "heapTotal": 15237120,
+        "heapUsed": 13673168,
+        "external": 3603541,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T20:00:00.022Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T20:00:00.020Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 106911.225044458,
+      "memory": {
+        "rss": 42336256,
+        "heapTotal": 15237120,
+        "heapUsed": 12977968,
+        "external": 3583270,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T20:30:02.775Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T20:30:00.012Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 108711.252872291,
+      "memory": {
+        "rss": 42680320,
+        "heapTotal": 15237120,
+        "heapUsed": 13921624,
+        "external": 3583270,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T21:00:02.780Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T21:00:02.779Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 110514.003524541,
+      "memory": {
+        "rss": 42745856,
+        "heapTotal": 15237120,
+        "heapUsed": 13052608,
+        "external": 3583270,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T21:30:02.775Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T21:30:00.012Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 112311.231623833,
+      "memory": {
+        "rss": 42745856,
+        "heapTotal": 15237120,
+        "heapUsed": 13230680,
+        "external": 3583270,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T22:00:02.780Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T22:00:02.780Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 114114.016821291,
+      "memory": {
+        "rss": 43155456,
+        "heapTotal": 16285696,
+        "heapUsed": 13364760,
+        "external": 3583270,
+        "arrayBuffers": 129266
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T22:00:05.144Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "night",
+      "campaignType": "urgency_posts",
+      "results": {
+        "twitter": {
+          "data": {
+            "id": "1946329141516837070",
+            "text": "🔥 LAST CHANCE: Founding member benefits end soon! 40% off lifetime + instant access to 4,000+ templates #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "edit_history_tweet_ids": [
+              "1946329141516837070"
+            ]
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T22:30:02.774Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T22:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 115911.284730791,
+      "memory": {
+        "rss": 43171840,
+        "heapTotal": 15237120,
+        "heapUsed": 13041664,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T23:00:02.777Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T23:00:02.777Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 117714.054795166,
+      "memory": {
+        "rss": 43188224,
+        "heapTotal": 15237120,
+        "heapUsed": 13042944,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-18T23:30:00.033Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-18T23:30:00.029Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 119511.286413583,
+      "memory": {
+        "rss": 43433984,
+        "heapTotal": 15237120,
+        "heapUsed": 13238264,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T00:00:02.793Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T00:00:02.793Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 121314.012820833,
+      "memory": {
+        "rss": 43581440,
+        "heapTotal": 15237120,
+        "heapUsed": 13573512,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T00:30:00.017Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T00:30:00.013Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 123111.225137333,
+      "memory": {
+        "rss": 43646976,
+        "heapTotal": 15237120,
+        "heapUsed": 13919616,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T01:00:00.017Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T01:00:00.014Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 124911.263653625,
+      "memory": {
+        "rss": 43728896,
+        "heapTotal": 15237120,
+        "heapUsed": 13274288,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T01:30:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T01:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 126711.306888416,
+      "memory": {
+        "rss": 43778048,
+        "heapTotal": 15237120,
+        "heapUsed": 13706624,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T02:00:02.778Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T02:00:02.777Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 128514.027261916,
+      "memory": {
+        "rss": 43778048,
+        "heapTotal": 15237120,
+        "heapUsed": 13819672,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T02:30:00.044Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T02:30:00.040Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 130311.2603465,
+      "memory": {
+        "rss": 43696128,
+        "heapTotal": 15237120,
+        "heapUsed": 14064728,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T03:00:02.785Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T03:00:00.021Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 132111.228567875,
+      "memory": {
+        "rss": 43696128,
+        "heapTotal": 16285696,
+        "heapUsed": 13271264,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T03:30:02.775Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T03:30:00.014Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 133911.210825375,
+      "memory": {
+        "rss": 43696128,
+        "heapTotal": 15237120,
+        "heapUsed": 13661400,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T04:00:02.771Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T04:00:00.010Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 135711.206815125,
+      "memory": {
+        "rss": 42991616,
+        "heapTotal": 15237120,
+        "heapUsed": 14065968,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T04:30:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T04:30:00.008Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 137511.2551395,
+      "memory": {
+        "rss": 43106304,
+        "heapTotal": 15237120,
+        "heapUsed": 13091544,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T05:00:00.036Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T05:00:00.034Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 139311.2506475,
+      "memory": {
+        "rss": 42795008,
+        "heapTotal": 15237120,
+        "heapUsed": 13281552,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T05:30:00.010Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T05:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 141111.247509583,
+      "memory": {
+        "rss": 42549248,
+        "heapTotal": 15237120,
+        "heapUsed": 13702072,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T06:00:02.783Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T06:00:02.782Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 142914.063273416,
+      "memory": {
+        "rss": 42450944,
+        "heapTotal": 15237120,
+        "heapUsed": 13898464,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T06:30:00.011Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T06:30:00.008Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 144711.293773333,
+      "memory": {
+        "rss": 42401792,
+        "heapTotal": 15237120,
+        "heapUsed": 13300040,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T07:00:00.020Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T07:00:00.018Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 146511.287919791,
+      "memory": {
+        "rss": 28426240,
+        "heapTotal": 15237120,
+        "heapUsed": 13740920,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T07:30:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T07:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 148311.2767015,
+      "memory": {
+        "rss": 29818880,
+        "heapTotal": 15237120,
+        "heapUsed": 14096440,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T08:00:00.052Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T08:00:00.050Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 150111.27502475,
+      "memory": {
+        "rss": 31752192,
+        "heapTotal": 15237120,
+        "heapUsed": 13264048,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T08:30:00.010Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T08:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 151911.280236125,
+      "memory": {
+        "rss": 31948800,
+        "heapTotal": 15237120,
+        "heapUsed": 13236568,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T09:00:02.770Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T09:00:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 153711.306480041,
+      "memory": {
+        "rss": 30556160,
+        "heapTotal": 15237120,
+        "heapUsed": 13673832,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T09:30:00.013Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T09:30:00.011Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 155511.303065125,
+      "memory": {
+        "rss": 31064064,
+        "heapTotal": 15237120,
+        "heapUsed": 14091584,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T10:00:00.018Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T10:00:00.017Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 157311.302865625,
+      "memory": {
+        "rss": 31277056,
+        "heapTotal": 16285696,
+        "heapUsed": 13134640,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T10:30:00.023Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T10:30:00.021Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 159111.293611375,
+      "memory": {
+        "rss": 31326208,
+        "heapTotal": 15237120,
+        "heapUsed": 13380544,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T11:00:00.010Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T11:00:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 160911.3027535,
+      "memory": {
+        "rss": 31326208,
+        "heapTotal": 15237120,
+        "heapUsed": 13859184,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T11:30:00.057Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T11:30:00.055Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 162711.30097225,
+      "memory": {
+        "rss": 31375360,
+        "heapTotal": 16285696,
+        "heapUsed": 14107616,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T12:00:00.034Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T12:00:00.032Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 164511.2557805,
+      "memory": {
+        "rss": 31506432,
+        "heapTotal": 15237120,
+        "heapUsed": 13326896,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T12:30:02.771Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T12:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 166311.24090475,
+      "memory": {
+        "rss": 31539200,
+        "heapTotal": 15237120,
+        "heapUsed": 13349744,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T13:00:00.033Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T13:00:00.032Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 168111.25242225,
+      "memory": {
+        "rss": 38502400,
+        "heapTotal": 15499264,
+        "heapUsed": 13897616,
+        "external": 3600931,
+        "arrayBuffers": 146927
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T13:00:02.381Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "morning",
+      "campaignType": "launch_announcement",
+      "results": {
+        "twitter": {
+          "data": {
+            "edit_history_tweet_ids": [
+              "1946555622163693579"
+            ],
+            "text": "🧙‍♂️ Calling all automation wizards! https://t.co/ACkQxCEwyS is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://t.co/4ZWqkaJYbO",
+            "id": "1946555622163693579"
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T13:30:00.008Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T13:30:00.007Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 169911.296571375,
+      "memory": {
+        "rss": 40140800,
+        "heapTotal": 15499264,
+        "heapUsed": 14123264,
+        "external": 3622568,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T14:00:00.023Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T14:00:00.023Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 171711.334967583,
+      "memory": {
+        "rss": 40173568,
+        "heapTotal": 16547840,
+        "heapUsed": 14120392,
+        "external": 3618591,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T14:30:00.026Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T14:30:00.024Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 173511.321031708,
+      "memory": {
+        "rss": 40337408,
+        "heapTotal": 16547840,
+        "heapUsed": 14515824,
+        "external": 3618591,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T15:00:00.042Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T15:00:00.041Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 175311.303691583,
+      "memory": {
+        "rss": 40206336,
+        "heapTotal": 15499264,
+        "heapUsed": 13782280,
+        "external": 3618591,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T15:30:00.009Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T15:30:00.008Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 177111.362996125,
+      "memory": {
+        "rss": 39796736,
+        "heapTotal": 15499264,
+        "heapUsed": 14224608,
+        "external": 3618591,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T16:00:00.072Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T16:00:00.071Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 178911.35982375,
+      "memory": {
+        "rss": 36798464,
+        "heapTotal": 16547840,
+        "heapUsed": 14201256,
+        "external": 3618591,
+        "arrayBuffers": 164587
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T16:00:05.892Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "afternoon",
+      "campaignType": "product_highlights",
+      "results": {
+        "twitter": {
+          "data": {
+            "id": "1946600935054049388",
+            "text": "⚡ One-click deployment magic! RuneFlow templates are pre-configured and ready to deploy in 5 minutes. No more starting from scratch! #n8n #automation #productivity\n\n🔗 Join the revolution: https://t.co/4ZWqkaJqmg",
+            "edit_history_tweet_ids": [
+              "1946600935054049388"
+            ]
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T16:30:00.011Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T16:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 180711.331656458,
+      "memory": {
+        "rss": 39583744,
+        "heapTotal": 15499264,
+        "heapUsed": 14214976,
+        "external": 3643822,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T17:00:00.022Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T17:00:00.022Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 182511.420061458,
+      "memory": {
+        "rss": 40042496,
+        "heapTotal": 15499264,
+        "heapUsed": 14437488,
+        "external": 3636260,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T17:30:02.770Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T17:30:00.008Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 184311.499703375,
+      "memory": {
+        "rss": 40501248,
+        "heapTotal": 15499264,
+        "heapUsed": 13903664,
+        "external": 3636260,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T18:00:00.027Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T18:00:00.027Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 186111.494768833,
+      "memory": {
+        "rss": 40583168,
+        "heapTotal": 16547840,
+        "heapUsed": 14136464,
+        "external": 3636260,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T18:30:00.009Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T18:30:00.007Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 187911.550496625,
+      "memory": {
+        "rss": 40599552,
+        "heapTotal": 15499264,
+        "heapUsed": 14625304,
+        "external": 3636260,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T19:00:00.017Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T19:00:00.015Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 189711.584924541,
+      "memory": {
+        "rss": 41074688,
+        "heapTotal": 15761408,
+        "heapUsed": 13932480,
+        "external": 3636260,
+        "arrayBuffers": 182256
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T19:00:05.805Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "evening",
+      "campaignType": "social_proof",
+      "results": {
+        "twitter": {
+          "data": {
+            "edit_history_tweet_ids": [
+              "1946646234455851345"
+            ],
+            "text": "⚡ 'I've been waiting for something like RuneFlow for years!' - Automation expert testimonial #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/4ZWqkaJqmg",
+            "id": "1946646234455851345"
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T19:30:00.047Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T19:30:00.045Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 191511.577268,
+      "memory": {
+        "rss": 42205184,
+        "heapTotal": 15761408,
+        "heapUsed": 13663056,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T20:00:00.020Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T20:00:00.019Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 193311.574794541,
+      "memory": {
+        "rss": 42221568,
+        "heapTotal": 16809984,
+        "heapUsed": 13781104,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T20:30:00.044Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T20:30:00.042Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 195111.56504475,
+      "memory": {
+        "rss": 42074112,
+        "heapTotal": 15761408,
+        "heapUsed": 13864744,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T21:00:00.010Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T21:00:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 196911.54405025,
+      "memory": {
+        "rss": 35717120,
+        "heapTotal": 15761408,
+        "heapUsed": 14401368,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T21:30:02.770Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T21:30:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 198711.615913416,
+      "memory": {
+        "rss": 35848192,
+        "heapTotal": 15761408,
+        "heapUsed": 13929184,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T22:00:00.071Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T22:00:00.071Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 200511.615965416,
+      "memory": {
+        "rss": 39911424,
+        "heapTotal": 16809984,
+        "heapUsed": 14271680,
+        "external": 3637537,
+        "arrayBuffers": 183533
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T22:00:05.866Z",
+    "eventType": "post_success",
+    "data": {
+      "jobName": "night",
+      "campaignType": "urgency_posts",
+      "results": {
+        "twitter": {
+          "data": {
+            "id": "1946691532980965796",
+            "edit_history_tweet_ids": [
+              "1946691532980965796"
+            ],
+            "text": "⚡ The countdown begins! RuneFlow launches in weeks, not months. Secure your spot before prices double! #RuneFlow #automation #n8n\n\n🔗 Join the revolution: https://t.co/4ZWqkaJqmg"
+          }
+        },
+        "linkedin": null,
+        "facebook": null,
+        "discord": null
+      }
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T22:30:00.095Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T22:30:00.093Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 202311.55420475,
+      "memory": {
+        "rss": 40550400,
+        "heapTotal": 15761408,
+        "heapUsed": 14340920,
+        "external": 3658582,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T23:00:00.034Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T23:00:00.031Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 204111.467958958,
+      "memory": {
+        "rss": 40042496,
+        "heapTotal": 15761408,
+        "heapUsed": 13751728,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-19T23:30:00.011Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-19T23:30:00.010Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 205911.512784541,
+      "memory": {
+        "rss": 40157184,
+        "heapTotal": 15761408,
+        "heapUsed": 13909464,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T00:00:00.030Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T00:00:00.029Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 207711.509101458,
+      "memory": {
+        "rss": 39124992,
+        "heapTotal": 15761408,
+        "heapUsed": 14383064,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T00:30:00.008Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T00:30:00.006Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 209511.497656666,
+      "memory": {
+        "rss": 46465024,
+        "heapTotal": 15761408,
+        "heapUsed": 13892272,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T01:00:00.007Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T01:00:00.006Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 211311.516686875,
+      "memory": {
+        "rss": 45826048,
+        "heapTotal": 15761408,
+        "heapUsed": 14425712,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T01:30:00.039Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T01:30:00.037Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 213111.515939875,
+      "memory": {
+        "rss": 45842432,
+        "heapTotal": 15761408,
+        "heapUsed": 14045728,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T02:00:02.788Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T02:00:00.028Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 214911.484130708,
+      "memory": {
+        "rss": 41402368,
+        "heapTotal": 15761408,
+        "heapUsed": 14591360,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T02:30:00.110Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T02:30:00.107Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 216711.460886708,
+      "memory": {
+        "rss": 37388288,
+        "heapTotal": 15761408,
+        "heapUsed": 13845600,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T03:00:00.012Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T03:00:00.009Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 218511.367346166,
+      "memory": {
+        "rss": 30048256,
+        "heapTotal": 15761408,
+        "heapUsed": 14417936,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T03:30:00.111Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T03:30:00.109Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 220311.365080791,
+      "memory": {
+        "rss": 32473088,
+        "heapTotal": 15761408,
+        "heapUsed": 14060208,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T04:00:00.018Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T04:00:00.016Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 222111.269915833,
+      "memory": {
+        "rss": 29392896,
+        "heapTotal": 15761408,
+        "heapUsed": 14616432,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T04:30:00.012Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T04:30:00.010Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 223911.294365208,
+      "memory": {
+        "rss": 30900224,
+        "heapTotal": 16023552,
+        "heapUsed": 13902000,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T05:00:00.019Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T05:00:00.014Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 225711.311254791,
+      "memory": {
+        "rss": 32292864,
+        "heapTotal": 16023552,
+        "heapUsed": 14490792,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T05:30:00.022Z",
+    "eventType": "health_check",
+    "data": {
+      "timestamp": "2025-07-20T05:30:00.016Z",
+      "schedulerRunning": true,
+      "activeJobs": 7,
+      "uptime": 227511.316148666,
+      "memory": {
+        "rss": 28065792,
+        "heapTotal": 16023552,
+        "heapUsed": 14378600,
+        "external": 3655198,
+        "arrayBuffers": 201194
+      },
+      "signupCount": 1
+    },
+    "scheduler": "runeflow-social-scheduler"
   }
 ]

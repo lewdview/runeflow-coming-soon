@@ -1,5 +1,212 @@
 // RuneFlow.co - Coming Soon Page JavaScript
 
+// Starter Rune Selection System
+window.selectedRunes = [];
+window.isBundle = false;
+window.totalPrice = 0;
+window.selectedFreeRune = null; // Track which free rune is selected
+
+// Toggle individual rune selection
+window.toggleRuneSelection = function(runeId) {
+    const runeCard = document.querySelector(`.rune-card[data-rune="${runeId}"]`);
+    const button = runeCard.querySelector('.select-rune-btn');
+    const btnText = button.querySelector('.btn-text');
+    
+    if (window.selectedRunes.includes(runeId)) {
+        // Remove from selection
+        window.selectedRunes = window.selectedRunes.filter(id => id !== runeId);
+        runeCard.classList.remove('selected');
+        btnText.textContent = 'Select';
+        button.classList.remove('selected');
+    } else {
+        // Add to selection
+        window.selectedRunes.push(runeId);
+        runeCard.classList.add('selected');
+        btnText.textContent = 'Selected';
+        button.classList.add('selected');
+    }
+    
+    // Clear bundle selection if individual runes are selected
+    if (window.selectedRunes.length > 0) {
+        window.isBundle = false;
+        const bundleCard = document.querySelector('.bundle-card');
+        const bundleBtn = document.querySelector('.select-bundle-btn');
+        bundleCard.classList.remove('selected');
+        bundleBtn.classList.remove('selected');
+        bundleBtn.querySelector('.btn-text').textContent = 'Get Complete Bundle';
+    }
+    
+    updateSelectionSummary();
+};
+
+// Toggle free rune selection
+window.toggleFreeRuneSelection = function(runeId) {
+    // Clear previous selection
+    document.querySelectorAll('.free-rune-selection .rune-card').forEach(card => {
+        card.classList.remove('selected');
+        const btn = card.querySelector('.select-rune-btn');
+        if (btn) {
+            btn.classList.remove('selected');
+            const btnText = btn.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = 'Select This Rune';
+            }
+        }
+    });
+    
+    // Select the clicked rune
+    const runeCard = document.querySelector(`.free-rune-selection .rune-card[data-rune="${runeId}"]`);
+    if (runeCard) {
+        runeCard.classList.add('selected');
+        const btn = runeCard.querySelector('.select-rune-btn');
+        if (btn) {
+            btn.classList.add('selected');
+            const btnText = btn.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = 'Selected';
+            }
+        }
+    }
+    
+    // Update selected free rune
+    window.selectedFreeRune = runeId;
+    
+    // Show the email form if it's hidden
+    const emailForm = document.querySelector('.email-form');
+    if (emailForm) {
+        emailForm.style.display = 'block';
+    }
+};
+
+// Select free rune (alias for toggleFreeRuneSelection to match HTML)
+window.selectFreeRune = function(runeId) {
+    window.toggleFreeRuneSelection(runeId);
+};
+
+// Purchase bundle function (alias for existing functionality)
+window.purchaseBundle = function() {
+    // For now, just open a payment modal or show a message
+    alert('Bundle purchase functionality will be available soon!');
+};
+
+// Select complete bundle
+window.selectBundle = function() {
+    const bundleCard = document.querySelector('.bundle-card');
+    const bundleBtn = document.querySelector('.select-bundle-btn');
+    const btnText = bundleBtn.querySelector('.btn-text');
+    
+    if (window.isBundle) {
+        // Deselect bundle
+        window.isBundle = false;
+        bundleCard.classList.remove('selected');
+        bundleBtn.classList.remove('selected');
+        btnText.textContent = 'Get Complete Bundle';
+    } else {
+        // Select bundle
+        window.isBundle = true;
+        bundleCard.classList.add('selected');
+        bundleBtn.classList.add('selected');
+        btnText.textContent = 'Bundle Selected';
+        
+        // Clear individual selections
+        window.selectedRunes = [];
+        document.querySelectorAll('.rune-card').forEach(card => {
+            card.classList.remove('selected');
+            const btn = card.querySelector('.select-rune-btn');
+            btn.classList.remove('selected');
+            btn.querySelector('.btn-text').textContent = 'Select';
+        });
+    }
+    
+    updateSelectionSummary();
+};
+
+// Update selection summary
+function updateSelectionSummary() {
+    const summary = document.getElementById('selectionSummary');
+    const selectedItems = document.getElementById('selectedItems');
+    const totalPriceEl = document.getElementById('totalPrice');
+    
+    if (window.isBundle) {
+        window.totalPrice = 5;
+        selectedItems.innerHTML = `
+            <div class="selected-item">
+                <span class="item-icon rune-icon">ᚦ</span>
+                <span class="item-name">Complete Starter Bundle</span>
+                <span class="item-price">$5</span>
+            </div>
+            <div class="bundle-includes">
+                <small>Includes: FlowRune, Ansuz, Laguz + bonus content</small>
+            </div>
+        `;
+        summary.style.display = 'block';
+    } else if (window.selectedRunes.length > 0) {
+        window.totalPrice = window.selectedRunes.length * 2;
+        const runeNames = {
+            'flowrune': 'FlowRune',
+            'ansuz': 'Ansuz',
+            'laguz': 'Laguz'
+        };
+        const runeIcons = {
+            'flowrune': 'ᚠ',
+            'ansuz': 'ᚨ',
+            'laguz': 'ᛚ'
+        };
+        
+        selectedItems.innerHTML = window.selectedRunes.map(runeId => `
+            <div class="selected-item">
+                <span class="item-icon rune-icon">${runeIcons[runeId]}</span>
+                <span class="item-name">${runeNames[runeId]}</span>
+                <span class="item-price">$2</span>
+            </div>
+        `).join('');
+        summary.style.display = 'block';
+    } else {
+        summary.style.display = 'none';
+        window.totalPrice = 0;
+    }
+    
+    if (totalPriceEl) {
+        totalPriceEl.textContent = `$${window.totalPrice}`;
+    }
+}
+
+// Clear all selections
+window.clearSelection = function() {
+    window.selectedRunes = [];
+    window.isBundle = false;
+    window.totalPrice = 0;
+    
+    // Reset rune cards
+    document.querySelectorAll('.rune-card').forEach(card => {
+        card.classList.remove('selected');
+        const btn = card.querySelector('.select-rune-btn');
+        btn.classList.remove('selected');
+        btn.querySelector('.btn-text').textContent = 'Select';
+    });
+    
+    // Reset bundle card
+    const bundleCard = document.querySelector('.bundle-card');
+    const bundleBtn = document.querySelector('.select-bundle-btn');
+    bundleCard.classList.remove('selected');
+    bundleBtn.classList.remove('selected');
+    bundleBtn.querySelector('.btn-text').textContent = 'Get Complete Bundle';
+    
+    // Hide summary
+    document.getElementById('selectionSummary').style.display = 'none';
+};
+
+// Proceed to checkout
+window.proceedToCheckout = function() {
+    if (window.totalPrice === 0) {
+        alert('Please select at least one rune or the bundle.');
+        return;
+    }
+    
+    // Open payment modal for starter runes
+    openPaymentModal('card', 'starter_runes');
+};
+
 // Define payment modal functions globally before DOM loads
 window.openPaymentModal = function(paymentType, packageType) {
     console.log('openPaymentModal called with:', paymentType, packageType);
@@ -17,8 +224,10 @@ window.openPaymentModal = function(paymentType, packageType) {
     window.currentPaymentContext = {
         paymentType: paymentType,
         packageType: packageType,
-        amount: packageType === 'blind_founder' ? 999 : 297,
-        email: null
+        amount: packageType === 'blind_founder' ? 999 : packageType === 'launch' ? 297 : window.totalPrice,
+        email: null,
+        selectedRunes: packageType === 'starter_runes' ? [...window.selectedRunes] : [],
+        isBundle: packageType === 'starter_runes' ? window.isBundle : false
     };
 
     if (packageType === 'launch') {
@@ -45,6 +254,24 @@ window.openPaymentModal = function(paymentType, packageType) {
         if (summaryOriginal) summaryOriginal.textContent = '$1,998';
         if (summaryPrice) summaryPrice.textContent = '$999';
         if (summarySavings) summarySavings.textContent = '50% OFF';
+    } else if (packageType === 'starter_runes') {
+        if (modalTitle) modalTitle.textContent = 'Complete Your Starter Runes Purchase';
+        if (submitBtn) submitBtn.textContent = `Complete Purchase - $${window.totalPrice}`;
+        const summaryTitle = document.querySelector('.payment-summary h4');
+        const summaryOriginal = document.querySelector('.summary-original');
+        const summaryPrice = document.querySelector('.summary-price');
+        const summarySavings = document.querySelector('.summary-savings');
+
+        if (summaryTitle) {
+            summaryTitle.textContent = window.isBundle ? 'Starter Runes Bundle' : 'Selected Starter Runes';
+        }
+        if (summaryOriginal) {
+            summaryOriginal.textContent = window.isBundle ? '$6' : `$${window.selectedRunes.length * 2}`;
+        }
+        if (summaryPrice) summaryPrice.textContent = `$${window.totalPrice}`;
+        if (summarySavings) {
+            summarySavings.textContent = window.isBundle ? 'Save $1' : '';
+        }
     }
 
     if (paymentType === 'card') {
@@ -140,12 +367,15 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Check if this is a free rune selection
+        const isFreePack = window.selectedFreeRune !== null;
+        
         // Show loading state
         setLoadingState(true);
         
         try {
             // Simulate API call (replace with actual endpoint)
-            const success = await submitToWaitlist(email);
+            const success = await submitToWaitlist(email, isFreePack ? window.selectedFreeRune : null);
             
             if (success) {
                 // Reset form
@@ -155,8 +385,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 waitlistCount++;
                 waitlistCountEl.textContent = waitlistCount.toLocaleString();
                 
-                // Show success modal
-                showSuccessModal();
+                if (isFreePack) {
+                    // Show free download success modal
+                    showFreeDownloadModal();
+                } else {
+                    // Show regular success modal
+                    showSuccessModal();
+                }
                 
                 // Track conversion (replace with actual analytics)
                 trackConversion(email);
@@ -173,14 +408,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Submit to waitlist function - Connected to real API
-    async function submitToWaitlist(email) {
+    async function submitToWaitlist(email, selectedRune = null) {
         try {
-            const response = await fetch('http://localhost:3000/capture-email', {
+            const requestBody = { email };
+            
+            // Add selected rune if this is a free pack request
+            if (selectedRune) {
+                requestBody.selected_rune = selectedRune;
+                requestBody.is_free_pack = true;
+            }
+            
+            const response = await fetch('/capture-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email })
+                body: JSON.stringify(requestBody)
             });
             
             if (response.ok) {
@@ -190,6 +433,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Store download URL for later use
                 if (result.download_url) {
                     sessionStorage.setItem('starterRuneDownloadUrl', result.download_url);
+                }
+                
+                // Store selected rune info
+                if (selectedRune) {
+                    sessionStorage.setItem('selectedFreeRune', selectedRune);
                 }
                 
                 return true;
@@ -256,6 +504,141 @@ document.addEventListener('DOMContentLoaded', function() {
         createCelebrationEffect();
     }
     
+    // Show free download modal
+    function showFreeDownloadModal() {
+        const selectedRune = window.selectedFreeRune;
+        const runeNames = {
+            'flowrune': 'FlowRune',
+            'ansuz': 'Ansuz',
+            'laguz': 'Laguz'
+        };
+        const runeIcons = {
+            'flowrune': 'ᚠ',
+            'ansuz': 'ᚨ',
+            'laguz': 'ᛚ'
+        };
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal show';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h3><span class="rune-icon">${runeIcons[selectedRune]}</span> ${runeNames[selectedRune]} Ready!</h3>
+                <div class="download-success">
+                    <div class="download-preview">
+                        <span class="download-rune">${runeIcons[selectedRune]}</span>
+                        <div>
+                            <h4>${runeNames[selectedRune]} - The Starter Pack</h4>
+                            <p>Your free automation template package is ready to download</p>
+                        </div>
+                    </div>
+                    <div class="download-actions">
+                        <button class="download-btn" onclick="downloadSelectedRune()">Download Package</button>
+                        <p class="download-note">Complete ZIP Package • n8n Workflow + Setup Guide</p>
+                    </div>
+                </div>
+                <p>Check your email for setup instructions and additional resources!</p>
+                <button class="modal-close" onclick="closeFreeDownloadModal()">Continue</button>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Add celebration effect
+        createCelebrationEffect();
+    }
+    
+    // Close free download modal
+    window.closeFreeDownloadModal = function() {
+        const modal = document.querySelector('.modal.show');
+        if (modal) {
+            modal.remove();
+        }
+        document.body.style.overflow = 'auto';
+    };
+    
+    // Download selected rune
+    window.downloadSelectedRune = function() {
+        const selectedRune = sessionStorage.getItem('selectedFreeRune') || window.selectedFreeRune;
+        
+        if (!selectedRune) {
+            console.error('No rune selected for download');
+            return;
+        }
+        
+        // Show loading state
+        const downloadBtn = document.querySelector('.download-btn');
+        const originalText = downloadBtn.textContent;
+        downloadBtn.textContent = 'Preparing Download...';
+        downloadBtn.disabled = true;
+        
+        // Try to get download URL from session storage first
+        const downloadUrl = sessionStorage.getItem('starterRuneDownloadUrl');
+        
+        if (downloadUrl) {
+            // Use real API download endpoint
+            const fullUrl = `${downloadUrl}`;
+            
+            // Create temporary link for download
+            const a = document.createElement('a');
+            a.href = fullUrl;
+            a.download = `runeflow-${selectedRune}-template.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Show success message
+            downloadBtn.textContent = 'Downloaded! ✓';
+            downloadBtn.style.background = '#4ecdc4';
+            
+            // Track download event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    'event_category': 'free_starter_pack',
+                    'event_label': `${selectedRune}_zip`,
+                    'value': 1
+                });
+            }
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                downloadBtn.textContent = originalText;
+                downloadBtn.style.background = '';
+                downloadBtn.disabled = false;
+            }, 3000);
+        } else {
+            // Fallback: Try direct download from backend
+            const directDownloadUrl = `/download/rune/${selectedRune}`;
+            
+            // Create temporary link for download
+            const a = document.createElement('a');
+            a.href = directDownloadUrl;
+            a.download = `runeflow-${selectedRune}-template.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Show success message
+            downloadBtn.textContent = 'Downloaded! ✓';
+            downloadBtn.style.background = '#4ecdc4';
+            
+            // Track download event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    'event_category': 'free_starter_pack',
+                    'event_label': `${selectedRune}_zip_direct`,
+                    'value': 1
+                });
+            }
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                downloadBtn.textContent = originalText;
+                downloadBtn.style.background = '';
+                downloadBtn.disabled = false;
+            }, 3000);
+        }
+    };
+    
     // Close modal
     window.closeModal = function() {
         successModal.classList.remove('show');
@@ -275,12 +658,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (downloadUrl) {
             // Use real API download endpoint
-            const fullUrl = `http://localhost:3000${downloadUrl}`;
+            const fullUrl = `${downloadUrl}`;
             
             // Create temporary link for download
             const a = document.createElement('a');
             a.href = fullUrl;
-            a.download = 'runeflow-starter-rune-ansuz.pdf';
+            a.download = 'runeflow-starter-rune-ansuz.zip';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -329,7 +712,321 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Create comprehensive starter pack ZIP file
+// Coinbase Commerce Integration
+window.initiateCoinbasePayment = async function() {
+    try {
+        // Get the current payment context
+        const context = window.currentPaymentContext;
+        if (!context) {
+            throw new Error('No payment context available');
+        }
+        
+        // Get user email from context first, then from input field
+        let userEmail = context.email;
+        if (!userEmail) {
+            const emailInput = document.getElementById('paymentEmail');
+            userEmail = emailInput ? emailInput.value : null;
+        }
+        
+        if (!userEmail) {
+            // Show email collection modal
+            showEmailRequiredModal();
+            return;
+        }
+        
+        // Show loading state
+        const coinbaseBtn = document.querySelector('.coinbase-btn');
+        const originalText = coinbaseBtn.innerHTML;
+        coinbaseBtn.innerHTML = '<span class="coinbase-logo">⚡</span><span class="coinbase-text">Loading...</span>';
+        coinbaseBtn.disabled = true;
+        
+        // Create Coinbase Commerce charge
+        const response = await fetch('/api/coinbase/create-charge', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                packageType: context.packageType,
+                userEmail: userEmail,
+                amount: context.amount,
+                description: getPackageDescription(context.packageType)
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.checkout_url) {
+            // Redirect to Coinbase Commerce checkout
+            window.open(data.checkout_url, '_blank');
+            
+            // Start monitoring the payment
+            monitorCoinbasePayment(data.charge_id);
+            
+            // Show success message
+            showCoinbaseRedirectMessage();
+        } else {
+            throw new Error(data.error || 'Failed to create Coinbase Commerce charge');
+        }
+        
+    } catch (error) {
+        console.error('Error creating Coinbase Commerce charge:', error);
+        showPaymentError('Failed to create Coinbase payment. Please try again.');
+    } finally {
+        // Reset button
+        const coinbaseBtn = document.querySelector('.coinbase-btn');
+        if (coinbaseBtn) {
+            coinbaseBtn.innerHTML = originalText;
+            coinbaseBtn.disabled = false;
+        }
+    }
+};
+
+// Get package description for Coinbase Commerce
+function getPackageDescription(packageType) {
+    switch (packageType) {
+        case 'blind':
+        case 'blind_founder':
+            return 'RuneFlow Blind Founder Package - Lifetime access to all 8,000+ automation templates';
+        case 'launch':
+            return 'RuneFlow Launch Access Package - Annual subscription with 40% discount';
+        case 'starter_runes':
+            return 'RuneFlow Starter Runes Package - Individual automation templates';
+        default:
+            return 'RuneFlow Premium Package';
+    }
+}
+
+// Monitor Coinbase Commerce payment
+async function monitorCoinbasePayment(chargeId) {
+    const maxAttempts = 60; // Monitor for 30 minutes
+    let attempts = 0;
+    
+    const checkPayment = async () => {
+        try {
+            const response = await fetch(`/api/coinbase/charge/${chargeId}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                const status = data.status;
+                
+                switch (status) {
+                    case 'COMPLETED':
+                        handleCoinbasePaymentSuccess(data);
+                        return;
+                    case 'FAILED':
+                    case 'EXPIRED':
+                        handleCoinbasePaymentFailed(data);
+                        return;
+                    case 'PENDING':
+                    case 'NEW':
+                        attempts++;
+                        if (attempts < maxAttempts) {
+                            setTimeout(checkPayment, 30000); // Check every 30 seconds
+                        } else {
+                            handleCoinbasePaymentTimeout();
+                        }
+                        break;
+                }
+            }
+        } catch (error) {
+            console.error('Error checking Coinbase payment:', error);
+            attempts++;
+            if (attempts < maxAttempts) {
+                setTimeout(checkPayment, 30000);
+            }
+        }
+    };
+    
+    // Start monitoring after initial delay
+    setTimeout(checkPayment, 30000);
+}
+
+// Handle successful Coinbase payment
+function handleCoinbasePaymentSuccess(data) {
+    console.log('Coinbase payment successful:', data);
+    closePaymentModal();
+    showCoinbaseSuccessModal(data);
+    trackPaymentConversion();
+    
+    // Update spots remaining
+    const spotsEl = document.getElementById('spotsRemaining');
+    if (spotsEl) {
+        const currentSpots = parseInt(spotsEl.textContent);
+        spotsEl.textContent = Math.max(0, currentSpots - 1);
+    }
+}
+
+// Handle failed Coinbase payment
+function handleCoinbasePaymentFailed(data) {
+    console.log('Coinbase payment failed:', data);
+    showPaymentError('Your Coinbase payment was not completed. Please try again.');
+}
+
+// Handle Coinbase payment timeout
+function handleCoinbasePaymentTimeout() {
+    console.log('Coinbase payment monitoring timed out');
+    showPaymentError('Payment monitoring timed out. Please check your payment status.');
+}
+
+// Show Coinbase redirect message
+function showCoinbaseRedirectMessage() {
+    const message = document.createElement('div');
+    message.className = 'coinbase-redirect-message';
+    message.innerHTML = `
+        <div class="redirect-content">
+            <h4>🚀 Redirecting to Coinbase Commerce</h4>
+            <p>Complete your payment in the new tab that opened. This page will automatically update when payment is confirmed.</p>
+            <div class="redirect-spinner">⚡</div>
+        </div>
+    `;
+    message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #0052ff 0%, #0041cc 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 1002;
+        max-width: 350px;
+        animation: slideInFromRight 0.3s ease;
+    `;
+    
+    document.body.appendChild(message);
+    
+    // Remove message after 10 seconds
+    setTimeout(() => {
+        if (message.parentNode) {
+            message.remove();
+        }
+    }, 10000);
+}
+
+// Show Coinbase success modal
+function showCoinbaseSuccessModal(data) {
+    const modal = document.createElement('div');
+    modal.className = 'modal show';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h3><span class="rune-icon">₿</span> Coinbase Payment Successful!</h3>
+            <div class="coinbase-success-content">
+                <div class="success-icon">✅</div>
+                <p>Your payment has been successfully processed through Coinbase Commerce.</p>
+                <div class="payment-details">
+                    <p><strong>Amount:</strong> $${window.currentPaymentContext.amount}</p>
+                    <p><strong>Package:</strong> ${getPackageDescription(window.currentPaymentContext.packageType)}</p>
+                </div>
+                <div class="next-steps">
+                    <h4>What happens next:</h4>
+                    <ul>
+                        <li>✓ Confirmation email sent to your inbox</li>
+                        <li>✓ Access credentials provided on launch day</li>
+                        <li>✓ You're now part of the exclusive founders group</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="modal-close" onclick="closeCoinbaseSuccessModal()">Continue</button>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    createPaymentCelebration();
+}
+
+// Close Coinbase success modal
+window.closeCoinbaseSuccessModal = function() {
+    const modal = document.querySelector('.modal.show');
+    if (modal) {
+        modal.remove();
+    }
+};
+
+// Show email required modal for Coinbase payments
+function showEmailRequiredModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal show';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Email Required</h3>
+                <button class="modal-close-btn" onclick="closeEmailRequiredModal()">&times;</button>
+            </div>
+            <div class="email-required-content">
+                <p>Please enter your email address to continue with Coinbase Commerce payment.</p>
+                <div class="form-group">
+                    <label for="coinbaseEmail">Email Address</label>
+                    <input type="email" id="coinbaseEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeEmailRequiredModal()">Cancel</button>
+                    <button class="btn-primary" onclick="proceedWithCoinbasePayment()">Continue Payment</button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Focus on email input
+    setTimeout(() => {
+        document.getElementById('coinbaseEmail').focus();
+    }, 100);
+}
+
+// Close email required modal
+window.closeEmailRequiredModal = function() {
+    const modal = document.querySelector('.modal.show');
+    if (modal) {
+        modal.remove();
+    }
+};
+
+// Proceed with Coinbase payment after email is entered
+window.proceedWithCoinbasePayment = function() {
+    const emailInput = document.getElementById('coinbaseEmail');
+    const email = emailInput ? emailInput.value.trim() : '';
+    
+    if (!email) {
+        alert('Please enter your email address.');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    
+    // Store email in window.currentPaymentContext for immediate use
+    if (window.currentPaymentContext) {
+        window.currentPaymentContext.email = email;
+    }
+    
+    // Also try to store in payment modal's email field if it exists
+    const paymentEmailInput = document.getElementById('paymentEmail');
+    if (paymentEmailInput) {
+        paymentEmailInput.value = email;
+    }
+    
+    // Close modal and proceed with payment
+    closeEmailRequiredModal();
+    
+    // Retry the Coinbase payment immediately without delay
+    initiateCoinbasePayment();
+};
+
+// Email validation helper
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Create comprehensive starter pack ZIP file
     async function createStarterPackZip() {
         // Dynamic import of JSZip (we'll need to include this library)
         const JSZip = await loadJSZip();
@@ -1041,7 +1738,7 @@ async function createCryptoCharge(cryptoType) {
         throw new Error('Email is required for crypto payment');
     }
     
-    const response = await fetch('http://localhost:3000/api/crypto/create-charge', {
+    const response = await fetch('/api/crypto/create-charge', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -1068,7 +1765,7 @@ async function monitorCryptoPayment(chargeId) {
     
     const checkPayment = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/crypto/charge/${chargeId}`);
+            const response = await fetch(`/api/crypto/charge/${chargeId}`);
             const data = await response.json();
             
             if (data.success) {
@@ -1699,4 +2396,385 @@ function getWebhookTestFile() {
     }, null, 2);
 }
 
-});
+// Create ZIP file for selected individual rune
+async function createSelectedRuneZip(selectedRune) {
+    const JSZip = await loadJSZip();
+    const zip = new JSZip();
+    
+    const runeNames = {
+        'flowrune': 'FlowRune',
+        'ansuz': 'Ansuz', 
+        'laguz': 'Laguz'
+    };
+    
+    const runeDescriptions = {
+        'flowrune': 'The Flow Optimizer - Streamlines your automation workflows',
+        'ansuz': 'The Messenger - Perfect for email automation and communication',
+        'laguz': 'The Adapter - Connects different systems and data sources'
+    };
+    
+    const runeName = runeNames[selectedRune];
+    const runeDescription = runeDescriptions[selectedRune];
+    
+    // Create workflow template for the selected rune
+    const workflowTemplate = createRuneWorkflowTemplate(selectedRune, runeName, runeDescription);
+    
+    // Add workflow JSON to ZIP
+    zip.file(`${selectedRune}-workflow.json`, JSON.stringify(workflowTemplate, null, 2));
+    
+    // Add rune-specific README
+    const readmeContent = getRuneSpecificReadme(selectedRune, runeName, runeDescription);
+    zip.file("README.md", readmeContent);
+    
+    // Add email template HTML
+    const emailTemplate = getEmailTemplateHTML();
+    zip.file("email-template.html", emailTemplate);
+    
+    // Add quick start guide
+    const quickStartGuide = getQuickStartGuide();
+    zip.file("QUICK_START.md", quickStartGuide);
+    
+    // Add credentials setup guide
+    const credentialsGuide = getCredentialsGuide();
+    zip.file("CREDENTIALS_SETUP.md", credentialsGuide);
+    
+    // Add sample webhook test file
+    const webhookTest = getWebhookTestFile();
+    zip.file("test-webhook.json", webhookTest);
+    
+    // Generate ZIP file
+    const zipBlob = await zip.generateAsync({type: "blob"});
+    
+    // Create download link
+    const url = URL.createObjectURL(zipBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `runeflow-${selectedRune}-starter-pack.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Create workflow template for specific rune
+function createRuneWorkflowTemplate(runeId, runeName, runeDescription) {
+    const baseTemplate = {
+        "name": `${runeName} - Starter Template`,
+        "active": true,
+        "settings": {
+            "saveManualExecutions": true,
+            "callerPolicy": "workflowsFromSameOwner"
+        },
+        "staticData": {},
+        "tags": ["email-automation", "starter-pack", "runeflow", runeId],
+        "meta": {
+            "version": "1.0.0",
+            "description": `${runeName}: ${runeDescription}`,
+            "author": "RuneFlow Team",
+            "category": "Email Marketing",
+            "difficulty": "Beginner",
+            "estimated_setup_time": "5 minutes"
+        }
+    };
+    
+    if (runeId === 'flowrune') {
+        // FlowRune - Workflow optimization template
+        baseTemplate.nodes = [
+            {
+                "parameters": {
+                    "httpMethod": "POST",
+                    "path": "workflow-trigger",
+                    "responseMode": "responseNode",
+                    "options": {}
+                },
+                "id": "flowrune-webhook",
+                "name": "FlowRune Trigger",
+                "type": "n8n-nodes-base.webhook",
+                "typeVersion": 1,
+                "position": [240, 300]
+            },
+            {
+                "parameters": {
+                    "conditions": {
+                        "string": [
+                            {
+                                "value1": "={{ $json.priority }}",
+                                "operation": "equal",
+                                "value2": "high"
+                            }
+                        ]
+                    }
+                },
+                "id": "priority-check",
+                "name": "Priority Check",
+                "type": "n8n-nodes-base.if",
+                "typeVersion": 1,
+                "position": [460, 300]
+            },
+            {
+                "parameters": {
+                    "mode": "raw",
+                    "jsonData": "{\"status\": \"processed\", \"priority\": \"high\", \"timestamp\": \"{{ $now }}\"}" 
+                },
+                "id": "high-priority-response",
+                "name": "High Priority Response",
+                "type": "n8n-nodes-base.respondToWebhook",
+                "typeVersion": 1,
+                "position": [680, 200]
+            },
+            {
+                "parameters": {
+                    "mode": "raw",
+                    "jsonData": "{\"status\": \"queued\", \"priority\": \"normal\", \"timestamp\": \"{{ $now }}\"}" 
+                },
+                "id": "normal-priority-response",
+                "name": "Normal Priority Response",
+                "type": "n8n-nodes-base.respondToWebhook",
+                "typeVersion": 1,
+                "position": [680, 400]
+            }
+        ];
+        
+        baseTemplate.connections = {
+            "FlowRune Trigger": {
+                "main": [[{"node": "Priority Check", "type": "main", "index": 0}]]
+            },
+            "Priority Check": {
+                "main": [
+                    [{"node": "High Priority Response", "type": "main", "index": 0}],
+                    [{"node": "Normal Priority Response", "type": "main", "index": 0}]
+                ]
+            }
+        };
+        
+    } else if (runeId === 'ansuz') {
+        // Ansuz - Messenger template (email automation)
+        baseTemplate.nodes = [
+            {
+                "parameters": {
+                    "httpMethod": "POST",
+                    "path": "email-signup",
+                    "responseMode": "responseNode"
+                },
+                "id": "ansuz-webhook",
+                "name": "Email Signup Webhook",
+                "type": "n8n-nodes-base.webhook",
+                "typeVersion": 1,
+                "position": [240, 300]
+            },
+            {
+                "parameters": {
+                    "sendTo": "={{ $json.email }}",
+                    "subject": "Welcome to RuneFlow!",
+                    "message": "Welcome {{ $json.name || 'there' }}!\n\nThank you for joining RuneFlow. Your automation journey starts now."
+                },
+                "id": "welcome-email",
+                "name": "Send Welcome Email",
+                "type": "n8n-nodes-base.emailSend",
+                "typeVersion": 1,
+                "position": [460, 300]
+            },
+            {
+                "parameters": {
+                    "mode": "raw",
+                    "jsonData": "{\"success\": true, \"message\": \"Welcome email sent\", \"email\": \"{{ $json.email }}\"}" 
+                },
+                "id": "success-response",
+                "name": "Success Response",
+                "type": "n8n-nodes-base.respondToWebhook",
+                "typeVersion": 1,
+                "position": [680, 300]
+            }
+        ];
+        
+        baseTemplate.connections = {
+            "Email Signup Webhook": {
+                "main": [[{"node": "Send Welcome Email", "type": "main", "index": 0}]]
+            },
+            "Send Welcome Email": {
+                "main": [[{"node": "Success Response", "type": "main", "index": 0}]]
+            }
+        };
+        
+    } else if (runeId === 'laguz') {
+        // Laguz - Data adapter template
+        baseTemplate.nodes = [
+            {
+                "parameters": {
+                    "httpMethod": "POST",
+                    "path": "data-sync",
+                    "responseMode": "responseNode"
+                },
+                "id": "laguz-webhook",
+                "name": "Data Sync Webhook",
+                "type": "n8n-nodes-base.webhook",
+                "typeVersion": 1,
+                "position": [240, 300]
+            },
+            {
+                "parameters": {
+                    "jsCode": "// Transform incoming data\nconst transformedData = {\n  id: $input.first().json.id,\n  name: $input.first().json.name,\n  email: $input.first().json.email,\n  timestamp: new Date().toISOString(),\n  source: 'laguz-adapter'\n};\n\nreturn { json: transformedData };"
+                },
+                "id": "data-transform",
+                "name": "Transform Data",
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 1,
+                "position": [460, 300]
+            },
+            {
+                "parameters": {
+                    "mode": "raw",
+                    "jsonData": "{{ $json }}" 
+                },
+                "id": "transformed-response",
+                "name": "Return Transformed Data",
+                "type": "n8n-nodes-base.respondToWebhook",
+                "typeVersion": 1,
+                "position": [680, 300]
+            }
+        ];
+        
+        baseTemplate.connections = {
+            "Data Sync Webhook": {
+                "main": [[{"node": "Transform Data", "type": "main", "index": 0}]]
+            },
+            "Transform Data": {
+                "main": [[{"node": "Return Transformed Data", "type": "main", "index": 0}]]
+            }
+        };
+    }
+    
+    return baseTemplate;
+}
+
+// Get rune-specific README
+function getRuneSpecificReadme(runeId, runeName, runeDescription) {
+    return `# RuneFlow Starter Pack - ${runeName}
+
+${runeDescription}
+
+## 🎯 What This Template Does
+
+${getRuneSpecificDescription(runeId)}
+
+## 📋 Requirements
+
+Before you start, make sure you have:
+
+1. **n8n instance** (cloud or self-hosted)
+2. **Email service** (Gmail, Outlook, or SMTP) ${runeId === 'ansuz' ? '- Required for this template' : '- Optional for this template'}
+3. **API endpoints** to connect to ${runeId === 'laguz' ? '- Required for data transformation' : '- Optional'}
+
+## 🚀 Quick Setup Guide
+
+### Step 1: Import the Workflow
+
+1. Open your n8n instance
+2. Click "Import from file" 
+3. Select \`${runeId}-workflow.json\`
+4. Click "Import"
+
+### Step 2: Configure Your Template
+
+${getRuneSpecificSetupInstructions(runeId)}
+
+### Step 3: Test Your Automation
+
+1. Use the \`test-webhook.json\` file to test your webhook
+2. Check that the workflow executes correctly
+3. Verify all integrations work
+
+## 📊 Expected Results
+
+${getRuneSpecificResults(runeId)}
+
+## 🆘 Getting Help
+
+- 📧 Email: support@runeflow.co
+- 💬 Discord: [RuneFlow Community](https://discord.gg/runeflow)
+- 📖 Documentation: [docs.runeflow.co](https://docs.runeflow.co)
+
+---
+
+**May the runes guide your automation journey!**
+
+*The RuneFlow Team*`;
+}
+
+// Get rune-specific description
+function getRuneSpecificDescription(runeId) {
+    const descriptions = {
+        'flowrune': `The **FlowRune** template helps you create efficient workflow routing based on priority levels. It:
+
+- ✅ Receives webhook data with priority indicators
+- ✅ Routes high-priority items for immediate processing
+- ✅ Queues normal-priority items for batch processing
+- ✅ Provides different response formats based on priority
+- ✅ Optimizes your automation flow efficiency`,
+        
+        'ansuz': `The **Ansuz** template is perfect for automated email communications. It:
+
+- ✅ Captures new email signups via webhook
+- ✅ Sends personalized welcome emails instantly
+- ✅ Handles email validation and error management
+- ✅ Provides confirmation responses to your frontend
+- ✅ Sets up the foundation for email sequences`,
+        
+        'laguz': `The **Laguz** template specializes in data transformation and system integration. It:
+
+- ✅ Receives data from external systems via webhook
+- ✅ Transforms data formats using JavaScript code
+- ✅ Adds timestamps and tracking information
+- ✅ Returns standardized data structures
+- ✅ Enables seamless system-to-system communication`
+    };
+    
+    return descriptions[runeId] || 'A powerful automation template for n8n workflows.';
+}
+
+// Get rune-specific setup instructions
+function getRuneSpecificSetupInstructions(runeId) {
+    const instructions = {
+        'flowrune': `1. **Configure the webhook path**: Update the webhook path to match your use case
+2. **Set priority logic**: Modify the IF condition to match your priority criteria
+3. **Customize responses**: Update the response formats for high and normal priority items
+4. **Test the routing**: Send test data with different priority levels`,
+        
+        'ansuz': `1. **Set up email credentials**: Configure your email service in n8n credentials
+2. **Customize the email template**: Edit the welcome email subject and message
+3. **Set sender details**: Update the 'from' email address
+4. **Test email delivery**: Send a test webhook to verify email sending works`,
+        
+        'laguz': `1. **Review the transformation code**: Examine the JavaScript code in the Transform Data node
+2. **Modify data mapping**: Update the code to match your data structure
+3. **Add validation**: Include data validation logic as needed
+4. **Test transformations**: Send sample data to verify the transformation works`
+    };
+    
+    return instructions[runeId] || 'Follow the general setup instructions in the main documentation.';
+}
+
+// Get rune-specific expected results
+function getRuneSpecificResults(runeId) {
+    const results = {
+        'flowrune': `With this automation, you should see:
+- **Instant processing** for high-priority items
+- **Efficient queuing** for normal-priority items
+- **Clear response differentiation** based on priority
+- **Improved workflow organization** and performance`,
+        
+        'ansuz': `With this automation, you should see:
+- **Instant welcome emails** for new signups
+- **90%+ email delivery rate**
+- **Professional email formatting**
+- **Reliable webhook responses** to your frontend`,
+        
+        'laguz': `With this automation, you should see:
+- **Consistent data transformation** across all inputs
+- **Standardized output formats** for downstream systems
+- **Proper timestamp tracking** for all processed data
+- **Reliable data flow** between different systems`
+    };
+    
+    return results[runeId] || 'Improved automation efficiency and reliability.';
+}

@@ -73,30 +73,112 @@
                         <p class="capture-subtitle">Instant download of our viral ASMR automation template. No credit card required.</p>
                     </div>
 
-                    <div class="starter-rune-preview">
-                        <div class="rune-preview-card">
-                            <div class="preview-header">
-                                <span class="rune-icon preview-rune">ᛚᚱ</span>
-                                <div class="preview-info">
-                                    <h4>"Laguz-Raidho" - The FlowRune</h4>
-                                    <p>Viral ASMR automation workflow</p>
+                    <div class="free-rune-selection">
+                        <div class="rune-selection-header">
+                            <h4>Choose Your FREE Starter Rune</h4>
+                            <p>Select one rune to get started, then purchase the complete bundle below</p>
+                        </div>
+                        
+                        <div class="rune-cards-grid">
+                            <!-- FlowRune - Viral ASMR Creator -->
+                            <div class="rune-card" data-rune="flowrune">
+                                <div class="rune-card-header">
+                                    <span class="rune-icon card-rune">ᚠ</span>
+                                    <div class="rune-card-info">
+                                        <h5>FlowRune</h5>
+                                        <p>Viral ASMR Creator</p>
+                                    </div>
+                                    <div class="rune-price">
+                                        <span class="price-tag free-tag">FREE</span>
+                                    </div>
                                 </div>
-                                <div class="preview-value">
-                                    <span class="value-badge">$97 Value</span>
+                                <div class="rune-card-features">
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᚢ</span>
+                                        <span>YouTube upload automation</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛏ</span>
+                                        <span>TikTok cross-posting</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛊ</span>
+                                        <span>Viral metrics tracking</span>
+                                    </div>
+                                </div>
+                                <div class="rune-card-footer">
+                                    <button class="select-rune-btn" onclick="selectFreeRune('flowrune')">
+                                        <span class="btn-text">Select This Rune</span>
+                                        <span class="btn-icon rune-icon">ᚠ</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="preview-features">
-                                <div class="feature-item">
-                                    <span class="feature-icon rune-icon">ᚢ</span>
-                                    <span>YouTube upload automation</span>
+                            
+                            <!-- Ansuz - The Messenger -->
+                            <div class="rune-card" data-rune="ansuz">
+                                <div class="rune-card-header">
+                                    <span class="rune-icon card-rune">ᚨ</span>
+                                    <div class="rune-card-info">
+                                        <h5>Ansuz</h5>
+                                        <p>The Messenger</p>
+                                    </div>
+                                    <div class="rune-price">
+                                        <span class="price-tag free-tag">FREE</span>
+                                    </div>
                                 </div>
-                                <div class="feature-item">
-                                    <span class="feature-icon rune-icon">ᛏ</span>
-                                    <span>TikTok cross-posting</span>
+                                <div class="rune-card-features">
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛖ</span>
+                                        <span>Email automation sequences</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛃ</span>
+                                        <span>CRM integration</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛋ</span>
+                                        <span>Lead nurturing workflows</span>
+                                    </div>
                                 </div>
-                                <div class="feature-item">
-                                    <span class="feature-icon rune-icon">ᛊ</span>
-                                    <span>Viral metrics tracking</span>
+                                <div class="rune-card-footer">
+                                    <button class="select-rune-btn" onclick="selectFreeRune('ansuz')">
+                                        <span class="btn-text">Select This Rune</span>
+                                        <span class="btn-icon rune-icon">ᚨ</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Laguz - The Intelligent Qualifier -->
+                            <div class="rune-card" data-rune="laguz">
+                                <div class="rune-card-header">
+                                    <span class="rune-icon card-rune">ᛚ</span>
+                                    <div class="rune-card-info">
+                                        <h5>Laguz</h5>
+                                        <p>The Intelligent Qualifier</p>
+                                    </div>
+                                    <div class="rune-price">
+                                        <span class="price-tag free-tag">FREE</span>
+                                    </div>
+                                </div>
+                                <div class="rune-card-features">
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᚪ</span>
+                                        <span>AI-powered lead scoring</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛞ</span>
+                                        <span>Automated qualification</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon rune-icon">ᛟ</span>
+                                        <span>Smart lead routing</span>
+                                    </div>
+                                </div>
+                                <div class="rune-card-footer">
+                                    <button class="select-rune-btn" onclick="selectFreeRune('laguz')">
+                                        <span class="btn-text">Select This Rune</span>
+                                        <span class="btn-icon rune-icon">ᛚ</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -106,12 +188,12 @@
                         <div class="form-group">
                             <input type="email" id="email" placeholder="Enter your email for instant download" required>
                             <button type="submit" class="submit-btn starter-btn">
-                                <span class="btn-text">Get FREE Starter Rune</span>
+                                <span class="btn-text">Get Your FREE Starter Rune</span>
                                 <span class="btn-loader">⚡</span>
                             </button>
                         </div>
                         <p class="form-disclaimer">
-                            <span class="disclaimer-highlight"><span class="rune-icon">ᛚᚱ</span> Instant download</span>
+                            <span class="disclaimer-highlight"><span class="rune-icon">ᛚᚱ</span> Select your rune above • Download instantly</span>
                         </p>
                     </form>
                 </div>
@@ -280,10 +362,10 @@
                                             <span class="btn-icon">💳</span>
                                             <span class="btn-text">Reserve with Card</span>
                                         </button>
-                                        <button class="payment-btn crypto-payment" onclick="openPaymentModal('crypto', 'launch')">
+                                        <a href="https://commerce.coinbase.com/checkout/217582f9-25da-472a-9bed-b09e095dcd10" target="_blank" class="payment-btn crypto-payment">
                                             <span class="btn-icon">₿</span>
                                             <span class="btn-text">Pay with Crypto</span>
-                                        </button>
+                                        </a>
                                     </div>
                                     
                                     <div class="payment-security">
@@ -440,12 +522,12 @@
                                     <p class="beta-description">Get immediate access to all 8,000+ templates in raw format. Perfect for n8n experts who don't need support or documentation.</p>
                                 </div>
                                 <ul class="package-features">
-                                    <li>✓ All 8,000 templates when complete</li>
-                                    <li>✓ 50% lifetime discount locked in</li>
-                                    <li>✓ Dashboard access day 0</li>
-                                    <li>✓ Priority support available on launch day</li>
-                                    <li>✓ Monthly rune pack drops</li>
-                                    <li>✓ Exclusive founder badge</li>
+                                    <li>All 8,000 templates when complete</li>
+                                    <li>50% lifetime discount locked in</li>
+                                    <li>Dashboard access day 0</li>
+                                    <li>Priority support available on launch day</li>
+                                    <li>Monthly rune pack drops</li>
+                                    <li>Exclusive founder badge</li>
                                 </ul>
 
                                 <div class="payment-options">
@@ -453,10 +535,10 @@
                                         <span class="payment-icon rune-icon">ᛟ</span>
                                         Pay with Card
                                     </button>
-                                    <button class="payment-btn crypto-payment" onclick="openPaymentModal('crypto', 'blind')">
+                                    <a href="https://commerce.coinbase.com/checkout/52bc5d8a-bc5d-4257-b17c-20f3b21340ed" target="_blank" class="payment-btn crypto-payment">
                                         <span class="payment-icon rune-icon">ᛒ</span>
                                         Pay with Crypto
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <div class="terms-conditions-section">
@@ -629,6 +711,47 @@
                 </div>
             </div>
 
+            <!-- 3 Rune Bundle Offer -->
+            <div class="bundle-offer-section">
+                <div class="bundle-offer-header">
+                    <h3>Want All 3 Starter Runes? Get the Complete Bundle!</h3>
+                    <p>Enhance your automation arsenal with all three powerful runes</p>
+                </div>
+                
+                <div class="bundle-card-complete">
+                    <div class="bundle-header">
+                        <span class="bundle-icon rune-icon">ᚦ</span>
+                        <div class="bundle-info">
+                            <h5>Complete 3-Rune Bundle</h5>
+                            <p>FlowRune + Ansuz + Laguz</p>
+                        </div>
+                        <div class="bundle-pricing">
+                            <span class="bundle-price">$3</span>
+                        </div>
+                    </div>
+                    <div class="bundle-features">
+                        <div class="feature-item">
+                            <span class="feature-icon rune-icon">ᚷ</span>
+                            <span>All 3 starter runes included</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon rune-icon">ᛒ</span>
+                            <span>Bonus integration guide</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon rune-icon">ᛉ</span>
+                            <span>Advanced workflow combinations</span>
+                        </div>
+                    </div>
+                    <div class="bundle-footer">
+                        <a href="https://commerce.coinbase.com/checkout/e6150dad-3592-4f4f-9a57-112c1eeba219" target="_blank" class="select-bundle-btn">
+                            <span class="btn-text">Buy Complete Bundle - $3</span>
+                            <span class="btn-icon">🎁</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Footer -->
             <footer class="site-footer">
                 <div class="footer-content">
@@ -721,6 +844,27 @@
                 
                 <div id="cryptoPaymentForm" class="payment-form" style="display: none;">
                     <h4>Cryptocurrency Payment</h4>
+                    
+                    <!-- Coinbase Commerce Section -->
+                    <div class="coinbase-commerce-section">
+                        <div class="coinbase-header">
+                            <h5>🚀 Recommended: Coinbase Commerce</h5>
+                            <p>Easy crypto payment with guided onboarding</p>
+                        </div>
+                        <a href="https://commerce.coinbase.com/checkout/7d052c71-c392-4f48-9e48-df68f90b76d1" target="_blank" class="coinbase-btn">
+                            <span class="coinbase-logo">₿</span>
+                            <span class="coinbase-text">Pay with Crypto</span>
+                            <span class="coinbase-arrow">→</span>
+                        </a>
+                    </div>
+                    
+                    <div class="payment-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <!-- Direct Crypto Options -->
+                    <div class="direct-crypto-section">
+                        <h5>Direct Crypto Payment</h5>
                         <div class="crypto-options">
                             <div class="crypto-option" onclick="selectCrypto('bitcoin')">
                                 <span class="crypto-icon rune-icon">ᛒ</span>
@@ -738,6 +882,7 @@
                                 <span class="crypto-price">999 USDC</span>
                             </div>
                         </div>
+                    </div>
                     
                     <div id="cryptoPaymentDetails" class="crypto-payment-details" style="display: none;">
                         <h5>Send payment to:</h5>

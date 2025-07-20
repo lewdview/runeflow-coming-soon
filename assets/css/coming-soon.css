@@ -1,11 +1,527 @@
-/* Launch Access Section */
-.launch-access-section {
-    background: linear-gradient(145deg, rgba(70, 178, 157, 0.12), rgba(15, 23, 42, 0.8));
-    padding: 60px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    margin-bottom: 60px;
-    animation: pulseBackground 6s infinite alternate;
+/* Starter Rune Selection Styles */
+.starter-rune-selection {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.rune-selection-header {
+    margin-bottom: 20px;
+}
+
+.rune-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.rune-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* FlowRune - Warm Orange */
+.rune-card[data-rune="flowrune"] {
+    background: rgba(255, 140, 102, 0.08);
+    border-color: rgba(255, 140, 102, 0.3);
+}
+
+.rune-card[data-rune="flowrune"] .rune-icon {
+    color: #ff8c66;
+}
+
+.rune-card[data-rune="flowrune"] .free-tag {
+    background: #ff8c66;
+}
+
+/* Ansuz - Cool Blue */
+.rune-card[data-rune="ansuz"] {
+    background: rgba(100, 149, 237, 0.08);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+.rune-card[data-rune="ansuz"] .rune-icon {
+    color: #6495ed;
+}
+
+.rune-card[data-rune="ansuz"] .free-tag {
+    background: #6495ed;
+}
+
+/* Laguz - Emerald Green */
+.rune-card[data-rune="laguz"] {
+    background: rgba(72, 201, 176, 0.08);
+    border-color: rgba(72, 201, 176, 0.3);
+}
+
+.rune-card[data-rune="laguz"] .rune-icon {
+    color: #48c9b0;
+}
+
+.rune-card[data-rune="laguz"] .free-tag {
+    background: #48c9b0;
+}
+
+/* Selected state with colored glow */
+.rune-card.selected {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(70, 178, 157, 0.6);
+}
+
+/* FlowRune selected state */
+.rune-card[data-rune="flowrune"].selected {
+    border-color: #ff8c66;
+    box-shadow: 0 0 25px rgba(255, 140, 102, 0.6), 0 0 40px rgba(255, 140, 102, 0.3);
+    background: rgba(255, 140, 102, 0.15);
+}
+
+/* Ansuz selected state */
+.rune-card[data-rune="ansuz"].selected {
+    border-color: #6495ed;
+    box-shadow: 0 0 25px rgba(100, 149, 237, 0.6), 0 0 40px rgba(100, 149, 237, 0.3);
+    background: rgba(100, 149, 237, 0.15);
+}
+
+/* Laguz selected state */
+.rune-card[data-rune="laguz"].selected {
+    border-color: #48c9b0;
+    box-shadow: 0 0 25px rgba(72, 201, 176, 0.6), 0 0 40px rgba(72, 201, 176, 0.3);
+    background: rgba(72, 201, 176, 0.15);
+}
+
+.rune-card.selected::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid currentColor;
+    border-radius: 17px;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.rune-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.rune-icon.card-rune {
+    font-size: 2rem;
+    color: #ff6b35;
+}
+
+.rune-card-info h5 {
+    color: #e0e1dd;
+    font-size: 1.2rem;
+}
+
+.rune-card-info p {
+    color: #e0e1dd;
+    opacity: 0.8;
+}
+
+.rune-price {
+    color: #ff6b35;
+}
+
+.rune-card-features {
+    margin-top: 10px;
+}
+
+/* Base button styling - will be overridden by individual rune styles */
+.select-rune-btn {
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+/* FlowRune button - darker orange background, lighter orange text */
+.rune-card[data-rune="flowrune"] .select-rune-btn {
+    background: rgba(255, 140, 102, 0.2);
+    color: rgba(255, 140, 102, 0.7);
+    border: 1px solid rgba(255, 140, 102, 0.3);
+}
+
+.rune-card[data-rune="flowrune"] .select-rune-btn.selected {
+    background: rgba(255, 140, 102, 0.9);
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(255, 140, 102, 0.4);
+    border-color: #ff8c66;
+}
+
+/* Ansuz button - darker blue background, lighter blue text */
+.rune-card[data-rune="ansuz"] .select-rune-btn {
+    background: rgba(100, 149, 237, 0.2);
+    color: rgba(100, 149, 237, 0.7);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+}
+
+.rune-card[data-rune="ansuz"] .select-rune-btn.selected {
+    background: rgba(100, 149, 237, 0.9);
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(100, 149, 237, 0.4);
+    border-color: #6495ed;
+}
+
+/* Laguz button - darker green background, lighter green text */
+.rune-card[data-rune="laguz"] .select-rune-btn {
+    background: rgba(72, 201, 176, 0.2);
+    color: rgba(72, 201, 176, 0.7);
+    border: 1px solid rgba(72, 201, 176, 0.3);
+}
+
+.rune-card[data-rune="laguz"] .select-rune-btn.selected {
+    background: rgba(72, 201, 176, 0.9);
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(72, 201, 176, 0.4);
+    border-color: #48c9b0;
+}
+
+.select-rune-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+.bundle-option {
+    margin-top: 40px;
+}
+
+.bundle-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(70, 178, 157, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bundle-card.selected {
+    background: rgba(70, 178, 157, 0.1);
+    border-color: #46b29d;
+    box-shadow: 0 0 10px rgba(70, 178, 157, 0.5);
+}
+
+.bundle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.bundle-icon {
+    font-size: 2rem;
+    color: #46b29d;
+}
+
+.bundle-info h5 {
+    color: #e0e1dd;
+    font-size: 1.2rem;
+}
+
+.bundle-info p {
+    color: #e0e1dd;
+    opacity: 0.8;
+}
+
+.bundle-pricing {
+    color: #46b29d;
+}
+
+.bundle-features {
+    margin-top: 10px;
+}
+
+.select-bundle-btn {
+    background: #46b29d;
+    color: #1a1a1a;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.select-bundle-btn.selected {
+    background: rgba(70, 178, 157, 0.8);
+}
+
+.selection-summary {
+    background: rgba(70, 178, 157, 0.05);
+    border: 1px solid rgba(70, 178, 157, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-total {
+    font-size: 1.3rem;
+    color: #46b29d;
+}
+
+.selected-items {
+    margin-top: 10px;
+}
+
+.selected-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.item-icon {
+    font-size: 1.5rem;
+    color: #46b29d;
+}
+
+.item-name {
+    color: #e0e1dd;
+}
+
+.item-price {
+    color: #46b29d;
+}
+
+.checkout-actions {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.checkout-btn, .clear-selection-btn {
+    background: linear-gradient(145deg, #46b29d, #3d9c84);
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.checkout-btn:hover, .clear-selection-btn:hover {
+    background: #46b29d;
+}
+
+.clear-selection-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #e0e1dd;
+}
+
+.clear-selection-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ff6b35;
+    border-color: rgba(255, 107, 53, 0.5);
+}
+
+.rune-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+    border-color: rgba(255, 107, 53, 0.5);
+}
+
+.bundle-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(70, 178, 157, 0.3);
+    border-color: rgba(70, 178, 157, 0.5);
+}
+
+.bundle-includes {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    color: #e0e1dd;
+    opacity: 0.8;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 5px;
+}
+
+.bundle-price {
+    color: #46b29d;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.savings-badge {
+    background: #46b29d;
+    color: #1a1a1a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.rune-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rune-card-info {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.rune-card-info h5 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.rune-card-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.price-tag {
+    background: #ff6b35;
+    color: #1a1a1a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.free-tag {
+    background: #46b29d;
+    color: #1a1a1a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    animation: freeTagGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes freeTagGlow {
+    0% { box-shadow: 0 0 8px rgba(70, 178, 157, 0.4); }
+    100% { box-shadow: 0 0 15px rgba(70, 178, 157, 0.7); }
+}
+
+.rune-card-features {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.rune-card-footer {
+    margin-top: 15px;
+}
+
+.select-rune-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Individual rune button hover effects */
+.rune-card[data-rune="flowrune"] .select-rune-btn:hover {
+    background: rgba(255, 140, 102, 0.7);
+    color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 140, 102, 0.3);
+    border-color: rgba(255, 140, 102, 0.5);
+}
+
+.rune-card[data-rune="ansuz"] .select-rune-btn:hover {
+    background: rgba(100, 149, 237, 0.7);
+    color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(100, 149, 237, 0.3);
+    border-color: rgba(100, 149, 237, 0.5);
+}
+
+.rune-card[data-rune="laguz"] .select-rune-btn:hover {
+    background: rgba(72, 201, 176, 0.7);
+    color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(72, 201, 176, 0.3);
+    border-color: rgba(72, 201, 176, 0.5);
+}
+
+.select-bundle-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.select-bundle-btn:hover {
+    background: rgba(70, 178, 157, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(70, 178, 157, 0.3);
+}
+
+.bundle-footer {
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .rune-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .rune-card {
+        padding: 15px;
+    }
+    
+    .bundle-card {
+        padding: 15px;
+    }
+    
+    .selection-summary {
+        padding: 15px;
+    }
+    
+    .checkout-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .checkout-btn, .clear-selection-btn {
+        width: 100%;
+    }
 }
 
 @keyframes pulseBackground {
@@ -2781,26 +3297,215 @@ a:hover {
 @media (max-width: 768px) {
   .category-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
   }
   
   .category-item {
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-sm);
+    border-width: 1px;
+    margin-bottom: var(--spacing-xs);
   }
   
   .category-icon {
-    font-size: 1.5rem;
-    width: 35px;
-    height: 35px;
+    font-size: 1.3rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .category-info {
+    gap: 0.1rem;
+  }
+  
+  .category-name {
+    font-size: 0.85rem;
+    line-height: 1.1;
+  }
+  
+  .category-count {
+    font-size: 0.7rem;
+  }
+  
+  .category-creds {
+    font-size: 0.65rem;
+    line-height: 1.2;
   }
   
   .creds-grid {
-    max-height: 150px;
+    max-height: 120px;
+    gap: 0.4rem;
+  }
+  
+  .cred-badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    border-width: 1px;
   }
   
   .templates-breakdown {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
   }
+  
+  .breakdown-title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .credentials-summary {
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+  }
+  
+  .credentials-summary h5 {
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Coinbase Commerce additional styles */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.coinbase-success-content {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: successPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.payment-details {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.payment-details p {
+  margin: 0.5rem 0;
+}
+
+.next-steps {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.next-steps h4 {
+  color: var(--emerald-green);
+  margin-bottom: 0.5rem;
+}
+
+.next-steps ul {
+  list-style: none;
+  padding: 0;
+}
+
+.next-steps li {
+  padding: 0.25rem 0;
+  color: var(--silver-mist);
+}
+
+.redirect-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Email Required Modal Styles */
+.email-required-content {
+  padding: 1rem 0;
+}
+
+.email-required-content p {
+  text-align: center;
+  color: var(--silver-mist);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--stone-gray);
+  color: var(--silver-mist);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  border-color: var(--silver-mist);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: var(--emerald-gradient);
+  color: var(--deep-midnight);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(70, 178, 157, 0.4);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--silver-mist);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 .package-features {
@@ -2819,7 +3524,7 @@ a:hover {
 
 .package-features li::before {
   content: '✓';
-  color: #4ecdc4;
+  color: #ff6b35;
   font-weight: bold;
   margin-right: var(--spacing-sm);
 }
@@ -3086,6 +3791,102 @@ a:hover {
   animation: spin 1s linear infinite;
 }
 
+/* Coinbase Commerce Section */
+.coinbase-commerce-section {
+  background: linear-gradient(135deg, #0052ff 0%, #0041cc 100%);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #0052ff;
+}
+
+.coinbase-header h5 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.coinbase-header p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.coinbase-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  color: #0052ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coinbase-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.coinbase-logo {
+  font-size: 1.2rem;
+  color: #f7931a;
+}
+
+.coinbase-text {
+  flex: 1;
+  text-align: center;
+}
+
+.coinbase-arrow {
+  font-size: 1.1rem;
+  color: #0052ff;
+  transition: transform 0.3s ease;
+}
+
+.coinbase-btn:hover .coinbase-arrow {
+  transform: translateX(4px);
+}
+
+.payment-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.payment-divider::before,
+.payment-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #333;
+  margin: 0 1rem;
+}
+
+.payment-divider span {
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.direct-crypto-section h5 {
+  color: var(--silver-mist);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 /* Crypto Payment */
 .crypto-options {
   display: flex;
@@ -3268,6 +4069,36 @@ a:hover {
   
   .benefits-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .benefit-item {
+    padding: var(--spacing-md);
+  }
+  
+  .benefit-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .benefit-item p {
+    font-size: 0.9rem;
+  }
+  
+  .social-proof {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .proof-item {
+    padding: var(--spacing-md);
+  }
+  
+  .proof-number {
+    font-size: 2rem;
+  }
+  
+  .proof-label {
+    font-size: 0.8rem;
   }
   
   .form-group {
@@ -3300,6 +4131,23 @@ a:hover {
   
   .capture-title {
     font-size: 1.5rem;
+  }
+  
+  .launch-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .launch-benefits-grid .benefit-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .launch-benefits-grid .benefit-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .launch-benefits-grid .benefit-card p {
+    font-size: 0.9rem;
   }
 }
 

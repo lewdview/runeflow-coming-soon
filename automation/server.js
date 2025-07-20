@@ -68,9 +68,9 @@ app.get('/health', (req, res) => {
 
 // Email capture endpoint
 app.post('/capture-email', async (req, res) => {
-    const { email, referrer, utm_source, utm_medium, utm_campaign } = req.body;
+    const { email, selected_rune, is_free_pack, referrer, utm_source, utm_medium, utm_campaign } = req.body;
     
-    console.log('📧 Email capture attempt:', email);
+    console.log('📧 Email capture attempt:', { email, selected_rune, is_free_pack });
     
     // Validate email
     if (!email || !isValidEmail(email)) {
@@ -94,6 +94,8 @@ app.post('/capture-email', async (req, res) => {
     const emailEntry = {
         email,
         timestamp: new Date().toISOString(),
+        selected_rune: selected_rune || null,
+        is_free_pack: is_free_pack || false,
         referrer: referrer || req.get('Referer'),
         utm_source,
         utm_medium,
@@ -114,7 +116,7 @@ app.post('/capture-email', async (req, res) => {
     
     try {
         // Send welcome email
-        await sendWelcomeEmail(email);
+        await sendWelcomeEmail(email, selected_rune);
         
         // Send notification to admin
         await sendAdminNotification(emailEntry);
@@ -124,10 +126,19 @@ app.post('/capture-email', async (req, res) => {
         
         console.log('✅ Email captured successfully:', email);
         
+        // Return appropriate download URL based on selected rune
+        let downloadUrl = null;
+        if (is_free_pack && selected_rune) {
+            downloadUrl = `/download/rune/${selected_rune}`;
+        } else {
+            downloadUrl = '/assets/downloads/starter-rune-template.json';
+        }
+        
         res.json({
             message: 'Email captured successfully',
             success: true,
-            download_url: '/assets/downloads/starter-rune-template.json'
+            download_url: downloadUrl,
+            selected_rune: selected_rune
         });
         
     } catch (error) {
@@ -163,6 +174,127 @@ app.get('/export-emails', (req, res) => {
 });
 
 // ==================== CRYPTO PAYMENT ENDPOINTS ====================
+
+// ==================== COINBASE COMMERCE ENDPOINTS ====================
+
+// Create Coinbase Commerce charge
+app.post('/api/coinbase/create-charge', async (req, res) => {
+    if (!cryptoPaymentService) {
+        return res.status(503).json({
+            error: 'Coinbase Commerce service not available',
+            success: false
+        });
+    }
+
+    try {
+        const { packageType, userEmail, amount, description } = req.body;
+        
+        console.log('🏪 Creating Coinbase Commerce charge for:', { packageType, userEmail, amount });
+        
+        // Validate input
+        if (!packageType || !userEmail || !amount) {
+            return res.status(400).json({
+                error: 'Missing required fields: packageType, userEmail, amount',
+                success: false
+            });
+        }
+
+        if (!isValidEmail(userEmail)) {
+            return res.status(400).json({
+                error: 'Invalid email address',
+                success: false
+            });
+        }
+
+        // Create charge with Coinbase Commerce
+        const charge = await cryptoPaymentService.createCharge({
+            name: getPackageName(packageType),
+            description: description || getPackageDescription(packageType),
+            amount: amount,
+            currency: 'USD',
+            metadata: {
+                package_type: packageType,
+                user_email: userEmail,
+                source: 'runeflow_website',
+                created_via: 'coinbase_commerce_api'
+            }
+        });
+
+        console.log('✅ Coinbase Commerce charge created successfully:', charge.id);
+        
+        // Store charge for later reference
+        emailList.push({
+            email: userEmail,
+            timestamp: new Date().toISOString(),
+            package_type: packageType,
+            payment_method: 'coinbase_commerce',
+            charge_id: charge.id,
+            amount: amount,
+            status: 'pending'
+        });
+        
+        // Return charge details to frontend
+        res.json({
+            success: true,
+            charge_id: charge.id,
+            checkout_url: charge.hosted_url,
+            payment_addresses: charge.addresses,
+            pricing: charge.pricing,
+            expires_at: charge.expires_at,
+            metadata: charge.metadata
+        });
+        
+    } catch (error) {
+        console.error('❌ Error creating Coinbase Commerce charge:', error);
+        res.status(500).json({
+            error: 'Failed to create Coinbase Commerce payment',
+            message: error.message,
+            success: false
+        });
+    }
+});
+
+// Get Coinbase Commerce payment status
+app.get('/api/coinbase/charge/:chargeId', async (req, res) => {
+    if (!cryptoPaymentService) {
+        return res.status(503).json({
+            error: 'Coinbase Commerce service not available',
+            success: false
+        });
+    }
+
+    try {
+        const { chargeId } = req.params;
+        
+        console.log('🔍 Getting Coinbase Commerce charge status for:', chargeId);
+        
+        const charge = await cryptoPaymentService.getCharge(chargeId);
+        
+        // Get the latest status from timeline
+        const latestStatus = charge.timeline && charge.timeline.length > 0 
+            ? charge.timeline[charge.timeline.length - 1].status 
+            : 'NEW';
+        
+        res.json({
+            success: true,
+            charge_id: charge.id,
+            status: latestStatus,
+            timeline: charge.timeline,
+            pricing: charge.pricing,
+            addresses: charge.addresses,
+            metadata: charge.metadata,
+            hosted_url: charge.hosted_url
+        });
+        
+    } catch (error) {
+        console.error('❌ Error getting Coinbase Commerce charge:', error);
+        res.status(500).json({
+            error: 'Failed to get Coinbase Commerce charge status',
+            message: error.message,
+            success: false
+        });
+    }
+});
 
 // Create crypto payment charge
 app.post('/api/crypto/create-charge', async (req, res) => {
@@ -339,6 +471,50 @@ app.post('/webhook/test', async (req, res) => {
     res.json({ success: true, message: 'Test webhook received' });
 });
 
+// Download endpoint for specific rune ZIP packages
+app.get('/download/rune/:runeName', (req, res) => {
+    const { runeName } = req.params;
+    console.log('📥 Rune download requested:', runeName);
+    
+    // Validate rune name
+    const validRunes = ['flowrune', 'ansuz', 'laguz'];
+    if (!validRunes.includes(runeName)) {
+        return res.status(404).json({
+            error: 'Rune not found',
+            success: false
+        });
+    }
+    
+    // Define rune file mappings
+    const runeFiles = {
+        'flowrune': 'FlowRune-Automation-Template.zip',
+        'ansuz': 'Ansuz-Messenger-Template.zip',
+        'laguz': 'Laguz-Adapter-Template.zip'
+    };
+    
+    const fileName = runeFiles[runeName];
+    const filePath = path.join(__dirname, '..', 'assets', 'downloads', fileName);
+    
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+        console.error('❌ Rune file not found:', filePath);
+        return res.status(404).json({
+            error: 'Rune file not found',
+            success: false
+        });
+    }
+    
+    // Set headers for ZIP download
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+    
+    // Stream the file
+    const fileStream = fs.createReadStream(filePath);
+    fileStream.pipe(res);
+    
+    console.log('✅ Rune ZIP download started:', fileName);
+});
+
 // ==================== HELPER FUNCTIONS ====================
 
 function getPackageName(packageType) {
@@ -390,7 +566,7 @@ async function saveEmailList() {
     }
 }
 
-async function sendWelcomeEmail(email) {
+async function sendWelcomeEmail(email, selectedRune = null) {
     const mailOptions = {
         from: `${process.env.FROM_NAME || 'Bryan Meason - RuneFlow'} <${process.env.FROM_EMAIL || 'bryan@webhalla.com'}>`,
         to: email,
