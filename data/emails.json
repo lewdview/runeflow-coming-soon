@@ -31,5 +31,14 @@
     "charge_id": "demo_2e512fae",
     "amount": 999,
     "status": "pending"
+  },
+  {
+    "email": "BMEASON@GMAIL.COM",
+    "timestamp": "2025-07-20T16:57:32.844Z",
+    "selected_rune": "ansuz",
+    "is_free_pack": true,
+    "referrer": "http://localhost:3000/",
+    "ip": "127.0.0.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15"
   }
 ]

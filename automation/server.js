@@ -151,7 +151,7 @@ app.post('/capture-email', async (req, res) => {
     }
 });
 
-// Analytics endpoint
+// Analytics endpoint (public - emails obfuscated)
 app.get('/analytics', (req, res) => {
     res.json({
         ...analyticsData,
@@ -160,6 +160,34 @@ app.get('/analytics', (req, res) => {
             timestamp: entry.timestamp,
             referrer: entry.referrer
         }))
+    });
+});
+
+// Admin analytics endpoint (full emails visible)
+app.get('/admin/analytics', (req, res) => {
+    // Simple auth check - you can enhance this with proper authentication
+    const authHeader = req.get('Authorization');
+    const adminKey = process.env.ADMIN_KEY || 'runeflow-admin-2025';
+    
+    if (!authHeader || authHeader !== `Bearer ${adminKey}`) {
+        return res.status(401).json({
+            error: 'Unauthorized - Admin access required',
+            hint: 'Use: Authorization: Bearer your-admin-key'
+        });
+    }
+    
+    res.json({
+        ...analyticsData,
+        recentSignups: emailList.slice(-20).map(entry => ({
+            email: entry.email, // Full email shown for admin
+            timestamp: entry.timestamp,
+            referrer: entry.referrer,
+            utm_source: entry.utm_source,
+            selected_rune: entry.selected_rune,
+            is_free_pack: entry.is_free_pack
+        })),
+        allEmails: emailList.length,
+        fullEmailList: emailList // Complete list for admin
     });
 });
 

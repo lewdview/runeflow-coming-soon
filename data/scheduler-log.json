@@ -2513,5 +2513,19 @@
       "signupCount": 1
     },
     "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T16:49:37.958Z",
+    "eventType": "startup",
+    "data": {
+      "totalJobs": 7
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-20T16:53:56.201Z",
+    "eventType": "shutdown",
+    "data": {},
+    "scheduler": "runeflow-social-scheduler"
   }
 ]

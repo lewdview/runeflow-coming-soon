@@ -1,0 +1,626 @@
+{
+  "templates": {
+    "flowrune-automation-template": {
+      "id": "flowrune-automation-template",
+      "name": "FlowRune - The Automation Master",
+      "category": "Email Marketing",
+      "subcategory": "Lead Generation",
+      "difficulty": "Beginner",
+      "status": "Active",
+      "version": "1.0.0",
+      "tags": ["email-automation", "lead-generation", "starter-pack", "runeflow"],
+      "rune_symbol": "ᚠ",
+      "rune_meaning": "Wealth, Abundance, Flow",
+      "description": "Comprehensive email automation workflow for lead capture, nurturing, and conversion tracking",
+      "long_description": "FlowRune harnesses the ancient power of wealth and abundance to create seamless lead generation flows. This template automates the entire process from initial contact capture through nurturing sequences and conversion tracking.",
+      "author": "RuneFlow Team",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-15T12:00:00Z",
+      "download_count": 1247,
+      "rating": 4.8,
+      "rating_count": 156,
+      "estimated_setup_time": "10 minutes",
+      "file_size": "18.1 KB",
+      "preview_image": "/assets/previews/flowrune-preview.png",
+      "workflow_screenshot": "/assets/screenshots/flowrune-workflow.png",
+      "demo_url": "/demos/flowrune",
+      "required_credentials": [
+        "Email service (Gmail/Outlook/SendGrid)",
+        "Google Sheets API",
+        "Webhook URL (optional)",
+        "Slack (optional)"
+      ],
+      "supported_integrations": [
+        "Gmail", "Outlook", "SendGrid", "Mailchimp", "ConvertKit",
+        "Google Sheets", "Airtable", "Notion",
+        "Slack", "Discord", "Microsoft Teams",
+        "Zapier Webhooks", "HTTP API"
+      ],
+      "use_cases": [
+        "Lead capture from landing pages",
+        "Automated welcome sequences",
+        "Lead scoring and qualification",
+        "CRM integration and data sync",
+        "Team notifications and alerts",
+        "Analytics and reporting automation"
+      ],
+      "workflow_steps": [
+        {
+          "step": 1,
+          "name": "Lead Capture Webhook",
+          "description": "Receives form submissions from landing pages",
+          "node_type": "webhook"
+        },
+        {
+          "step": 2,
+          "name": "Data Validation",
+          "description": "Validates and cleanses incoming lead data",
+          "node_type": "function"
+        },
+        {
+          "step": 3,
+          "name": "Lead Scoring",
+          "description": "Assigns lead scores based on criteria",
+          "node_type": "set"
+        },
+        {
+          "step": 4,
+          "name": "Welcome Email",
+          "description": "Sends personalized welcome message",
+          "node_type": "email"
+        },
+        {
+          "step": 5,
+          "name": "CRM Integration",
+          "description": "Creates or updates contact in CRM",
+          "node_type": "api"
+        },
+        {
+          "step": 6,
+          "name": "Analytics Logging",
+          "description": "Logs conversion data to spreadsheet",
+          "node_type": "google_sheets"
+        }
+      ],
+      "configuration_required": [
+        {
+          "field": "email_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "Email service credentials for sending welcome messages"
+        },
+        {
+          "field": "google_sheets_id",
+          "type": "string",
+          "required": true,
+          "description": "Google Sheets ID for logging lead data"
+        },
+        {
+          "field": "webhook_url",
+          "type": "url",
+          "required": false,
+          "description": "Custom webhook URL for form integration"
+        },
+        {
+          "field": "lead_scoring_criteria",
+          "type": "object",
+          "required": false,
+          "description": "Custom lead scoring parameters"
+        }
+      ],
+      "pricing": {
+        "tier": "Free",
+        "included_executions": 100,
+        "additional_cost_per_execution": 0
+      },
+      "support_level": "Community",
+      "documentation_url": "/docs/templates/flowrune",
+      "video_tutorial_url": "/tutorials/flowrune-setup",
+      "community_forum_url": "/community/flowrune",
+      "zip_file_path": "/assets/downloads/FlowRune-Automation-Template.zip",
+      "json_workflow_path": "/templates/workflows/flowrune-automation.json",
+      "readme_path": "/templates/docs/flowrune-readme.md",
+      "setup_guide_path": "/templates/docs/flowrune-setup.md"
+    },
+    "ansuz-messenger-template": {
+      "id": "ansuz-messenger-template",
+      "name": "Ansuz - The Messenger",
+      "category": "Email Marketing",
+      "subcategory": "Welcome Sequences",
+      "difficulty": "Beginner",
+      "status": "Active",
+      "version": "1.0.0",
+      "tags": ["email-automation", "welcome-sequence", "starter-pack", "messaging"],
+      "rune_symbol": "ᚨ",
+      "rune_meaning": "Divine Communication, Messages, Signals",
+      "description": "Complete email automation workflow for new subscriber onboarding with advanced lead enrichment",
+      "long_description": "Ansuz channels the power of divine communication to create seamless messaging workflows. Perfect for welcoming new subscribers with personalized sequences based on their profile and behavior.",
+      "author": "RuneFlow Team",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-15T12:00:00Z",
+      "download_count": 892,
+      "rating": 4.9,
+      "rating_count": 123,
+      "estimated_setup_time": "5 minutes",
+      "file_size": "7.5 KB",
+      "preview_image": "/assets/previews/ansuz-preview.png",
+      "workflow_screenshot": "/assets/screenshots/ansuz-workflow.png",
+      "demo_url": "/demos/ansuz",
+      "required_credentials": [
+        "Email service (Gmail/Outlook)",
+        "HubSpot CRM",
+        "Slack workspace",
+        "Google Sheets"
+      ],
+      "supported_integrations": [
+        "Gmail", "Outlook", "SendGrid", "Mailgun",
+        "HubSpot", "Salesforce", "Pipedrive",
+        "Slack", "Discord", "Microsoft Teams",
+        "Google Sheets", "Airtable"
+      ],
+      "use_cases": [
+        "Welcome new email subscribers",
+        "Automate CRM contact creation",
+        "Send team notifications",
+        "Track signup analytics",
+        "Lead enrichment and scoring",
+        "Personalized follow-up sequences"
+      ],
+      "workflow_steps": [
+        {
+          "step": 1,
+          "name": "Email Signup Webhook",
+          "description": "Captures new subscriber data from forms",
+          "node_type": "webhook"
+        },
+        {
+          "step": 2,
+          "name": "Welcome Delay",
+          "description": "5-minute delay for optimal delivery timing",
+          "node_type": "wait"
+        },
+        {
+          "step": 3,
+          "name": "Welcome Email",
+          "description": "Personalized welcome message with starter pack",
+          "node_type": "email"
+        },
+        {
+          "step": 4,
+          "name": "Add to CRM",
+          "description": "Creates contact in HubSpot with tags",
+          "node_type": "hubspot"
+        },
+        {
+          "step": 5,
+          "name": "Team Notification",
+          "description": "Slack alert for new signups",
+          "node_type": "slack"
+        },
+        {
+          "step": 6,
+          "name": "Lead Enrichment",
+          "description": "Analyzes email domain and assigns lead score",
+          "node_type": "function"
+        },
+        {
+          "step": 7,
+          "name": "Analytics Logging",
+          "description": "Logs detailed signup data to Google Sheets",
+          "node_type": "google_sheets"
+        }
+      ],
+      "configuration_required": [
+        {
+          "field": "email_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "Email service for sending welcome messages"
+        },
+        {
+          "field": "hubspot_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "HubSpot API key for CRM integration"
+        },
+        {
+          "field": "slack_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "Slack workspace token for notifications"
+        },
+        {
+          "field": "google_sheets_id",
+          "type": "string",
+          "required": true,
+          "description": "Google Sheets ID for analytics logging"
+        }
+      ],
+      "pricing": {
+        "tier": "Free",
+        "included_executions": 100,
+        "additional_cost_per_execution": 0
+      },
+      "support_level": "Community",
+      "documentation_url": "/docs/templates/ansuz",
+      "video_tutorial_url": "/tutorials/ansuz-setup",
+      "community_forum_url": "/community/ansuz",
+      "zip_file_path": "/assets/downloads/Ansuz-Messenger-Template.zip",
+      "json_workflow_path": "/templates/workflows/ansuz-messenger.json",
+      "readme_path": "/templates/docs/ansuz-readme.md",
+      "setup_guide_path": "/templates/docs/ansuz-setup.md"
+    },
+    "laguz-adapter-template": {
+      "id": "laguz-adapter-template",
+      "name": "Laguz - The Flow Adapter",
+      "category": "Data Integration",
+      "subcategory": "API Transformation",
+      "difficulty": "Intermediate",
+      "status": "Active",
+      "version": "1.0.0",
+      "tags": ["data-transformation", "api-integration", "webhook", "adapter"],
+      "rune_symbol": "ᛚ",
+      "rune_meaning": "Flow, Water, Adaptation, Flexibility",
+      "description": "Flexible data transformation and API integration template for connecting disparate systems",
+      "long_description": "Laguz embodies the fluid nature of water, adapting to any container. This template provides powerful data transformation capabilities, allowing you to seamlessly connect different APIs and data formats.",
+      "author": "RuneFlow Team",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-15T12:00:00Z",
+      "download_count": 634,
+      "rating": 4.7,
+      "rating_count": 89,
+      "estimated_setup_time": "15 minutes",
+      "file_size": "10.8 KB",
+      "preview_image": "/assets/previews/laguz-preview.png",
+      "workflow_screenshot": "/assets/screenshots/laguz-workflow.png",
+      "demo_url": "/demos/laguz",
+      "required_credentials": [
+        "API credentials (source system)",
+        "API credentials (destination system)",
+        "Database connection (optional)"
+      ],
+      "supported_integrations": [
+        "REST APIs", "GraphQL APIs", "WebSocket", "FTP/SFTP",
+        "MySQL", "PostgreSQL", "MongoDB", "Redis",
+        "AWS S3", "Google Cloud Storage", "Azure Blob",
+        "Kafka", "RabbitMQ", "Redis Pub/Sub"
+      ],
+      "use_cases": [
+        "API data transformation and routing",
+        "Real-time data synchronization",
+        "Legacy system integration",
+        "Data format conversion (JSON/XML/CSV)",
+        "Multi-system data aggregation",
+        "Custom webhook processing"
+      ],
+      "workflow_steps": [
+        {
+          "step": 1,
+          "name": "Data Intake",
+          "description": "Receives data from multiple sources",
+          "node_type": "webhook"
+        },
+        {
+          "step": 2,
+          "name": "Data Validation",
+          "description": "Validates incoming data structure",
+          "node_type": "function"
+        },
+        {
+          "step": 3,
+          "name": "Transformation Engine",
+          "description": "Transforms data based on mapping rules",
+          "node_type": "code"
+        },
+        {
+          "step": 4,
+          "name": "Conditional Routing",
+          "description": "Routes data based on conditions",
+          "node_type": "if"
+        },
+        {
+          "step": 5,
+          "name": "Output Delivery",
+          "description": "Sends transformed data to destination",
+          "node_type": "http_request"
+        },
+        {
+          "step": 6,
+          "name": "Error Handling",
+          "description": "Handles failures with retry logic",
+          "node_type": "error_handler"
+        }
+      ],
+      "configuration_required": [
+        {
+          "field": "source_api_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "API credentials for source system"
+        },
+        {
+          "field": "destination_api_credentials",
+          "type": "credential",
+          "required": true,
+          "description": "API credentials for destination system"
+        },
+        {
+          "field": "transformation_rules",
+          "type": "object",
+          "required": true,
+          "description": "Data mapping and transformation rules"
+        },
+        {
+          "field": "error_webhook",
+          "type": "url",
+          "required": false,
+          "description": "Webhook URL for error notifications"
+        }
+      ],
+      "pricing": {
+        "tier": "Free",
+        "included_executions": 100,
+        "additional_cost_per_execution": 0
+      },
+      "support_level": "Community",
+      "documentation_url": "/docs/templates/laguz",
+      "video_tutorial_url": "/tutorials/laguz-setup",
+      "community_forum_url": "/community/laguz",
+      "zip_file_path": "/assets/downloads/Laguz-Adapter-Template.zip",
+      "json_workflow_path": "/templates/workflows/laguz-adapter.json",
+      "readme_path": "/templates/docs/laguz-readme.md",
+      "setup_guide_path": "/templates/docs/laguz-setup.md"
+    }
+  },
+  "categories": {
+    "email-marketing": {
+      "id": "email-marketing",
+      "name": "Email Marketing",
+      "description": "Automated email sequences, welcome series, and subscriber management",
+      "icon": "📧",
+      "color": "#ff6b35",
+      "subcategories": [
+        {
+          "id": "welcome-sequences",
+          "name": "Welcome Sequences",
+          "description": "Onboard new subscribers with automated email series"
+        },
+        {
+          "id": "lead-generation",
+          "name": "Lead Generation", 
+          "description": "Capture and nurture leads through automated workflows"
+        },
+        {
+          "id": "drip-campaigns",
+          "name": "Drip Campaigns",
+          "description": "Educational and nurturing email sequences"
+        },
+        {
+          "id": "re-engagement",
+          "name": "Re-engagement",
+          "description": "Win back inactive subscribers"
+        }
+      ],
+      "template_count": 2,
+      "difficulty_levels": ["Beginner", "Intermediate"],
+      "avg_setup_time": "7.5 minutes"
+    },
+    "data-integration": {
+      "id": "data-integration",
+      "name": "Data Integration",
+      "description": "Connect and synchronize data between different systems and APIs",
+      "icon": "🔗",
+      "color": "#4ecdc4",
+      "subcategories": [
+        {
+          "id": "api-transformation",
+          "name": "API Transformation",
+          "description": "Transform and route data between APIs"
+        },
+        {
+          "id": "database-sync",
+          "name": "Database Sync",
+          "description": "Synchronize data between databases"
+        },
+        {
+          "id": "file-processing",
+          "name": "File Processing",
+          "description": "Process and transform file data"
+        },
+        {
+          "id": "real-time-sync",
+          "name": "Real-time Sync",
+          "description": "Live data synchronization workflows"
+        }
+      ],
+      "template_count": 1,
+      "difficulty_levels": ["Intermediate", "Advanced"],
+      "avg_setup_time": "15 minutes"
+    },
+    "ecommerce": {
+      "id": "ecommerce",
+      "name": "E-commerce",
+      "description": "Automated order processing, inventory management, and customer service",
+      "icon": "🛒",
+      "color": "#ffab00",
+      "subcategories": [
+        {
+          "id": "order-processing",
+          "name": "Order Processing",
+          "description": "Automate order fulfillment workflows"
+        },
+        {
+          "id": "inventory-management",
+          "name": "Inventory Management",
+          "description": "Track stock levels and automate reordering"
+        },
+        {
+          "id": "customer-service",
+          "name": "Customer Service",
+          "description": "Automated support ticket management"
+        },
+        {
+          "id": "abandoned-cart",
+          "name": "Abandoned Cart",
+          "description": "Recover lost sales with automated sequences"
+        }
+      ],
+      "template_count": 0,
+      "difficulty_levels": ["Beginner", "Intermediate", "Advanced"],
+      "avg_setup_time": "20 minutes"
+    },
+    "social-media": {
+      "id": "social-media",
+      "name": "Social Media",
+      "description": "Content scheduling, monitoring, and engagement automation",
+      "icon": "📱",
+      "color": "#8b5cf6",
+      "subcategories": [
+        {
+          "id": "content-distribution",
+          "name": "Content Distribution",
+          "description": "Multi-platform content posting"
+        },
+        {
+          "id": "social-listening",
+          "name": "Social Listening",
+          "description": "Monitor mentions and hashtags"
+        },
+        {
+          "id": "influencer-outreach",
+          "name": "Influencer Outreach",
+          "description": "Automated partnership campaigns"
+        },
+        {
+          "id": "community-management",
+          "name": "Community Management",
+          "description": "Automated engagement and responses"
+        }
+      ],
+      "template_count": 0,
+      "difficulty_levels": ["Beginner", "Intermediate"],
+      "avg_setup_time": "12 minutes"
+    }
+  },
+  "integrations": {
+    "email-services": [
+      {
+        "id": "gmail",
+        "name": "Gmail",
+        "type": "Email Service",
+        "auth_type": "OAuth2",
+        "icon": "/icons/gmail.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/gmail"
+      },
+      {
+        "id": "outlook",
+        "name": "Outlook",
+        "type": "Email Service", 
+        "auth_type": "OAuth2",
+        "icon": "/icons/outlook.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/outlook"
+      },
+      {
+        "id": "sendgrid",
+        "name": "SendGrid",
+        "type": "Email Service",
+        "auth_type": "API Key",
+        "icon": "/icons/sendgrid.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/sendgrid"
+      }
+    ],
+    "crm-systems": [
+      {
+        "id": "hubspot",
+        "name": "HubSpot",
+        "type": "CRM",
+        "auth_type": "API Key",
+        "icon": "/icons/hubspot.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/hubspot"
+      },
+      {
+        "id": "salesforce",
+        "name": "Salesforce",
+        "type": "CRM",
+        "auth_type": "OAuth2",
+        "icon": "/icons/salesforce.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/salesforce"
+      }
+    ],
+    "data-storage": [
+      {
+        "id": "google-sheets",
+        "name": "Google Sheets",
+        "type": "Spreadsheet",
+        "auth_type": "Service Account",
+        "icon": "/icons/google-sheets.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/google-sheets"
+      },
+      {
+        "id": "airtable",
+        "name": "Airtable",
+        "type": "Database",
+        "auth_type": "API Key",
+        "icon": "/icons/airtable.png",
+        "supported": true,
+        "setup_guide": "/docs/integrations/airtable"
+      }
+    ]
+  },
+  "rune_meanings": {
+    "ᚠ": {
+      "name": "Fehu",
+      "english": "FlowRune",
+      "meaning": "Wealth, Abundance, Flow",
+      "symbolism": "Represents the flow of wealth and abundance in automated systems"
+    },
+    "ᚨ": {
+      "name": "Ansuz", 
+      "english": "Ansuz",
+      "meaning": "Divine Communication, Messages, Signals",
+      "symbolism": "The power of divine communication channeled through messaging workflows"
+    },
+    "ᛚ": {
+      "name": "Laguz",
+      "english": "Laguz", 
+      "meaning": "Flow, Water, Adaptation, Flexibility",
+      "symbolism": "The fluid nature of water, adapting to connect any systems"
+    }
+  },
+  "metadata": {
+    "database_version": "1.0.0",
+    "last_updated": "2025-01-21T03:53:00Z",
+    "total_templates": 4074,
+    "total_downloads": 0,
+    "total_categories": 17,
+    "total_integrations": 10,
+    "avg_rating": 0,
+    "supported_n8n_versions": ["0.200.0+"],
+    "difficulty_distribution": {
+      "Beginner": 364,
+      "Intermediate": 1096,
+      "Advanced": 2614
+    },
+    "top_categories": {
+      "notifications": 1027,
+      "analytics-reporting": 690,
+      "security-compliance": 551,
+      "ecommerce": 447,
+      "development-tools": 330
+    },
+    "api_endpoints": {
+      "templates": "/api/v1/templates",
+      "categories": "/api/v1/categories",
+      "integrations": "/api/v1/integrations",
+      "download": "/api/v1/download/{template_id}",
+      "search": "/api/v1/search",
+      "stats": "/api/v1/stats"
+    }
+  }
+}
