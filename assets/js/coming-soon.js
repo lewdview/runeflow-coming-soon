@@ -379,9 +379,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setLoadingState(true);
         
         try {
-            // Simulate API call (replace with actual endpoint)
-            const success = await submitToWaitlist(email, isFreePack ? window.selectedFreeRune : null);
-            
+            // Submit to Railway backend
+            // 🔧 CONFIGURATION: Replace this URL with your actual Railway deployment URL
+            const API_BASE = 'https://runeflow-backend.up.railway.app'; // Replace with your actual Railway URL
+
+            const success = await submitToWaitlist(`${API_BASE}/capture-email`, email, isFreePack ? window.selectedFreeRune : null);
+
             if (success) {
                 // Reset form
                 waitlistForm.reset();
@@ -413,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Submit to waitlist function - Connected to real API
-    async function submitToWaitlist(email, selectedRune = null) {
+    async function submitToWaitlist(apiEndpoint, email, selectedRune = null) {
         try {
             const requestBody = { email };
             
@@ -423,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 requestBody.is_free_pack = true;
             }
             
-            const response = await fetch('/capture-email', {
+            const response = await fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
