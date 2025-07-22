@@ -380,8 +380,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Submit to Railway backend
-            // 🔧 CONFIGURATION: Replace this URL with your actual Railway deployment URL
-            const API_BASE = 'https://runeflow-backend.up.railway.app'; // Replace with your actual Railway URL
+            // 🔧 CONFIGURATION: Updated with actual Railway deployment URL
+            const API_BASE = 'https://runeflow-coming-soon.railway.internal'; // Your actual Railway URL
 
             const success = await submitToWaitlist(`${API_BASE}/capture-email`, email, isFreePack ? window.selectedFreeRune : null);
 
