@@ -2,8 +2,9 @@
 // This script runs client-side and switches from simple to complex page on countdown
 
 (function() {
-    // Configuration
-    const SWITCH_DATE = new Date('2025-09-01T00:00:00Z'); // September 1st, 2025
+    // Configuration - Launch in 2 days from now
+    const now = new Date();
+    const SWITCH_DATE = new Date(now.getTime() + (2 * 24 * 60 * 60 * 1000)); // 2 days from now
     const COMPLEX_PAGE_URL = 'complex-index.html';
     
     // Check if we should switch to complex page
