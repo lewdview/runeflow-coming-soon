@@ -2,9 +2,9 @@
 // This script runs client-side and switches from simple to complex page on countdown
 
 (function() {
-    // Configuration - Launch in 2 days from now
-    const now = new Date();
-    const SWITCH_DATE = new Date(now.getTime() + (2 * 24 * 60 * 60 * 1000)); // 2 days from now
+    // Configuration - Fixed launch date (July 24, 2025 at 8:38 PM UTC)
+    // This date is set once and will not reset on page reload
+    const SWITCH_DATE = new Date('2025-07-24T20:38:00Z'); // Fixed target date
     const COMPLEX_PAGE_URL = 'complex-index.html';
     
     // Check if we should switch to complex page
@@ -67,8 +67,8 @@
             if (distance < 0) {
                 countdownEl.innerHTML = `
                     <div style="color: #4ecdc4;">
-                        <div style="font-weight: 600; margin-bottom: 5px;">🚀 Launching Now!</div>
-                        <div style="font-size: 0.8rem; opacity: 0.8;">Redirecting to full page...</div>
+                        <div style="font-weight: 600; margin-bottom: 5px;">🔮 More Info Available!</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Loading details...</div>
                     </div>
                 `;
                 return;
@@ -80,11 +80,11 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
             countdownEl.innerHTML = `
-                <div style="font-weight: 600; margin-bottom: 5px; color: #ffab00;">Full Launch In:</div>
+                <div style="font-weight: 600; margin-bottom: 5px; color: #ffab00;">More Info Coming In:</div>
                 <div style="font-weight: 700; font-size: 1.1rem;">
                     ${days}d ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}
                 </div>
-                <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Auto-switching to full page</div>
+                <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Details and options reveal</div>
             `;
         };
         
