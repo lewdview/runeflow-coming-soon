@@ -2527,5 +2527,43 @@
     "eventType": "shutdown",
     "data": {},
     "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-21T23:38:51.666Z",
+    "eventType": "startup",
+    "data": {
+      "totalJobs": 7
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-21T23:39:06.715Z",
+    "eventType": "startup",
+    "data": {
+      "totalJobs": 7
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-21T23:39:21.800Z",
+    "eventType": "startup",
+    "data": {
+      "totalJobs": 7
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-21T23:39:36.887Z",
+    "eventType": "startup",
+    "data": {
+      "totalJobs": 7
+    },
+    "scheduler": "runeflow-social-scheduler"
+  },
+  {
+    "timestamp": "2025-07-21T23:39:42.136Z",
+    "eventType": "shutdown",
+    "data": {},
+    "scheduler": "runeflow-social-scheduler"
   }
 ]

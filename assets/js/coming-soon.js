@@ -1343,14 +1343,15 @@ function isValidEmail(email) {
         setTimeout(animateWaitlistCount, 500);
     }
     
-    // Organically increment waitlist count every 15-30 minutes
+    // Organically increment waitlist count - more realistic timing
     setInterval(() => {
-        if (Math.random() < 0.7) { // 70% chance to increment
+        if (Math.random() < 0.4) { // 40% chance to increment (more realistic)
             waitlistCount++;
             waitlistCountEl.textContent = waitlistCount;
             localStorage.setItem('waitlistCount', waitlistCount);
+            console.log('Waitlist count updated:', waitlistCount);
         }
-    }, Math.random() * 900000 + 900000); // 15-30 minutes
+    }, Math.random() * 1800000 + 1800000); // 30-60 minutes (more realistic)
     
     // Social sharing functionality
     window.shareOnTwitter = function() {
@@ -1502,20 +1503,29 @@ function initializePaymentSystem() {
         spotsRemainingEl.textContent = savedSpots;
     }
     
-    // Dynamic spots countdown - real decreasing counter
-    let spotsRemaining = 73; // Starting spots
-    spotsRemainingEl.textContent = spotsRemaining;
+    // Transparent spots counter - starts at realistic number based on current time
+    const now = new Date();
+    const daysSinceLaunch = Math.floor((now - new Date('2025-01-22')) / (1000 * 60 * 60 * 24));
+    let spotsRemaining = Math.max(15, 100 - Math.floor(daysSinceLaunch * 2.5)); // Decreases ~2-3 per day organically
     
-    // Decrease spots every 8-15 minutes organically
+    // Load from localStorage if available, but keep realistic bounds
+    const savedSpots = localStorage.getItem('spotsRemaining');
+    if (savedSpots && parseInt(savedSpots) > 5 && parseInt(savedSpots) <= 100) {
+        spotsRemaining = parseInt(savedSpots);
+    }
+    
+    spotsRemainingEl.textContent = spotsRemaining;
+    localStorage.setItem('spotsRemaining', spotsRemaining);
+    
+    // Organically decrease spots every 3-6 hours
     setInterval(() => {
-        if (spotsRemaining > 5) {
+        if (spotsRemaining > 8 && Math.random() < 0.3) { // 30% chance every 3-6 hours
             spotsRemaining--;
             spotsRemainingEl.textContent = spotsRemaining;
-            
-            // Store the updated count in localStorage
             localStorage.setItem('spotsRemaining', spotsRemaining);
+            console.log('Founder spots remaining:', spotsRemaining);
         }
-    }, Math.random() * 420000 + 480000); // 8-15 minutes
+    }, Math.random() * 10800000 + 10800000); // 3-6 hours
     
     // Handle payment form submission
     if (paymentForm) {
@@ -2074,10 +2084,13 @@ window.toggleFAQ = function(questionElement) {
     }
 };
 
-// Countdown Timer - Real countdown to specific date
+// Countdown Timer - Real countdown to actual date (30 days from now)
 function initializeCountdownTimer() {
-    // Set target date - 30 days from now for founder pricing end
-    const targetDate = new Date('2025-02-16T23:59:59Z'); // Set to a specific date
+    // Calculate target date - 30 days from current date
+    const now = new Date();
+    const targetDate = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)); // 30 days from now
+    
+    console.log('Countdown timer initialized. Target date:', targetDate.toISOString());
     
     const daysElement = document.getElementById('days');
     const hoursElement = document.getElementById('hours');
@@ -2085,8 +2098,8 @@ function initializeCountdownTimer() {
     const secondsElement = document.getElementById('seconds');
     
     function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate.getTime() - now;
+        const currentTime = new Date().getTime();
+        const distance = targetDate.getTime() - currentTime;
         
         if (distance < 0) {
             // Timer expired - show zeros
@@ -2116,15 +2129,18 @@ function initializeCountdownTimer() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        if (daysElement) daysElement.textContent = days;
-        if (hoursElement) hoursElement.textContent = hours;
-        if (minutesElement) minutesElement.textContent = minutes;
-        if (secondsElement) secondsElement.textContent = seconds;
+        if (daysElement) daysElement.textContent = days.toString().padStart(2, '0');
+        if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
+        if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
+        if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
     }
     
     // Update countdown every second
-    setInterval(updateCountdown, 1000);
-    updateCountdown(); // Initial call
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call to set the timer immediately
+    
+    // Store interval ID for potential cleanup
+    window.countdownInterval = countdownInterval;
 }
 
 // Helper functions for ZIP file creation
