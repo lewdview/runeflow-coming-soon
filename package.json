@@ -7,7 +7,7 @@
     "start": "node automation/server.js",
     "dev": "live-server --port=3000 --host=0.0.0.0",
     "build": "npm run optimize",
-    "build-static": "node build-static.js",
+    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r documentation dist/ && cp *.html dist/ && cp *.css dist/ && cp *.js dist/",
     "optimize": "node automation/optimize.js",
     "deploy": "node automation/deploy.js",
     "social-blast": "node social-media-campaigns/social-blast.js",
