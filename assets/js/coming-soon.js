@@ -41,45 +41,80 @@ window.toggleRuneSelection = function(runeId) {
 
 // Toggle free rune selection
 window.toggleFreeRuneSelection = function(runeId) {
-    // Clear previous selection
-    document.querySelectorAll('.free-rune-selection .rune-card').forEach(card => {
-        card.classList.remove('selected');
-        const btn = card.querySelector('.select-rune-btn');
-        if (btn) {
-            btn.classList.remove('selected');
-            const btnText = btn.querySelector('.btn-text');
-            if (btnText) {
-                btnText.textContent = 'Select This Rune';
-            }
-        }
-    });
+    console.log('toggleFreeRuneSelection called with runeId:', runeId);
     
-    // Select the clicked rune
-    const runeCard = document.querySelector(`.free-rune-selection .rune-card[data-rune="${runeId}"]`);
-    if (runeCard) {
-        runeCard.classList.add('selected');
-        const btn = runeCard.querySelector('.select-rune-btn');
-        if (btn) {
-            btn.classList.add('selected');
-            const btnText = btn.querySelector('.btn-text');
-            if (btnText) {
-                btnText.textContent = 'Selected';
-            }
-        }
+    // Validate runeId parameter
+    if (!runeId) {
+        console.error('runeId is required but was not provided');
+        return;
     }
     
-    // Update selected free rune
-    window.selectedFreeRune = runeId;
-    
-    // Show the email form if it's hidden
-    const emailForm = document.querySelector('.email-form');
-    if (emailForm) {
-        emailForm.style.display = 'block';
+    try {
+        // Clear previous selection
+        const runeCards = document.querySelectorAll('.free-rune-selection .rune-card');
+        console.log('Found rune cards:', runeCards.length);
+        
+        runeCards.forEach(card => {
+            if (!card || !card.dataset) {
+                console.warn('Invalid card element found:', card);
+                return;
+            }
+            console.log('Processing card:', card.dataset.rune);
+            card.classList.remove('selected');
+            const btn = card.querySelector('.select-rune-btn');
+            if (btn) {
+                btn.classList.remove('selected');
+                const btnText = btn.querySelector('.btn-text');
+                if (btnText) {
+                    btnText.textContent = 'Select This Rune';
+                }
+            }
+        });
+        
+        // Select the clicked rune
+        const runeCard = document.querySelector(`.free-rune-selection .rune-card[data-rune="${runeId}"]`);
+        console.log('Selected rune card:', runeCard);
+        
+        if (runeCard) {
+            runeCard.classList.add('selected');
+            const btn = runeCard.querySelector('.select-rune-btn');
+            if (btn) {
+                btn.classList.add('selected');
+                const btnText = btn.querySelector('.btn-text');
+                if (btnText) {
+                    btnText.textContent = 'Selected';
+                }
+            }
+            console.log('Rune card selected successfully');
+        } else {
+            console.error('Could not find rune card with data-rune:', runeId);
+            console.log('Available rune cards:');
+            document.querySelectorAll('.free-rune-selection .rune-card').forEach(card => {
+                console.log('  - Card with data-rune:', card.dataset.rune);
+            });
+        }
+        
+        // Update selected free rune
+        window.selectedFreeRune = runeId;
+        console.log('selectedFreeRune set to:', window.selectedFreeRune);
+        
+        // Show the email form if it's hidden
+        const emailForm = document.querySelector('.email-form');
+        if (emailForm) {
+            emailForm.style.display = 'block';
+            console.log('Email form shown');
+        } else {
+            console.log('Email form not found');
+        }
+        
+    } catch (error) {
+        console.error('Error in toggleFreeRuneSelection:', error);
     }
 };
 
 // Select free rune (alias for toggleFreeRuneSelection to match HTML)
 window.selectFreeRune = function(runeId) {
+    console.log('selectFreeRune called with runeId:', runeId);
     window.toggleFreeRuneSelection(runeId);
 };
 
@@ -379,11 +414,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setLoadingState(true);
         
         try {
-            // Submit to Railway backend
-            // 🔧 CONFIGURATION: Updated with actual Railway deployment URL
-        const API_BASE_URL = 'https://runeflow.xyz';
+            // Submit to Netlify Functions backend
+            // 🔧 CONFIGURATION: Updated with actual Netlify deployment URL
+            const API_BASE_URL = 'https://runeflow.xyz';
 
-            const success = await submitToWaitlist(`${API_BASE}/capture-email`, email, isFreePack ? window.selectedFreeRune : null);
+            const success = await submitToWaitlist(`${API_BASE_URL}/.netlify/functions/capture-email`, email, isFreePack ? window.selectedFreeRune : null);
 
             if (success) {
                 // Reset form
@@ -593,17 +628,15 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadBtn.textContent = 'Preparing Download...';
         downloadBtn.disabled = true;
         
-        // Try to get download URL from session storage first
-        const downloadUrl = sessionStorage.getItem('starterRuneDownloadUrl');
-        
-        if (downloadUrl) {
-            // Use real API download endpoint
-            const fullUrl = `${downloadUrl}`;
+        // Download actual ZIP file from downloads directory
+        try {
+            const zipFileName = getZipFileNameForRune(selectedRune);
+            const downloadUrl = `assets/downloads/${zipFileName}`;
             
             // Create temporary link for download
             const a = document.createElement('a');
-            a.href = fullUrl;
-            a.download = `runeflow-${selectedRune}-template.zip`;
+            a.href = downloadUrl;
+            a.download = zipFileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -627,32 +660,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 downloadBtn.style.background = '';
                 downloadBtn.disabled = false;
             }, 3000);
-        } else {
-            // Fallback: Try direct download from backend
-            const directDownloadUrl = `/download/rune/${selectedRune}`;
+        } catch (error) {
+            console.error('Download failed:', error);
+            downloadBtn.textContent = 'Download Failed - Try Again';
+            downloadBtn.style.background = '#ff4444';
             
-            // Create temporary link for download
-            const a = document.createElement('a');
-            a.href = directDownloadUrl;
-            a.download = `runeflow-${selectedRune}-template.zip`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            
-            // Show success message
-            downloadBtn.textContent = 'Downloaded! ✓';
-            downloadBtn.style.background = '#4ecdc4';
-            
-            // Track download event
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'download', {
-                    'event_category': 'free_starter_pack',
-                    'event_label': `${selectedRune}_zip_direct`,
-                    'value': 1
-                });
-            }
-            
-            // Reset button after 3 seconds
             setTimeout(() => {
                 downloadBtn.textContent = originalText;
                 downloadBtn.style.background = '';
@@ -1499,12 +1511,6 @@ function isValidEmail(email) {
 function initializePaymentSystem() {
     const paymentForm = document.getElementById('paymentForm');
     const spotsRemainingEl = document.getElementById('spotsRemaining');
-    
-    // Load spots remaining from localStorage if available
-    const savedSpots = localStorage.getItem('spotsRemaining');
-    if (savedSpots && parseInt(savedSpots) > 0) {
-        spotsRemainingEl.textContent = savedSpots;
-    }
     
     // Transparent spots counter - starts at realistic number based on current time
     const now = new Date();

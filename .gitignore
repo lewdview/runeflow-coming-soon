@@ -36,3 +36,6 @@ data/emails.json
 # Build artifacts
 dist/
 build/
+
+# Local Netlify folder
+.netlify

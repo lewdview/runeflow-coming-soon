@@ -5,14 +5,17 @@ let emailList = [];
 
 exports.handler = async (event, context) => {
   // Handle CORS
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+    'Access-Control-Max-Age': '86400'
+  };
+  
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
+      headers: corsHeaders,
       body: ''
     };
   }
@@ -20,6 +23,7 @@ exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: corsHeaders,
       body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
@@ -31,9 +35,7 @@ exports.handler = async (event, context) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return {
         statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
+        headers: corsHeaders,
         body: JSON.stringify({ 
           error: 'Invalid email address',
           success: false 
@@ -46,9 +48,7 @@ exports.handler = async (event, context) => {
     if (existingEmail) {
       return {
         statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
+        headers: corsHeaders,
         body: JSON.stringify({
           message: 'Email already registered',
           success: true,
@@ -70,7 +70,7 @@ exports.handler = async (event, context) => {
     emailList.push(emailEntry);
 
     // Email configuration
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
       port: process.env.SMTP_PORT || 587,
       secure: false,
@@ -109,9 +109,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers: corsHeaders,
       body: JSON.stringify({
         message: 'Email captured successfully',
         success: true,
@@ -124,9 +122,7 @@ exports.handler = async (event, context) => {
     console.error('Function error:', error);
     return {
       statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers: corsHeaders,
       body: JSON.stringify({
         error: 'Internal server error',
         success: false

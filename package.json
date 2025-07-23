@@ -7,7 +7,7 @@
     "start": "node automation/server.js",
     "dev": "live-server --port=3000 --host=0.0.0.0",
     "build": "npm run optimize",
-    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r documentation dist/ && cp *.html dist/ && cp *.css dist/ && cp *.js dist/",
+    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r netlify dist/ && cp *.html dist/ 2>/dev/null || true && cp *.css dist/ 2>/dev/null || true && cp *.js dist/ 2>/dev/null || true",
     "optimize": "node automation/optimize.js",
     "deploy": "node automation/deploy.js",
     "social-blast": "node social-media-campaigns/social-blast.js",
@@ -38,7 +38,6 @@
     "express": "^4.18.2",
     "fs-extra": "^11.2.0",
     "html-minifier": "^4.0.0",
-    "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.8",
     "sharp": "^0.32.6",
     "twitter-api-v2": "^1.15.2",
@@ -47,6 +46,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "live-server": "^1.2.2",
+    "node-fetch": "^2.7.0",
     "nodemon": "^3.0.2"
   },
   "engines": {

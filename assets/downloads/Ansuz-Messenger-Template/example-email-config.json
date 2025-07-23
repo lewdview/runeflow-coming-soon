@@ -1,0 +1,72 @@
+{
+  "smtp_configuration": {
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "secure": false,
+    "auth": {
+      "user": "your-email@gmail.com",
+      "pass": "your-app-password"
+    },
+    "tls": {
+      "rejectUnauthorized": false
+    }
+  },
+  "email_templates": {
+    "welcome_email": {
+      "subject": "Welcome to RuneFlow, {{name}}!",
+      "from": "hello@runeflow.xyz",
+      "replyTo": "support@runeflow.xyz",
+      "html_structure": "Clean HTML with RuneFlow branding",
+      "personalization": [
+        "{{name}} - Recipient's first name",
+        "{{email}} - Recipient's email",
+        "{{signup_date}} - Date of signup",
+        "{{starter_pack}} - Selected starter pack"
+      ]
+    }
+  },
+  "crm_integration": {
+    "hubspot": {
+      "api_endpoint": "https://api.hubapi.com/contacts/v1/contact/",
+      "required_fields": ["email", "firstname", "lastname"],
+      "custom_properties": [
+        "subscription_source",
+        "signup_date", 
+        "lead_score",
+        "followup_sequence"
+      ],
+      "tags": ["new-subscriber", "starter-pack", "runeflow-founder"]
+    }
+  },
+  "google_sheets": {
+    "tracking_columns": [
+      "email",
+      "name", 
+      "signup_date",
+      "source",
+      "email_domain",
+      "lead_score",
+      "followup_sequence"
+    ],
+    "sheet_name": "Starter Pack Downloads",
+    "instructions": "Create a Google Sheet with these column headers"
+  },
+  "slack_integration": {
+    "webhook_format": {
+      "channel": "#founder-alerts",
+      "username": "RuneFlow Bot",
+      "icon_emoji": ":rune:",
+      "message_template": "🎯 New Starter Pack Download!\n\n**Email:** {{email}}\n**Name:** {{name}}\n**Source:** Coming Soon Page\n**Timestamp:** {{timestamp}}"
+    }
+  },
+  "setup_checklist": [
+    "✓ Configure SMTP credentials in n8n",
+    "✓ Set up HubSpot API key",
+    "✓ Create Google Sheet with tracking columns", 
+    "✓ Add Slack webhook URL",
+    "✓ Test welcome email to yourself",
+    "✓ Verify CRM contact creation",
+    "✓ Check Google Sheets logging",
+    "✓ Confirm Slack notifications work"
+  ]
+}
