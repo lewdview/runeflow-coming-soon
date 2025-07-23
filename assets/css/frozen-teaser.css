@@ -191,9 +191,7 @@
     }
 }
 
-/* RuneFlow.xyz - Neon to Powder Blue Fresh Design */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Exo+2:wght@300;400;500;700;900&display=swap');
+/* RuneFlow.xyz - Neon to Powder Blue Fresh Design - Cross-browser compatible */
 
 :root {
     --neon-blue: #00d4ff;
@@ -482,14 +480,24 @@ body::after {
 }
 
 .frozen-suffix {
+    /* Cross-browser compatible styling */
     color: white !important;
-    font-size: 0.6em;
+    font-size: 0.6em !important;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6) !important;
     opacity: 1 !important;
     display: inline !important;
     visibility: visible !important;
+    /* Reset any background clipping */
     -webkit-text-fill-color: white !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
     background: transparent !important;
+    /* Firefox fallbacks */
+    -moz-text-fill-color: white;
+    /* Ensure it's always visible */
+    font-weight: inherit !important;
+    text-transform: inherit !important;
+    letter-spacing: inherit !important;
 }
 
 .tagline {
