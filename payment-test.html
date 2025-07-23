@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment System Test - RuneFlow.xyz</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #001a33 0%, #002244 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        .test-section {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .test-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .test-btn {
+            background: linear-gradient(135deg, #00ffff, #0088cc);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: linear-gradient(135deg, #00ccff, #0066aa);
+            transform: translateY(-2px);
+        }
+        
+        .info-box {
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 4px solid #00ffff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .user-list {
+            max-height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .user-item {
+            background: rgba(0, 255, 255, 0.1);
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status.active {
+            background: #28a745;
+            color: white;
+        }
+        
+        .tier-badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .tier-elite { background: #ff6b35; }
+        .tier-pro { background: #4a90e2; }
+        .tier-founder { background: #f39c12; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Payment System Test</h1>
+            <p>Test the RuneFlow.xyz payment confirmation and user ID system</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🚀 Simulate Payment Confirmations</h2>
+            <p>Click these buttons to simulate successful payments and see the user ID generation system in action:</p>
+            
+            <div class="test-buttons">
+                <button class="test-btn" onclick="simulatePaymentConfirmation('elite')">
+                    🔥 Test Elite ($999)
+                </button>
+                <button class="test-btn" onclick="simulatePaymentConfirmation('pro')">
+                    ⚡ Test Pro ($297)
+                </button>
+                <button class="test-btn" onclick="simulatePaymentConfirmation('founder')">
+                    💎 Test Founder ($199)
+                </button>
+            </div>
+            
+            <div class="info-box">
+                <strong>💡 What happens when you click:</strong>
+                <ul>
+                    <li>🆔 Generates a unique user ID (RF_timestamp_random)</li>
+                    <li>🎉 Shows payment success modal with user details</li>
+                    <li>💾 Stores user data locally (simulating database storage)</li>
+                    <li>📧 Simulates confirmation email sending</li>
+                    <li>📋 Allows downloading account data as JSON</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>👥 User Accounts Created</h2>
+            <p>All simulated user accounts will appear here:</p>
+            
+            <div class="test-buttons">
+                <button class="test-btn" onclick="refreshUserList()">🔄 Refresh List</button>
+                <button class="test-btn" onclick="clearAllUsers()" style="background: linear-gradient(135deg, #ff4444, #cc0000);">
+                    🗑️ Clear All Users
+                </button>
+                <button class="test-btn" onclick="exportAllUsers()">📥 Export All Users</button>
+            </div>
+            
+            <div id="userList" class="user-list">
+                <p style="text-align: center; color: #888;">No users created yet. Try simulating a payment above!</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 User Lookup</h2>
+            <p>Enter a User ID to retrieve account details:</p>
+            
+            <div style="display: flex; gap: 10px; margin: 15px 0;">
+                <input type="text" id="userIdInput" placeholder="Enter User ID (e.g., RF_XXXXX_XXXXXX)" 
+                       style="flex: 1; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #00ffff; border-radius: 4px; color: white;">
+                <button class="test-btn" onclick="lookupUser()">🔍 Lookup</button>
+            </div>
+            
+            <div id="lookupResult"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🌐 Webhook Testing</h2>
+            <p>For production, configure your Coinbase Commerce webhook URL to:</p>
+            
+            <div class="code-block">
+                https://runeflow.xyz/.netlify/functions/coinbase-webhook
+            </div>
+            
+            <div class="info-box">
+                <strong>🔧 Required Environment Variables:</strong>
+                <div class="code-block">
+COINBASE_WEBHOOK_SECRET=your_webhook_secret_from_coinbase
+SMTP_HOST=mail.runeflow.xyz
+SMTP_PORT=587
+SMTP_USER=hello@runeflow.xyz
+SMTP_PASS=your_email_password
+FROM_EMAIL=hello@runeflow.xyz</div>
+            </div>
+            
+            <p><strong>📋 Webhook Events Handled:</strong></p>
+            <ul>
+                <li><code>charge:confirmed</code> - Payment successful, creates user account</li>
+                <li><code>charge:failed</code> - Payment failed (logged only)</li>
+                <li><code>charge:delayed</code> - Payment pending (logged only)</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 System Status</h2>
+            <div id="systemStatus">
+                <p>🟢 Payment system: <span class="status active">ACTIVE</span></p>
+                <p>🟢 User ID generation: <span class="status active">ACTIVE</span></p>
+                <p>🟢 Local storage: <span class="status active">ACTIVE</span></p>
+                <p>🟡 Email system: <span style="background: #ffc107; color: black; padding: 3px 8px; border-radius: 3px;">SIMULATED</span></p>
+                <p>🟡 Database: <span style="background: #ffc107; color: black; padding: 3px 8px; border-radius: 3px;">LOCAL STORAGE</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the payment system -->
+    <script src="assets/js/payment-system.js"></script>
+    
+    <script>
+        // Test page specific functions
+        function refreshUserList() {
+            const users = getAllUsers();
+            const userListEl = document.getElementById('userList');
+            
+            if (users.length === 0) {
+                userListEl.innerHTML = '<p style="text-align: center; color: #888;">No users created yet. Try simulating a payment above!</p>';
+                return;
+            }
+            
+            userListEl.innerHTML = users.map(user => `
+                <div class="user-item">
+                    <strong>${user.userId}</strong>
+                    <span class="tier-badge tier-${user.tier}">${user.tier.toUpperCase()}</span>
+                    <span class="status active">ACTIVE</span>
+                    <br>
+                    <small>Created: ${new Date(user.createdAt).toLocaleString()}</small>
+                    <br>
+                    <small>Amount: $${user.paymentData.amount} | Access: ${user.accessLevel}</small>
+                </div>
+            `).join('');
+        }
+        
+        function clearAllUsers() {
+            if (confirm('Are you sure you want to clear all test users?')) {
+                localStorage.removeItem('runeflow_users');
+                // Also clear individual user entries
+                Object.keys(localStorage).forEach(key => {
+                    if (key.startsWith('user_RF_')) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                refreshUserList();
+                console.log('🗑️ All test users cleared');
+            }
+        }
+        
+        function exportAllUsers() {
+            const users = getAllUsers();
+            if (users.length === 0) {
+                alert('No users to export!');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(users, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `runeflow-users-export-${Date.now()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        function lookupUser() {
+            const userId = document.getElementById('userIdInput').value.trim();
+            const resultEl = document.getElementById('lookupResult');
+            
+            if (!userId) {
+                resultEl.innerHTML = '<p style="color: #ff4444;">Please enter a User ID</p>';
+                return;
+            }
+            
+            const user = getUserAccount(userId);
+            
+            if (!user) {
+                resultEl.innerHTML = `<p style="color: #ff4444;">❌ User not found: ${userId}</p>`;
+                return;
+            }
+            
+            resultEl.innerHTML = `
+                <div class="info-box">
+                    <h4>✅ User Found</h4>
+                    <div class="code-block">${JSON.stringify(user, null, 2)}</div>
+                    <button class="test-btn" onclick="downloadUserData('${userId}')">📥 Download User Data</button>
+                </div>
+            `;
+        }
+        
+        // Auto-refresh user list every few seconds
+        setInterval(refreshUserList, 3000);
+        
+        // Initial load
+        refreshUserList();
+        
+        console.log('🧪 Payment test page loaded');
+        console.log('💡 Available test functions:');
+        console.log('  - simulatePaymentConfirmation(tier)');
+        console.log('  - getUserAccount(userId)');
+        console.log('  - getAllUsers()');
+    </script>
+</body>
+</html>
