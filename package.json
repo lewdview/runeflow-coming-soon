@@ -7,7 +7,7 @@
     "start": "node automation/server.js",
     "dev": "live-server --port=3000 --host=0.0.0.0",
     "build": "npm run optimize",
-    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r netlify dist/ && cp *.html dist/ 2>/dev/null || true && cp *.css dist/ 2>/dev/null || true && cp *.js dist/ 2>/dev/null || true",
+    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r netlify dist/ && cp *.html dist/ 2>/dev/null || true && cp *.css dist/ 2>/dev/null || true && cp *.js dist/ 2>/dev/null || true && node scripts/build-analytics.js",
     "optimize": "node automation/optimize.js",
     "deploy": "node automation/deploy.js",
     "social-blast": "node social-media-campaigns/social-blast.js",

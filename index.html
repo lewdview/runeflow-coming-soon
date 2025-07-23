@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="assets/css/frozen-teaser.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </head>
 <body>
     <!-- Epic Snow Animation -->
@@ -348,7 +357,29 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://x.com/runeflowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    Follow @runeflowxyz
+                </a>
+            </div>
+            <div class="footer-credits">
+                <span class="made-by">Made by </span>
+                <a href="https://www.warp.dev/" target="_blank" rel="noopener noreferrer" class="warp-link">
+                    <span class="warp-logo">⚡</span>
+                    Warp
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script src="assets/js/frozen-teaser.js"></script>
     <script src="assets/js/payment-system.js"></script>
+    <script src="assets/js/analytics.js"></script>
 </body>
 </html>
