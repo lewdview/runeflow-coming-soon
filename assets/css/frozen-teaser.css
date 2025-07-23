@@ -7,6 +7,10 @@
     --powder-blue: #b8e6ff;
     --electric-blue: #0099ff;
     --deep-blue: #001a33;
+    --neon-cyan: #00ffff;
+    --ice-glow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+    --neon-cyan-glow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px rgba(0, 255, 255, 0.8);
+    --font-frozen: 'Roboto Condensed', sans-serif;
     --gradient-primary: linear-gradient(135deg, var(--neon-blue) 0%, var(--powder-blue) 100%);
     --gradient-secondary: linear-gradient(225deg, var(--electric-blue) 0%, var(--neon-blue) 50%, var(--powder-blue) 100%);
     --neon-glow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 60px rgba(0, 212, 255, 0.8);
@@ -285,10 +289,14 @@ body::after {
 }
 
 .frozen-suffix {
-    color: white;
+    color: white !important;
     font-size: 0.6em;
-    text-shadow: var(--ice-glow);
-    opacity: 0.9;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6) !important;
+    opacity: 1 !important;
+    display: inline !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: white !important;
+    background: transparent !important;
 }
 
 .tagline {
