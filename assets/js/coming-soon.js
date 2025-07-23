@@ -1513,14 +1513,10 @@ function isValidEmail(email) {
     `;
     document.head.appendChild(style);
     
-    // Helper function to get ZIP filename for rune
+    // Helper function to get ZIP filename for rune - Week 1 ASMR FlowRune Only
     function getZipFileNameForRune(runeId) {
-        const fileNames = {
-            'flowrune': 'FlowRune-Viral-ASMR-Creator.zip',
-            'ansuz': 'Ansuz-Messenger-Template.zip',
-            'laguz': 'Laguz-Intelligent-Qualifier.zip'
-        };
-        return fileNames[runeId] || 'Starter-Rune-Template.zip';
+        // Always return the Week 1 ASMR FlowRune package regardless of selection
+        return 'flowrune-asmr-v1.zip';
     }
     
     console.log('RuneFlow Coming Soon page initialized');

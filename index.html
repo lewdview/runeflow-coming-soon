@@ -11,7 +11,25 @@
 </head>
 <body>
     <!-- Epic Snow Animation -->
-    <div class="snow-container" id="snowContainer"></div>
+    <div class="snow-container" id="snowContainer">
+        <!-- DEBUG: Manual test snowflake -->
+        <div style="position: absolute; top: 50px; left: 50%; font-size: 40px; color: #00ffff; text-shadow: 0 0 20px #00ffff; z-index: 100; animation: testfall 10s linear infinite;">❄</div>
+    </div>
+    
+<style>
+        @keyframes testfall {
+            0% { transform: translateY(0) translateX(0); opacity: 1; }
+            100% { transform: translateY(100vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* Fallback background in case CSS doesn't load */
+        body {
+            background: radial-gradient(ellipse at top, #001a33 0%, #000000 60%), linear-gradient(180deg, rgba(0, 212, 255, 0.1) 0%, rgba(184, 230, 255, 0.05) 50%, transparent 100%) !important;
+            min-height: 100vh !important;
+            color: white !important;
+            font-family: 'Roboto Condensed', sans-serif !important;
+        }
+    </style>
     
     <!-- Epic Ice Crystals -->
     <div class="ice-crystals" id="iceCrystals"></div>
@@ -19,15 +37,305 @@
     <!-- Floating Ice Runes -->
     <div class="floating-ice-runes" id="floatingRunes"></div>
 
-    <!-- Main Epic Content -->
+<!-- Main Epic Content -->
+    <!-- Week 1 ASMR Video (Hidden Initially) -->
+    <div class="asmr-video" id="asmrVideoPopup" style="display: none;">
+        <h3 class="asmr-title">✨ ASMR Highlight: Glass Apple</h3>
+        <video controls class="asmr-video-player">
+            <source src="https://example.com/video1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
     <div class="container">
         <div class="logo-section">
+            <div class="logo-icon">⚡</div>
             <h1 class="logo">
                 Rune<span class="flow-text">Flow</span><span class="frozen-suffix">.xyz</span>
             </h1>
             <p class="tagline">Ancient Power. Modern Automation.</p>
-            <div class="coming-soon-badge">
-                <span class="rune-accent">ᚱᚢᚾᛖ</span> Coming Soon <span class="rune-accent">ᚠᛚᚢᚹ</span>
+            <div class="scroll-indicator">
+                <p>↓ Scroll down for Week 1 Rune ↓</p>
+            </div>
+            
+            <!-- System Info Panel -->
+            <div class="info-panel">
+                <h3 class="info-title">🚀 Week 1 Launch - Join the Journey!</h3>
+                <div class="pricing-grid">
+                    <div class="pricing-card launch-access premium">
+                        <h4>🔥 Elite Access</h4>
+                        <div class="price">$999</div>
+                        <div class="price-note">Price increases until launch</div>
+                        <p>Ultimate platform access with all premium features</p>
+                        <div class="beta-warning">
+                            <p><strong>⚠️ BETA RAW ACCESS:</strong> Includes instant download of all 4,000+ raw templates. Support won't launch until marketplace - <strong>NOT for beginners!</strong></p>
+                        </div>
+                        <ul>
+                            <li>⚡ Lifetime access to all 4,000+ runes</li>
+                            <li>📥 Instant beta raw download of all 4,000+ templates</li>
+                            <li>👑 VIP founder badge & privileges</li>
+                            <li>🎯 1-on-1 priority support (post-launch)</li>
+                            <li>🔮 Beta access to new features</li>
+                            <li>💎 Exclusive founder community</li>
+                        </ul>
+                        <button class="coinbase-btn elite-btn" onclick="purchaseElite()">
+                            💰 Pay with Coinbase - $999
+                        </button>
+                    </div>
+                    <div class="pricing-card founders-pro">
+                        <h4>⚡ Pro Access</h4>
+                        <div class="price">$297</div>
+                        <div class="price-note">Annual subscription - Increases to $497 at launch</div>
+                        <p>Full marketplace access on launch day (12 months start from launch)</p>
+                        <ul>
+                            <li>🚀 Complete access to all 4,000+ runes at launch</li>
+                            <li>⚡ Pro tier status</li>
+                            <li>📧 Priority email support</li>
+                            <li>🎯 Advanced tutorials & guides</li>
+                            <li>🔄 Regular feature updates</li>
+                        </ul>
+                        <button class="coinbase-btn pro-btn" onclick="purchasePro()">
+                            💰 Pay with Coinbase - $297
+                        </button>
+                    </div>
+                    <div class="pricing-card founders-annual">
+                        <h4>💎 Founder Access</h4>
+                        <div class="price">$199</div>
+                        <div class="price-note">Annual subscription - Increases to $297 at launch</div>
+                        <p>Full access with founder benefits & lifetime guarantee (12 months start from launch)</p>
+                        <ul>
+                            <li>🚀 Complete access to all 4,000+ runes at launch</li>
+                            <li>👑 Exclusive founder status badge</li>
+                            <li>🛡️ Lifetime access guarantee</li>
+                            <li>💬 Founder community access</li>
+                            <li>🔒 Price locked forever at founder rate</li>
+                        </ul>
+                        <button class="coinbase-btn founder-btn" onclick="purchaseFounder()">
+                            💰 Pay with Coinbase - $199
+                        </button>
+                    </div>
+                </div>
+                <div class="system-explanation">
+                    <p><strong>The Journey:</strong> We're on a 24-week launch schedule! The marketplace launches in Week 24 with 4,000+ automation runes. Dashboard access begins in Week 5 after the first 4 weeks of foundation building.</p>
+                </div>
+                
+                <!-- Week 1 Rune Capture -->
+                <div class="week1-capture" id="week1Capture">
+                    <div class="capture-header">
+                        <h3>🔮 Get Your FREE Week 1 Rune!</h3>
+                        <p>⚡ FlowRune: Viral ASMR Creator - Worth $97</p>
+                    </div>
+                    
+                    <div class="rune-preview">
+                        <div class="rune-details">
+                            <h4>ᛚᚱ Laguz-Raidho FlowRune</h4>
+                            <ul class="rune-features">
+                                <li>🎥 AI-powered viral ASMR video generation</li>
+                                <li>📱 Multi-platform automation (YouTube, TikTok, Instagram)</li>
+                                <li>🔊 4-layer sound optimization</li>
+                                <li>📊 Dynamic content tracking</li>
+                                <li>⚡ Glass-cutting aesthetic automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <form class="email-capture-form" id="emailCaptureForm">
+                        <div class="form-group">
+                            <input type="email" id="userEmail" placeholder="Enter your email to get the rune..." required>
+                            <button type="submit" class="capture-btn">Get My Free Rune ⚡</button>
+                        </div>
+                        <p class="capture-note">Join 2,847 founders getting weekly runes. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+                
+                <!-- Download Section (Hidden Initially) -->
+                <div class="download-section" id="downloadSection" style="display: none;">
+                    <div class="download-header">
+                        <h3>🎉 Welcome to RuneFlow, Founder!</h3>
+                        <p>Your Week 1 rune is ready for download.</p>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="download-info">
+                            <h4>⚡ FlowRune: Viral ASMR Creator</h4>
+                            <div class="download-stats">
+                                <span class="stat">📦 Complete n8n Template</span>
+                                <span class="stat">📋 Setup Guide Included</span>
+                                <span class="stat">🎯 $97 Value</span>
+                            </div>
+                        </div>
+                        
+                        <div class="download-actions">
+                            <a href="#" class="download-btn" id="downloadBtn" data-file="flowrune-asmr-v1.zip">
+                                📥 Download Rune Package
+                            </a>
+                            <a href="#" class="dashboard-btn" id="dashboardBtn">
+                                🔮 Access Your Dashboard
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="next-rune-info">
+                        <h4>📅 What's Next?</h4>
+                        <p>Your next rune drops in <span id="nextRuneCountdown">7 days</span>. We'll email you when it's ready!</p>
+                        <p>Dashboard access unlocks in Week 5 with milestone tracking and progress management.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rollout-container">
+                <div class="rollout-info">
+                    <div class="rune-counter">
+                        <span class="rune-accent">ᚱᚢᚾᛖ</span> Week <span id="currentWeek">1</span>/24 <span class="rune-accent">ᚠᛚᚢᚹ</span>
+                    </div>
+                    <div class="founder-price">
+                        <span class="rune-accent">ᚠᚩᚢᚾᛞᛖᚱ</span> $<span id="founderPrice">999</span> <span class="rune-accent">ᛒᛖᛏᚪ</span>
+                    </div>
+                </div>
+                
+                <div class="phase-indicator">
+                    <div class="phase-title">Gamification Phase</div>
+                    <div class="phase-progress">
+                        <div class="phase-progress-fill" id="phaseProgress"></div>
+                    </div>
+                </div>
+                
+                <div class="rollout-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalRunes">4000+</div>
+                        <div class="stat-label">Total Runes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="releasedRunes">3</div>
+                        <div class="stat-label">Released</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="affiliateRunes">12</div>
+                        <div class="stat-label">Affiliate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="founderBadges">6</div>
+                        <div class="stat-label">Founder Badges</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Milestone Dashboard Section -->
+            <div class="milestone-dashboard">
+                <h2 class="milestone-title">Monthly Milestones</h2>
+                <div class="milestone-grid">
+                    <div class="milestone-card" data-month="1">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 1</span>
+                            <div class="milestone-status" id="milestone1">🔄</div>
+                        </div>
+                        <h3>Foundation Launch</h3>
+                        <ul>
+                            <li>Release: 400 Runes</li>
+                            <li>Goal: Community Base</li>
+                            <li>Price: $999 - $1166</li>
+                        </ul>
+                        <button class="milestone-toggle" onclick="toggleMilestone(1)">Mark Complete</button>
+                    </div>
+                    
+                    <div class="milestone-card" data-month="2">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 2</span>
+                            <div class="milestone-status" id="milestone2">⏳</div>
+                        </div>
+                        <h3>Growth Phase</h3>
+                        <ul>
+                            <li>Release: 800 Runes</li>
+                            <li>Goal: Affiliate System</li>
+                            <li>Price: $1166 - $1333</li>
+                        </ul>
+                        <button class="milestone-toggle" onclick="toggleMilestone(2)">Mark Complete</button>
+                    </div>
+                    
+                    <div class="milestone-card milestone-special" data-month="3">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 3</span>
+                            <div class="milestone-status" id="milestone3">⭐</div>
+                        </div>
+                        <h3>Halfway Milestone - 2000+ Runes!</h3>
+                        <ul>
+                            <li>Release: 2000+ Runes</li>
+                            <li>Goal: Major Platform Launch</li>
+                            <li>Price: $1333 - $1500</li>
+                        </ul>
+                        <button class="milestone-toggle special" onclick="toggleMilestone(3)">Execute Halfway Dump</button>
+                    </div>
+                    
+                    <div class="milestone-card" data-month="4">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 4</span>
+                            <div class="milestone-status" id="milestone4">⏳</div>
+                        </div>
+                        <h3>Expansion Phase</h3>
+                        <ul>
+                            <li>Release: 3200 Runes</li>
+                            <li>Goal: Advanced Features</li>
+                            <li>Price: $1500 - $1666</li>
+                        </ul>
+                        <button class="milestone-toggle" onclick="toggleMilestone(4)">Mark Complete</button>
+                    </div>
+                    
+                    <div class="milestone-card" data-month="5">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 5</span>
+                            <div class="milestone-status" id="milestone5">⏳</div>
+                        </div>
+                        <h3>Optimization Phase</h3>
+                        <ul>
+                            <li>Release: 3600 Runes</li>
+                            <li>Goal: Platform Polish</li>
+                            <li>Price: $1666 - $1833</li>
+                        </ul>
+                        <button class="milestone-toggle" onclick="toggleMilestone(5)">Mark Complete</button>
+                    </div>
+                    
+                    <div class="milestone-card milestone-final" data-month="6">
+                        <div class="milestone-header">
+                            <span class="milestone-number">Month 6</span>
+                            <div class="milestone-status" id="milestone6">🏆</div>
+                        </div>
+                        <h3>Grand Finale - 4000+ Runes!</h3>
+                        <ul>
+                            <li>Release: 4000+ Runes</li>
+                            <li>Goal: Full Platform Launch</li>
+                            <li>Price: $1833 - $1998</li>
+                        </ul>
+                        <button class="milestone-toggle final" onclick="toggleMilestone(6)">Complete Project</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Input Dashboard -->
+            <div class="user-dashboard">
+                <h2 class="dashboard-title">Project Dashboard</h2>
+                <div class="dashboard-controls">
+                    <div class="input-section">
+                        <h3>Milestone Notes</h3>
+                        <textarea id="milestoneNotes" placeholder="Add notes about current milestone progress..."></textarea>
+                        <button onclick="saveMilestoneNotes()">Save Notes</button>
+                    </div>
+                    
+                    <div class="progress-overview">
+                        <h3>Overall Progress</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="overallProgress"></div>
+                            <span class="progress-text" id="progressText">0% Complete</span>
+                        </div>
+                        <div class="completion-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="completedMilestones">0</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
