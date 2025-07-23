@@ -6,6 +6,13 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_FLAGS = "--production=false"
+  # REQUIRED: Set these in Netlify Dashboard > Site Settings > Environment Variables
+  # COINBASE_WEBHOOK_SECRET = "whsec_your_secret_from_coinbase"
+  # SMTP_HOST = "mail.runeflow.xyz"
+  # SMTP_PORT = "587"
+  # SMTP_USER = "hello@runeflow.xyz"
+  # SMTP_PASS = "your_email_password"
+  # FROM_EMAIL = "hello@runeflow.xyz"
 
 # API routes redirect to functions
 [[redirects]]
@@ -21,6 +28,12 @@
 [[redirects]]
   from = "/health"
   to = "/.netlify/functions/health"
+  status = 200
+
+# Coinbase Commerce webhook
+[[redirects]]
+  from = "/webhook/coinbase"
+  to = "/.netlify/functions/coinbase-webhook"
   status = 200
 
 # Catch-all for SPA
