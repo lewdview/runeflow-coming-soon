@@ -378,8 +378,82 @@
         </div>
     </footer>
 
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>🍪 We use cookies and analytics to enhance your experience and improve our services. By continuing to use RuneFlow.xyz, you agree to our use of these technologies.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn accept-btn" onclick="acceptCookies()">Accept All</button>
+                <button class="cookie-btn decline-btn" onclick="declineCookies()">Decline</button>
+                <a href="#terms" class="cookie-link" onclick="showTerms()">View Terms</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Privacy Modal -->
+    <div class="terms-modal" id="termsModal" style="display: none;">
+        <div class="terms-overlay" onclick="hideTerms()"></div>
+        <div class="terms-content">
+            <div class="terms-header">
+                <h2>Terms of Service & Privacy Policy</h2>
+                <button class="terms-close" onclick="hideTerms()">×</button>
+            </div>
+            <div class="terms-body">
+                <div class="terms-section">
+                    <h3>🔮 Terms of Service</h3>
+                    <div class="terms-text">
+                        <h4>Service Description</h4>
+                        <p>RuneFlow.xyz provides n8n automation templates and workflows ("Runes") for business automation purposes. Our platform is in active development with a 24-week launch schedule.</p>
+                        
+                        <h4>Purchase Terms</h4>
+                        <p>• Elite Access ($999): Immediate beta access to 4,000+ raw templates with lifetime access</p>
+                        <p>• Pro Access ($297): Annual subscription starting at launch with full marketplace access</p>
+                        <p>• Founder Access ($199): Annual subscription with lifetime price guarantee</p>
+                        
+                        <h4>Beta Access Disclaimer</h4>
+                        <p>Elite Access includes raw template downloads. These are technical files requiring n8n knowledge. Support begins at marketplace launch. Not recommended for beginners.</p>
+                        
+                        <h4>Refund Policy</h4>
+                        <p>All sales are final. Pre-launch purchases are investments in the development process with specified deliverables at launch.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-section">
+                    <h3>🛡️ Privacy Policy</h3>
+                    <div class="terms-text">
+                        <h4>Information We Collect</h4>
+                        <p>• Email addresses for rune delivery and updates</p>
+                        <p>• Payment information processed securely through Coinbase Commerce</p>
+                        <p>• Analytics data via Google Analytics for site improvement</p>
+                        
+                        <h4>How We Use Your Information</h4>
+                        <p>• Deliver weekly runes and platform updates</p>
+                        <p>• Process purchases and provide customer support</p>
+                        <p>• Improve our platform and user experience</p>
+                        
+                        <h4>Data Protection</h4>
+                        <p>We implement industry-standard security measures to protect your personal information. We do not sell or share your data with third parties except as necessary for service delivery.</p>
+                        
+                        <h4>Cookies & Analytics</h4>
+                        <p>We use Google Analytics to understand user behavior and improve our service. You can opt out of analytics tracking through your browser settings or our cookie preferences.</p>
+                        
+                        <h4>Contact</h4>
+                        <p>For privacy concerns, contact us at: privacy@runeflow.xyz</p>
+                    </div>
+                </div>
+            </div>
+            <div class="terms-footer">
+                <button class="terms-accept-btn" onclick="acceptTermsAndCookies()">Accept Terms & Cookies</button>
+                <button class="terms-decline-btn" onclick="hideTerms()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/js/frozen-teaser.js"></script>
     <script src="assets/js/payment-system.js"></script>
     <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/cookies.js"></script>
 </body>
 </html>
