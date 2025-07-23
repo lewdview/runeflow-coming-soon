@@ -19,10 +19,8 @@
 body {
     height: 100vh;
     font-family: var(--font-frozen);
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 17, 34, 0.3) 0%, rgba(0, 0, 0, 0.8) 50%), 
-        radial-gradient(circle at 80% 20%, rgba(10, 14, 40, 0.3) 0%, rgba(0, 0, 0, 0.7) 50%), 
-        radial-gradient(circle at 40% 40%, rgba(20, 30, 80, 0.2) 0%, rgba(0, 0, 0, 0.9) 50%);
+    background: linear-gradient(135deg, #001122 0%, #0a1428 25%, #1e3a8a 50%, #8b5cf6 75%, #10b981 100%);
+    background-attachment: fixed;
     overflow: hidden;
     display: flex;
     align-items: center;
