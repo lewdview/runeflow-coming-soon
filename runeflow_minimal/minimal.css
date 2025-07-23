@@ -1,0 +1,50 @@
+/* Minimal CSS for RuneFlow.xyz Logo Page */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --neon-cyan: #00ffff;
+    --ice-glow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+    --neon-cyan-glow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    --font-frozen: 'Orbitron', monospace;
+}
+
+body {
+    height: 100vh;
+background: radial-gradient(circle at 20% 80%, rgba(0, 17, 34, 0.2) 0%, rgba(0, 0, 0, 0.8) 50%), radial-gradient(circle at 80% 20%, rgba(10, 14, 40, 0.2) 0%, rgba(0, 0, 0, 0.7) 50%), radial-gradient(circle at 40% 40%, rgba(20, 30, 80, 0.1) 0%, rgba(0, 0, 0, 0.6) 50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.logo {
+    font-family: var(--font-frozen);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    text-transform: uppercase;
+}
+
+.flow-text {
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+}
+
+.frozen-suffix {
+    color: white;
+    font-size: 0.6em;
+    text-shadow: var(--ice-glow);
+}
+
+.snow-container, .ice-crystals, .floating-ice-runes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}

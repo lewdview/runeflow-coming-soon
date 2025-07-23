@@ -372,6 +372,15 @@ window.closeLaunchTermsModal = function() {
     }
 };
 
+// Open Blind Founders Info Modal
+window.openBlindFoundersInfoModal = function() {
+    const modal = document.getElementById('termsModal');
+    if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Elements
@@ -409,6 +418,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Check if this is a free rune selection
         const isFreePack = window.selectedFreeRune !== null;
+        
+        // Validate that a rune is selected for free pack
+        if (!isFreePack) {
+            showError('Please select a FREE starter rune above to continue');
+            return;
+        }
         
         // Show loading state
         setLoadingState(true);
@@ -1497,6 +1512,16 @@ function isValidEmail(email) {
         }
     `;
     document.head.appendChild(style);
+    
+    // Helper function to get ZIP filename for rune
+    function getZipFileNameForRune(runeId) {
+        const fileNames = {
+            'flowrune': 'FlowRune-Viral-ASMR-Creator.zip',
+            'ansuz': 'Ansuz-Messenger-Template.zip',
+            'laguz': 'Laguz-Intelligent-Qualifier.zip'
+        };
+        return fileNames[runeId] || 'Starter-Rune-Template.zip';
+    }
     
     console.log('RuneFlow Coming Soon page initialized');
     

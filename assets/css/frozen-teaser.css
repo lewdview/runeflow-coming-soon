@@ -1,0 +1,222 @@
+/* Epic Frozen Teaser - RuneFlow.xyz Main Site */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --neon-cyan: #00ffff;
+    --electric-blue: #0080ff;
+    --ice-glow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+    --neon-cyan-glow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), 0 0 60px var(--neon-cyan);
+    --electric-glow: 0 0 15px var(--electric-blue), 0 0 30px var(--electric-blue);
+    --font-frozen: 'Orbitron', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: var(--font-frozen);
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 17, 34, 0.3) 0%, rgba(0, 0, 0, 0.8) 50%), 
+        radial-gradient(circle at 80% 20%, rgba(10, 14, 40, 0.3) 0%, rgba(0, 0, 0, 0.7) 50%), 
+        radial-gradient(circle at 40% 40%, rgba(20, 30, 80, 0.2) 0%, rgba(0, 0, 0, 0.9) 50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+/* Epic animated background aurora */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 75%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    animation: auroraShift 15s ease-in-out infinite alternate;
+    z-index: -2;
+    pointer-events: none;
+}
+
+@keyframes auroraShift {
+    0% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1.1) rotate(2deg);
+    }
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+.logo-section {
+    animation: logoAppear 2s ease-out;
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.logo {
+    font-family: var(--font-frozen);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    0% { 
+        text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); 
+    }
+    100% { 
+        text-shadow: 0 0 30px var(--neon-cyan), 0 0 60px var(--neon-cyan), 0 0 80px var(--neon-cyan); 
+    }
+}
+
+.flow-text {
+    color: var(--electric-blue);
+    text-shadow: var(--electric-glow);
+    animation: flowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes flowPulse {
+    0% { 
+        text-shadow: 0 0 15px var(--electric-blue); 
+    }
+    100% { 
+        text-shadow: 0 0 25px var(--electric-blue), 0 0 35px var(--electric-blue); 
+    }
+}
+
+.frozen-suffix {
+    color: white;
+    font-size: 0.6em;
+    text-shadow: var(--ice-glow);
+    opacity: 0.9;
+}
+
+.tagline {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.coming-soon-badge {
+    display: inline-block;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-frozen);
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 255, 255, 0.2), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: badgeFloat 4s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.coming-soon-badge:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        var(--neon-cyan-glow), 
+        0 10px 40px rgba(0, 255, 255, 0.3);
+    border-color: var(--neon-cyan);
+}
+
+@keyframes badgeFloat {
+    0%, 100% { 
+        transform: translateY(0) scale(1); 
+    }
+    50% { 
+        transform: translateY(-10px) scale(1.02); 
+    }
+}
+
+.rune-accent {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    animation: runeGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes runeGlow {
+    0% { 
+        opacity: 0.7; 
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% { 
+        opacity: 1; 
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* Epic Animation Containers */
+.snow-container, .ice-crystals, .floating-ice-runes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: clamp(2rem, 10vw, 4rem);
+        letter-spacing: 2px;
+    }
+    
+    .tagline {
+        font-size: clamp(0.7rem, 3vw, 1rem);
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .coming-soon-badge {
+        padding: 0.8rem 2rem;
+        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+        letter-spacing: 1px;
+    }
+}

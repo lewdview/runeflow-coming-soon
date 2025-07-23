@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow - Premium Automation Templates Available Now</title>
+    <meta name="description" content="Access 4,000+ premium n8n automation templates. Join 847+ automation masters. Get your free rune and unlock ancient automation power.">
+    <link rel="stylesheet" href="assets/css/smooth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with branding -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">RuneFlow<span style="color: #ffab00;">.xyz</span></h1>
+            <p class="tagline">Ancient Power. Modern Automation.</p>
+        </div>
+    </header>
+
+    <!-- Main content sections -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <!-- Floating Runes Background -->
+            <div class="floating-runes" id="floatingRunes"></div>
+            
+            <div class="hero-content">
+                <h2>The Ultimate n8n Automation Arsenal: Phase Launch</h2>
+                <p>Join <strong>847+ automation pioneers</strong> and be part of our phased rollout. Unlock <strong>4,000+ exclusive templates</strong> released in waves to maximize innovation and support.</p>
+                
+                <!-- Social Proof Bar -->
+                <div class="social-proof">
+                    <div class="proof-item">
+                        <span class="proof-number">847+</span>
+                        <span class="proof-label">Masters</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">4,000+</span>
+                        <span class="proof-label">Templates</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">30</span>
+                        <span class="proof-label">Categories</span>
+                    </div>
+                </div>
+                
+                <button class="cta-btn primary" onclick="scrollTo('.rune-selection')">Choose Your Free Rune</button>
+            </div>
+        </section>
+
+        <!-- Free Rune Selection Section -->
+        <section class="rune-selection">
+            <div class="container">
+                <h3>🎁 Get Your FREE Starter Rune</h3>
+                <p class="section-subtitle">Choose one powerful automation template to get started. No credit card required.</p>
+                
+                <div class="rune-grid">
+                    <div class="rune-card" data-rune="flowrune">
+                        <div class="rune-symbol">ᚠ</div>
+                        <h4>FlowRune</h4>
+                        <p class="rune-subtitle">Viral ASMR Creator</p>
+                        <ul class="rune-features">
+                            <li>✨ YouTube upload automation</li>
+                            <li>✨ TikTok cross-posting</li>
+                            <li>✨ Viral metrics tracking</li>
+                        </ul>
+                        <div class="rune-price">FREE</div>
+                        <button class="rune-btn" onclick="selectRune('flowrune')">Select FlowRune</button>
+                    </div>
+                    
+                    <div class="rune-card" data-rune="ansuz">
+                        <div class="rune-symbol">ᚨ</div>
+                        <h4>Ansuz</h4>
+                        <p class="rune-subtitle">The Messenger</p>
+                        <ul class="rune-features">
+                            <li>✨ Email automation sequences</li>
+                            <li>✨ CRM integration</li>
+                            <li>✨ Lead nurturing workflows</li>
+                        </ul>
+                        <div class="rune-price">FREE</div>
+                        <button class="rune-btn" onclick="selectRune('ansuz')">Select Ansuz</button>
+                    </div>
+                    
+                    <div class="rune-card" data-rune="laguz">
+                        <div class="rune-symbol">ᛚ</div>
+                        <h4>Laguz</h4>
+                        <p class="rune-subtitle">The Intelligent Qualifier</p>
+                        <ul class="rune-features">
+                            <li>✨ AI-powered lead scoring</li>
+                            <li>✨ Automated qualification</li>
+                            <li>✨ Smart lead routing</li>
+                        </ul>
+                        <div class="rune-price">FREE</div>
+                        <button class="rune-btn" onclick="selectRune('laguz')">Select Laguz</button>
+                    </div>
+                </div>
+                
+                <!-- Email Capture -->
+                <div class="email-capture" id="email-capture" style="display: none;">
+                    <h4>Enter your email to get your rune instantly</h4>
+                    <form class="email-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="email-btn">Get My Free Rune ⚡</button>
+                    </form>
+                    <p class="email-disclaimer">✨ Instant download • No spam • Cancel anytime</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Launch Day Access -->
+        <section class="launch-access">
+            <div class="container">
+                <div class="launch-header">
+                    <span class="launch-badge">🚀 PHASED LAUNCH</span>
+                    <h3>Join Our Phased Launch</h3>
+                    <p class="launch-subtitle">Secure priority access to template waves. Experience 4,000+ automation tools as they evolve.</p>
+                </div>
+                
+                <div class="launch-card">
+                    <div class="launch-pricing">
+                        <span class="original-price">$497</span>
+                        <span class="current-price">$297</span>
+                        <span class="price-period">/year</span>
+                        <div class="savings-badge">Save $200</div>
+                    </div>
+                    
+                    <div class="launch-features">
+                        <div class="feature">✓ All 4,000+ templates included</div>
+                        <div class="feature">✓ Instant access on launch day</div>
+                        <div class="feature">✓ 40% discount locked forever</div>
+                        <div class="feature">✓ Priority support queue</div>
+                        <div class="feature">✓ Monthly template updates</div>
+                        <div class="feature">✓ 30-day money-back guarantee</div>
+                    </div>
+                    
+                    <button class="cta-btn launch-btn" onclick="purchase('launch')">💳 Reserve Launch Access</button>
+                    <p class="guarantee">🛡️ 30-day guarantee • Cancel anytime</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blind Founders Arsenal -->
+        <section class="founders-arsenal">
+            <div class="container">
+                <div class="founders-header">
+                    <span class="founders-badge">⚱️ PIONEER PARTNERS</span>
+                    <h3>Become a Pioneer Partner</h3>
+                    <p class="founders-subtitle">Be at the forefront with 50% off and ownership of all phases. Access 4,000+ templates in our exclusive rollout.</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- Lifetime Package -->
+                    <div class="pricing-card lifetime featured">
+                        <div class="popular-badge">🔥 MOST POPULAR</div>
+                        <div class="package-header">
+                            <h4>♾️ Lifetime Mastery</h4>
+                            <p>Own everything forever</p>
+                        </div>
+                        
+                        <div class="package-pricing">
+                            <span class="original-price">$1,998</span>
+                            <span class="current-price">$999</span>
+                            <span class="price-period">one-time</span>
+                            <div class="savings-display">Save $999 • 50% OFF</div>
+                        </div>
+                        
+                        <div class="package-features">
+                            <div class="feature premium">✨ Instant access to all 4,000+ templates</div>
+                            <div class="feature premium">✨ First-wave phase launch participant</div>
+                            <div class="feature premium">✨ Exclusive pioneer community access</div>
+                            <div class="feature premium">✨ VIP support priority</div>
+                            <div class="feature premium">✨ Never pay again</div>
+                        </div>
+                        
+                        <button class="package-btn lifetime-btn" onclick="purchase('lifetime')">🚀 Claim Lifetime Access</button>
+                    </div>
+                    
+                    <!-- Annual Package -->
+                    <div class="pricing-card annual">
+                        <div class="package-header">
+                            <h4>📅 Annual Power</h4>
+                            <p>Full access, renewed yearly</p>
+                        </div>
+                        
+                        <div class="package-pricing">
+                            <span class="original-price">$497</span>
+                            <span class="current-price">$199</span>
+                            <span class="price-period">/year</span>
+                            <div class="savings-display">Save $298 • 60% OFF</div>
+                        </div>
+                        
+                        <div class="package-features">
+                            <div class="feature">✓ Phase launch access with pioneer badge</div>
+                            <div class="feature">✓ Lifetime annual access locked at $199</div>
+                            <div class="feature">✓ Can cancel & renew at $199 price for life</div>
+                            <div class="feature">✓ All 4,000+ templates included</div>
+                            <div class="feature">✓ Priority support & community access</div>
+                        </div>
+                        
+                        <button class="package-btn annual-btn" onclick="purchase('annual')">💳 Start Annual Plan</button>
+                    </div>
+                </div>
+                
+                <!-- Template Categories Preview -->
+                <div class="categories-preview">
+                    <h4>📚 Template Categories Overview</h4>
+                    <div class="categories-grid">
+                        <div class="category-item">
+                            <span class="category-icon">🤖</span>
+                            <div class="category-info">
+                                <strong>AI & Research</strong>
+                                <span>1,412 templates</span>
+                                <small>OpenAI, Claude, Gemini, Perplexity</small>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-icon">📊</span>
+                            <div class="category-info">
+                                <strong>Data Analysis</strong>
+                                <span>1,255 templates</span>
+                                <small>Google Sheets, Excel, PostgreSQL, MySQL</small>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-icon">📧</span>
+                            <div class="category-info">
+                                <strong>Communication</strong>
+                                <span>486 templates</span>
+                                <small>Gmail, Outlook, Slack, Discord, Telegram</small>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-icon">⚡</span>
+                            <div class="category-info">
+                                <strong>Custom Flows</strong>
+                                <span>397+ templates</span>
+                                <small>Webhooks, APIs, Custom integrations</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Awakening Timeline -->
+        <section class="timeline-section">
+            <div class="container">
+                <h3>The Awakening Timeline</h3>
+                <p class="section-subtitle">Our phased approach ensures quality, stability, and the best experience for pioneers</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 1: The Gathering</h4>
+                            <p>Building the waiting list of automation masters</p>
+                            <span class="timeline-status">ACTIVE NOW</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 2: Second Rune Drop</h4>
+                            <p>FREE "Thurisaz" rune release + Pioneer pricing increases to $1,499</p>
+                            <span class="timeline-date">Month 1</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 3: Marketplace Launch</h4>
+                            <p>4,000+ templates live + "Own All" beta ends. Only annual subscription at 40% off available.</p>
+                            <span class="timeline-date">Month 2</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 4: Template Expansion</h4>
+                            <p>Enhanced documentation + Pioneer pricing goes to 30% off</p>
+                            <span class="timeline-date">Month 3</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 5: Full Collection</h4>
+                            <p>Complete 4,000+ templates + Annual subscription $497 / Own all $1,997</p>
+                            <span class="timeline-date">Month 6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pioneer Urgency -->
+                <div class="pioneer-urgency">
+                    <div class="urgency-content">
+                        <span class="urgency-icon">⚡</span>
+                        <div class="urgency-text">
+                            <h4>Limited Time Pioneer Offer</h4>
+                            <p>Only 100 Pioneer Partner spots available. Price increases to $1,499 next month, then $1,998 at full launch.</p>
+                        </div>
+                        <div class="spots-remaining">
+                            <span class="spots-number">73</span>
+                            <span class="spots-label">spots left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <div class="container">
+                <h3>Ready to Join the Pioneer Wave?</h3>
+                <p>Join 847+ automation pioneers who've secured their place in our phased launch</p>
+                <button class="cta-btn final" onclick="scrollTo('.founders-arsenal')">🚀 Become a Pioneer Partner</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© RuneFlow.xyz | Ancient Power. Modern Automation.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/smooth.js"></script>
+</body>
+</html>

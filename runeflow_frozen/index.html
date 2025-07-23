@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow - Frozen Automation Arsenal</title>
+    <meta name="description" content="Access 4,000+ premium n8n automation templates. Join the frozen realm of automation masters with ice-cold precision.">
+    <link rel="stylesheet" href="assets/css/frozen.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Snow Background -->
+    <div class="snow-container" id="snowContainer"></div>
+    
+    <!-- Ice Crystal Background -->
+    <div class="ice-crystals" id="iceCrystals"></div>
+    
+    <!-- Floating Ice Runes -->
+    <div class="floating-ice-runes" id="floatingRunes"></div>
+
+    <!-- Header with branding -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Rune<span class="flow-text">Flow</span><span class="frozen-suffix">.frozen</span></h1>
+            <p class="tagline">Frozen Power. Ice-Cold Automation.</p>
+        </div>
+    </header>
+
+    <!-- Main content sections -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="aurora-bg"></div>
+            <div class="hero-content">
+                <div class="hero-badge">❄️ FROZEN REALM ACTIVATED</div>
+                <h2>The Ultimate n8n Automation Arsenal: Frozen Edition</h2>
+                <p>Join <strong>847+ frost masters</strong> in the frozen realm. Unlock <strong>4,000+ crystallized templates</strong> forged from pure ice and neon light.</p>
+                
+                <!-- Frozen Social Proof Bar -->
+                <div class="frozen-proof">
+                    <div class="proof-crystal">
+                        <div class="crystal-icon">🧊</div>
+                        <span class="proof-number">847+</span>
+                        <span class="proof-label">Frost Masters</span>
+                    </div>
+                    <div class="proof-crystal">
+                        <div class="crystal-icon">❄️</div>
+                        <span class="proof-number">4,000+</span>
+                        <span class="proof-label">Ice Templates</span>
+                    </div>
+                    <div class="proof-crystal">
+                        <div class="crystal-icon">⚡</div>
+                        <span class="proof-number">30</span>
+                        <span class="proof-label">Frozen Realms</span>
+                    </div>
+                </div>
+                
+                <button class="cta-btn ice-primary" onclick="scrollTo('.ice-rune-selection')">❄️ Choose Your Frozen Rune</button>
+            </div>
+        </section>
+
+        <!-- Frozen Rune Selection Section -->
+        <section class="ice-rune-selection">
+            <div class="container">
+                <div class="ice-section-header">
+                    <div class="ice-badge">🎁 FROZEN GIFT</div>
+                    <h3>Claim Your FREE Ice Rune</h3>
+                    <p class="section-subtitle">Choose one crystallized automation template forged in the frozen realm. No payment required.</p>
+                </div>
+                
+                <div class="ice-rune-grid">
+                    <div class="ice-rune-card" data-rune="frostflow">
+                        <div class="ice-crystal-bg"></div>
+                        <div class="rune-symbol ice-symbol">❅</div>
+                        <h4>FrostFlow</h4>
+                        <p class="rune-subtitle">Viral Ice Creator</p>
+                        <ul class="rune-features">
+                            <li>❄️ YouTube frost automation</li>
+                            <li>❄️ TikTok ice posting</li>
+                            <li>❄️ Frozen metrics tracking</li>
+                        </ul>
+                        <div class="rune-price ice-free">FROZEN FREE</div>
+                        <button class="ice-rune-btn" onclick="selectRune('frostflow')">🧊 Select FrostFlow</button>
+                    </div>
+                    
+                    <div class="ice-rune-card" data-rune="iceshard">
+                        <div class="ice-crystal-bg"></div>
+                        <div class="rune-symbol ice-symbol">🔷</div>
+                        <h4>IceShard</h4>
+                        <p class="rune-subtitle">The Frozen Messenger</p>
+                        <ul class="rune-features">
+                            <li>❄️ Crystallized email sequences</li>
+                            <li>❄️ Frozen CRM integration</li>
+                            <li>❄️ Ice-cold lead nurturing</li>
+                        </ul>
+                        <div class="rune-price ice-free">FROZEN FREE</div>
+                        <button class="ice-rune-btn" onclick="selectRune('iceshard')">🧊 Select IceShard</button>
+                    </div>
+                    
+                    <div class="ice-rune-card" data-rune="frostbite">
+                        <div class="ice-crystal-bg"></div>
+                        <div class="rune-symbol ice-symbol">🔹</div>
+                        <h4>FrostBite</h4>
+                        <p class="rune-subtitle">The Frozen Qualifier</p>
+                        <ul class="rune-features">
+                            <li>❄️ AI-powered ice scoring</li>
+                            <li>❄️ Frozen qualification</li>
+                            <li>❄️ Crystallized lead routing</li>
+                        </ul>
+                        <div class="rune-price ice-free">FROZEN FREE</div>
+                        <button class="ice-rune-btn" onclick="selectRune('frostbite')">🧊 Select FrostBite</button>
+                    </div>
+                </div>
+                
+                <!-- Email Capture -->
+                <div class="ice-email-capture" id="email-capture" style="display: none;">
+                    <div class="ice-capture-glow"></div>
+                    <h4>❄️ Enter your email to receive your frozen rune</h4>
+                    <form class="ice-email-form">
+                        <input type="email" placeholder="Enter your frozen email address" required>
+                        <button type="submit" class="ice-email-btn">🧊 Get My Frozen Rune ⚡</button>
+                    </form>
+                    <p class="email-disclaimer">❄️ Instant frost delivery • No spam • Cancel anytime</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frozen Launch Access -->
+        <section class="frozen-launch">
+            <div class="container">
+                <div class="launch-header">
+                    <span class="ice-badge">🚀 FROZEN LAUNCH</span>
+                    <h3>Join The Frozen Realm</h3>
+                    <p class="launch-subtitle">Secure priority access to crystallized template waves. Experience 4,000+ frozen automation tools as they evolve in the ice.</p>
+                </div>
+                
+                <div class="frozen-launch-card">
+                    <div class="ice-pricing-glow"></div>
+                    <div class="frozen-pricing">
+                        <span class="original-price">$497</span>
+                        <span class="frozen-price">$297</span>
+                        <span class="price-period">/frozen year</span>
+                        <div class="ice-savings-badge">❄️ Save $200</div>
+                    </div>
+                    
+                    <div class="frozen-features">
+                        <div class="ice-feature">🧊 All 4,000+ frozen templates</div>
+                        <div class="ice-feature">🧊 Instant access on ice day</div>
+                        <div class="ice-feature">🧊 40% frozen discount forever</div>
+                        <div class="ice-feature">🧊 Priority frost support</div>
+                        <div class="ice-feature">🧊 Monthly ice updates</div>
+                        <div class="ice-feature">🧊 30-day frozen guarantee</div>
+                    </div>
+                    
+                    <button class="cta-btn frozen-launch-btn" onclick="purchase('frozen-launch')">❄️ Reserve Frozen Access</button>
+                    <p class="ice-guarantee">🛡️ 30-day frozen guarantee • Cancel anytime</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frozen Arsenal -->
+        <section class="frozen-arsenal">
+            <div class="container">
+                <div class="arsenal-header">
+                    <span class="ice-badge">⚱️ FROZEN PIONEERS</span>
+                    <h3>Become a Frozen Pioneer</h3>
+                    <p class="arsenal-subtitle">Be at the forefront with 50% off and ownership of all frozen phases. Access 4,000+ crystallized templates in our exclusive ice rollout.</p>
+                </div>
+                
+                <div class="frozen-pricing-grid">
+                    <!-- Eternal Ice Package -->
+                    <div class="frozen-pricing-card eternal featured">
+                        <div class="popular-badge">🔥 MOST FROZEN</div>
+                        <div class="package-header">
+                            <h4>♾️ Eternal Ice Mastery</h4>
+                            <p>Own the frozen realm forever</p>
+                        </div>
+                        
+                        <div class="package-pricing">
+                            <span class="original-price">$1,998</span>
+                            <span class="frozen-price">$999</span>
+                            <span class="price-period">eternal ice</span>
+                            <div class="ice-savings">❄️ Save $999 • 50% FROZEN</div>
+                        </div>
+                        
+                        <div class="package-features">
+                            <div class="ice-feature premium">❄️ Instant access to all 4,000+ frozen templates</div>
+                            <div class="ice-feature premium">❄️ First-wave frozen launch participant</div>
+                            <div class="ice-feature premium">❄️ Exclusive ice pioneer community</div>
+                            <div class="ice-feature premium">❄️ VIP frozen support priority</div>
+                            <div class="ice-feature premium">❄️ Never pay again - eternal ice</div>
+                        </div>
+                        
+                        <button class="package-btn eternal-btn" onclick="purchase('eternal-ice')">❄️ Claim Eternal Ice</button>
+                    </div>
+                    
+                    <!-- Annual Frost Package -->
+                    <div class="frozen-pricing-card annual">
+                        <div class="package-header">
+                            <h4>📅 Annual Frost Power</h4>
+                            <p>Full frozen access, renewed yearly</p>
+                        </div>
+                        
+                        <div class="package-pricing">
+                            <span class="original-price">$497</span>
+                            <span class="frozen-price">$199</span>
+                            <span class="price-period">/frozen year</span>
+                            <div class="ice-savings">❄️ Save $298 • 60% FROZEN</div>
+                        </div>
+                        
+                        <div class="package-features">
+                            <div class="ice-feature">🧊 Frozen launch access with pioneer badge</div>
+                            <div class="ice-feature">🧊 Lifetime annual access locked at $199</div>
+                            <div class="ice-feature">🧊 Can cancel & renew at $199 forever</div>
+                            <div class="ice-feature">🧊 All 4,000+ frozen templates</div>
+                            <div class="ice-feature">🧊 Priority frost support & community</div>
+                        </div>
+                        
+                        <button class="package-btn annual-btn" onclick="purchase('annual-frost')">❄️ Start Frost Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frozen Timeline -->
+        <section class="frozen-timeline">
+            <div class="container">
+                <h3>The Frozen Awakening Timeline</h3>
+                <p class="section-subtitle">Our crystallized approach ensures ice-cold quality and the best frozen experience</p>
+                
+                <div class="ice-timeline">
+                    <div class="timeline-item ice-active">
+                        <div class="ice-timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 1: The Frost Gathering</h4>
+                            <p>Building the frozen list of automation ice masters</p>
+                            <span class="timeline-status ice-status">FROZEN NOW</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="ice-timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 2: Second Ice Drop</h4>
+                            <p>FREE "FrostShield" rune release + Pioneer pricing increases to $1,499</p>
+                            <span class="timeline-date">Frost Month 1</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="ice-timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 3: Frozen Marketplace Launch</h4>
+                            <p>4,000+ frozen templates live + "Own All Ice" beta ends</p>
+                            <span class="timeline-date">Frost Month 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Frozen CTA -->
+        <section class="final-frozen-cta">
+            <div class="container">
+                <div class="cta-aurora"></div>
+                <h3>❄️ Ready to Join the Frozen Wave?</h3>
+                <p>Join 847+ frozen automation pioneers who've secured their place in our crystallized launch</p>
+                <button class="cta-btn final-ice" onclick="scrollTo('.frozen-arsenal')">🧊 Become a Frozen Pioneer</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="frozen-footer">
+        <div class="container">
+            <p>© RuneFlow.frozen | Frozen Power. Ice-Cold Automation.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/frozen.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow.xyz - Coming Soon | Next-Gen Automation</title>
+    <meta name="description" content="The ultimate n8n automation template marketplace is awakening. Join the waiting list for exclusive early access and founding member benefits.">
+    <meta property="og:title" content="RuneFlow.xyz - Coming Soon">
+    <meta property="og:description" content="Ancient automation power awaits. Join 1000+ automation masters on the waiting list.">
+    <meta property="og:image" content="https://runeflow.xyz/og-image.jpg">
+    <meta property="og:url" content="https://runeflow.xyz">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Optimized CSS -->
+    <link rel="stylesheet" href="assets/css/redesign.css">
+    
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="https://api.runeflow.xyz">
+    <link rel="preload" href="assets/js/redesign.js" as="script">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-runes" id="floatingRunes">
+        <div class="rune-float" data-rune="ᚨ"></div>
+        <div class="rune-float" data-rune="ᛞ"></div>
+        <div class="rune-float" data-rune="ᚱ"></div>
+        <div class="rune-float" data-rune="ᚦ"></div>
+        <div class="rune-float" data-rune="ᛗ"></div>
+        <div class="rune-float" data-rune="ᛊ"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <!-- Brand -->
+                <div class="brand-header">
+                    <h1 class="logo">Rune<span class="logo-accent">Flow</span></h1>
+                    <p class="tagline">Next-Gen Automation Power</p>
+                </div>
+
+                <!-- Hero Message -->
+                <div class="hero-message">
+                    <h2 class="hero-title">The Ultimate n8n Template Marketplace</h2>
+                    <p class="hero-description">
+                        Join <strong>1000+ automation masters</strong> preparing for the most powerful collection of n8n workflow templates ever assembled. 
+                        <span class="highlight">Launching with 4,000+ templates across 30 mystical categories.</span>
+                    </p>
+                </div>
+
+                <!-- Key Benefits Grid -->
+                <div class="benefits-container">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>Ready-to-Deploy</h3>
+                        <p>Pre-configured workflows, 5-min setup</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Expert-Crafted</h3>
+                        <p>Built by automation masters & tested</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔥</div>
+                        <h3>Founding Member Perks</h3>
+                        <p>40% off lifetime + exclusive templates</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Starter Section -->
+        <section class="starter-section">
+            <div class="starter-header">
+                <div class="starter-icon">
+                    <span class="rune-icon">ᛚᚱ</span>
+                </div>
+                <h3 class="starter-title">Get Your FREE Starter Rune</h3>
+                <p class="starter-subtitle">Choose one powerful template to get started, then explore the complete collection below</p>
+            </div>
+
+            <!-- Rune Selection Grid -->
+            <div class="rune-grid" id="runeGrid">
+                <!-- FlowRune -->
+                <div class="rune-card" data-rune="flowrune">
+                    <div class="card-header">
+                        <span class="rune-symbol">ᚠ</span>
+                        <div class="card-info">
+                            <h4>FlowRune</h4>
+                            <p>Viral ASMR Creator</p>
+                        </div>
+                        <span class="price-tag">FREE</span>
+                    </div>
+                    <div class="card-features">
+                        <div class="feature">
+                            <span class="feature-icon">📹</span>
+                            <span>YouTube automation</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🎵</span>
+                            <span>TikTok cross-posting</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">📊</span>
+                            <span>Viral metrics tracking</span>
+                        </div>
+                    </div>
+                    <button class="select-btn" onclick="selectRune('flowrune')">
+                        <span class="btn-text">Select This Rune</span>
+                        <span class="btn-icon">ᚠ</span>
+                    </button>
+                </div>
+
+                <!-- Ansuz -->
+                <div class="rune-card" data-rune="ansuz">
+                    <div class="card-header">
+                        <span class="rune-symbol">ᚨ</span>
+                        <div class="card-info">
+                            <h4>Ansuz</h4>
+                            <p>The Messenger</p>
+                        </div>
+                        <span class="price-tag">FREE</span>
+                    </div>
+                    <div class="card-features">
+                        <div class="feature">
+                            <span class="feature-icon">📧</span>
+                            <span>Email sequences</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔗</span>
+                            <span>CRM integration</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🌱</span>
+                            <span>Lead nurturing</span>
+                        </div>
+                    </div>
+                    <button class="select-btn" onclick="selectRune('ansuz')">
+                        <span class="btn-text">Select This Rune</span>
+                        <span class="btn-icon">ᚨ</span>
+                    </button>
+                </div>
+
+                <!-- Laguz -->
+                <div class="rune-card" data-rune="laguz">
+                    <div class="card-header">
+                        <span class="rune-symbol">ᛚ</span>
+                        <div class="card-info">
+                            <h4>Laguz</h4>
+                            <p>The Intelligent Qualifier</p>
+                        </div>
+                        <span class="price-tag">FREE</span>
+                    </div>
+                    <div class="card-features">
+                        <div class="feature">
+                            <span class="feature-icon">🤖</span>
+                            <span>AI-powered scoring</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">⚙️</span>
+                            <span>Auto qualification</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🎯</span>
+                            <span>Smart routing</span>
+                        </div>
+                    </div>
+                    <button class="select-btn" onclick="selectRune('laguz')">
+                        <span class="btn-text">Select This Rune</span>
+                        <span class="btn-icon">ᛚ</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Email Capture Form -->
+            <form class="email-form" id="emailForm">
+                <div class="form-group">
+                    <input type="email" 
+                           id="email" 
+                           placeholder="Enter your email for instant download" 
+                           required 
+                           class="email-input">
+                    <button type="submit" class="download-btn" id="downloadBtn">
+                        <span class="btn-text">Get Your FREE Starter Rune</span>
+                        <span class="btn-loader">⚡</span>
+                    </button>
+                </div>
+                <p class="form-note">
+                    <span class="rune-icon">ᛚᚱ</span> 
+                    Select your rune above • Download instantly • No credit card required
+                </p>
+            </form>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="social-proof">
+            <div class="proof-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="waitlistCount">1,247</span>
+                    <span class="stat-label">Masters Waiting</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4,000+</span>
+                    <span class="stat-label">Templates Ready</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Launch Access Section -->
+        <section class="launch-section">
+            <div class="launch-header">
+                <div class="launch-icon">
+                    <span class="rune-icon animated">ᚠ</span>
+                </div>
+                <h2 class="section-title">Launch Day Access</h2>
+                <p class="section-subtitle">Secure your spot for day-one access to the complete RuneFlow marketplace</p>
+            </div>
+
+            <!-- Launch Timeline -->
+            <div class="timeline">
+                <div class="timeline-step active">
+                    <div class="step-dot"></div>
+                    <div class="step-content">
+                        <h4>Reserve Now</h4>
+                        <p>Lock in your access</p>
+                    </div>
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-step">
+                    <div class="step-dot"></div>
+                    <div class="step-content">
+                        <h4>Launch Day</h4>
+                        <p>Instant activation</p>
+                    </div>
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-step">
+                    <div class="step-dot"></div>
+                    <div class="step-content">
+                        <h4>Full Access</h4>
+                        <p>2,500+ templates</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="pricing-card">
+                <div class="card-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span>LAUNCH SPECIAL</span>
+                </div>
+                
+                <h3 class="card-title">Launch Day Access</h3>
+                
+                <div class="price-display">
+                    <span class="original-price">$497</span>
+                    <span class="current-price">$297</span>
+                    <span class="price-period">/year</span>
+                </div>
+                
+                <div class="savings-badge">Save $200 - 40% OFF</div>
+                
+                <div class="features-list">
+                    <div class="feature">✓ Instant access on launch day</div>
+                    <div class="feature">✓ All 2,500+ templates included</div>
+                    <div class="feature">✓ 40% discount locked in forever</div>
+                    <div class="feature">✓ Priority support queue</div>
+                    <div class="feature">✓ Monthly template updates</div>
+                </div>
+                
+                <div class="payment-buttons">
+                    <button class="payment-btn primary" onclick="openPayment('card')">
+                        <span class="btn-icon">💳</span>
+                        <span>Reserve with Card</span>
+                    </button>
+                    <button class="payment-btn secondary" onclick="openPayment('crypto')">
+                        <span class="btn-icon">₿</span>
+                        <span>Pay with Crypto</span>
+                    </button>
+                </div>
+                
+                <div class="security-note">
+                    🔒 Secure payment • SSL encrypted • 30-day guarantee
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Arsenal Section -->
+        <section class="founder-section">
+            <div class="founder-header">
+                <div class="legendary-badge">
+                    <span class="badge-rune">ᚱ</span>
+                    <span class="badge-text">BLIND FOUNDERS</span>
+                </div>
+                <h2 class="founder-title">
+                    <span class="title-rune">ᚱᚢᚾᛖᚠᛚᛟᚹ</span>
+                    Become a Blind Founder
+                </h2>
+                <p class="founder-subtitle">Lock in 50% off our annual subscription forever + own all 8,000 templates</p>
+            </div>
+            
+            <div class="founder-offers">
+                <!-- Lifetime Offer -->
+                <div class="offer-card premium">
+                    <div class="popular-badge">🔥 MOST POPULAR</div>
+                    
+                    <div class="offer-header">
+                        <div class="offer-badge lifetime">
+                            <span class="badge-icon">♾️</span>
+                            <span>LIFETIME ACCESS</span>
+                        </div>
+                        <h3>Own Everything Forever</h3>
+                        <p>One payment, unlimited access to all 8,000+ templates plus every future release</p>
+                    </div>
+                    
+                    <div class="price-comparison">
+                        <span class="original-price">$1,998</span>
+                        <div class="current-pricing">
+                            <span class="price-main">$999</span>
+                            <span class="price-period">one-time</span>
+                        </div>
+                        <div class="savings">Save $999 • 50% OFF</div>
+                    </div>
+                    
+                    <div class="offer-features">
+                        <div class="feature">✨ All 8,000+ templates + future releases</div>
+                        <div class="feature">✨ Exclusive founder community access</div>
+                        <div class="feature">✨ Priority support & early previews</div>
+                        <div class="feature">✨ VIP founder status</div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn primary" onclick="openPayment('lifetime')">
+                            <span class="btn-icon">💳</span>
+                            <span>Claim Lifetime Access</span>
+                        </button>
+                        <button class="action-btn secondary" onclick="openPayment('lifetime-crypto')">
+                            <span class="btn-icon">₿</span>
+                            <span>Pay with Crypto</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Annual Offer -->
+                <div class="offer-card">
+                    <div class="offer-header">
+                        <div class="offer-badge annual">
+                            <span class="badge-icon">📅</span>
+                            <span>ANNUAL PLAN</span>
+                        </div>
+                        <h3>Annual Subscription</h3>
+                        <p>Renewable access with locked-in founder pricing</p>
+                    </div>
+                    
+                    <div class="price-comparison">
+                        <span class="original-price">$497</span>
+                        <div class="current-pricing">
+                            <span class="price-main">$199</span>
+                            <span class="price-period">/year</span>
+                        </div>
+                        <div class="savings">Save $298 annually</div>
+                    </div>
+                    
+                    <div class="offer-features">
+                        <div class="feature">✓ All 8,000+ templates included</div>
+                        <div class="feature">✓ 50% founder discount forever</div>
+                        <div class="feature">✓ Priority support & updates</div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn primary" onclick="openPayment('annual')">
+                            <span class="btn-icon">💳</span>
+                            <span>Start Annual Plan</span>
+                        </button>
+                        <button class="action-btn secondary" onclick="openPayment('annual-crypto')">
+                            <span class="btn-icon">₿</span>
+                            <span>Pay with Crypto</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Launch Timeline -->
+        <section class="timeline-section">
+            <h3 class="timeline-title">The Awakening Timeline</h3>
+            <div class="launch-timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 1: The Gathering</h4>
+                        <p>Building the waiting list of automation masters</p>
+                        <span class="timeline-status">ACTIVE NOW</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 2: Second Rune Drop</h4>
+                        <p>FREE "Thurisaz" rune release + Founder pricing increases</p>
+                        <span class="timeline-date">Month 1</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 3: Marketplace Launch</h4>
+                        <p>4,000+ templates live + full access for founders</p>
+                        <span class="timeline-date">Month 2</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Urgency Section -->
+        <section class="urgency-section">
+            <div class="urgency-content">
+                <div class="urgency-icon">⚡</div>
+                <div class="urgency-text">
+                    <h4>Limited Time Offer</h4>
+                    <p>Only 100 Blind Founder spots available. Price increases next month.</p>
+                </div>
+                <div class="spots-remaining">
+                    <span class="spots-number" id="spotsRemaining">47</span>
+                    <span class="spots-label">spots left</span>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-timer">
+                <h4>Founder Pricing Ends In:</h4>
+                <div class="timer-display">
+                    <div class="time-unit">
+                        <span id="days">23</span>
+                        <span>Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours">14</span>
+                        <span>Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes">32</span>
+                        <span>Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds">18</span>
+                        <span>Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-icon">🎉</span>
+                <h3>Download Starting!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your <strong id="selectedRuneName">FlowRune</strong> template is downloading now.</p>
+                <div class="download-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span>Setup instructions sent to your email</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⚡</span>
+                        <span>Ready to deploy in 5 minutes</span>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">Continue Exploring</button>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="assets/js/redesign.js"></script>
+</body>
+</html>

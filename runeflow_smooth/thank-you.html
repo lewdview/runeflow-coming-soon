@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - RuneFlow</title>
+    <meta name="description" content="Thank you for your purchase! Welcome to the RuneFlow community.">
+    <link rel="stylesheet" href="assets/css/smooth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .thank-you-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Floating Runes Animation */
+        .floating-runes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-rune {
+            position: absolute;
+            font-size: 1.8rem;
+            color: rgba(34, 197, 94, 0.4);
+            animation: float 12s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .thank-you-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .thank-you-icon {
+            font-size: 5rem;
+            color: #22c55e;
+            margin-bottom: var(--spacing-lg);
+            animation: celebrateIcon 2s ease-in-out infinite;
+        }
+        
+        @keyframes celebrateIcon {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                text-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+            }
+            25% { 
+                transform: translateY(-10px) rotate(5deg) scale(1.05);
+                text-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+            }
+            75% { 
+                transform: translateY(-5px) rotate(-5deg) scale(1.02);
+                text-shadow: 0 0 25px rgba(34, 197, 94, 0.7);
+            }
+        }
+        
+        .order-summary {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .welcome-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .benefit-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .next-actions {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+        
+        .action-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">RuneFlow<span style="color: #ffab00;">.xyz</span></h1>
+            <p class="tagline">Ancient Power. Modern Automation.</p>
+        </div>
+    </header>
+
+    <!-- Thank You Hero -->
+    <section class="thank-you-hero">
+        <!-- Floating Runes Background -->
+        <div class="floating-runes" id="floatingRunes"></div>
+        
+        <div class="container">
+            <div class="thank-you-content">
+                <div class="thank-you-icon">🎉</div>
+                <h2>Welcome to the Rune Circle!</h2>
+                <p class="text-large">Your journey into automation mastery begins now.</p>
+                
+                <div class="order-summary" id="orderSummary">
+                    <h4>Order Complete</h4>
+                    <div class="order-details">
+                        <p><strong>Plan:</strong> <span id="planName">Pro Plan</span></p>
+                        <p><strong>Amount:</strong> <span id="planAmount">$29/month</span></p>
+                        <p><strong>Order ID:</strong> <span id="orderId">#RF-2024-001</span></p>
+                    </div>
+                    <p class="order-note">A confirmation email has been sent to your inbox.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Benefits -->
+    <section class="welcome-section">
+        <div class="container">
+            <h3>What You've Unlocked</h3>
+            <div class="welcome-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h4>Template Library</h4>
+                    <p>Access to 1,000+ proven automation templates ready to deploy.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔮</div>
+                    <h4>Exclusive Runes</h4>
+                    <p>Premium automation workflows not available anywhere else.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Priority Support</h4>
+                    <p>Get help when you need it most with our dedicated support team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Actions -->
+    <section class="next-actions-section">
+        <div class="container">
+            <div class="next-actions">
+                <h3>Ready to Start Automating?</h3>
+                <p>Your account is now active. Here's what you can do next:</p>
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">Access Dashboard</a>
+                    <a href="#" class="action-btn">Browse Templates</a>
+                    <a href="#" class="action-btn">Join Community</a>
+                    <a href="#" class="action-btn">View Docs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© RuneFlow.xyz | Ancient Power. Modern Automation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Norse runes for animation
+        const norseRunes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+        
+        // Create floating runes
+        function createFloatingRune() {
+            const floatingRunesContainer = document.getElementById('floatingRunes');
+            const rune = document.createElement('div');
+            rune.className = 'floating-rune';
+            rune.textContent = norseRunes[Math.floor(Math.random() * norseRunes.length)];
+            
+            // Random horizontal position
+            rune.style.left = Math.random() * 100 + '%';
+            
+            // Random animation duration
+            rune.style.animationDuration = (10 + Math.random() * 4) + 's';
+            
+            // Random delay
+            rune.style.animationDelay = Math.random() * 2 + 's';
+            
+            floatingRunesContainer.appendChild(rune);
+            
+            // Remove the rune after animation completes
+            setTimeout(() => {
+                if (rune.parentNode) {
+                    rune.parentNode.removeChild(rune);
+                }
+            }, 15000);
+        }
+        
+        // Display order details from URL params or localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'Pro';
+            const amount = urlParams.get('amount') || '$29/month';
+            const orderId = urlParams.get('order_id') || '#RF-' + Date.now();
+            
+            // Update order summary
+            document.getElementById('planName').textContent = `${plan} Plan`;
+            document.getElementById('planAmount').textContent = amount;
+            document.getElementById('orderId').textContent = orderId;
+            
+            // Store purchase info for future reference
+            localStorage.setItem('runeflow_purchase', JSON.stringify({
+                plan: plan,
+                amount: amount,
+                orderId: orderId,
+                date: new Date().toISOString()
+            }));
+            
+            // Start floating runes animation
+            setInterval(createFloatingRune, 2500);
+            
+            // Create initial celebration runes
+            for (let i = 0; i < 4; i++) {
+                setTimeout(createFloatingRune, i * 600);
+            }
+        });
+        
+        // Add click events for action buttons
+        document.querySelectorAll('.action-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = button.textContent.trim();
+                alert(`Redirecting to ${action}...`);
+                // In a real app, these would navigate to actual pages
+            });
+        });
+    </script>
+</body>
+</html>

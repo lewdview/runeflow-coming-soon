@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Plan - RuneFlow</title>
+    <meta name="description" content="Select from a variety of pricing plans to unlock additional runes and features">
+    <link rel="stylesheet" href="assets/css/smooth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .pricing-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Floating Runes Animation */
+        .floating-runes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-rune {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(99, 102, 241, 0.3);
+            animation: float 10s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .pricing-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+        }
+        
+        .plan-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .plan-card:hover::before {
+            left: 100%;
+        }
+        
+        .plan-card:hover {
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .plan-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .plan-title::after {
+            content: attr(data-rune);
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1rem;
+            color: rgba(99, 102, 241, 0.6);
+            animation: runeRotate 4s ease-in-out infinite;
+        }
+        
+        @keyframes runeRotate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: var(--spacing-lg);
+            animation: priceGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes priceGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 25px rgba(99, 102, 241, 0.4); }
+        }
+        
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .plan-features li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .plan-features li::before {
+            content: 'ᚱ';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+        
+        .plan-cta {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .plan-cta:hover::before {
+            left: 100%;
+        }
+        
+        .plan-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">RuneFlow<span style="color: #ffab00;">.xyz</span></h1>
+            <p class="tagline">Ancient Power. Modern Automation.</p>
+        </div>
+    </header>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <!-- Floating Runes Background -->
+        <div class="floating-runes" id="floatingRunes"></div>
+        
+        <div class="container">
+            <h2>Select Your Path to Power</h2>
+            <p class="text-large">Unlock a world of automation with our flexible plans.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-plans-section">
+        <div class="container">
+            <div class="pricing-plans">
+                <div class="plan-card">
+                    <h3 class="plan-title" data-rune="ᚠ">Starter</h3>
+                    <p class="plan-price">$9/mo</p>
+                    <ul class="plan-features">
+                        <li>Access to 100 Templates</li>
+                        <li>Email Support</li>
+                        <li>Regular Updates</li>
+                    </ul>
+                    <button class="plan-cta">Choose Plan</button>
+                </div>
+                <div class="plan-card">
+                    <h3 class="plan-title" data-rune="ᚱ">Pro</h3>
+                    <p class="plan-price">$29/mo</p>
+                    <ul class="plan-features">
+                        <li>Access to 1000 Templates</li>
+                        <li>Priority Support</li>
+                        <li>Exclusive Workflows</li>
+                    </ul>
+                    <button class="plan-cta">Choose Plan</button>
+                </div>
+                <div class="plan-card">
+                    <h3 class="plan-title" data-rune="ᛟ">Ultimate</h3>
+                    <p class="plan-price">$99/mo</p>
+                    <ul class="plan-features">
+                        <li>Access to All Templates</li>
+                        <li>Dedicated Support</li>
+                        <li>Custom Workflows</li>
+                    </ul>
+                    <button class="plan-cta">Choose Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© RuneFlow.xyz | Ancient Power. Modern Automation.</p>
+        </div>
+    </footer>
+    <script>
+        // Norse runes for animation
+        const norseRunes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+        
+        // Create floating runes
+        function createFloatingRune() {
+            const floatingRunesContainer = document.getElementById('floatingRunes');
+            const rune = document.createElement('div');
+            rune.className = 'floating-rune';
+            rune.textContent = norseRunes[Math.floor(Math.random() * norseRunes.length)];
+            
+            // Random horizontal position
+            rune.style.left = Math.random() * 100 + '%';
+            
+            // Random animation duration
+            rune.style.animationDuration = (8 + Math.random() * 4) + 's';
+            
+            // Random delay
+            rune.style.animationDelay = Math.random() * 3 + 's';
+            
+            floatingRunesContainer.appendChild(rune);
+            
+            // Remove the rune after animation completes
+            setTimeout(() => {
+                if (rune.parentNode) {
+                    rune.parentNode.removeChild(rune);
+                }
+            }, 12000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start floating runes animation
+            setInterval(createFloatingRune, 2000);
+            
+            // Create initial runes
+            for (let i = 0; i < 2; i++) {
+                setTimeout(createFloatingRune, i * 1000);
+            }
+        });
+        
+        // Add click event for "Choose Plan" buttons
+        document.querySelectorAll('.plan-cta').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Redirecting to payment page...');
+            });
+        });
+    </script>
+</body>
+</html>
+

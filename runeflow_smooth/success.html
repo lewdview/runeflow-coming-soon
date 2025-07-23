@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success! Your Rune is Ready - RuneFlow</title>
+    <meta name="description" content="Your free rune template is ready for download. Check your email and start automating!">
+    <link rel="stylesheet" href="assets/css/smooth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .success-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--primary-orange);
+            margin-bottom: var(--spacing-lg);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Floating Runes Animation */
+        .floating-runes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-rune {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 107, 53, 0.3);
+            animation: float 8s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Rune Circle Animation */
+        .rune-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 20s infinite linear;
+            z-index: 1;
+        }
+        
+        .rune-circle::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 15s infinite linear reverse;
+        }
+        
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .rune-orbital {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 107, 53, 0.6);
+            animation: orbit 12s infinite linear;
+        }
+        
+        .rune-orbital:nth-child(1) { animation-delay: 0s; }
+        .rune-orbital:nth-child(2) { animation-delay: -3s; }
+        .rune-orbital:nth-child(3) { animation-delay: -6s; }
+        .rune-orbital:nth-child(4) { animation-delay: -9s; }
+        
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(150px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(150px) rotate(-360deg);
+            }
+        }
+        
+        .success-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rune-received {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rune-received .rune-symbol {
+            font-size: 3rem;
+            color: var(--primary-orange);
+            margin-bottom: var(--spacing-sm);
+            animation: runeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes runeGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(255, 107, 53, 0.6);
+                transform: scale(1.05);
+            }
+        }
+        
+        .next-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            border-radius: var(--border-radius);
+            animation: shimmer 3s infinite;
+            z-index: -1;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .step-number {
+            background: var(--gradient-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto var(--spacing-sm);
+            animation: stepPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes stepPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">RuneFlow<span style="color: #ffab00;">.xyz</span></h1>
+            <p class="tagline">Ancient Power. Modern Automation.</p>
+        </div>
+    </header>
+
+    <!-- Success Hero -->
+    <section class="success-hero">
+        <!-- Floating Runes Background -->
+        <div class="floating-runes" id="floatingRunes"></div>
+        
+        <!-- Rotating Rune Circle -->
+        <div class="rune-circle">
+            <div class="rune-orbital">ᚠ</div>
+            <div class="rune-orbital">ᚨ</div>
+            <div class="rune-orbital">ᛚ</div>
+            <div class="rune-orbital">ᛒ</div>
+        </div>
+        
+        <div class="container">
+            <div class="success-content">
+                <div class="success-icon">✨</div>
+                <h2>Your Rune Has Been Forged!</h2>
+                <p class="text-large">Check your email for your free automation template. It should arrive within 2-3 minutes.</p>
+                
+                <div class="rune-received" id="selectedRuneDisplay">
+                    <div class="rune-symbol">ᚠ</div>
+                    <h4>FlowRune Template</h4>
+                    <p>Viral ASMR Creator automation is now yours!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="next-steps-section">
+        <div class="container">
+            <h3>What's Next?</h3>
+            <div class="next-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Check Your Email</h4>
+                    <p>Look for an email from RuneFlow with your template download link.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Download & Install</h4>
+                    <p>Import the template into your n8n instance and customize as needed.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Start Automating</h4>
+                    <p>Configure your credentials and watch the magic happen!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgrade CTA -->
+    <section class="upgrade-cta">
+        <div class="container">
+            <div class="upgrade-card">
+                <h3>Ready for More Power?</h3>
+                <p>You've experienced just a taste of RuneFlow's capabilities. Unlock access to 4,000+ more templates!</p>
+                <div class="upgrade-buttons">
+                    <a href="index.html#packages" class="cta-btn">View All Packages</a>
+                    <a href="index.html#founders-arsenal" class="cta-btn" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">Become a Founder</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© RuneFlow.xyz | Ancient Power. Modern Automation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Norse runes for animation
+        const norseRunes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+        
+        // Create floating runes
+        function createFloatingRune() {
+            const floatingRunesContainer = document.getElementById('floatingRunes');
+            const rune = document.createElement('div');
+            rune.className = 'floating-rune';
+            rune.textContent = norseRunes[Math.floor(Math.random() * norseRunes.length)];
+            
+            // Random horizontal position
+            rune.style.left = Math.random() * 100 + '%';
+            
+            // Random animation duration
+            rune.style.animationDuration = (6 + Math.random() * 4) + 's';
+            
+            // Random delay
+            rune.style.animationDelay = Math.random() * 2 + 's';
+            
+            floatingRunesContainer.appendChild(rune);
+            
+            // Remove the rune after animation completes
+            setTimeout(() => {
+                if (rune.parentNode) {
+                    rune.parentNode.removeChild(rune);
+                }
+            }, 10000);
+        }
+        
+        // Display the selected rune from localStorage or URL params
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedRune = urlParams.get('rune') || 'flowrune';
+            
+            const runeData = {
+                'flowrune': {
+                    symbol: 'ᚠ',
+                    name: 'FlowRune',
+                    description: 'Viral ASMR Creator automation is now yours!'
+                },
+                'ansuz': {
+                    symbol: 'ᚨ',
+                    name: 'Ansuz',
+                    description: 'The Messenger automation is now yours!'
+                },
+                'laguz': {
+                    symbol: 'ᛚ',
+                    name: 'Laguz',
+                    description: 'The Intelligent Qualifier automation is now yours!'
+                }
+            };
+            
+            const rune = runeData[selectedRune];
+            if (rune) {
+                document.querySelector('.rune-received .rune-symbol').textContent = rune.symbol;
+                document.querySelector('.rune-received h4').textContent = `${rune.name} Template`;
+                document.querySelector('.rune-received p').textContent = rune.description;
+            }
+            
+            // Start floating runes animation
+            setInterval(createFloatingRune, 1500);
+            
+            // Create initial runes
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createFloatingRune, i * 500);
+            }
+        });
+    </script>
+</body>
+</html>

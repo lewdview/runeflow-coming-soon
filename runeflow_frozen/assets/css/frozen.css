@@ -1,0 +1,517 @@
+/* Frozen Realm - The Ultimate Ice-Cold Automation Experience */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Frozen Color Palette */
+    --deep-ice: #001122;
+    --midnight-frost: #0a1428;
+    --crystal-blue: #1e3a8a;
+    --neon-cyan: #00ffff;
+    --electric-blue: #0080ff;
+    --glacier-white: #f0f9ff;
+    --ice-silver: #e2e8f0;
+    --frozen-purple: #8b5cf6;
+    --aurora-green: #10b981;
+    --blizzard-white: #ffffff;
+    
+    /* Neon Glow Effects */
+    --neon-cyan-glow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), 0 0 60px var(--neon-cyan);
+    --electric-glow: 0 0 15px var(--electric-blue), 0 0 30px var(--electric-blue);
+    --aurora-glow: 0 0 25px var(--aurora-green), 0 0 50px var(--aurora-green);
+    --ice-glow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+    
+    /* Advanced Gradients */
+    --aurora-gradient: linear-gradient(135deg, #001122 0%, #0a1428 25%, #1e3a8a 50%, #8b5cf6 75%, #10b981 100%);
+    --ice-crystal-gradient: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 100%);
+    --frozen-metal: linear-gradient(135deg, #1e3a8a 0%, #0080ff 50%, #00ffff 100%);
+    --blizzard-gradient: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 100%);
+    
+    /* Typography */
+    --font-frozen: 'Orbitron', monospace;
+    --font-body: 'Exo 2', sans-serif;
+    
+    /* Spacing & Effects */
+    --border-radius-ice: 20px;
+    --ice-border: 2px solid rgba(0, 255, 255, 0.3);
+    --crystal-shadow: 0 8px 32px rgba(0, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --frozen-transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Advanced CSS Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Epic Body Styling */
+body {
+    font-family: var(--font-body);
+    background: var(--aurora-gradient);
+    background-attachment: fixed;
+    color: var(--glacier-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+/* Epic Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+    animation: auroraShift 15s ease-in-out infinite alternate;
+    z-index: -2;
+    pointer-events: none;
+}
+
+@keyframes auroraShift {
+    0% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1.1) rotate(2deg);
+    }
+}
+
+/* Epic Snow Animation */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Ice Rune Cards */
+.ice-rune-card {
+    background: var(--ice-crystal-gradient);
+    border: var(--ice-border);
+    border-radius: var(--border-radius-ice);
+    box-shadow: var(--crystal-shadow);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--frozen-transition);
+}
+
+.ice-rune-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--neon-cyan-glow), 0 10px 40px rgba(0, 255, 255, 0.2);
+}
+
+.ice-symbol {
+    font-size: 3rem;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    margin-bottom: 1rem;
+    animation: runePulse 3s ease-in-out infinite;
+}
+
+.snowflake {
+    position: absolute;
+    color: var(--neon-cyan);
+    font-size: 1rem;
+    animation: snowfall linear infinite;
+    text-shadow: var(--neon-cyan-glow);
+    opacity: 0.8;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Epic Ice Crystals */
+.ice-crystals {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.ice-crystal {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: var(--neon-cyan-glow);
+    animation: crystalFloat 8s ease-in-out infinite;
+}
+
+@keyframes crystalFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Floating Ice Runes - Epic Edition */
+.floating-ice-runes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.ice-rune {
+    position: absolute;
+    font-family: var(--font-frozen);
+    font-size: 3rem;
+    color: rgba(0, 255, 255, 0.15);
+    text-shadow: var(--ice-glow);
+    animation: runeFloat 25s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes runeFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.1;
+    }
+    25% {
+        transform: translate(50px, -100px) rotate(90deg) scale(1.1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-30px, -200px) rotate(180deg) scale(0.9);
+        opacity: 0.2;
+    }
+    75% {
+        transform: translate(-80px, -100px) rotate(270deg) scale(1.2);
+        opacity: 0.25;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Epic Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 17, 34, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    padding: 1.5rem 0;
+    box-shadow: var(--crystal-shadow);
+}
+
+.logo {
+    font-family: var(--font-frozen);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+/* Remove the problematic ::before pseudo-element */
+
+.flow-text {
+    color: var(--electric-blue);
+    text-shadow: var(--electric-glow);
+    animation: flowPulse 2s ease-in-out infinite alternate;
+}
+
+.frozen-suffix {
+    color: var(--glacier-white);
+    font-size: 0.6em;
+    text-shadow: var(--ice-glow);
+    opacity: 0.9;
+}
+
+@keyframes logoGlow {
+    0% { text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
+    100% { text-shadow: 0 0 30px var(--neon-cyan), 0 0 60px var(--neon-cyan), 0 0 80px var(--neon-cyan); }
+}
+
+@keyframes flowPulse {
+    0% { text-shadow: 0 0 15px var(--electric-blue); }
+    100% { text-shadow: 0 0 25px var(--electric-blue), 0 0 35px var(--electric-blue); }
+}
+
+.tagline {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--ice-silver);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Epic Hero Section */
+.hero {
+    padding: clamp(4rem, 10vw, 8rem) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.aurora-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--blizzard-gradient);
+    animation: auroraShift 12s ease-in-out infinite alternate;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(0, 255, 255, 0.1);
+    border: var(--ice-border);
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    font-family: var(--font-frozen);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    margin-bottom: 2rem;
+    box-shadow: var(--crystal-shadow);
+    animation: badgeFloat 4s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.hero-content h2 {
+    font-family: var(--font-frozen);
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--glacier-white) 0%, var(--neon-cyan) 50%, var(--electric-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    animation: titleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes titleShimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    line-height: 1.7;
+    color: var(--ice-silver);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+}
+
+/* Epic Frozen Proof */
+.frozen-proof {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.proof-crystal {
+    background: rgba(0, 255, 255, 0.05);
+    border: var(--ice-border);
+    border-radius: var(--border-radius-ice);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--crystal-shadow);
+    transition: var(--frozen-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.proof-crystal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.proof-crystal:hover::before {
+    left: 100%;
+}
+
+.proof-crystal:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--neon-cyan-glow), var(--crystal-shadow);
+}
+
+.crystal-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: crystalPulse 3s ease-in-out infinite;
+}
+
+@keyframes crystalPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.proof-number {
+    display: block;
+    font-family: var(--font-frozen);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+    margin-bottom: 0.5rem;
+}
+
+.proof-label {
+    font-size: 0.9rem;
+    color: var(--ice-silver);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Epic CTA Button */
+.cta-btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    font-family: var(--font-frozen);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--deep-ice);
+    background: var(--frozen-metal);
+    border: none;
+    border-radius: var(--border-radius-ice);
+    box-shadow: var(--crystal-shadow), var(--electric-glow);
+    cursor: pointer;
+    transition: var(--frozen-transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+    z-index: -1;
+}
+
+.cta-btn:hover::before {
+    left: 100%;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--neon-cyan-glow), 0 10px 40px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 17, 34, 0.8);
+}
+
+.cta-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+    z-index: -1;
+}
+
+.cta-btn:hover::before {
+    left: 100%;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--neon-cyan-glow), 0 10px 40px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 17, 34, 0.8);
+}
+
+.cta-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
