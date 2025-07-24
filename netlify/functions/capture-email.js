@@ -1,42 +1,52 @@
 const nodemailer = require('nodemailer');
-const fs = require('fs');
-const path = require('path');
 
-// Email storage file path
-const EMAIL_STORAGE_PATH = path.join(process.cwd(), 'data', 'emails.json');
-
-// Load existing emails from file
-function loadEmails() {
-  try {
-    if (fs.existsSync(EMAIL_STORAGE_PATH)) {
-      const data = fs.readFileSync(EMAIL_STORAGE_PATH, 'utf8');
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error('Error loading emails:', error);
+// For Netlify deployment - use external storage or logging
+// Since Netlify functions are stateless, we'll log emails and send notifications
+function logEmailCapture(emailData) {
+  console.log('✅ EMAIL CAPTURED:', JSON.stringify(emailData, null, 2));
+  
+  // Send notification to admin email if configured
+  if (process.env.ADMIN_EMAIL) {
+    sendAdminNotification(emailData).catch(error => {
+      console.error('❌ Admin notification failed:', error);
+    });
   }
-  return [];
+  
+  return true;
 }
 
-// Save emails to file
-function saveEmails(emails) {
-  try {
-    // Ensure data directory exists
-    const dataDir = path.dirname(EMAIL_STORAGE_PATH);
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
+// Send admin notification about new email capture
+async function sendAdminNotification(emailData) {
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
+    port: process.env.SMTP_PORT || 587,
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER || 'hello@runeflow.xyz',
+      pass: process.env.SMTP_PASS || 'giveME1221!sex'
     }
-    
-    fs.writeFileSync(EMAIL_STORAGE_PATH, JSON.stringify(emails, null, 2));
-    return true;
-  } catch (error) {
-    console.error('Error saving emails:', error);
-    return false;
-  }
-}
+  });
 
-// Load emails at startup
-let emailList = loadEmails();
+  await transporter.sendMail({
+    from: `"RuneFlow System" <${process.env.FROM_EMAIL || 'hello@runeflow.xyz'}>`,
+    to: process.env.ADMIN_EMAIL || 'hello@runeflow.xyz',
+    subject: '🎯 New Email Capture - RuneFlow.xyz',
+    html: `
+      <div style="font-family: Arial, sans-serif; padding: 20px; background: #1a1a2e; color: #ffffff; border-radius: 10px;">
+        <h2 style="color: #4fffb8;">📧 New Email Captured</h2>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+          <p><strong>Email:</strong> ${emailData.email}</p>
+          <p><strong>Timestamp:</strong> ${emailData.timestamp}</p>
+          <p><strong>Selected Rune:</strong> ${emailData.selected_rune || 'None'}</p>
+          <p><strong>Free Pack:</strong> ${emailData.is_free_pack ? 'Yes' : 'No'}</p>
+          <p><strong>IP Address:</strong> ${emailData.ip || 'Unknown'}</p>
+          <p><strong>User Agent:</strong> ${emailData.userAgent || 'Unknown'}</p>
+        </div>
+        <p style="color: #b8b8b8; font-size: 12px;">This is an automated notification from RuneFlow.xyz email capture system.</p>
+      </div>
+    `
+  });
+}
 
 exports.handler = async (event, context) => {
   // Handle CORS
@@ -78,21 +88,10 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Check for duplicates
-    const existingEmail = emailList.find(entry => entry.email === email);
-    if (existingEmail) {
-      return {
-        statusCode: 200,
-        headers: corsHeaders,
-        body: JSON.stringify({
-          message: 'Email already registered',
-          success: true,
-          duplicate: true
-        })
-      };
-    }
+    // For Netlify deployment, we'll allow duplicate submissions since we don't have persistent storage
+    // In a production setup, you'd want to use a database or external service for deduplication
 
-    // Store email
+    // Store email data for logging and notifications
     const emailEntry = {
       email,
       timestamp: new Date().toISOString(),
@@ -102,13 +101,8 @@ exports.handler = async (event, context) => {
       userAgent: event.headers['user-agent']
     };
 
-    emailList.push(emailEntry);
-    
-    // Save updated email list to file
-    const saved = saveEmails(emailList);
-    if (!saved) {
-      console.warn('Failed to save email to persistent storage');
-    }
+    // Log the email capture (appears in Netlify function logs)
+    logEmailCapture(emailEntry);
 
     // Email configuration
     const transporter = nodemailer.createTransport({
@@ -148,7 +142,7 @@ exports.handler = async (event, context) => {
             </div>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://runeflow.xyz${downloadUrl}" style="background: linear-gradient(45deg, #4fffb8, #00d4ff); color: #1a1a2e; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">📥 Download Your FlowRune Template</a>
+              <a href="https://runeflow.xyz/assets/downloads/flowrune-asmr-v1.zip" style="background: linear-gradient(45deg, #4fffb8, #00d4ff); color: #1a1a2e; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">📥 Download Your FlowRune Template</a>
             </div>
             
             <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -162,8 +156,8 @@ exports.handler = async (event, context) => {
             </div>
             
             <p style="text-align: center; color: #b8b8b8; font-size: 14px; margin-top: 30px;">
-              Need help? Contact us at <a href="mailto:support@runeflow.co" style="color: #4fffb8;">support@runeflow.co</a><br>
-              Follow us: <a href="https://runeflow.co" style="color: #4fffb8;">runeflow.co</a> | Discord: discord.gg/runeflow
+              Need help? Contact us at <a href="mailto:hello@runeflow.xyz" style="color: #4fffb8;">hello@runeflow.xyz</a><br>
+              Follow us: <a href="https://x.com/runeflowxyz" style="color: #4fffb8;">@runeflowxyz</a>
             </p>
           </div>
         `
