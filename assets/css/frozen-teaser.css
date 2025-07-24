@@ -237,7 +237,7 @@ body {
     position: relative;
 }
 
-/* Dynamic gradient background overlay */
+/* Static gradient background overlay - disabled animations for performance */
 body::before {
     content: '';
     position: fixed;
@@ -247,12 +247,12 @@ body::before {
     height: 100%;
     background: var(--gradient-secondary);
     opacity: 0.1;
-    animation: gradientShift 20s ease-in-out infinite alternate;
+    /* animation: gradientShift 20s ease-in-out infinite alternate; */
     z-index: -1;
     pointer-events: none;
 }
 
-/* Floating gradient orbs */
+/* Static gradient orbs - disabled animations for performance */
 body::after {
     content: '';
     position: fixed;
@@ -265,7 +265,7 @@ body::after {
         radial-gradient(circle at 80% 70%, var(--powder-blue) 0%, transparent 40%),
         radial-gradient(circle at 60% 20%, var(--electric-blue) 0%, transparent 30%);
     opacity: 0.03;
-    animation: orbFloat 30s ease-in-out infinite;
+    /* animation: orbFloat 30s ease-in-out infinite; */
     z-index: -1;
     pointer-events: none;
 }
