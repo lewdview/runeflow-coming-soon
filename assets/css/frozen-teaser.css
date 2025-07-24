@@ -376,6 +376,14 @@ body::after {
     position: relative;
     animation: logoGradientShift 4s ease-in-out infinite alternate;
     text-shadow: none;
+    /* Better physics and alignment */
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+    /* Smooth rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 .logo::before {
@@ -424,6 +432,15 @@ body::after {
 
 .flow-text {
     color: #004444;
+    /* Better physics and alignment */
+    display: inline;
+    vertical-align: baseline;
+    line-height: inherit;
+    /* Smooth text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Enhanced text shadow effects */
     text-shadow: 
         /* Large gradient stroke layers */
         -2px -2px 0 #001111,
@@ -467,7 +484,7 @@ body::after {
         0 0 80px rgba(0, 255, 255, 0.6),
         0 0 100px rgba(0, 255, 255, 0.4),
         0 0 120px rgba(0, 255, 255, 0.2);
-    animation: flowPulse 2s ease-in-out infinite alternate;
+    animation: flowPulse 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes flowPulse {
@@ -476,6 +493,22 @@ body::after {
     }
     100% { 
         text-shadow: 0 0 25px var(--neon-cyan), 0 0 35px var(--neon-cyan); 
+    }
+}
+
+@keyframes suffixGlow {
+    0% { 
+        text-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.8), 
+            0 0 30px rgba(0, 255, 255, 0.6);
+        opacity: 0.9;
+    }
+    100% { 
+        text-shadow: 
+            0 0 25px rgba(255, 255, 255, 1.0), 
+            0 0 45px rgba(0, 255, 255, 0.8),
+            0 0 60px rgba(0, 255, 255, 0.4);
+        opacity: 1;
     }
 }
 
@@ -498,6 +531,16 @@ body::after {
     font-weight: inherit !important;
     text-transform: inherit !important;
     letter-spacing: inherit !important;
+    /* Better physics and alignment */
+    vertical-align: baseline !important;
+    line-height: inherit !important;
+    margin-left: 0.1em !important;
+    /* Smooth text rendering */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    /* Enhanced animation */
+    animation: suffixGlow 3s ease-in-out infinite alternate !important;
 }
 
 .tagline {
