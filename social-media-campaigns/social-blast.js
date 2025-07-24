@@ -31,23 +31,23 @@ class SocialMediaBlast {
     loadCampaigns() {
         return {
             launch_announcement: [
-                "🔥 The automation revolution is here! RuneFlow.co - the ultimate n8n template marketplace is awakening. Join 1000+ automation masters on the waitlist! #RuneFlow #n8n #automation",
-                "⚡ Ancient power meets modern automation. RuneFlow.co launches with 4,000+ battle-tested n8n templates. Get your FREE starter rune now! #AutomationMaster #n8n #RuneFlow",
-                "🧙‍♂️ Calling all automation wizards! RuneFlow.co is the mystical marketplace you've been waiting for. Exclusive founding member benefits available NOW! #n8n #automation #RuneFlow"
+                "🔥 The automation revolution is here! runeflow.xyz - where ancient power meets modern automation ᚦ Join the automation masters! #RuneFlow #n8n #automation",
+                "⚡ Ancient power meets modern automation. runeflow.xyz awakens with battle-tested n8n runes. Get your FREE starter rune now! ᚱᚢᚾᛖ #AutomationMaster #n8n #RuneFlow",
+                "🧙‍♂️ Calling all automation wizards! runeflow.xyz is the mystical n8n marketplace you've been waiting for. Founder benefits available NOW! ᚠᛚᚱ #n8n #automation #RuneFlow"
             ],
             milestone_posts: [
                 "🎯 {count} automation masters have joined the RuneFlow revolution! The power grows stronger... #RuneFlow #n8n #automation",
                 "⚡ {count} warriors gathered! The RuneFlow marketplace awakens with each new member. Join the ancient order of automation! #AutomationMaster #n8n",
-                "🔥 {count} runes claimed! Each signup brings us closer to unleashing the full power of RuneFlow.co #RuneFlow #automation #n8n"
+                "🔥 {count} runes claimed! Each signup brings us closer to unleashing the full power of runeflow.xyz #RuneFlow #automation #n8n"
             ],
             product_highlights: [
-                "🏆 4,000+ n8n templates ready for battle! AI & Research: 1,412 templates | Data Analysis: 1,255 templates | Email & Communication: 486 templates #n8n #automation #RuneFlow",
+                "🏆 n8n templates ready for battle! AI & Research | Data Analysis | Email & Communication workflows available #n8n #automation #RuneFlow",
                 "⚡ One-click deployment magic! RuneFlow templates are pre-configured and ready to deploy in 5 minutes. No more starting from scratch! #n8n #automation #productivity",
                 "🎯 From rookie to master in minutes! RuneFlow templates handle everything from simple automations to complex enterprise workflows #AutomationMaster #n8n #RuneFlow"
             ],
             urgency_posts: [
                 "⏰ LIMITED TIME: Blind Founder pricing $999 (normally $1,998) - Only 73 spots remaining! Lock in 50% off forever! #RuneFlow #automation #n8n",
-                "🔥 LAST CHANCE: Founding member benefits end soon! 40% off lifetime + instant access to 4,000+ templates #RuneFlow #n8n #automation",
+                "🔥 LAST CHANCE: Founding member benefits end soon! Early access pricing + automation templates #RuneFlow #n8n #automation",
                 "⚡ The countdown begins! RuneFlow launches in weeks, not months. Secure your spot before prices double! #RuneFlow #automation #n8n"
             ],
             social_proof: [
@@ -215,7 +215,7 @@ class SocialMediaBlast {
             .join(' ');
         
         // Add call-to-action
-        const cta = '\n\n🔗 Join the revolution: https://runflow.webhalla.com';
+        const cta = '\n\n🔗 Join the revolution: https://runeflow.xyz';
         
         return post + cta;
     }

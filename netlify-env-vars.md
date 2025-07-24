@@ -17,6 +17,15 @@ FROM_EMAIL=hello@runeflow.xyz
 FROM_NAME=RuneFlow Team
 ADMIN_EMAIL=hello@runeflow.xyz
 ADMIN_KEY=runeflow-admin-2025
+
+# Database Configuration (Optional - for storing email captures)
+DATABASE_URL=postgresql://username:password@host:port/database
+# OR use individual database settings:
+DB_HOST=your-postgres-host
+DB_USER=runeflow_api
+DB_PASS=your-database-password
+DB_NAME=runeflow
+DB_PORT=5432
 ```
 
 ### Optional Variables (Add if needed)

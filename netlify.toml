@@ -40,6 +40,11 @@
   to = "/.netlify/functions/test-smtp"
   status = 200
 
+[[redirects]]
+  from = "/auth/twitter/callback"
+  to = "/.netlify/functions/twitter-callback"
+  status = 200
+
 # Coinbase Commerce webhook
 [[redirects]]
   from = "/webhook/coinbase"

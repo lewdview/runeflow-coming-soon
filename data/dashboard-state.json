@@ -1,0 +1,43 @@
+{
+  "glassWindow": {
+    "visible": true,
+    "currentStep": "health_check",
+    "processLog": [
+      {
+        "timestamp": "2025-07-24T09:40:59.549Z",
+        "step": "health_check",
+        "status": "processing",
+        "details": "Performing system health check"
+      },
+      {
+        "timestamp": "2025-07-24T09:40:59.551Z",
+        "step": "health_check",
+        "status": "success",
+        "details": "System health: degraded"
+      }
+    ],
+    "systemHealth": "degraded"
+  },
+  "registry": {
+    "steps": {
+      "health_check": "success"
+    },
+    "checkmarks": {
+      "health_check": "✅"
+    },
+    "failures": [],
+    "successes": [
+      {
+        "step": "health_check",
+        "timestamp": "2025-07-24T09:40:59.551Z"
+      }
+    ]
+  },
+  "realTimeStats": {
+    "postsScheduled": 0,
+    "postsPosted": 0,
+    "engagement": {},
+    "apiCalls": 0,
+    "creditsUsed": 0
+  }
+}

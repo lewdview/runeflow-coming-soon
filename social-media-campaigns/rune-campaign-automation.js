@@ -34,19 +34,19 @@ class RuneCampaignAutomation {
         return {
             week1: {
                 name: "FlowRune",
-                description: "AI-Powered ASMR Video Creator",
+                description: "AI-Powered n8n Workflow Creator",
                 posts: [
                     // Day 1 - Monday
                     {
                         day: 1,
                         time: "09:00",
-                        content: "🔮 RUNE OF THE WEEK: FlowRune - Your AI-Powered ASMR Video Creator ✨\n\nThis week's rune transforms simple concepts into viral ASMR content with 4-layer sound optimization and glass-cutting aesthetics.\n\nReady to automate your way to viral success?\n\n#RuneOfTheWeek #ASMRAutomation #RuneFlow\n🔗 runeflow.xyz",
+                        content: "🔮 RUNE OF THE WEEK: FlowRune - Your AI-Powered n8n Workflow Creator ᚠᛚᚱ\n\nThis week's rune transforms simple concepts into powerful n8n automations with battle-tested templates and ancient optimization magic.\n\nReady to automate your way to workflow mastery?\n\n#RuneOfTheWeek #n8nAutomation #RuneFlow\n🔗 runeflow.xyz",
                         type: "introduction"
                     },
                     {
                         day: 1,
                         time: "14:00",
-                        content: "💡 Why FlowRune is game-changing:\n• AI-powered viral ASMR generation 📱\n• Multi-platform automation (YouTube, TikTok, Instagram)\n• 4-layer sound optimization 🔊\n• Dynamic content tracking 📊\n\nJoin 2,847+ founders already using our runes!\n\n#FlowRune #ASMRCreator #RuneFlow\n🔗 runeflow.xyz",
+                        content: "💡 Why FlowRune is game-changing:\n• AI-powered viral ASMR generation 📱\n• Multi-platform automation (YouTube, TikTok, Instagram)\n• 4-layer sound optimization 🔊\n• Dynamic content tracking 📊\n\nJoin the automation masters already using our runes!\n\n#FlowRune #ASMRCreator #RuneFlow\n🔗 runeflow.xyz",
                         type: "features"
                     },
                     // Day 2 - Tuesday
@@ -66,7 +66,7 @@ class RuneCampaignAutomation {
                     {
                         day: 3,
                         time: "11:00",
-                        content: "🎉 Community Milestone: 2,847 founders have claimed their runes!\n\nEach new member brings us closer to revolutionizing ASMR content creation. The power of automation grows stronger with every creator who joins.\n\nAre you ready to join the ancient order of ASMR automation?\n\n#CommunityPower #ASMRRevolution #RuneFlow\n🔗 runeflow.xyz",
+                        content: "🎉 Community Milestone: Early founders have claimed their runes!\n\nEach new member brings us closer to revolutionizing ASMR content creation. The power of automation grows stronger with every creator who joins.\n\nAre you ready to join the ancient order of ASMR automation?\n\n#CommunityPower #ASMRRevolution #RuneFlow\n🔗 runeflow.xyz",
                         type: "community"
                     },
                     {
@@ -124,7 +124,7 @@ class RuneCampaignAutomation {
                     {
                         day: 7,
                         time: "16:00",
-                        content: "🚀 Next Week Preview:\n\n\"SoundScape Rune\" - Advanced binaural audio generation with spatial positioning magic 🎧\n\nBut first, don't miss your chance to get FlowRune while it's still free!\n\nJoin 2,847+ founders in the automation revolution.\n\n#ComingNext #LastChance #RuneFlow\n🔗 runeflow.xyz",
+                        content: "🚀 Next Week Preview:\n\n\"SoundScape Rune\" - Advanced binaural audio generation with spatial positioning magic 🎧\n\nBut first, don't miss your chance to get FlowRune while it's still free!\n\nJoin the founders in the automation revolution.\n\n#ComingNext #LastChance #RuneFlow\n🔗 runeflow.xyz",
                         type: "preview"
                     }
                 ]

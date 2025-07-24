@@ -1,9 +1,69 @@
 const nodemailer = require('nodemailer');
+const { Pool } = require('pg');
 
-// For Netlify deployment - use external storage or logging
-// Since Netlify functions are stateless, we'll log emails and send notifications
-function logEmailCapture(emailData) {
+// Database connection for storing email captures
+let pool = null;
+if (process.env.DATABASE_URL) {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+  });
+} else if (process.env.DB_HOST) {
+  pool = new Pool({
+    user: process.env.DB_USER || 'runeflow_api',
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME || 'runeflow',
+    password: process.env.DB_PASS,
+    port: process.env.DB_PORT || 5432,
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+  });
+}
+
+// Store email capture in database and send notifications
+async function storeEmailCapture(emailData) {
   console.log('✅ EMAIL CAPTURED:', JSON.stringify(emailData, null, 2));
+  
+  // Store in database if available
+  if (pool) {
+    try {
+      // Check if user exists, create if not
+      const existingUser = await pool.query(
+        'SELECT id FROM users WHERE email = $1',
+        [emailData.email]
+      );
+      
+      let userId = null;
+      if (existingUser.rows.length > 0) {
+        userId = existingUser.rows[0].id;
+      } else {
+        // Create new user
+        const newUser = await pool.query(`
+          INSERT INTO users (email, signup_source, created_at) 
+          VALUES ($1, $2, NOW()) 
+          RETURNING id
+        `, [emailData.email, 'website_capture']);
+        userId = newUser.rows[0].id;
+      }
+      
+      // Log the template download
+      await pool.query(`
+        INSERT INTO template_downloads (template_id, user_id, user_email, download_source, user_agent, ip_address, created_at)
+        VALUES ($1, $2, $3, $4, $5, $6, NOW())
+      `, [
+        emailData.selected_rune || 'flowrune-asmr-v1',
+        userId,
+        emailData.email,
+        'email_capture',
+        emailData.userAgent,
+        emailData.ip
+      ]);
+      
+      console.log('✅ Email capture stored in database');
+    } catch (dbError) {
+      console.error('❌ Database storage failed:', dbError);
+      // Continue anyway - don't fail the whole request
+    }
+  }
   
   // Send notification to admin email if configured
   if (process.env.ADMIN_EMAIL) {
@@ -101,8 +161,8 @@ exports.handler = async (event, context) => {
       userAgent: event.headers['user-agent']
     };
 
-    // Log the email capture (appears in Netlify function logs)
-    logEmailCapture(emailEntry);
+    // Store the email capture in database and logs
+    await storeEmailCapture(emailEntry);
 
     // Email configuration - Updated for IONOS/1&1 hosting
     const transporter = nodemailer.createTransport({

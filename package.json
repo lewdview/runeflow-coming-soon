@@ -1,7 +1,7 @@
 {
   "name": "runeflow-coming-soon",
   "version": "1.0.0",
-  "description": "RuneFlow.co - Coming Soon Landing Page with Automation",
+  "description": "RuneFlow.xyz - Ancient Power. Modern Automation.",
   "main": "index.html",
   "scripts": {
     "start": "node automation/server.js",
@@ -40,6 +40,7 @@
     "html-minifier": "^4.0.0",
     "node-cron": "^4.2.1",
     "nodemailer": "^6.9.8",
+    "pg": "^8.11.3",
     "sharp": "^0.32.6",
     "twitter-api-v2": "^1.24.0",
     "uglify-js": "^3.17.4"

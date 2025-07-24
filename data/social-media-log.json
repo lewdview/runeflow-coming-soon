@@ -342,5 +342,145 @@
       "discord": null
     },
     "success": false
+  },
+  {
+    "timestamp": "2025-07-24T09:35:24.333Z",
+    "campaignType": "launch_announcement",
+    "content": "⚡ Ancient power meets modern automation. RuneFlow.co launches with 4,000+ battle-tested n8n templates. Get your FREE starter rune now! #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://runflow.webhalla.com",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "⚡ Ancient power meets modern automation. https://t.co/wXInXVJC8J launches with 4,000+ battle-tested n8n templates. Get your FREE starter rune now! #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://t.co/pScsNxA3Au",
+          "edit_history_tweet_ids": [
+            "1948316064086982849"
+          ],
+          "id": "1948316064086982849"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:36:54.684Z",
+    "campaignType": "social_proof",
+    "content": "⚡ 'I've been waiting for something like RuneFlow for years!' - Automation expert testimonial #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://runflow.webhalla.com",
+    "results": {
+      "twitter": {
+        "data": {
+          "id": "1948316443163914703",
+          "edit_history_tweet_ids": [
+            "1948316443163914703"
+          ],
+          "text": "⚡ 'I've been waiting for something like RuneFlow for years!' - Automation expert testimonial #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/pScsNxA3Au"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:39:55.220Z",
+    "campaignType": "launch_announcement",
+    "content": "⚡ Ancient power meets modern automation. runeflow.xyz awakens with 4,000+ battle-tested n8n runes. Get your FREE starter rune now! ᚱᚢᚾᛖ #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://runeflow.xyz",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "⚡ Ancient power meets modern automation. https://t.co/KAfIv6waWG awakens with 4,000+ battle-tested n8n runes. Get your FREE starter rune now! ᚱᚢᚾᛖ #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://t.co/5qqDZMz4hq",
+          "edit_history_tweet_ids": [
+            "1948317200248369594"
+          ],
+          "id": "1948317200248369594"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:40:03.473Z",
+    "campaignType": "product_highlights",
+    "content": "🏆 4,000+ n8n templates ready for battle! AI & Research: 1,412 templates | Data Analysis: 1,255 templates | Email & Communication: 486 templates #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://runeflow.xyz",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "🏆 4,000+ n8n templates ready for battle! AI &amp; Research: 1,412 templates | Data Analysis: 1,255 templates | Email &amp; Communication: 486 templates #n8n #automation #RuneFlow\n\n🔗 Join the revolution: https://t.co/5qqDZMz4hq",
+          "edit_history_tweet_ids": [
+            "1948317234964681186"
+          ],
+          "id": "1948317234964681186"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:40:12.816Z",
+    "campaignType": "social_proof",
+    "content": "🎯 'These templates are insane! Finally, n8n workflows that actually work out of the box' - Early access member #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://runeflow.xyz",
+    "results": {
+      "twitter": {
+        "data": {
+          "text": "🎯 'These templates are insane! Finally, n8n workflows that actually work out of the box' - Early access member #AutomationMaster #n8n #RuneFlow\n\n🔗 Join the revolution: https://t.co/5qqDZMz4hq",
+          "edit_history_tweet_ids": [
+            "1948317274080792621"
+          ],
+          "id": "1948317274080792621"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:41:08.898Z",
+    "campaignType": "milestone_posts",
+    "content": "🎯 2 automation masters have joined the RuneFlow revolution! The power grows stronger... #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://runeflow.xyz",
+    "results": {
+      "twitter": {
+        "data": {
+          "edit_history_tweet_ids": [
+            "1948317509326676359"
+          ],
+          "text": "🎯 2 automation masters have joined the RuneFlow revolution! The power grows stronger... #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://t.co/5qqDZMz4hq",
+          "id": "1948317509326676359"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:45:52.790Z",
+    "campaignType": "milestone_posts",
+    "content": "⚡ 2 warriors gathered! The RuneFlow marketplace awakens with each new member. Join the ancient order of automation! #AutomationMaster #n8n\n\n🔗 Join the revolution: https://runeflow.xyz",
+    "results": {
+      "twitter": {
+        "data": {
+          "edit_history_tweet_ids": [
+            "1948318700072755609"
+          ],
+          "text": "⚡ 2 warriors gathered! The RuneFlow marketplace awakens with each new member. Join the ancient order of automation! #AutomationMaster #n8n\n\n🔗 Join the revolution: https://t.co/5qqDZMz4hq",
+          "id": "1948318700072755609"
+        }
+      },
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": true
   }
 ]

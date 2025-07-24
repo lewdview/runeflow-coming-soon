@@ -15,7 +15,7 @@ const PAYMENT_TIERS = {
         name: 'Elite Access',
         price: 999,
         features: [
-            'Lifetime access to all 4,000+ runes',
+            'Lifetime access to all 8,100+ runes',
             'Instant beta raw download',
             'VIP founder badge & privileges',
             '1-on-1 priority support',
@@ -28,7 +28,7 @@ const PAYMENT_TIERS = {
         name: 'Pro Access',
         price: 297,
         features: [
-            'Complete access to all 4,000+ runes at launch',
+            'Complete access to all 8,100+ runes at launch',
             'Pro tier status',
             'Priority email support',
             'Advanced tutorials & guides',
@@ -40,7 +40,7 @@ const PAYMENT_TIERS = {
         name: 'Founder Access',
         price: 199,
         features: [
-            'Complete access to all 4,000+ runes at launch',
+            'Complete access to all 8,100+ runes at launch',
             'Exclusive founder status badge',
             'Lifetime access guarantee',
             'Founder community access',
