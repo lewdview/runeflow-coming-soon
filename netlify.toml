@@ -35,6 +35,11 @@
   to = "/.netlify/functions/admin-emails"
   status = 200
 
+[[redirects]]
+  from = "/admin/test-smtp"
+  to = "/.netlify/functions/test-smtp"
+  status = 200
+
 # Coinbase Commerce webhook
 [[redirects]]
   from = "/webhook/coinbase"
