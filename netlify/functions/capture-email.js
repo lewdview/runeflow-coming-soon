@@ -18,7 +18,7 @@ function logEmailCapture(emailData) {
 // Send admin notification about new email capture
 async function sendAdminNotification(emailData) {
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
+    host: process.env.SMTP_HOST || 'smtp.ionos.com',
     port: process.env.SMTP_PORT || 587,
     secure: false,
     auth: {
@@ -104,9 +104,9 @@ exports.handler = async (event, context) => {
     // Log the email capture (appears in Netlify function logs)
     logEmailCapture(emailEntry);
 
-    // Email configuration
+    // Email configuration - Updated for IONOS/1&1 hosting
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
+      host: process.env.SMTP_HOST || 'smtp.ionos.com',
       port: process.env.SMTP_PORT || 587,
       secure: false,
       auth: {

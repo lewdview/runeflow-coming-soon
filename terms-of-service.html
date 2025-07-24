@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - RuneFlow.xyz</title>
+    <meta name="description" content="Terms of Service for RuneFlow.xyz - The ultimate n8n automation marketplace">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Exo+2:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(ellipse at center top, #001a33 0%, rgba(0, 26, 51, 0.8) 40%, transparent 80%),
+                linear-gradient(to bottom, rgba(0, 212, 255, 0.1) 0%, rgba(184, 230, 255, 0.05) 50%, transparent 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(0, 26, 51, 0.5);
+        }
+
+        .logo {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00d4ff;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b8e6ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: #99ccff;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .content {
+            background: rgba(30, 42, 56, 0.8);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Navigation */
+        .nav-links {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #b8e6ff;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(184, 230, 255, 0.3);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #99ccff;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #e6f3ff;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+            color: #e6f3ff;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Emphasis Boxes */
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h3 {
+            color: #ffb366;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: rgba(0, 26, 51, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+            color: #99ccff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">⚡ runeflow.xyz</a>
+        <h1 class="page-title">Terms of Service</h1>
+        <p class="last-updated">Last Updated: July 24, 2025</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="nav-links">
+                <a href="index.html">← Back to Home</a>
+                <a href="#contact">Contact</a>
+                <a href="#refunds">Refund Policy</a>
+            </div>
+
+            <h1>🔮 Terms of Service</h1>
+
+            <div class="highlight-box">
+                <p><strong>Welcome to RuneFlow.xyz!</strong> By accessing or using our platform, you agree to be bound by these Terms of Service. Please read them carefully before making any purchases or using our services.</p>
+            </div>
+
+            <h2>1. Service Description</h2>
+            <p>RuneFlow.xyz ("we," "us," "our") provides n8n automation templates and workflows ("Runes") designed for business automation and workflow optimization. Our platform operates on a 24-week development and launch schedule, delivering automation solutions inspired by ancient Norse wisdom combined with modern technology.</p>
+
+            <h3>Platform Features:</h3>
+            <ul>
+                <li>📦 4,000+ n8n automation templates ("Runes")</li>
+                <li>🚀 Weekly template releases during development phase</li>
+                <li>📊 Dashboard access and progress tracking</li>
+                <li>👑 Founder and VIP access tiers</li>
+                <li>🔮 Beta access to new features and templates</li>
+            </ul>
+
+            <h2>2. Account Types & Pricing</h2>
+
+            <h3>Elite Access - $999</h3>
+            <div class="highlight-box">
+                <p><strong>Immediate Beta Access</strong></p>
+                <ul>
+                    <li>⚡ Lifetime access to all 4,000+ runes</li>
+                    <li>📥 Instant beta raw download of all templates</li>
+                    <li>👑 VIP founder badge & privileges</li>
+                    <li>🎯 1-on-1 priority support (post-launch)</li>
+                    <li>🔮 Beta access to new features</li>
+                    <li>💎 Exclusive founder community access</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Beta Access Disclaimer</h3>
+                <p>Elite Access includes immediate download of raw n8n templates. These are technical files requiring advanced n8n knowledge and experience. Customer support begins at marketplace launch (Week 24). <strong>NOT recommended for beginners or users without n8n experience.</strong></p>
+            </div>
+
+            <h3>Pro Access - $297</h3>
+            <p>Annual subscription starting at platform launch (12 months from launch date):</p>
+            <ul>
+                <li>🚀 Complete access to all 4,000+ runes at launch</li>
+                <li>⚡ Pro tier status and features</li>
+                <li>📧 Priority email support</li>
+                <li>🎯 Advanced tutorials & guides</li>
+                <li>🔄 Regular feature updates</li>
+            </ul>
+
+            <h3>Founder Access - $199</h3>
+            <p>Annual subscription with lifetime benefits (12 months from launch date):</p>
+            <ul>
+                <li>🚀 Complete access to all 4,000+ runes at launch</li>
+                <li>👑 Exclusive founder status badge</li>
+                <li>🛡️ Lifetime access guarantee</li>
+                <li>💬 Founder community access</li>
+                <li>🔒 Price locked forever at founder rate</li>
+            </ul>
+
+            <h2>3. Payment Terms</h2>
+            <p>All payments are processed securely through Coinbase Commerce. By making a purchase, you agree to the following:</p>
+            <ul>
+                <li>All prices are listed in USD</li>
+                <li>Payment must be completed in full before access is granted</li>
+                <li>Elite Access grants immediate beta access upon payment confirmation</li>
+                <li>Pro and Founder Access subscriptions begin at platform launch (Week 24)</li>
+                <li>Subscription renewals will be processed automatically unless cancelled</li>
+            </ul>
+
+            <h2>4. Development Timeline</h2>
+            <p>RuneFlow.xyz operates on a structured 24-week development schedule:</p>
+            <ul>
+                <li><strong>Weeks 1-4:</strong> Foundation building and weekly rune releases</li>
+                <li><strong>Week 5:</strong> Dashboard access becomes available</li>
+                <li><strong>Weeks 5-23:</strong> Continued development and rune releases</li>
+                <li><strong>Week 24:</strong> Full marketplace launch with complete platform access</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Development Commitment:</strong> We are committed to delivering all promised features and runes according to our 24-week schedule. Any delays will be communicated transparently to all users.</p>
+            </div>
+
+            <h2>5. User Responsibilities</h2>
+            <p>As a RuneFlow.xyz user, you agree to:</p>
+            <ul>
+                <li>Provide accurate and complete information during registration</li>
+                <li>Use our automation templates responsibly and legally</li>
+                <li>Not redistribute, resell, or share your access credentials</li>
+                <li>Respect intellectual property rights of all templates</li>
+                <li>Follow n8n's terms of service when using our templates</li>
+                <li>Report any technical issues or concerns promptly</li>
+            </ul>
+
+            <h2>6. Intellectual Property</h2>
+            <p>All content, templates, designs, and materials provided through RuneFlow.xyz are protected by intellectual property laws:</p>
+            <ul>
+                <li>Templates are licensed for your personal or business use</li>
+                <li>You may modify templates for your own automation needs</li>
+                <li>Redistribution or commercial resale of templates is prohibited</li>
+                <li>The RuneFlow.xyz brand, logo, and content remain our property</li>
+            </ul>
+
+            <div id="refunds"></div>
+            <h2>7. Refund Policy</h2>
+            <div class="warning-box">
+                <h3>Important: All Sales Are Final</h3>
+                <p>Due to the digital nature of our products and the immediate access provided (especially for Elite tier), all purchases are final and non-refundable. Pre-launch purchases are investments in our development process with clearly specified deliverables.</p>
+            </div>
+
+            <h3>Exceptions:</h3>
+            <ul>
+                <li>Technical issues preventing access that cannot be resolved within 30 days</li>
+                <li>Failure to deliver promised features by the end of our 24-week development cycle</li>
+                <li>Cancellation by RuneFlow.xyz due to unforeseen circumstances</li>
+            </ul>
+
+            <h2>8. Service Availability</h2>
+            <p>We strive to maintain 99.9% uptime, but cannot guarantee uninterrupted service. We are not liable for:</p>
+            <ul>
+                <li>Temporary service outages for maintenance</li>
+                <li>Third-party service disruptions (n8n, hosting providers, etc.)</li>
+                <li>Network or internet connectivity issues</li>
+                <li>Force majeure events beyond our control</li>
+            </ul>
+
+            <h2>9. Privacy & Data Protection</h2>
+            <p>Your privacy is important to us. We collect and use your information as described in our Privacy Policy:</p>
+            <ul>
+                <li>Email addresses for service delivery and updates</li>
+                <li>Payment information (processed securely by Coinbase)</li>
+                <li>Usage analytics to improve our platform</li>
+                <li>We do not sell or share your personal data with third parties</li>
+            </ul>
+
+            <h2>10. Limitation of Liability</h2>
+            <p>RuneFlow.xyz and its creators shall not be liable for:</p>
+            <ul>
+                <li>Any indirect, incidental, or consequential damages</li>
+                <li>Loss of profits, data, or business opportunities</li>
+                <li>Damages resulting from your use of our templates</li>
+                <li>Issues arising from third-party integrations or services</li>
+            </ul>
+
+            <h2>11. Termination</h2>
+            <p>We reserve the right to terminate accounts for:</p>
+            <ul>
+                <li>Violation of these Terms of Service</li>
+                <li>Fraudulent or illegal activity</li>
+                <li>Abuse of our platform or community</li>
+                <li>Failure to pay subscription fees</li>
+            </ul>
+
+            <p>Upon termination, your access to templates and services will be revoked, but these Terms will continue to apply to your prior use of our services.</p>
+
+            <h2>12. Changes to Terms</h2>
+            <p>We may update these Terms of Service periodically. When we do:</p>
+            <ul>
+                <li>We'll notify users via email and platform announcements</li>
+                <li>Changes take effect 30 days after notification</li>
+                <li>Continued use of our services constitutes acceptance</li>
+                <li>Material changes will require explicit consent</li>
+            </ul>
+
+            <h2>13. Governing Law</h2>
+            <p>These Terms are governed by the laws of [Your Jurisdiction]. Any disputes will be resolved through binding arbitration or in the courts of [Your Jurisdiction].</p>
+
+            <div id="contact"></div>
+            <div class="contact-info">
+                <h2>📧 Contact Information</h2>
+                <p>For questions about these Terms of Service:</p>
+                <p><strong>Email:</strong> <a href="mailto:legal@runeflow.xyz">legal@runeflow.xyz</a></p>
+                <p><strong>Support:</strong> <a href="mailto:support@runeflow.xyz">support@runeflow.xyz</a></p>
+                <p><strong>General Inquiries:</strong> <a href="mailto:hello@runeflow.xyz">hello@runeflow.xyz</a></p>
+                <p><strong>Website:</strong> <a href="https://runeflow.xyz">runeflow.xyz</a></p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Effective Date:</strong> These Terms of Service are effective as of July 24, 2025, and apply to all users of RuneFlow.xyz. By using our platform, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 RuneFlow.xyz - Ancient Power. Modern Automation.</p>
+        <p>Made with ⚡ <a href="https://www.warp.dev/" target="_blank" style="color: #00d4ff;">Warp</a></p>
+    </footer>
+
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>

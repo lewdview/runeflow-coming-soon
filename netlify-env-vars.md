@@ -8,8 +8,8 @@ Go to your Netlify site dashboard → Site settings → Environment variables
 ```
 NODE_VERSION=18
 
-# Email Configuration (CONFIGURED - READY TO USE)
-SMTP_HOST=mail.runeflow.xyz
+# Email Configuration (CONFIGURED - WORKING WITH IONOS)
+SMTP_HOST=smtp.ionos.com
 SMTP_PORT=587
 SMTP_USER=hello@runeflow.xyz
 SMTP_PASS=giveME1221!sex

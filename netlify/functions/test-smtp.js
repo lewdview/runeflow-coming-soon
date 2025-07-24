@@ -21,9 +21,9 @@ exports.handler = async (event, context) => {
   try {
     console.log('🔧 Starting SMTP test...');
     
-    // Get email configuration
+    // Get email configuration - Updated for IONOS/1&1 hosting
     const smtpConfig = {
-      host: process.env.SMTP_HOST || 'mail.runeflow.xyz',
+      host: process.env.SMTP_HOST || 'smtp.ionos.com',
       port: parseInt(process.env.SMTP_PORT) || 587,
       secure: false, // true for 465, false for other ports
       auth: {

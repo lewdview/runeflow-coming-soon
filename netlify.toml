@@ -8,7 +8,7 @@
   NPM_FLAGS = "--production=false"
   # REQUIRED: Set these in Netlify Dashboard > Site Settings > Environment Variables
   # COINBASE_WEBHOOK_SECRET = "whsec_your_secret_from_coinbase"
-  # SMTP_HOST = "mail.runeflow.xyz"
+  # SMTP_HOST = "smtp.ionos.com"
   # SMTP_PORT = "587"
   # SMTP_USER = "hello@runeflow.xyz"
   # SMTP_PASS = "your_email_password"

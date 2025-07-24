@@ -330,5 +330,17 @@
       "discord": null
     },
     "success": true
+  },
+  {
+    "timestamp": "2025-07-24T09:07:19.484Z",
+    "campaignType": "launch_announcement",
+    "content": "🔥 The automation revolution is here! RuneFlow.co - the ultimate n8n template marketplace is awakening. Join 1000+ automation masters on the waitlist! #RuneFlow #n8n #automation\n\n🔗 Join the revolution: https://runflow.webhalla.com",
+    "results": {
+      "twitter": null,
+      "linkedin": null,
+      "facebook": null,
+      "discord": null
+    },
+    "success": false
   }
 ]
