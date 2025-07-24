@@ -479,21 +479,33 @@ function saveProgress() {
 
 // Email Capture and Download System
 function initializeEmailCapture() {
+    console.log('🔮 INITIALIZING EMAIL CAPTURE...');
     const emailForm = document.getElementById('emailCaptureForm');
     const downloadSection = document.getElementById('downloadSection');
     const week1Capture = document.getElementById('week1Capture');
+    
+    console.log('📋 Email form found:', !!emailForm);
+    console.log('📋 Download section found:', !!downloadSection);
+    console.log('📋 Week1 capture found:', !!week1Capture);
 
     if (emailForm) {
+        console.log('✅ Email form exists, adding event listener...');
         emailForm.addEventListener('submit', async (e) => {
+            console.log('📧 FORM SUBMITTED!');
             e.preventDefault();
             const emailInput = document.getElementById('userEmail');
             const submitBtn = emailForm.querySelector('.capture-btn');
             const email = emailInput.value;
+            
+            console.log('📧 Email input found:', !!emailInput);
+            console.log('📧 Submit button found:', !!submitBtn);
+            console.log('📧 Email value:', email);
 
             // Show loading state
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '🚀 Processing...';
             submitBtn.disabled = true;
+            console.log('🔄 Button state updated to loading');
 
             try {
                 // Call Netlify function
