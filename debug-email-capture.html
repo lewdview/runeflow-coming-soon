@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Email Capture</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4fffb8;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        button {
+            background: linear-gradient(135deg, #4fffb8, #00d4ff);
+            color: #1a1a2e;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .debug-log {
+            background: #000;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🔮 Email Capture Debug</h1>
+        <form id="emailCaptureForm">
+            <input type="email" id="userEmail" placeholder="Enter your email..." required>
+            <button type="submit" class="capture-btn">Get My Free Rune</button>
+        </form>
+        
+        <div class="debug-log" id="debugLog">
+            Debug log will appear here...\n
+        </div>
+    </div>
+
+    <script>
+        const debugLog = document.getElementById('debugLog');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            debugLog.innerHTML += `[${timestamp}] ${message}\n`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+            console.log(message);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            log('🚀 DOM Content Loaded');
+            
+            const emailForm = document.getElementById('emailCaptureForm');
+            const emailInput = document.getElementById('userEmail');
+            const submitBtn = document.querySelector('.capture-btn');
+            
+            if (!emailForm) {
+                log('❌ Email form not found');
+                return;
+            }
+            
+            if (!emailInput) {
+                log('❌ Email input not found');
+                return;
+            }
+            
+            if (!submitBtn) {
+                log('❌ Submit button not found');
+                return;
+            }
+            
+            log('✅ All form elements found');
+            
+            emailForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                log('📧 Form submitted');
+                
+                const email = emailInput.value;
+                log(`📧 Email: ${email}`);
+                
+                if (!email) {
+                    log('❌ No email provided');
+                    return;
+                }
+                
+                // Show loading state
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '🚀 Processing...';
+                submitBtn.disabled = true;
+                log('🔄 Button state set to loading');
+                
+                try {
+                    const requestData = {
+                        email: email,
+                        selected_rune: 'flowrune-asmr-v1',
+                        is_free_pack: true
+                    };
+                    
+                    log(`📤 Sending request: ${JSON.stringify(requestData)}`);
+                    
+                    const response = await fetch('/.netlify/functions/capture-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+                    
+                    log(`📥 Response status: ${response.status}`);
+                    
+                    const result = await response.json();
+                    log(`📥 Response data: ${JSON.stringify(result)}`);
+                    
+                    if (result.success) {
+                        log('✅ Email captured successfully!');
+                        submitBtn.innerHTML = '✅ Success! Check your email';
+                        submitBtn.style.background = 'linear-gradient(135deg, #00ff88, #00aa55)';
+                        emailInput.value = '';
+                    } else {
+                        throw new Error(result.error || 'Failed to capture email');
+                    }
+                    
+                } catch (error) {
+                    log(`❌ Error: ${error.message}`);
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+            
+            log('✅ Email capture initialized');
+        });
+    </script>
+</body>
+</html>
