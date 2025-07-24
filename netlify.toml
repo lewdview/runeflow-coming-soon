@@ -30,6 +30,11 @@
   to = "/.netlify/functions/health"
   status = 200
 
+[[redirects]]
+  from = "/admin/emails"
+  to = "/.netlify/functions/admin-emails"
+  status = 200
+
 # Coinbase Commerce webhook
 [[redirects]]
   from = "/webhook/coinbase"
