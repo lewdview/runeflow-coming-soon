@@ -23,8 +23,14 @@ function replaceAnalyticsId() {
         if (fs.existsSync(filePath)) {
             let content = fs.readFileSync(filePath, 'utf8');
             
-            // Replace all occurrences of GA_MEASUREMENT_ID with actual ID
-            content = content.replace(/GA_MEASUREMENT_ID/g, GA_ID);
+            // Replace GA_MEASUREMENT_ID with actual ID (properly quoted for JS)
+            if (filePath.endsWith('.js')) {
+                // For JavaScript files, keep the GA_MEASUREMENT_ID variable name and just replace the value
+                content = content.replace(/'GA_MEASUREMENT_ID'/g, `'${GA_ID}'`);
+            } else {
+                // For HTML files, replace all occurrences directly
+                content = content.replace(/GA_MEASUREMENT_ID/g, GA_ID);
+            }
             
             fs.writeFileSync(filePath, content, 'utf8');
             console.log(`✅ Updated ${filePath} with GA ID: ${GA_ID}`);
