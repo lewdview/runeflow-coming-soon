@@ -366,137 +366,19 @@ body::after {
     font-family: var(--font-primary);
     font-size: clamp(4rem, 12vw, 8rem);
     font-weight: 900;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 8px;
     margin-bottom: 1rem;
-    position: relative;
-    animation: logoGradientShift 4s ease-in-out infinite alternate;
-    text-shadow: none;
-    /* Better physics and alignment */
-    display: inline-block;
-    line-height: 1;
-    vertical-align: baseline;
-    /* Smooth rendering */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+    animation: logoGlow 3s ease-in-out infinite alternate;
+    /* Clean rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
-.logo::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient-secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    z-index: -1;
-    animation: logoShadowPulse 4s ease-in-out infinite alternate-reverse;
-    filter: blur(1px);
-    opacity: 0.7;
-}
-
-@keyframes logoGradientShift {
-    0% {
-        filter: 
-            drop-shadow(0 0 20px var(--neon-blue))
-            drop-shadow(0 0 40px rgba(0, 212, 255, 0.6));
-        transform: scale(1);
-    }
-    100% {
-        filter: 
-            drop-shadow(0 0 40px var(--powder-blue))
-            drop-shadow(0 0 60px rgba(184, 230, 255, 0.8))
-            drop-shadow(0 0 80px var(--neon-blue));
-        transform: scale(1.02);
-    }
-}
-
-@keyframes logoShadowPulse {
-    0% {
-        opacity: 0.5;
-        transform: translate(2px, 2px) scale(1.01);
-    }
-    100% {
-        opacity: 0.8;
-        transform: translate(-1px, -1px) scale(1.03);
-    }
-}
-
-.flow-text {
-    color: #004444;
-    /* Better physics and alignment */
-    display: inline;
-    vertical-align: baseline;
-    line-height: inherit;
-    /* Smooth text rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    /* Enhanced text shadow effects */
-    text-shadow: 
-        /* Large gradient stroke layers */
-        -2px -2px 0 #001111,
-        2px -2px 0 #002222,
-        -2px 2px 0 #002222,
-        2px 2px 0 #003333,
-        -4px -4px 0 #003333,
-        4px -4px 0 #004444,
-        -4px 4px 0 #004444,
-        4px 4px 0 #005555,
-        -6px -6px 0 #005555,
-        6px -6px 0 #006666,
-        -6px 6px 0 #006666,
-        6px 6px 0 #007777,
-        -8px -8px 0 #007777,
-        8px -8px 0 #008888,
-        -8px 8px 0 #008888,
-        8px 8px 0 #009999,
-        -10px -10px 0 #00aaaa,
-        10px -10px 0 #00bbbb,
-        -10px 10px 0 #00bbbb,
-        10px 10px 0 #00cccc,
-        -12px -12px 0 #00dddd,
-        12px -12px 0 #00eeee,
-        -12px 12px 0 #00eeee,
-        12px 12px 0 var(--neon-cyan),
-        /* Inner stroke effect - creates inset border */
-        inset -1px -1px 0 #003333,
-        inset 1px -1px 0 #003333,
-        inset -1px 1px 0 #003333,
-        inset 1px 1px 0 #003333,
-        inset -2px -2px 0 #002222,
-        inset 2px -2px 0 #002222,
-        inset -2px 2px 0 #002222,
-        inset 2px 2px 0 #002222,
-        /* Massive bleed-over glow */
-        0 0 15px var(--neon-cyan),
-        0 0 30px var(--neon-cyan),
-        0 0 45px var(--neon-cyan),
-        0 0 60px rgba(0, 255, 255, 0.8),
-        0 0 80px rgba(0, 255, 255, 0.6),
-        0 0 100px rgba(0, 255, 255, 0.4),
-        0 0 120px rgba(0, 255, 255, 0.2);
-    animation: flowPulse 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes flowPulse {
-    0% { 
-        text-shadow: 0 0 15px var(--neon-cyan); 
-    }
-    100% { 
-        text-shadow: 0 0 25px var(--neon-cyan), 0 0 35px var(--neon-cyan); 
-    }
-}
-
-@keyframes suffixGlow {
+@keyframes logoGlow {
     0% { 
         text-shadow: 
             0 0 15px rgba(255, 255, 255, 0.8), 
@@ -510,37 +392,6 @@ body::after {
             0 0 60px rgba(0, 255, 255, 0.4);
         opacity: 1;
     }
-}
-
-.frozen-suffix {
-    /* Cross-browser compatible styling */
-    color: white !important;
-    font-size: 0.6em !important;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6) !important;
-    opacity: 1 !important;
-    display: inline !important;
-    visibility: visible !important;
-    /* Reset any background clipping */
-    -webkit-text-fill-color: white !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-    background: transparent !important;
-    /* Firefox fallbacks */
-    -moz-text-fill-color: white;
-    /* Ensure it's always visible */
-    font-weight: inherit !important;
-    text-transform: inherit !important;
-    letter-spacing: inherit !important;
-    /* Better physics and alignment */
-    vertical-align: baseline !important;
-    line-height: inherit !important;
-    margin-left: 0.1em !important;
-    /* Smooth text rendering */
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
-    /* Enhanced animation */
-    animation: suffixGlow 3s ease-in-out infinite alternate !important;
 }
 
 .tagline {
@@ -2021,7 +1872,7 @@ body::after {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.made-by {
+.made-with {
     font-weight: 400;
     letter-spacing: 0.5px;
 }
