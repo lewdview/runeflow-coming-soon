@@ -709,9 +709,80 @@ function debugSnowTest() {
     }
 }
 
-// Initialize all animations, rollout system, and milestone system when DOM is loaded
+// Emergency form handler to prevent page reload
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 DOM CONTENT LOADED');
+    
+    // WORKING: Add proper email capture form handler
+    const emailForm = document.getElementById('emailCaptureForm');
+    if (emailForm) {
+        console.log('✅ WORKING: Adding proper email capture handler');
+        emailForm.onsubmit = async function(e) {
+            console.log('📧 EMAIL FORM SUBMITTED!');
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const emailInput = document.getElementById('userEmail');
+            const submitBtn = emailForm.querySelector('.capture-btn');
+            const email = emailInput.value;
+            
+            console.log('📧 Email value:', email);
+            
+            if (!email) {
+                alert('Please enter your email address');
+                return false;
+            }
+            
+            // Show loading state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '🚀 Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Call Netlify function
+                const response = await fetch('/.netlify/functions/capture-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        selected_rune: 'flowrune-asmr-v1',
+                        is_free_pack: true
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('📥 API Response:', result);
+                
+                if (result.success) {
+                    // Success! Show download section
+                    const week1Capture = document.getElementById('week1Capture');
+                    const downloadSection = document.getElementById('downloadSection');
+                    
+                    if (week1Capture) week1Capture.style.display = 'none';
+                    if (downloadSection) downloadSection.style.display = 'block';
+                    
+                    submitBtn.innerHTML = '✅ Success! Check your email';
+                    submitBtn.style.background = 'linear-gradient(135deg, #00ff88, #00aa55)';
+                    emailInput.value = '';
+                    
+                    console.log('✅ Email captured successfully!');
+                } else {
+                    throw new Error(result.error || 'Failed to capture email');
+                }
+            } catch (error) {
+                console.error('❌ Email capture error:', error);
+                alert('Error: ' + error.message + '\nPlease try again or contact hello@runeflow.xyz');
+                
+                // Reset button
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+            
+            return false;
+        };
+    }
     
     // Run debug test first
     debugSnowTest();
