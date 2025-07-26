@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow to RuneRUSH - Ultimate Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            perspective: 2000px;
+        }
+
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+
+        /* Particle Canvas Background */
+        .particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Circuit Grid Background */
+        .circuit-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        /* Main Logo - Phase 1 */
+        .logo {
+            font-size: 90px;
+            font-weight: 800;
+            color: #00ffff;
+            text-shadow: 
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px rgba(0, 255, 255, 0.5);
+            opacity: 0;
+            animation: 
+                logoEntrance 2s 0.5s ease-out forwards,
+                logoPulse 3s 0.5s ease-in-out infinite,
+                logoFracture 1s 2.5s ease-in forwards;
+            transform-style: preserve-3d;
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: 
+                conic-gradient(from 0deg, 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent);
+            border-radius: 50%;
+            animation: logoHalo 2s linear infinite;
+            z-index: -1;
+        }
+
+        /* Floating Elements - Phase 2 */
+        .floating-element {
+            position: absolute;
+            font-weight: 800;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 15;
+        }
+
+        .template-counter {
+            font-size: 70px;
+            color: #ff6b35;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 3.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                elementFloat 4s 5s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff6b35,
+                0 0 60px rgba(255, 107, 53, 0.5);
+        }
+
+        .price-strike {
+            font-size: 60px;
+            color: #ff4757;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                priceStrike 2s 5.5s ease-out forwards;
+            text-shadow: 
+                0 0 25px #ff4757,
+                0 0 50px rgba(255, 71, 87, 0.5);
+        }
+
+        .price-strike::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: #ff4757;
+            box-shadow: 0 0 10px #ff4757;
+            animation: strikeThrough 1s 5.5s ease-out forwards;
+        }
+
+        /* RuneRUSH - Phase 3 */
+        .runerush {
+            font-size: 120px;
+            font-weight: 800;
+            color: #ff4500;
+            position: absolute;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 20;
+            animation: 
+                runerushMaterialize 2s 6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                runerushGlow 2s 8s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+        }
+
+        .runerush::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(ellipse at center, 
+                transparent 30%, 
+                rgba(255, 69, 0, 0.2) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            animation: runerushAura 3s linear infinite;
+            z-index: -1;
+        }
+
+        /* CTA Button - Phase 4 */
+        .cta-button {
+            font-size: 32px;
+            font-weight: 800;
+            padding: 20px 40px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 
+                0 0 40px rgba(255, 69, 0, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            cursor: pointer;
+            animation: 
+                ctaAppear 1.5s 8.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                ctaPulse 2s 10s ease-in-out infinite;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 25;
+        }
+
+        .cta-button:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 10px 50px rgba(255, 69, 0, 0.8),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent);
+            transition: left 0.5s;
+            border-radius: 50px;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Countdown Integration */
+        .countdown-display {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #ff4757;
+            opacity: 0;
+            animation: countdownAppear 1s 9s forwards;
+            z-index: 22;
+            text-align: center;
+        }
+
+        .countdown-time {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+            animation: countdownBlink 1s infinite;
+        }
+
+        /* Subliminal Runes */
+        .subliminal-rune {
+            position: absolute;
+            font-size: 50px;
+            color: rgba(0, 255, 100, 0.3);
+            opacity: 0;
+            animation: 
+                runeAppear 2s ease-in-out infinite,
+                runeOrbit 20s linear infinite;
+            z-index: 5;
+        }
+
+        .rune-wealth {
+            top: 30%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .rune-strength {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        /* Particle Burst Effects */
+        .particle-burst {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #00ffff, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleBurst 3s ease-out infinite;
+        }
+
+        /* Keyframe Animations */
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes logoEntrance {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3) rotateY(180deg) rotateX(45deg); 
+                filter: blur(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg) rotateX(0deg); 
+                filter: blur(0px); 
+            }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px rgba(0, 255, 255, 0.5);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px #00ffff,
+                    0 0 60px #00ffff,
+                    0 0 120px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes logoHalo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes logoFracture {
+            0% { 
+                transform: scale(1) rotateY(0deg); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: scale(1.2) rotateY(90deg); 
+                opacity: 0.5; 
+                filter: blur(5px);
+            }
+            100% { 
+                transform: scale(0) rotateY(180deg); 
+                opacity: 0; 
+                filter: blur(20px);
+            }
+        }
+
+        @keyframes elementSlideIn {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(100px) rotateX(90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+
+        @keyframes elementFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        @keyframes strikeThrough {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes priceStrike {
+            0% { color: #ff4757; }
+            100% { 
+                color: #666; 
+                text-decoration: line-through;
+            }
+        }
+
+        @keyframes runerushMaterialize {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.1) rotateY(270deg) rotateZ(180deg); 
+                filter: blur(30px);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.3) rotateY(135deg) rotateZ(90deg); 
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg) rotateZ(0deg); 
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes runerushGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 30px #ff4500,
+                    0 0 60px #ff4500,
+                    0 0 120px rgba(255, 69, 0, 0.7);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 40px #ff4500,
+                    0 0 80px #ff4500,
+                    0 0 160px rgba(255, 69, 0, 1);
+            }
+        }
+
+        @keyframes runerushAura {
+            0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+            50% { transform: rotate(180deg) scale(1.2); opacity: 0.6; }
+            100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
+        }
+
+        @keyframes ctaAppear {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(50px) rotateX(-90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 40px rgba(255, 69, 0, 0.6),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 60px rgba(255, 69, 0, 1),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        @keyframes countdownAppear {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        @keyframes countdownBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes runeAppear {
+            0%, 90% { opacity: 0; }
+            5%, 85% { opacity: 0.5; }
+        }
+
+        @keyframes runeOrbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        @keyframes particleBurst {
+            0% { 
+                opacity: 1; 
+                transform: scale(0) translateY(0); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1) translateY(-50px); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.5) translateY(-100px); 
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo { font-size: 60px; }
+            .template-counter { font-size: 50px; }
+            .price-strike { font-size: 40px; }
+            .runerush { font-size: 80px; }
+            .cta-button { font-size: 24px; padding: 15px 30px; }
+            .countdown-time { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <!-- Background Elements -->
+        <canvas class="particle-canvas" id="particleCanvas"></canvas>
+        <div class="circuit-grid"></div>
+
+        <!-- Phase 1: Logo -->
+        <div class="logo">RuneFlow</div>
+
+        <!-- Phase 2: Floating Elements -->
+        <div class="floating-element template-counter">50 TEMPLATES</div>
+        <div class="floating-element price-strike">$200 → $49</div>
+
+        <!-- Phase 3: RuneRUSH -->
+        <div class="runerush">RuneRUSH</div>
+
+        <!-- Phase 4: CTA -->
+        <button class="cta-button">GET ACCESS NOW</button>
+        
+        <!-- Countdown -->
+        <div class="countdown-display">
+            <div>TIME LEFT:</div>
+            <div class="countdown-time" id="countdownTime">72H 00M</div>
+        </div>
+
+        <!-- Subliminal Runes -->
+        <div class="subliminal-rune rune-wealth">ᚠ <!-- Fehu: Wealth --></div>
+        <div class="subliminal-rune rune-strength">ᚢ <!-- Uruz: Strength --></div>
+
+        <!-- Dynamic Particle Bursts -->
+        <div class="particle-burst" style="top: 20%; left: 30%; animation-delay: 2s;"></div>
+        <div class="particle-burst" style="top: 60%; right: 20%; animation-delay: 4s;"></div>
+        <div class="particle-burst" style="bottom: 30%; left: 10%; animation-delay: 6s;"></div>
+    </div>
+
+    <script src="runeflow-to-runerush-ultimate.js"></script>
+</body>
+</html>

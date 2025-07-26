@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Rune Rush Downloads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .brand-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .download-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .loading-spinner {
+            border: 2px solid #f3f4f6;
+            border-top: 2px solid #6366f1;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+
+        .success-message {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-4xl mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="brand-logo text-2xl md:text-3xl mb-1">⚡ RUNE RUSH</h1>
+                    <p class="text-gray-600 text-sm">Your Digital Downloads</p>
+                </div>
+                <div id="user-info" class="text-right hidden">
+                    <p class="font-semibold text-gray-900" id="user-name"></p>
+                    <p class="text-sm text-gray-600" id="user-email"></p>
+                    <span id="lifetime-badge" class="hidden inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 mt-1">
+                        🏆 Lifetime Access
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-12">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-gray-600">Loading your downloads...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="hidden">
+            <div class="error-message rounded-lg p-6 text-center">
+                <div class="text-4xl mb-4">😔</div>
+                <h2 class="text-xl font-semibold mb-2">Oops! Something went wrong</h2>
+                <p id="error-message" class="mb-4"></p>
+                <button onclick="loadDownloads()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                    Try Again
+                </button>
+            </div>
+        </div>
+
+        <!-- License Key Input -->
+        <div id="license-input" class="hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 text-center max-w-md mx-auto">
+                <div class="text-4xl mb-4">🔑</div>
+                <h2 class="text-2xl font-bold mb-4">Enter Your License Key</h2>
+                <p class="text-gray-600 mb-6">Please enter the license key from your purchase email</p>
+                <div class="space-y-4">
+                    <input 
+                        type="text" 
+                        id="license-key-input" 
+                        placeholder="RR-XXXX-XXXX-XXXX"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg text-center font-mono text-lg uppercase tracking-wide focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        maxlength="17"
+                    >
+                    <button 
+                        onclick="submitLicenseKey()" 
+                        id="submit-license" 
+                        class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                        Access Downloads
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads Section -->
+        <div id="downloads-section" class="hidden">
+            <!-- Downloads Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Your Downloads</h2>
+                <p class="text-gray-600">Click any file below to start downloading</p>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
+                <div class="flex items-start">
+                    <div class="text-amber-600 text-xl mr-3">⚠️</div>
+                    <div>
+                        <h3 class="font-semibold text-amber-900 mb-2">Important Notes:</h3>
+                        <ul class="text-amber-800 text-sm space-y-1">
+                            <li>• Download links expire in 24 hours for security</li>
+                            <li>• Save files to your local drive immediately</li>
+                            <li>• Commercial license included - use for client work</li>
+                            <li>• Need help? Reply to your purchase email</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Downloads Grid -->
+            <div id="downloads-grid" class="grid gap-6">
+                <!-- Files will be populated here -->
+            </div>
+
+            <!-- Upsell Section (for non-lifetime users) -->
+            <div id="upsell-section" class="hidden mt-12">
+                <div class="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl p-8 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-4">🚀 Want Even More?</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Upgrade to Lifetime Vault Access and get 200+ additional templates, 
+                        video courses, and lifetime updates for just $497!
+                    </p>
+                    <button 
+                        onclick="upgradeToLifetime()" 
+                        class="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
+                    >
+                        Upgrade Now →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-4">© 2024 Rune Rush. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-300">Refund Policy</a>
+                <a href="#" class="hover:text-gray-300">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentUser = null;
+        let currentLicenseKey = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check URL for license key
+            const urlParams = new URLSearchParams(window.location.search);
+            const licenseKey = urlParams.get('key');
+            
+            if (licenseKey) {
+                currentLicenseKey = licenseKey;
+                loadDownloads();
+            } else {
+                showLicenseInput();
+            }
+
+            // Auto-format license key input
+            const licenseInput = document.getElementById('license-key-input');
+            licenseInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/[^A-F0-9]/g, '').toUpperCase();
+                
+                // Add dashes
+                if (value.length > 2) {
+                    value = 'RR-' + value.substring(2);
+                }
+                if (value.length > 7) {
+                    value = value.substring(0, 7) + '-' + value.substring(7);
+                }
+                if (value.length > 12) {
+                    value = value.substring(0, 12) + '-' + value.substring(12);
+                }
+                if (value.length > 17) {
+                    value = value.substring(0, 17);
+                }
+                
+                e.target.value = value;
+            });
+
+            // Enter key support
+            licenseInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitLicenseKey();
+                }
+            });
+        });
+
+        function showLicenseInput() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('downloads-section').classList.add('hidden');
+            document.getElementById('license-input').classList.remove('hidden');
+        }
+
+        function showLoading() {
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('downloads-section').classList.add('hidden');
+            document.getElementById('license-input').classList.add('hidden');
+        }
+
+        function showError(message) {
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.remove('hidden');
+            document.getElementById('downloads-section').classList.add('hidden');
+            document.getElementById('license-input').classList.add('hidden');
+        }
+
+        function showDownloads() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('downloads-section').classList.remove('hidden');
+            document.getElementById('license-input').classList.add('hidden');
+        }
+
+        function submitLicenseKey() {
+            const licenseKey = document.getElementById('license-key-input').value.trim();
+            
+            if (!licenseKey) {
+                alert('Please enter your license key');
+                return;
+            }
+
+            if (!/^RR-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}$/.test(licenseKey)) {
+                alert('Please enter a valid license key format: RR-XXXX-XXXX-XXXX');
+                return;
+            }
+
+            currentLicenseKey = licenseKey;
+            
+            // Update URL
+            const url = new URL(window.location);
+            url.searchParams.set('key', licenseKey);
+            window.history.replaceState({}, '', url);
+            
+            loadDownloads();
+        }
+
+        async function loadDownloads() {
+            if (!currentLicenseKey) {
+                showLicenseInput();
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const response = await fetch(`/api/downloads?license_key=${encodeURIComponent(currentLicenseKey)}`);
+                const data = await response.json();
+
+                if (!data.success) {
+                    if (response.status === 404) {
+                        showError('Invalid license key. Please check your purchase email and try again.');
+                    } else if (response.status === 429) {
+                        showError('Download limit exceeded for your IP address. Please try again later.');
+                    } else {
+                        showError(data.message || 'Failed to load downloads. Please try again.');
+                    }
+                    return;
+                }
+
+                currentUser = data.data.user;
+                displayDownloads(data.data.files);
+                displayUserInfo();
+                showDownloads();
+
+            } catch (error) {
+                console.error('Download loading failed:', error);
+                showError('Network error. Please check your connection and try again.');
+            }
+        }
+
+        function displayUserInfo() {
+            if (!currentUser) return;
+
+            document.getElementById('user-name').textContent = 
+                currentUser.first_name ? `Hi, ${currentUser.first_name}!` : 'Hi there!';
+            document.getElementById('user-email').textContent = currentUser.email;
+            
+            if (currentUser.is_lifetime) {
+                document.getElementById('lifetime-badge').classList.remove('hidden');
+            } else {
+                document.getElementById('upsell-section').classList.remove('hidden');
+            }
+            
+            document.getElementById('user-info').classList.remove('hidden');
+        }
+
+        function displayDownloads(files) {
+            const grid = document.getElementById('downloads-grid');
+            grid.innerHTML = '';
+
+            if (files.length === 0) {
+                grid.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-4xl mb-4">📦</div>
+                        <h3 class="text-xl font-semibold mb-2">No files available</h3>
+                        <p class="text-gray-600">Please contact support if you believe this is an error.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            files.forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'download-card rounded-xl p-6';
+                
+                const productBadge = file.product_type === 'upsell' 
+                    ? '<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 ml-2">🏆 PREMIUM</span>'
+                    : '<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 ml-2">📦 MAIN</span>';
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center mb-2">
+                                <h3 class="text-lg font-semibold text-gray-900">${file.display_name}</h3>
+                                ${productBadge}
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">
+                                ${formatFileSize(file.file_size)} • ${file.content_type}
+                            </p>
+                            <div class="text-xs text-gray-500 mb-4">
+                                🕒 Download expires: ${formatDate(new Date(file.expires_at))}
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <button 
+                                onclick="downloadFile('${file.download_url}', '${file.display_name}')" 
+                                class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center"
+                            >
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function downloadFile(downloadUrl, fileName) {
+            // Track download
+            trackEvent('download_initiated', { file_name: fileName });
+            
+            // Open download in new tab
+            window.open(downloadUrl, '_blank');
+        }
+
+        function upgradeToLifetime() {
+            trackEvent('upsell_clicked', { source: 'downloads_page' });
+            window.open(`/upsell?user=${currentLicenseKey}`, '_blank');
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function formatDate(date) {
+            return date.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        async function trackEvent(eventType, metadata = {}) {
+            try {
+                await fetch('/api/analytics/pageview', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        page: 'downloads',
+                        license_key: currentLicenseKey,
+                        metadata: { event_type: eventType, ...metadata }
+                    })
+                });
+            } catch (error) {
+                console.error('Analytics tracking failed:', error);
+            }
+        }
+
+        // Track page view
+        setTimeout(() => {
+            trackEvent('downloads_page_view');
+        }, 1000);
+    </script>
+</body>
+</html>

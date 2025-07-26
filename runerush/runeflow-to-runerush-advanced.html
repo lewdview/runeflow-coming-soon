@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow to RuneRUSH Advanced Transition</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            perspective: 1000px;
+        }
+
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 80px;
+            font-weight: 800;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+            opacity: 0;
+            animation: pulse 2s infinite alternate, logoEntrance 1.5s forwards;
+            transform-style: preserve-3d;
+        }
+
+        .counter {
+            font-size: 60px;
+            color: #ff4500;
+            opacity: 0;
+            position: absolute;
+            top: 20%;
+            animation: counterReveal 1s 3s forwards;
+            transform-style: preserve-3d;
+            transform: rotateY(-90deg);
+        }
+        
+        .price-slash {
+            font-size: 50px;
+            color: #ff4500;
+            opacity: 0;
+            position: absolute;
+            bottom: 20%;
+            animation: priceSlashReveal 1s 4s forwards;
+            transform-style: preserve-3d;
+            transform: rotateY(90deg);
+        }
+
+        .runerush {
+            font-size: 100px;
+            font-weight: 800;
+            color: #ff4500;
+            text-shadow: 0 0 30px #ff4500;
+            position: absolute;
+            opacity: 0;
+            animation: runerushAssemble 2s 5s forwards;
+            transform-style: preserve-3d;
+        }
+
+        .cta-button {
+            font-size: 30px;
+            padding: 15px 30px;
+            color: #ffffff;
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.5);
+            position: absolute;
+            top: 80%;
+            opacity: 0;
+            cursor: pointer;
+            animation: ctaMaterialize 1s 7s forwards;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes pulse {
+            from { text-shadow: 0 0 30px #00ffff; }
+            to { text-shadow: 0 0 60px #00ffff; }
+        }
+
+        @keyframes logoEntrance {
+            from { opacity: 0; transform: rotateY(-90deg); }
+            to { opacity: 1; transform: rotateY(0); }
+        }
+
+        @keyframes counterReveal {
+            from { opacity: 0; transform: rotateY(-90deg); }
+            to { opacity: 1; transform: rotateY(0); }
+        }
+
+        @keyframes priceSlashReveal {
+            from { opacity: 0; transform: rotateY(90deg); }
+            to { opacity: 1; transform: rotateY(0); }
+        }
+
+        @keyframes runerushAssemble {
+            from { opacity: 0; transform: rotateY(180deg) scale(0.5); }
+            to { opacity: 1; transform: rotateY(0) scale(1); }
+        }
+
+        @keyframes ctaMaterialize {
+            from { opacity: 0; transform: rotateX(90deg); }
+            to { opacity: 1; transform: rotateX(0); }
+        }
+
+        /* Subliminal Runes */
+        .subliminal-rune {
+            font-size: 40px;
+            position: absolute;
+            color: rgba(0, 255, 0, 0.5);
+            animation: runeFloat 8s infinite ease-in-out;
+            opacity: 0.3;
+        }
+
+        @keyframes runeFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <div class="logo">RuneFlow</div>
+        <div class="counter">50 TEMPLATES</div>
+        <div class="price-slash">$200 → $49</div>
+        <div class="runerush">RuneRUSH</div>
+        <button class="cta-button">GET ACCESS NOW</button>
+
+        <!-- Subliminal Runes -->
+        <div class="subliminal-rune" style="left: 10%; top: 40%;">ᚠ</div>
+        <div class="subliminal-rune" style="left: 80%; top: 60%;">ᚢ</div>
+    </div>
+</body>
+</html>
+
