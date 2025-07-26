@@ -280,9 +280,107 @@ function createFloatingRunes() {
     }
 }
 
-// Initialize all animations when DOM is loaded
+// Email capture form functionality
+function initializeEmailCapture() {
+    const emailForm = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    
+    if (emailForm) {
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            if (email && isValidEmail(email)) {
+                // Store email locally (you can replace this with your preferred method)
+                storeEmail(email);
+                
+                // Show success message
+                showMessage('✨ you\'re on the list! rune rush awaits...', 'success');
+                
+                // Clear the form
+                emailInput.value = '';
+            } else {
+                showMessage('⚠ please enter a valid email address', 'error');
+            }
+        });
+    }
+}
+
+// Email validation function
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Store email (replace with your backend integration)
+function storeEmail(email) {
+    // For now, store in localStorage
+    const emails = JSON.parse(localStorage.getItem('runeflow_emails') || '[]');
+    if (!emails.includes(email)) {
+        emails.push(email);
+        localStorage.setItem('runeflow_emails', JSON.stringify(emails));
+    }
+    
+    // Log for debugging (remove in production)
+    console.log('Email captured:', email);
+    
+    // Here you would typically send to your backend:
+    // fetch('/api/subscribe', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email: email })
+    // });
+}
+
+// Show message to user
+function showMessage(message, type) {
+    // Remove existing message if any
+    const existingMessage = document.querySelector('.email-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create new message element
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `email-message ${type}`;
+    messageDiv.textContent = message;
+    
+    // Style the message
+    messageDiv.style.fontFamily = 'var(--font-frozen)';
+    messageDiv.style.fontSize = '0.9rem';
+    messageDiv.style.marginTop = '1rem';
+    messageDiv.style.padding = '0.5rem';
+    messageDiv.style.borderRadius = '4px';
+    messageDiv.style.textAlign = 'center';
+    
+    if (type === 'success') {
+        messageDiv.style.color = '#00ffff';
+        messageDiv.style.textShadow = '0 0 10px rgba(0, 255, 255, 0.8)';
+        messageDiv.style.background = 'rgba(0, 255, 255, 0.1)';
+        messageDiv.style.border = '1px solid rgba(0, 255, 255, 0.3)';
+    } else {
+        messageDiv.style.color = '#ff6b6b';
+        messageDiv.style.textShadow = '0 0 10px rgba(255, 107, 107, 0.8)';
+        messageDiv.style.background = 'rgba(255, 107, 107, 0.1)';
+        messageDiv.style.border = '1px solid rgba(255, 107, 107, 0.3)';
+    }
+    
+    // Insert after the form
+    const emailCapture = document.querySelector('.email-capture');
+    emailCapture.appendChild(messageDiv);
+    
+    // Remove message after 4 seconds
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.remove();
+        }
+    }, 4000);
+}
+
+// Initialize all animations and functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     createSnow();
     createIceCrystals();
     createFloatingRunes();
+    initializeEmailCapture();
 });
