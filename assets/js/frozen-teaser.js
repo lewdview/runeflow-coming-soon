@@ -566,30 +566,39 @@ function initializeEmailCapture() {
             e.preventDefault();
             const file = downloadBtn.getAttribute('data-file');
             
+            // Show loading modal
+            showDownloadLoadingModal();
+            
             // Track download
             setCookie('downloadedWeek1Rune', 'true', 365);
             
-            // Start download
-            const link = document.createElement('a');
-            link.href = 'assets/downloads/flowrune-asmr-v1.zip';
-            link.download = file;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show success message
-            downloadBtn.innerHTML = '✅ Downloaded!';
-            downloadBtn.style.background = 'linear-gradient(135deg, #00ff88, #00aa55)';
-            
-            // Show ASMR video popup after successful download
+            // Simulate processing time (since user reported download doesn't start immediately)
             setTimeout(() => {
-                showASMRVideo();
-            }, 1000);
-            
-            setTimeout(() => {
-                downloadBtn.innerHTML = '📥 Download Rune Package';
-                downloadBtn.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
-            }, 3000);
+                // Start download
+                const link = document.createElement('a');
+                link.href = 'assets/downloads/flowrune-asmr-v1.zip';
+                link.download = file;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Hide loading modal and show success
+                hideDownloadLoadingModal();
+                
+                // Show success message on button
+                downloadBtn.innerHTML = '✅ Downloaded!';
+                downloadBtn.style.background = 'linear-gradient(135deg, #00ff88, #00aa55)';
+                
+                // Show ASMR video popup after successful download
+                setTimeout(() => {
+                    showASMRVideo();
+                }, 1000);
+                
+                setTimeout(() => {
+                    downloadBtn.innerHTML = '📥 Download Rune Package';
+                    downloadBtn.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
+                }, 3000);
+            }, 2000); // 2 second delay to show loading modal
         });
     }
 }
@@ -600,6 +609,136 @@ function setCookie(name, value, days) {
     d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Show Download Loading Modal
+function showDownloadLoadingModal() {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.id = 'downloadLoadingModal';
+    modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: linear-gradient(135deg, #001122 0%, #002244 50%, #001133 100%);
+        border: 2px solid #00ffff;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3);
+        position: relative;
+        overflow: hidden;
+        max-width: 400px;
+        width: 90%;
+    `;
+    
+    // Create spinning rune
+    const spinningRune = document.createElement('div');
+    spinningRune.innerHTML = 'ᚦᚱᛚ';
+    spinningRune.style.cssText = `
+        font-size: 4rem;
+        color: #00ffff;
+        margin-bottom: 20px;
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px rgba(0, 255, 255, 0.5);
+        animation: runeSpinGlow 2s linear infinite;
+        font-family: 'Orbitron', monospace;
+    `;
+    
+    // Create loading text
+    const loadingText = document.createElement('h3');
+    loadingText.innerHTML = 'Preparing Your Rune Download';
+    loadingText.style.cssText = `
+        color: #00ffff;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    `;
+    
+    // Create subtitle
+    const subtitle = document.createElement('p');
+    subtitle.innerHTML = 'Channeling ancient automation power...';
+    subtitle.style.cssText = `
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0;
+        font-size: 1rem;
+        opacity: 0.8;
+    `;
+    
+    // Add CSS animation for spinning rune
+    if (!document.querySelector('#spinning-rune-style')) {
+        const style = document.createElement('style');
+        style.id = 'spinning-rune-style';
+        style.textContent = `
+            @keyframes runeSpinGlow {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px rgba(0, 255, 255, 0.5);
+                }
+                25% {
+                    transform: rotate(90deg) scale(1.1);
+                    text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px rgba(0, 255, 255, 0.7);
+                }
+                50% {
+                    transform: rotate(180deg) scale(1);
+                    text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff, 0 0 90px rgba(0, 255, 255, 0.8);
+                }
+                75% {
+                    transform: rotate(270deg) scale(1.1);
+                    text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px rgba(0, 255, 255, 0.7);
+                }
+                100% {
+                    transform: rotate(360deg) scale(1);
+                    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px rgba(0, 255, 255, 0.5);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Assemble modal
+    modalContent.appendChild(spinningRune);
+    modalContent.appendChild(loadingText);
+    modalContent.appendChild(subtitle);
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+        modalOverlay.style.opacity = '1';
+    });
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+// Hide Download Loading Modal
+function hideDownloadLoadingModal() {
+    const modal = document.getElementById('downloadLoadingModal');
+    if (modal) {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
 }
 
 // Show ASMR Video Popup
