@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneRUSH Deployment Diagnostics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ccc;
+        }
+        .status-ok { background: #d4edda; border-color: #28a745; }
+        .status-warning { background: #fff3cd; border-color: #ffc107; }
+        .status-error { background: #f8d7da; border-color: #dc3545; }
+        .status-info { background: #d1ecf1; border-color: #17a2b8; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: black; }
+        .btn-danger { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 RuneRUSH Deployment Diagnostics</h1>
+        <p>This page will help identify what's wrong with your deployed site.</p>
+
+        <div id="diagnostics">
+            <div class="status-box status-info">
+                <strong>🔄 Running diagnostics...</strong>
+                <div>Please wait while we check your site configuration.</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>🛠️ Manual Tests</h2>
+        <button class="btn-primary" onclick="testAPI()">Test API Connection</button>
+        <button class="btn-warning" onclick="testStripe()">Test Stripe Integration</button>
+        <button class="btn-success" onclick="testPayment()">Test Payment Flow</button>
+        <button class="btn-danger" onclick="clearCache()">Clear Cache & Reload</button>
+
+        <div id="test-results"></div>
+
+        <hr>
+
+        <h2>📋 Current Configuration</h2>
+        <div id="config-info"></div>
+
+        <hr>
+
+        <h2>🎯 Quick Fixes</h2>
+        <div class="status-box status-info">
+            <strong>1. Frontend-Only Version</strong>
+            <p>If the backend isn't working, try the standalone version: <a href="index-standalone.html" target="_blank">index-standalone.html</a></p>
+        </div>
+        
+        <div class="status-box status-warning">
+            <strong>2. Check Netlify Configuration</strong>
+            <p>Ensure your Netlify redirects point to the correct Railway backend URL in <code>netlify.toml</code></p>
+        </div>
+        
+        <div class="status-box status-error">
+            <strong>3. Backend API Not Deployed</strong>
+            <p>If you haven't deployed the backend yet, run: <code>./deploy-to-railway.sh</code></p>
+        </div>
+    </div>
+
+    <script>
+        // Load API configuration
+        const script = document.createElement('script');
+        script.src = 'js/api.js';
+        script.onload = runDiagnostics;
+        script.onerror = () => showError('js/api.js failed to load');
+        document.head.appendChild(script);
+
+        function runDiagnostics() {
+            const diagnosticsDiv = document.getElementById('diagnostics');
+            diagnosticsDiv.innerHTML = '';
+
+            // Check 1: API Client Loaded
+            checkApiClient();
+            
+            // Check 2: Current URL and path
+            checkCurrentUrl();
+            
+            // Check 3: Stripe Integration
+            checkStripeIntegration();
+            
+            // Check 4: Local vs Production
+            checkEnvironment();
+            
+            // Check 5: File structure
+            checkFileStructure();
+
+            // Show configuration
+            showCurrentConfig();
+        }
+
+        function checkApiClient() {
+            const div = document.createElement('div');
+            if (typeof API_CONFIG !== 'undefined' && typeof api !== 'undefined') {
+                div.className = 'status-box status-ok';
+                div.innerHTML = `
+                    <strong>✅ API Client Loaded</strong>
+                    <div>RuneRUSH API client is properly initialized</div>
+                    <div>Base URL: <code>${API_CONFIG.BASE_URL}</code></div>
+                `;
+            } else {
+                div.className = 'status-box status-error';
+                div.innerHTML = `
+                    <strong>❌ API Client Failed</strong>
+                    <div>js/api.js did not load correctly or API objects are undefined</div>
+                    <div>This will cause payment functionality to fail</div>
+                `;
+            }
+            document.getElementById('diagnostics').appendChild(div);
+        }
+
+        function checkCurrentUrl() {
+            const div = document.createElement('div');
+            div.className = 'status-box status-info';
+            div.innerHTML = `
+                <strong>🌐 Current Location</strong>
+                <div>URL: <code>${window.location.href}</code></div>
+                <div>Host: <code>${window.location.host}</code></div>
+                <div>Path: <code>${window.location.pathname}</code></div>
+                <div>Protocol: <code>${window.location.protocol}</code></div>
+            `;
+            document.getElementById('diagnostics').appendChild(div);
+        }
+
+        function checkStripeIntegration() {
+            const div = document.createElement('div');
+            if (typeof Stripe !== 'undefined') {
+                div.className = 'status-box status-ok';
+                div.innerHTML = `
+                    <strong>✅ Stripe Loaded</strong>
+                    <div>Stripe.js is properly loaded from CDN</div>
+                `;
+            } else {
+                div.className = 'status-box status-warning';
+                div.innerHTML = `
+                    <strong>⚠️ Stripe Not Loaded</strong>
+                    <div>Stripe.js failed to load - payment buttons may not work</div>
+                    <div>Check internet connection and CDN availability</div>
+                `;
+            }
+            document.getElementById('diagnostics').appendChild(div);
+        }
+
+        function checkEnvironment() {
+            const div = document.createElement('div');
+            const isLocal = window.location.protocol === 'file:' || 
+                           window.location.hostname === 'localhost' || 
+                           window.location.hostname === '127.0.0.1';
+            
+            if (isLocal) {
+                div.className = 'status-box status-warning';
+                div.innerHTML = `
+                    <strong>⚠️ Local Environment</strong>
+                    <div>You're running this locally - API calls will fail</div>
+                    <div>This is expected behavior for testing</div>
+                `;
+            } else {
+                div.className = 'status-box status-ok';
+                div.innerHTML = `
+                    <strong>✅ Production Environment</strong>
+                    <div>Site is running on a web server</div>
+                    <div>API calls should work if backend is deployed</div>
+                `;
+            }
+            document.getElementById('diagnostics').appendChild(div);
+        }
+
+        function checkFileStructure() {
+            const div = document.createElement('div');
+            const requiredFiles = [
+                { name: 'js/api.js', loaded: typeof API_CONFIG !== 'undefined' },
+                { name: 'index.html', exists: true }, // We're on it
+                { name: 'Stripe CDN', loaded: typeof Stripe !== 'undefined' }
+            ];
+
+            let allGood = true;
+            let html = '<strong>📁 File Structure Check</strong><ul>';
+            
+            requiredFiles.forEach(file => {
+                if (file.loaded || file.exists) {
+                    html += `<li>✅ ${file.name}</li>`;
+                } else {
+                    html += `<li>❌ ${file.name}</li>`;
+                    allGood = false;
+                }
+            });
+            
+            html += '</ul>';
+            div.className = allGood ? 'status-box status-ok' : 'status-box status-error';
+            div.innerHTML = html;
+            document.getElementById('diagnostics').appendChild(div);
+        }
+
+        function showCurrentConfig() {
+            const configDiv = document.getElementById('config-info');
+            let configHtml = '<pre>';
+            
+            if (typeof API_CONFIG !== 'undefined') {
+                configHtml += 'API Configuration:\n';
+                configHtml += JSON.stringify(API_CONFIG, null, 2) + '\n\n';
+            }
+            
+            configHtml += 'Environment:\n';
+            configHtml += `- User Agent: ${navigator.userAgent}\n`;
+            configHtml += `- Language: ${navigator.language}\n`;
+            configHtml += `- Platform: ${navigator.platform}\n`;
+            configHtml += `- Online: ${navigator.onLine}\n`;
+            
+            configHtml += '</pre>';
+            configDiv.innerHTML = configHtml;
+        }
+
+        function testAPI() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<div class="status-box status-info">🔄 Testing API connection...</div>';
+            
+            if (typeof api === 'undefined') {
+                resultsDiv.innerHTML = '<div class="status-box status-error">❌ API client not loaded</div>';
+                return;
+            }
+
+            api.health()
+                .then(response => {
+                    resultsDiv.innerHTML = `
+                        <div class="status-box status-ok">
+                            <strong>✅ API Connection Successful</strong>
+                            <pre>${JSON.stringify(response, null, 2)}</pre>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `
+                        <div class="status-box status-error">
+                            <strong>❌ API Connection Failed</strong>
+                            <div>Error: ${error.message}</div>
+                            <div>This is expected if backend isn't deployed</div>
+                        </div>
+                    `;
+                });
+        }
+
+        function testStripe() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            if (typeof Stripe === 'undefined') {
+                resultsDiv.innerHTML = '<div class="status-box status-error">❌ Stripe not loaded</div>';
+                return;
+            }
+
+            if (typeof API_CONFIG === 'undefined' || !API_CONFIG.STRIPE_PUBLISHABLE_KEY.startsWith('pk_')) {
+                resultsDiv.innerHTML = '<div class="status-box status-error">❌ Invalid Stripe publishable key</div>';
+                return;
+            }
+
+            try {
+                const stripe = Stripe(API_CONFIG.STRIPE_PUBLISHABLE_KEY);
+                resultsDiv.innerHTML = `
+                    <div class="status-box status-ok">
+                        <strong>✅ Stripe Integration OK</strong>
+                        <div>Stripe client initialized with key: ${API_CONFIG.STRIPE_PUBLISHABLE_KEY.substring(0, 20)}...</div>
+                    </div>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="status-box status-error">
+                        <strong>❌ Stripe Initialization Failed</strong>
+                        <div>Error: ${error.message}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function testPayment() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = `
+                <div class="status-box status-info">
+                    <strong>🧪 Payment Test</strong>
+                    <div>This would test the full payment flow in production</div>
+                    <div>For testing, check the <a href="index-standalone.html">standalone version</a></div>
+                </div>
+            `;
+        }
+
+        function clearCache() {
+            if ('caches' in window) {
+                caches.keys().then(names => {
+                    names.forEach(name => {
+                        caches.delete(name);
+                    });
+                });
+            }
+            location.reload(true);
+        }
+
+        function showError(message) {
+            document.getElementById('diagnostics').innerHTML = `
+                <div class="status-box status-error">
+                    <strong>❌ Critical Error</strong>
+                    <div>${message}</div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

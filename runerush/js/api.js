@@ -3,8 +3,8 @@ const API_CONFIG = {
     // This will be automatically proxied by Netlify to Railway
     BASE_URL: window.location.origin + '/api',
     
-    // Stripe publishable key (set this from your Railway environment)
-    STRIPE_PUBLISHABLE_KEY: 'pk_test_your_stripe_publishable_key_here'
+    // Stripe publishable key (from DEPLOYMENT_READY.md)
+    STRIPE_PUBLISHABLE_KEY: 'pk_test_51QgUHnAZqMCvJvdPVUSlF3xHfW7FmkHHOmzUTg2naNLzYiAqO8MdnQ7a0eqxJaNF9OHQu9JYvQfL1XJHs4qUgS2J00XPYsYcqW'
 };
 
 // API Client
@@ -101,15 +101,24 @@ if (typeof module !== 'undefined' && module.exports) {
 // Test API connection on page load
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const health = await api.health();
+        // Use a timeout to prevent hanging
+        const healthPromise = api.health();
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('API timeout')), 5000)
+        );
+        
+        const health = await Promise.race([healthPromise, timeoutPromise]);
         console.log('✅ API Connected:', health);
         
         // Track page view
         const page = window.location.pathname;
-        await api.trackPageView(page);
+        await api.trackPageView(page).catch(err => 
+            console.warn('Analytics tracking failed:', err)
+        );
         
     } catch (error) {
-        console.error('❌ API Connection Failed:', error);
-        // You might want to show a user-friendly message here
+        console.warn('⚠️ API Connection Failed (running in offline mode):', error);
+        // This is expected when testing locally or if backend is not deployed
+        // The site will still function for display purposes
     }
 });
