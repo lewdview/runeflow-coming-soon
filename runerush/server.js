@@ -93,7 +93,53 @@ app.get('/api/health', (req, res) => {
 // PAYMENT ROUTES
 // =============================================================================
 
-// Create Stripe payment intent for main product
+// Create Stripe Checkout session for any product
+app.post('/api/payments/stripe/create-checkout', [
+    body('email').isEmail().normalizeEmail(),
+    body('first_name').trim().isLength({ min: 1 }),
+    body('last_name').trim().isLength({ min: 1 }),
+    body('product_type').isIn(['core', 'pro_bundle', 'pro_upgrade']),
+    body('success_url').isURL(),
+    body('cancel_url').isURL()
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(createApiResponse(
+                false, null, 'Validation error', errors.array()
+            ));
+        }
+
+        const { email, first_name, last_name, product_type, success_url, cancel_url } = req.body;
+        
+        const checkoutSession = await stripeService.createCheckoutSession(
+            product_type,
+            { email, first_name, last_name },
+            success_url,
+            cancel_url
+        );
+
+        // Log analytics
+        await db.logAnalytics({
+            event_type: 'checkout_initiated',
+            user_id: null,
+            metadata: { product_type, payment_method: 'stripe_checkout' },
+            ip_address: getClientIP(req),
+            user_agent: req.get('User-Agent'),
+            referrer: req.get('Referer')
+        });
+
+        res.json(createApiResponse(true, checkoutSession, 'Checkout session created successfully'));
+
+    } catch (error) {
+        console.error('Checkout session creation failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to create checkout session'
+        ));
+    }
+});
+
+// Create Stripe payment intent for main product (Legacy)
 app.post('/api/payments/stripe/create-intent', [
     body('email').isEmail().normalizeEmail(),
     body('first_name').trim().isLength({ min: 1 }),
@@ -119,7 +165,7 @@ app.post('/api/payments/stripe/create-intent', [
         await db.logAnalytics({
             event_type: 'payment_initiated',
             user_id: null,
-            metadata: { product_type: 'main', payment_method: 'stripe' },
+            metadata: { product_type: 'core', payment_method: 'stripe' },
             ip_address: getClientIP(req),
             user_agent: req.get('User-Agent'),
             referrer: req.get('Referer')

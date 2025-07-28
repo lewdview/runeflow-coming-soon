@@ -7,10 +7,90 @@ class StripeService {
     constructor() {
         this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
         this.webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+        
+        // Your actual Stripe product IDs
+        this.products = {
+            core: 'prod_SlL1zWArTK3AHs',
+            pro_bundle: 'prod_SlL8jakWjh1bNn',
+            pro_upgrade: 'prod_SlL5k4eZntQCK9'
+        };
     }
 
     /**
-     * Create payment intent for main product ($49)
+     * Create Stripe Checkout session for any product
+     */
+    async createCheckoutSession(productType, customerData, successUrl, cancelUrl) {
+        try {
+            const { email, first_name, last_name } = customerData;
+            const customerName = `${first_name} ${last_name}`.trim();
+            
+            let productId, mode = 'payment';
+            let lineItems = [];
+            
+            switch (productType) {
+                case 'core':
+                    lineItems = [{
+                        price_data: {
+                            currency: 'usd',
+                            product: this.products.core,
+                            unit_amount: 4900, // $49
+                        },
+                        quantity: 1,
+                    }];
+                    break;
+                case 'pro_bundle':
+                    lineItems = [{
+                        price_data: {
+                            currency: 'usd',
+                            product: this.products.pro_bundle,
+                            unit_amount: 9900, // $99 (or your price)
+                        },
+                        quantity: 1,
+                    }];
+                    break;
+                case 'pro_upgrade':
+                    lineItems = [{
+                        price_data: {
+                            currency: 'usd',
+                            product: this.products.pro_upgrade,
+                            unit_amount: 5000, // $50 upgrade (or your price)
+                        },
+                        quantity: 1,
+                    }];
+                    break;
+                default:
+                    throw new Error('Invalid product type');
+            }
+
+            const session = await this.stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items: lineItems,
+                mode: mode,
+                success_url: successUrl,
+                cancel_url: cancelUrl,
+                customer_email: email,
+                metadata: {
+                    product_type: productType,
+                    customer_email: email,
+                    customer_name: customerName
+                },
+                billing_address_collection: 'auto',
+                shipping_address_collection: null, // Digital product, no shipping
+                allow_promotion_codes: true, // Allow discount codes
+            });
+
+            return {
+                session_id: session.id,
+                url: session.url
+            };
+        } catch (error) {
+            console.error('Stripe checkout session creation failed:', error);
+            throw new Error('Checkout initialization failed');
+        }
+    }
+
+    /**
+     * Create payment intent for main product ($49) - Legacy method
      */
     async createMainProductPayment(customerData) {
         try {
@@ -20,12 +100,12 @@ class StripeService {
                 amount: 4900, // $49.00 in cents
                 currency: 'usd',
                 metadata: {
-                    product_type: 'main',
+                    product_type: 'core',
                     customer_email: email,
                     customer_name: `${first_name} ${last_name}`.trim()
                 },
                 receipt_email: email,
-                description: 'Rune Rush - 50 Premium n8n Templates'
+                description: 'RuneRUSH Core Bundle - 50 Premium n8n Templates'
             });
 
             return {
@@ -84,6 +164,9 @@ class StripeService {
         console.log(`Processing Stripe webhook: ${event.type}`);
 
         switch (event.type) {
+            case 'checkout.session.completed':
+                await this.handleCheckoutSessionCompleted(event.data.object);
+                break;
             case 'payment_intent.succeeded':
                 await this.handlePaymentSuccess(event.data.object);
                 break;
@@ -101,6 +184,31 @@ class StripeService {
     }
 
     /**
+     * Handle successful checkout session completion
+     */
+    async handleCheckoutSessionCompleted(session) {
+        try {
+            const { id, amount_total, metadata, customer_email } = session;
+            const { product_type, customer_name } = metadata;
+
+            // Process the same way as payment intent success
+            await this.processSuccessfulOrder({
+                payment_id: id,
+                amount: amount_total,
+                customer_email,
+                customer_name,
+                product_type,
+                payment_method: 'stripe_checkout'
+            });
+
+            console.log(`✅ Checkout session completed for ${customer_email} - ${product_type}`);
+        } catch (error) {
+            console.error('Checkout session completion handling failed:', error);
+            throw error;
+        }
+    }
+
+    /**
      * Process successful payment
      */
     async handlePaymentSuccess(paymentIntent) {
@@ -108,13 +216,36 @@ class StripeService {
             const { id, amount, metadata } = paymentIntent;
             const { product_type, customer_email, customer_name } = metadata;
 
+            await this.processSuccessfulOrder({
+                payment_id: id,
+                amount,
+                customer_email,
+                customer_name,
+                product_type,
+                payment_method: 'stripe_intent'
+            });
+
+            console.log(`✅ Payment intent processed successfully for ${customer_email} - ${product_type}`);
+        } catch (error) {
+            console.error('Payment success handling failed:', error);
+            throw error;
+        }
+    }
+
+    /**
+     * Common order processing logic
+     */
+    async processSuccessfulOrder(orderData) {
+        const { payment_id, amount, customer_email, customer_name, product_type, payment_method } = orderData;
+        
+        try {
             let user;
             const existingUser = await db.getUserByEmail(customer_email);
 
             if (existingUser) {
                 user = existingUser;
                 // Update to lifetime if upsell
-                if (product_type === 'upsell') {
+                if (product_type === 'upsell' || product_type === 'pro_bundle') {
                     await db.run('UPDATE users SET is_lifetime = 1 WHERE id = ?', [user.id]);
                     user.is_lifetime = 1;
                 }
@@ -129,7 +260,7 @@ class StripeService {
                     license_key: licenseKey,
                     first_name,
                     last_name,
-                    is_lifetime: product_type === 'upsell' ? 1 : 0
+                    is_lifetime: (product_type === 'upsell' || product_type === 'pro_bundle') ? 1 : 0
                 });
 
                 user = await db.getUserByEmail(customer_email);
@@ -138,7 +269,7 @@ class StripeService {
             // Create order record
             await db.createOrder({
                 user_id: user.id,
-                stripe_payment_intent_id: id,
+                stripe_payment_intent_id: payment_id,
                 paypal_payment_id: null,
                 amount,
                 currency: 'usd',
@@ -156,16 +287,16 @@ class StripeService {
             await db.logAnalytics({
                 event_type: 'purchase',
                 user_id: user.id,
-                metadata: { product_type, amount, payment_method: 'stripe' },
+                metadata: { product_type, amount, payment_method },
                 ip_address: null,
                 user_agent: null,
                 referrer: null
             });
 
-            console.log(`✅ Payment processed successfully for ${customer_email} - ${product_type}`);
+            console.log(`✅ Order processed successfully for ${customer_email} - ${product_type}`);
 
         } catch (error) {
-            console.error('Payment success handling failed:', error);
+            console.error('Order processing failed:', error);
             throw error;
         }
     }

@@ -4,655 +4,1519 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rune Rush - 50 Premium n8n Templates for $49 (Limited Time)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-        // Tailwind Config
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'brand': ['Inter', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'monospace']
-                    },
-                    colors: {
-                        'rune': {
-                            'primary': '#6366f1',
-                            'secondary': '#8b5cf6',
-                            'accent': '#06b6d4',
-                            'gold': '#f59e0b',
-                            'dark': '#0f172a'
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
-                        'slide-in': 'slide-in 0.8s ease-out',
-                        'fade-in-up': 'fade-in-up 0.8s ease-out',
-                        'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite',
-                        'shimmer': 'shimmer 2s linear infinite'
-                    }
-                }
-            }
-        }
-    </script>
+    
+    <!-- Stripe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- API Client -->
+    <script src="js/api.js"></script>
     <style>
-        * { scroll-behavior: smooth; }
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; 
+        }
+        
         body { 
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
             overflow-x: hidden;
-        }
-        
-        /* Custom Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes glow-pulse {
-            from { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2); }
-            to { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8), 0 0 60px rgba(99, 102, 241, 0.4); }
-        }
-        
-        @keyframes slide-in {
-            from { opacity: 0; transform: translateX(-100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes bounce-gentle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        /* Premium Branding Elements */
-        .rune-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #6366f1 100%);
-        }
-        
-        .rune-gradient-alt {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #06b6d4 100%);
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
             position: relative;
-            overflow: hidden;
         }
         
-        .hero-bg::before {
+        /* Circuit Grid Background for Main Content */
+        body::before {
             content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 1;
+            animation: gridPulse 6s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Animation Overlay Styles - HIGHEST PRIORITY */
+        #animation-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 99999 !important;
+            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23) !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            font-family: 'JetBrains Mono', monospace !important;
+            perspective: 2000px !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+        
+        /* Circuit Grid Background */
+        .circuit-grid {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, #6366f124 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, #8b5cf624 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, #06b6d424 0%, transparent 50%);
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .premium-card {
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            box-shadow: 
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .premium-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 32px 64px -12px rgba(0, 0, 0, 0.25),
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-        }
-        
-        .shimmer-text {
-            background: linear-gradient(90deg, #f59e0b, #eab308, #f59e0b);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 2s linear infinite;
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, #10b981, #059669, #047857);
-            box-shadow: 
-                0 10px 25px -5px rgba(16, 185, 129, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        /* Main Logo - Phase 1 */
+        #animation-overlay .logo {
+            font-size: 110px !important;
+            font-weight: 900 !important;
+            color: #00ffff !important;
+            text-shadow: 
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px rgba(0, 255, 255, 0.5) !important;
+            opacity: 0;
+            animation: 
+                logoEntrance 2s 0.5s ease-out forwards,
+                logoPulse 3s 0.5s ease-in-out infinite,
+                logoFracture 1.5s 2.5s ease-in forwards !important;
+            transform-style: preserve-3d;
+            z-index: 10;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) scale(0.3) rotateY(180deg) rotateX(45deg);
+            text-align: center !important;
+            pointer-events: none !important;
+            filter: blur(20px);
+            letter-spacing: 3px !important;
+            -webkit-text-stroke: 2px rgba(0, 255, 255, 0.3) !important;
         }
         
-        .cta-button:hover::before {
-            left: 100%;
+        #animation-overlay .logo::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: 
+                conic-gradient(from 0deg, 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent);
+            border-radius: 50%;
+            animation: logoHalo 2s linear infinite;
+            z-index: -1;
         }
         
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 
-                0 20px 40px -5px rgba(16, 185, 129, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        /* Logo Fragments for Breaking Effect */
+        .logo-fragment {
+            font-size: 110px !important;
+            font-weight: 900 !important;
+            color: #00ffff !important;
+            text-shadow: 
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px rgba(0, 255, 255, 0.5) !important;
+            opacity: 0;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+            text-align: center !important;
+            pointer-events: none !important;
+            letter-spacing: 3px !important;
+            -webkit-text-stroke: 2px rgba(0, 255, 255, 0.3) !important;
+            z-index: 11;
         }
         
-        .brand-logo {
+        .fragment-1 {
+            animation: fragmentExplode1 2s 2.5s ease-out forwards;
+        }
+        
+        .fragment-2 {
+            animation: fragmentExplode2 2s 2.6s ease-out forwards;
+        }
+        
+        .fragment-3 {
+            animation: fragmentExplode3 2s 2.7s ease-out forwards;
+        }
+        
+        .fragment-4 {
+            animation: fragmentExplode4 2s 2.8s ease-out forwards;
+        }
+        
+        .fragment-5 {
+            animation: fragmentExplode5 2s 2.9s ease-out forwards;
+        }
+        
+        /* Floating Elements - Phase 2 */
+        .floating-element {
+            position: absolute;
+            font-weight: 800;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 15;
+        }
+        
+        .template-counter {
+            font-size: 70px;
+            color: #ff6b35;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                elementFloat 4s 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff6b35,
+                0 0 60px rgba(255, 107, 53, 0.5);
+        }
+        
+        .price-strike {
+            font-size: 60px;
+            color: #ff4757;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                priceStrike 2s 4.5s ease-out forwards;
+            text-shadow: 
+                0 0 25px #ff4757,
+                0 0 50px rgba(255, 71, 87, 0.5);
+        }
+        
+        /* RuneRUSH - Phase 3 */
+        #animation-overlay .runerush {
+            font-size: 120px;
+            font-weight: 800;
+            color: #ff4500;
+            position: absolute;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 20;
+            animation: 
+                runerushMaterialize 2s 6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                runerushGlow 2s 8s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+            display: none; /* Hide main logo, we'll use fragments */
+        }
+        
+        /* RuneRUSH Fragment System - Phase 3 */
+        .runerush-fragments {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+        }
+        
+        .runerush-fragment {
+            position: absolute;
+            font-size: 120px;
+            font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f59e0b, #eab308);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+            color: #ff4500;
+            opacity: 0;
+            transform-style: preserve-3d;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+            pointer-events: none;
         }
         
-        .countdown-digit {
-            background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
-            box-shadow: 
-                0 8px 16px -4px rgba(220, 38, 38, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        /* Individual fragment starting positions (scattered explosion points) */
+        .runerush-r1 {
+            top: 20%;
+            left: 10%;
+            animation: fragmentAssemble 2s 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-u {
+            top: 80%;
+            left: 20%;
+            animation: fragmentAssemble 2s 4.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-n {
+            top: 15%;
+            right: 15%;
+            animation: fragmentAssemble 2s 4.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-e {
+            bottom: 20%;
+            right: 10%;
+            animation: fragmentAssemble 2s 5.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-r2 {
+            top: 60%;
+            left: 5%;
+            animation: fragmentAssemble 2s 5.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-u2 {
+            bottom: 10%;
+            left: 50%;
+            animation: fragmentAssemble 2s 5.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-s {
+            top: 30%;
+            right: 5%;
+            animation: fragmentAssemble 2s 5.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-h {
+            bottom: 30%;
+            left: 15%;
+            animation: fragmentAssemble 2s 5.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        /* Final assembled logo */
+        .runerush-final {
+            position: absolute;
+            font-size: 120px;
+            font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
+            color: #ff4500;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 25;
+            animation: 
+                finalLogoAppear 1.5s 7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                runerushGlow 2s 8.5s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
         }
         
-        .benefit-icon {
+        /* CTA Button - Phase 4 */
+        #animation-overlay .cta-button {
+            font-size: 32px;
+            font-weight: 800;
+            padding: 20px 40px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 
+                0 0 40px rgba(255, 69, 0, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            cursor: pointer;
+            animation: 
+                ctaAppear 1.5s 8.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                ctaPulse 2s 10s ease-in-out infinite;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99999;
+            pointer-events: auto;
         }
         
-        .benefit-card:hover .benefit-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-12px) rotate(1deg);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* Scroll Reveal Classes */
-        .reveal {
+        /* Subliminal Runes */
+        .subliminal-rune {
+            position: absolute;
+            font-size: 50px;
+            color: rgba(0, 255, 100, 0.3);
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: 
+                runeAppear 2s ease-in-out infinite,
+                runeOrbit 20s linear infinite;
+            z-index: 5;
         }
         
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .rune-wealth {
+            top: 30%;
+            left: 10%;
+            animation-delay: 1s;
         }
         
-        .reveal-left {
+        .rune-strength {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* Countdown Integration */
+        .countdown-display {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #ff4757;
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: countdownAppear 1s 9s forwards;
+            z-index: 22;
+            text-align: center;
         }
         
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
+        .countdown-time {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+            animation: countdownBlink 1s infinite;
         }
         
-        .reveal-right {
+        /* Particle Burst Effects */
+        .particle-burst {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #00ffff, transparent);
+            border-radius: 50%;
             opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: particleBurst 3s ease-out infinite;
         }
         
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
+        /* Energy Waves */
+        .energy-wave {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 2px solid rgba(255, 69, 0, 0.3);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: energyWave 4s ease-out infinite;
+        }
+        
+        .wave-1 {
+            animation-delay: 3.2s;
+        }
+        
+        .wave-2 {
+            animation-delay: 3.4s;
+            width: 500px;
+            height: 500px;
+        }
+        
+        .wave-3 {
+            animation-delay: 3.6s;
+            width: 600px;
+            height: 600px;
+        }
+        
+        /* Orbiting Energy Phases */
+        .energy-orb {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #00ffff, rgba(0, 255, 255, 0.3));
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            box-shadow: 0 0 15px #00ffff;
+            animation: energyOrbit 3s linear infinite;
+        }
+        
+        .orb-1 {
+            animation-delay: 2.2s;
+            animation-duration: 2.5s;
+        }
+        
+        .orb-2 {
+            animation-delay: 2.4s;
+            animation-duration: 3s;
+        }
+        
+        .orb-3 {
+            animation-delay: 2.6s;
+            animation-duration: 2.8s;
+        }
+        
+        .orb-4 {
+            animation-delay: 2.8s;
+            animation-duration: 3.2s;
+        }
+        
+        .orb-5 {
+            animation-delay: 3s;
+            animation-duration: 2.3s;
+        }
+        
+        .orb-6 {
+            animation-delay: 3.2s;
+            animation-duration: 2.7s;
+        }
+        
+        /* Animation Keyframes */
+        @keyframes gridPulse {
+            0%, 100% { 
+                opacity: 0.6;
+            }
+            50% { 
+                opacity: 1;
+            }
+        }
+        
+        @keyframes logoEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.3) rotateY(180deg) rotateX(45deg); 
+                filter: blur(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg); 
+                filter: blur(0px); 
+            }
+        }
+        
+        @keyframes logoPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px rgba(0, 255, 255, 0.5);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px #00ffff,
+                    0 0 60px #00ffff,
+                    0 0 120px rgba(0, 255, 255, 0.8);
+            }
+        }
+        
+        @keyframes logoHalo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes logoFracture {
+            0% { 
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg) rotateZ(0deg); 
+                opacity: 1;
+                filter: blur(0px) brightness(1);
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px rgba(0, 255, 255, 0.5);
+            }
+            25% {
+                transform: translate(-50%, -50%) scale(1.1) rotateY(15deg) rotateZ(-5deg);
+                opacity: 0.9;
+                filter: blur(2px) brightness(1.2);
+                text-shadow: 
+                    0 0 30px #ff0000,
+                    0 0 50px #ff0000,
+                    0 0 100px rgba(255, 0, 0, 0.7);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.3) rotateY(45deg) rotateZ(15deg); 
+                opacity: 0.6; 
+                filter: blur(8px) brightness(0.8) contrast(2);
+                text-shadow: 
+                    5px 5px 20px #ff0000,
+                    -5px -5px 20px #00ffff,
+                    0 0 60px rgba(255, 255, 255, 0.8);
+            }
+            75% {
+                transform: translate(-50%, -50%) scale(0.7) rotateY(120deg) rotateZ(-30deg);
+                opacity: 0.3;
+                filter: blur(15px) brightness(0.4) contrast(3);
+                text-shadow: 
+                    10px 10px 30px #ff0000,
+                    -10px -10px 30px #00ffff,
+                    0 0 40px rgba(255, 255, 255, 0.5);
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(0.1) rotateY(180deg) rotateZ(45deg); 
+                opacity: 0; 
+                filter: blur(25px) brightness(0) contrast(5);
+                text-shadow: none;
+            }
+        }
+        
+        @keyframes elementSlideIn {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(100px) rotateX(90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+        
+        @keyframes elementFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes priceStrike {
+            0% { color: #ff4757; }
+            100% { color: #ff4757; }
+        }
+        
+        @keyframes runerushMaterialize {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.1) rotateY(270deg) rotateZ(180deg); 
+                filter: blur(30px);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.3) rotateY(135deg) rotateZ(90deg); 
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg) rotateZ(0deg); 
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes runerushGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 30px #ff4500,
+                    0 0 60px #ff4500,
+                    0 0 120px rgba(255, 69, 0, 0.7);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 40px #ff4500,
+                    0 0 80px #ff4500,
+                    0 0 160px rgba(255, 69, 0, 1);
+            }
+        }
+        
+        @keyframes ctaAppear {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(50px) rotateX(-90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+        
+        @keyframes ctaPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 40px rgba(255, 69, 0, 0.6),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 60px rgba(255, 69, 0, 1),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        @keyframes runeAppear {
+            0%, 90% { opacity: 0; }
+            5%, 85% { opacity: 0.5; }
+        }
+        
+        @keyframes runeOrbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        
+        @keyframes particleBurst {
+            0% { 
+                opacity: 1; 
+                transform: scale(0) translateY(0); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1) translateY(-50px); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.5) translateY(-100px); 
+            }
+        }
+        
+        @keyframes countdownAppear {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        @keyframes countdownBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes energyWave {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        
+        @keyframes energyOrbit {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
+            }
+        }
+        
+        /* Fragment Explosion Animations */
+        @keyframes fragmentExplode1 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-200%, -150%) scale(0.3) rotate(-45deg);
+                filter: blur(20px);
+            }
+        }
+        
+        @keyframes fragmentExplode2 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(50%, -200%) scale(0.2) rotate(90deg);
+                filter: blur(25px);
+            }
+        }
+        
+        @keyframes fragmentExplode3 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(100%, 0%) scale(0.4) rotate(180deg);
+                filter: blur(15px);
+            }
+        }
+        
+        @keyframes fragmentExplode4 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-150%, 100%) scale(0.25) rotate(-90deg);
+                filter: blur(30px);
+            }
+        }
+        
+        @keyframes fragmentExplode5 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(150%, 150%) scale(0.1) rotate(270deg);
+                filter: blur(35px);
+            }
+        }
+        
+        /* Fragment Assembly Animation */
+        @keyframes fragmentAssemble {
+            0% {
+                opacity: 0;
+                transform: 
+                    scale(0.2) 
+                    rotate(720deg) 
+                    translateZ(-1000px);
+                filter: blur(20px);
+            }
+            30% {
+                opacity: 0.7;
+                transform: 
+                    scale(0.8) 
+                    rotate(360deg) 
+                    translateZ(-500px);
+                filter: blur(10px);
+            }
+            70% {
+                opacity: 0.9;
+                transform: 
+                    scale(1.1) 
+                    rotate(180deg) 
+                    translateZ(-100px);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 0;
+                transform: 
+                    scale(1) 
+                    rotate(0deg) 
+                    translateZ(0px);
+                filter: blur(0px);
+                left: 50%;
+                top: 50%;
+            }
+        }
+        
+        /* Final Logo Appearance */
+        @keyframes finalLogoAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.1) rotateY(270deg);
+                filter: blur(30px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2) rotateY(135deg);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+        
+        /* Main page content (hidden initially) */
+        .main-content {
+            display: none;
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: transparent;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-content.visible {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #animation-overlay .logo { font-size: 60px !important; }
+            .template-counter { font-size: 50px; }
+            .price-strike { font-size: 40px; }
+            #animation-overlay .runerush { font-size: 80px; }
+            #animation-overlay .cta-button { font-size: 24px; padding: 15px 30px; }
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="hero-bg text-white py-20 px-4 relative z-10">
-        <div class="max-w-5xl mx-auto text-center relative z-20">
-            <!-- Brand Logo -->
-            <div class="reveal mb-8">
-                <h1 class="brand-logo text-3xl md:text-4xl mb-2 animate-bounce-gentle">⚡ RUNE RUSH</h1>
-                <p class="text-sm md:text-base text-gray-300 font-mono">Premium n8n Automation Runes</p>
+<body>
+    <!-- Animation Overlay -->
+    <div id="animation-overlay">
+        <div class="animation-container">
+            <!-- Background Elements -->
+            <canvas class="particle-canvas" id="particleCanvas"></canvas>
+            <div class="circuit-grid"></div>
+
+            <!-- Phase 1: Logo -->
+            <div class="logo">RuneFlow</div>
+            
+            <!-- Logo Fragments for Destruction -->
+            <div class="logo-fragment fragment-1">Run</div>
+            <div class="logo-fragment fragment-2">e</div>
+            <div class="logo-fragment fragment-3">Fl</div>
+            <div class="logo-fragment fragment-4">o</div>
+            <div class="logo-fragment fragment-5">w</div>
+
+            <!-- Phase 2: Floating Elements -->
+            <div class="floating-element template-counter">50 TEMPLATES</div>
+<div class="floating-element price-strike"><span style="text-decoration: line-through; color: #666;">$200</span> → <span style="color: #ff4757;">$49</span></div>
+
+            <!-- Phase 3: RuneRUSH Fragments -->
+            <div class="runerush-fragment runerush-r1">R</div>
+            <div class="runerush-fragment runerush-u">u</div>
+            <div class="runerush-fragment runerush-n">n</div>
+            <div class="runerush-fragment runerush-e">e</div>
+            <div class="runerush-fragment runerush-r2">R</div>
+            <div class="runerush-fragment runerush-u2">U</div>
+            <div class="runerush-fragment runerush-s">S</div>
+            <div class="runerush-fragment runerush-h">H</div>
+            
+            <!-- Final Assembled Logo -->
+            <div class="runerush-final">RuneRUSH</div>
+
+            <!-- Phase 4: CTA -->
+            <button class="cta-button" onclick="hideAnimationOverlay()">GET ACCESS NOW</button>
+            
+            <!-- Countdown -->
+            <div class="countdown-display">
+                <div>WEEKEND OFFER EXPIRES:</div>
+                <div class="countdown-time" id="countdownTime">00:00:00</div>
             </div>
 
-            <!-- Social Proof Badge -->
-            <div class="reveal inline-flex items-center glass-card rounded-full px-6 py-3 mb-8 animate-float">
-                <div class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                <span class="text-sm font-semibold text-white">🔥 <span id="social-counter">127</span> automation pros grabbed this last week</span>
-            </div>
+            <!-- Subliminal Runes -->
+            <div class="subliminal-rune rune-wealth">ᚠ <!-- Fehu: Wealth --></div>
+            <div class="subliminal-rune rune-strength">ᚢ <!-- Uruz: Strength --></div>
 
-            <!-- Main Headline -->
-            <div class="reveal">
-                <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
-                    🔥 Get <span class="shimmer-text">50 Premium</span><br>
-                    n8n Runes for <span class="text-6xl md:text-8xl shimmer-text">$49</span><br>
-                    <span class="text-2xl md:text-3xl text-red-300 font-bold">—Today Only (Normally $200)</span>
-                </h2>
-            </div>
+            		<!-- Dynamic Particle Bursts -->
+            		<div class="particle-burst" style="top: 20%; left: 30%; animation-delay: 2s;"></div>
+            		<div class="particle-burst" style="top: 60%; right: 20%; animation-delay: 4s;"></div>
+            		<div class="particle-burst" style="bottom: 30%; left: 10%; animation-delay: 6s;"></div>
+            		<div class="particle-burst" style="top: 40%; left: 80%; animation-delay: 3s;"></div>
+            		<div class="particle-burst" style="top: 70%; left: 20%; animation-delay: 5s;"></div>
+            		<div class="particle-burst" style="top: 10%; right: 15%; animation-delay: 7s;"></div>
 
-            <!-- Subheadline -->
-            <div class="reveal">
-                <p class="text-xl md:text-2xl mb-10 text-gray-200 max-w-4xl mx-auto leading-relaxed italic font-medium">
-                    "One-click import templates that save <span class="text-yellow-300 font-bold">20+ hours/month</span> on automations—before this vault closes."
-                </p>
-            </div>
-
+            		<!-- Energy Waves -->
+            		<div class="energy-wave wave-1"></div>
+            		<div class="energy-wave wave-2"></div>
+            		<div class="energy-wave wave-3"></div>
+            		
+            		<!-- Orbiting Energy Phases -->
+            		<div class="energy-orb orb-1"></div>
+            		<div class="energy-orb orb-2"></div>
+            		<div class="energy-orb orb-3"></div>
+            		<div class="energy-orb orb-4"></div>
+            		<div class="energy-orb orb-5"></div>
+            		<div class="energy-orb orb-6"></div>
+        </div>
+    </div>
+    
+    <!-- Main Content (shown after animation) -->
+    <div class="main-content" id="main-content">
+        <!-- Hero Section -->
+        <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); color: white; border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 900;">🔥 Get 50 Premium n8n Runes for $49—This Weekend Only (Normally $200)</h1>
+            <p style="font-size: 22px; font-style: italic; margin-bottom: 30px; opacity: 0.9;">"One-click import templates that save 20+ hours/month on automations—before this weekend vault closes."</p>
+            
             <!-- Countdown Timer -->
-            <div class="reveal mb-10">
-                <div class="glass-card rounded-3xl p-8 max-w-lg mx-auto">
-                    <div class="text-xl font-bold mb-6 text-red-300 animate-pulse">⏳ Price increases in:</div>
-                    <div id="countdown" class="flex justify-center space-x-4 text-3xl md:text-4xl font-bold">
-                        <div class="text-center">
-                            <div id="hours" class="countdown-digit px-4 py-3 rounded-xl animate-bounce-gentle">00</div>
-                            <div class="text-sm mt-2 text-gray-300">Hours</div>
-                        </div>
-                        <div class="text-center">
-                            <div id="minutes" class="countdown-digit px-4 py-3 rounded-xl animate-bounce-gentle">00</div>
-                            <div class="text-sm mt-2 text-gray-300">Minutes</div>
-                        </div>
-                        <div class="text-center">
-                            <div id="seconds" class="countdown-digit px-4 py-3 rounded-xl animate-bounce-gentle">00</div>
-                            <div class="text-sm mt-2 text-gray-300">Seconds</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Benefits Bullets -->
-            <div class="reveal mb-10">
-                <div class="glass-card rounded-3xl p-8 max-w-4xl mx-auto text-left">
-                    <div class="grid md:grid-cols-2 gap-4 text-lg">
-                        <div class="flex items-start space-x-3">
-                            <span class="text-green-400 font-bold text-xl">✔</span>
-                            <span>50 battle-tested n8n templates (handpicked from 8,100+)</span>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <span class="text-green-400 font-bold text-xl">✔</span>
-                            <span>One-click JSON imports—no manual setup</span>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <span class="text-green-400 font-bold text-xl">✔</span>
-                            <span>Commercial rights included (use for client work)</span>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <span class="text-green-400 font-bold text-xl">✔</span>
-                            <span>Bonus: "Rune Starter Guide" (PDF, $29 value) FREE</span>
-                        </div>
-                        <div class="flex items-start space-x-3 md:col-span-2">
-                            <span class="text-green-400 font-bold text-xl">✔</span>
-                            <span>Instant delivery—download in <60 seconds</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Button -->
-            <div class="reveal">
-                <button id="purchase-btn" class="cta-button text-white font-black text-2xl px-16 py-6 rounded-full animate-glow-pulse mb-6 transform transition-all duration-300">
-                    🟢 Get Instant Access → $49
-                </button>
-                <div class="text-sm text-gray-400 font-medium">
-                    🔒 Secure checkout via Stripe & PayPal • 💰 30-day money back guarantee • ⚡ Instant download
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-                What You Get Inside Rune Rush
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-blue-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">50 Premium n8n Templates</h3>
-                        <p class="text-gray-600">Complete workflows for e-commerce, lead generation, social media automation, and more</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-green-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">Step-by-Step Setup Guides</h3>
-                        <p class="text-gray-600">Detailed instructions and video tutorials for every template</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-purple-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">Ready-to-Use Workflows</h3>
-                        <p class="text-gray-600">Import and activate in minutes - no coding required</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-red-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">Lifetime Updates</h3>
-                        <p class="text-gray-600">Get new templates added every month at no extra cost</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-yellow-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">Private Discord Community</h3>
-                        <p class="text-gray-600">Get support and share ideas with 500+ automation experts</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
-                    <div class="bg-indigo-500 text-white p-3 rounded-full flex-shrink-0">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45.5a2.5 2.5 0 11-3.9-3 2.5 2.5 0 013.9 3zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2">Commercial License</h3>
-                        <p class="text-gray-600">Use templates for client projects and charge premium rates</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-16 px-4 bg-gray-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-                What Our Customers Say
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/50?img=1" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <div class="font-semibold">Sarah Chen</div>
-                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Saved me 40+ hours on my client project. The templates are incredibly well-documented and just work out of the box!"</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/50?img=3" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <div class="font-semibold">Mike Rodriguez</div>
-                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"I've made back my investment 10x over. These templates are gold for anyone serious about automation."</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/50?img=5" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <div class="font-semibold">Emma Thompson</div>
-                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Perfect for agencies! My team can now deliver automation projects in days instead of weeks."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-                🙋‍♂️ Frequently Asked Questions
-            </h2>
-            
-            <div class="space-y-8 max-w-3xl mx-auto">
-                <div class="premium-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Q: "How do I import these?"</h3>
-                    <p class="text-gray-600 text-lg">A: "One-click JSON upload—we include a video walkthrough."</p>
-                </div>
-                
-                <div class="premium-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Q: "What if I don’t need 50?"</h3>
-                    <p class="text-gray-600 text-lg italic">A: "Even 2-3 templates pay for themselves—the rest are profit."</p>
-                </div>
-                
-                <div class="premium-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Q: "Updates?"</h3>
-                    <p class="text-gray-600 text-lg">A: "This is a one-time bundle, but upgrades available inside."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="hero-bg text-white py-16 px-4">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                🔥 Last Chance: Price Increases Soon
-            </h2>
-            <p class="text-xl mb-8 text-gray-200">
-                Join 500+ smart entrepreneurs who are already automating their success with Rune Rush templates.
-            </p>
-            <p class="text-lg mb-8 text-yellow-300 font-semibold italic">
-                PS: "You'll kick yourself paying $200 tomorrow."
-            </p>
-            
-            <!-- Final Timer -->
-            <div class="bg-black/30 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-md mx-auto">
-                <div class="text-lg font-semibold mb-4 text-red-300">⚠️ OFFER EXPIRES IN:</div>
-                <div id="countdown2" class="flex justify-center space-x-4 text-2xl font-bold">
-                    <div class="text-center">
-                        <div id="hours2" class="bg-red-600 px-3 py-2 rounded-lg">00</div>
-                        <div class="text-xs mt-1">Hours</div>
-                    </div>
-                    <div class="text-center">
-                        <div id="minutes2" class="bg-red-600 px-3 py-2 rounded-lg">00</div>
-                        <div class="text-xs mt-1">Minutes</div>
-                    </div>
-                    <div class="text-center">
-                        <div id="seconds2" class="bg-red-600 px-3 py-2 rounded-lg">00</div>
-                        <div class="text-xs mt-1">Seconds</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payment Buttons -->
-            <div class="space-y-4">
-                <button id="stripe-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold text-xl px-12 py-4 rounded-full transition-all duration-300 pulse-glow transform hover:scale-105 w-full max-w-md">
-                    💳 Pay with Stripe - $49
-                </button>
-                <button id="paypal-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl px-12 py-4 rounded-full transition-all duration-300 transform hover:scale-105 w-full max-w-md">
-                    🅿️ Pay with PayPal - $49
-                </button>
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 30px; display: inline-block;">
+                <div style="font-size: 18px; margin-bottom: 10px;">⏳ Weekend offer expires in:</div>
+                <div id="countdown" style="font-size: 36px; font-weight: bold; color: #ff4757;">00:00:00</div>
             </div>
             
-            <div class="mt-6 text-sm text-gray-300">
-                🔒 Secure checkout • 💰 30-day money back guarantee • ⚡ Instant download
+            <!-- Social Proof -->
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 30px; display: inline-block;">
+                <span style="color: #4caf50;">🔥</span> <strong>127</strong> automation pros grabbed this last week
+            </div>
+            
+            <button id="payment-btn-hero" class="payment-button" style="background: #10b981; color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 24px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3); transition: all 0.3s;">🟢 Get Instant Access → $49</button>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">✨ What You Get</h2>
+            <ul style="list-style: none; padding: 0; max-width: 700px; margin: 0 auto;">
+                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>50 battle-tested n8n templates</strong> (handpicked from 8,100+)</li>
+                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>One-click JSON imports</strong>—no manual setup</li>
+                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>Commercial rights included</strong> (use for client work)</li>
+                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>Bonus: "Rune Starter Guide"</strong> (PDF, $29 value) FREE</li>
+                <li style="padding: 15px 0; font-size: 18px;">✔ <strong>Instant delivery</strong>—download in <60 seconds</li>
+            </ul>
+        </div>
+        
+        
+        <!-- Complete Template Showcase -->
+        <div style="background: transparent; padding: 20px 0; margin-bottom: 30px;">
+            <h2 style="text-align: center; color: #ffffff; margin-bottom: 20px; font-size: 36px; text-shadow: 0 0 10px rgba(0,255,255,0.5);">⚡ Complete Template Vault</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 40px; font-style: italic;">The absolute best templates for immediate business impact</p>
+            
+            <!-- AI & Research Category -->
+            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
+                <h3 style="color: #667eea; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(102,126,234,0.3);">🤖 AI & Research (18 templates)</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">High-demand AI automation that customers desperately want</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Chatbot with Webhook Response Handler</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">WhatsApp AI Assistant with Document Knowledge Base</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">OpenAI-Powered Chat Assistant for HubSpot Support</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Email Analysis and Google Sheets Reporting</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Telegram AI Assistant with Web Search Capability</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Voice Chat using Webhook, Memory Manager, OpenAI & ElevenLabs</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Personal Shopper Chatbot for WooCommerce with RAG</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI chatbot that can search the web</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Customer feedback sentiment analysis</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Agent for Google Calendar Assistant using OpenAI</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Voice Chatbot with ElevenLabs & OpenAI for Restaurants</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Social Media Caption Creator for Airtable</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI web researcher for sales</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Document Q&A Using LangChain and OpenAI</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Discord AI-powered bot</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Telegram AI Chatbot</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Agent to chat with Supabase/PostgreSQL DB</div>
+                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Generate Images via API Using OpenAI</div>
+                </div>
+            </div>
+            
+            <!-- Email Marketing Category -->
+            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
+                <h3 style="color: #10b981; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(16,185,129,0.3);">📧 Email Marketing (12 templates)</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Essential communication automation every business needs</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">ConvertKit Form Subscriber Notification</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">HubSpot Event Notification System</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Calendly Event Notification</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">JotForm Submission Notification</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Create and Send Outlook Draft with Attachment</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">MailChimp Activity Notification</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Email Bounce and Open Notifications via Postmark</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Forward Netflix Emails to Multiple Recipients via Gmail</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Asana Event Notifications for Team Updates</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Chargebee Event Notifications</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">RSS Feed Updates Sent to Telegram Channel</div>
+                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Monitor Website and Send Discord Alerts</div>
+                </div>
+            </div>
+            
+            <!-- E-commerce Category -->
+            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
+                <h3 style="color: #f59e0b; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(245,158,11,0.3);">🛒 E-commerce (10 templates)</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Direct revenue-generating automation</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Daily Shopify Sales Update to Sheets and Slack</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Personal Shopper for WooCommerce Store</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">WooCommerce AI Chatbot for Post-Sales Customer Support</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Business WhatsApp AI RAG Chatbot</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Sync Stripe Payments with Customer and Product Details</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Creating an Onfleet Task for a new Shopify Fulfillment</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Enhanced WooCommerce Product Import from Google Sheets</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Form to HubSpot with AI-Powered Summary and Follow-Up</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">LinkedIn Company Search and AI-Scored CRM Update</div>
+                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Get company logo, icon, and information and store in Airtable</div>
+                </div>
+            </div>
+            
+            <!-- Automation Category -->
+            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
+                <h3 style="color: #8b5cf6; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(139,92,246,0.3);">⚙️ Automation (6 templates)</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Core productivity automation</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Scheduled URL Health Check and Ping Monitor</div>
+                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Create Onfleet Task from Google Drive File Updates</div>
+                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Manually Add Events to Google Calendar</div>
+                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Manually Create New ClickUp Task</div>
+                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Daily Weather Data Fetch and Airtable Storage</div>
+                </div>
+            </div>
+            
+            <!-- Social Media Category -->
+            <div style="margin-bottom: 30px; padding: 20px; background: transparent; border-radius: 0;">
+                <h3 style="color: #ec4899; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(236,72,153,0.3);">📱 Social Media (4 templates)</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Essential social automation</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Tweet New Strava Activities Automatically</div>
+                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Upload Video to YouTube and Add to New Playlist</div>
+                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Send Welcome Message to Discord Channel</div>
+                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Discord Bot Responds to YouTube Queries with AI</div>
+                </div>
+            </div>
+            
+            <!-- Pro Expansion Teaser -->
+            <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(238, 90, 36, 0.1) 100%); border-radius: 12px; border: 2px dashed #ff6b6b; margin-top: 40px;">
+                <h3 style="color: #ff4500; font-size: 28px; margin-bottom: 15px;">🚀 PLUS: RuneRUSH PRO Expansion Available</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin-bottom: 20px;">50 additional advanced templates for power users and professionals</p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                    <div><strong style="color: #667eea;">+12</strong> Advanced AI & Research</div>
+                    <div><strong style="color: #10b981;">+13</strong> Advanced Email Marketing</div>
+                    <div><strong style="color: #f59e0b;">+4</strong> Advanced E-commerce</div>
+                    <div><strong style="color: #8b5cf6;">+14</strong> Advanced Automation</div>
+                    <div><strong style="color: #ec4899;">+7</strong> Advanced Social Media</div>
+                </div>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px; font-style: italic;">Available as upgrade after purchase for $39 (100 total templates)</p>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="mb-4">© 2024 Rune Rush. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 text-sm">
-                <a href="#" class="hover:text-gray-300">Terms of Service</a>
-                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-300">Refund Policy</a>
-                <a href="#" class="hover:text-gray-300">Contact</a>
+        
+        <!-- Why This Beats Building Section -->
+        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">💎 Why This Beats Building from Scratch?</h2>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 20px; margin: 20px 0; color: #e74c3c;">🚫 "Stop wasting hours debugging workflows—these runes just work."</p>
+                <p style="font-size: 20px; margin: 20px 0; color: #27ae60; font-style: italic;">💸 "At $49, you're paying <$1 per template (vs. $100s in trial/error)."</p>
+                <p style="font-size: 20px; margin: 20px 0; color: #3498db;">⚡ "Deploy in minutes—focus on scaling, not setup."</p>
             </div>
         </div>
-    </footer>
+        
+        <!-- Who This Is For Section -->
+        <div style="background: rgba(248, 249, 250, 0.9); padding: 40px; border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">🎯 Who This Is For:</h2>
+            <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto; text-align: center;">
+                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Agencies</strong> (resell to clients)</li>
+                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>SaaS Founders</strong> (automate ops)</li>
+                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Freelancers</strong> (deliver faster)</li>
+                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Indie Hackers</strong> (save 20+ hrs/month)</li>
+            </ul>
+        </div>
+        
+        <!-- Urgency Section -->
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(238, 90, 36, 0.9) 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">⚠️ Urgency Triggers</h2>
+            <p style="font-size: 20px; margin: 15px 0;">🔴 "This is the ONLY weekend we're offering 50 runes at this price."</p>
+            <p style="font-size: 20px; margin: 15px 0; font-style: italic;">🔴 "Download expires Sunday midnight—no re-downloads later."</p>
+            <button class="payment-button" style="background: #f39c12; color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 20px;">🟡 Get My 50 Runes Now → $49</button>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">🙋‍♂️ FAQ (Pre-Objections)</h2>
+            <div style="max-width: 700px; margin: 0 auto; text-align: left;">
+                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Q: "How do I import these?"</h3>
+                    <p style="color: #666; font-size: 16px;">A: "One-click JSON upload—we include a video walkthrough."</p>
+                </div>
+                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Q: "What if I don't need 50?"</h3>
+                    <p style="color: #666; font-size: 16px; font-style: italic;">A: "Even 2-3 templates pay for themselves—the rest are profit."</p>
+                </div>
+                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Q: "Updates?"</h3>
+                    <p style="color: #666; font-size: 16px;">A: "This is a one-time bundle, but upgrades available inside."</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final CTA Section -->
+        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); color: white; padding: 50px 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">🔥 Last Chance: Weekend Offer Ends Sunday</h2>
+            <button class="payment-button" style="background: #10b981; color: white; padding: 25px 50px; border: none; border-radius: 50px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); margin-bottom: 20px;">🟢 Get 50 Runes Now → $49</button>
+            <p style="font-size: 18px; font-style: italic; opacity: 0.9;">PS: "You'll kick yourself paying $200 on Monday."</p>
+            
+            <!-- Payment Options -->
+            <div style="margin-top: 30px;">
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <button style="background: #1a73e8; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">💳 Pay with Stripe - $49</button>
+                    <button style="background: #0070ba; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">🅿️ Pay with PayPal - $49</button>
+                </div>
+                <p style="font-size: 14px; opacity: 0.8;">🔒 Secure checkout • 💰 30-day guarantee • ⚡ Instant download</p>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Countdown Timer (72 hours from now)
+        // Global function scope - must be accessible from onclick
+        window.hideAnimationOverlay = function() {
+            console.log('hideAnimationOverlay called');
+            const overlay = document.getElementById('animation-overlay');
+            const mainContent = document.getElementById('main-content');
+            
+            console.log('Overlay found:', !!overlay);
+            console.log('Main content found:', !!mainContent);
+            
+            if (overlay && mainContent) {
+                // Stop all animations and force hide with !important
+                overlay.style.setProperty('animation', 'none', 'important');
+                overlay.style.setProperty('visibility', 'hidden', 'important');
+                overlay.style.setProperty('opacity', '0', 'important');
+                overlay.style.setProperty('z-index', '-9999', 'important');
+                overlay.style.setProperty('display', 'none', 'important');
+                overlay.style.setProperty('pointer-events', 'none', 'important');
+                
+                // Stop animations on all child elements
+                const allElements = overlay.querySelectorAll('*');
+                allElements.forEach(el => {
+                    el.style.setProperty('animation', 'none', 'important');
+                });
+                
+                // Force show main content
+                mainContent.style.setProperty('display', 'block', 'important');
+                mainContent.style.setProperty('visibility', 'visible', 'important');
+                mainContent.style.setProperty('opacity', '1', 'important');
+                mainContent.classList.add('visible');
+                
+                console.log('Animation forcefully hidden, main content shown');
+            } else {
+                console.error('Could not find overlay or main content elements');
+            }
+        };
+        
+        // Countdown Timer Function
         function initCountdown() {
-            const endTime = new Date().getTime() + (72 * 60 * 60 * 1000); // 72 hours from now
+            // Set target date to August 4, 2025 at midnight (00:00:00)
+            const targetTime = new Date('2025-08-04T00:00:00').getTime();
             
             function updateCountdown() {
                 const now = new Date().getTime();
-                const distance = endTime - now;
+                const timeLeft = targetTime - now;
                 
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = "<div class='text-red-500 font-bold'>OFFER EXPIRED!</div>";
-                    document.getElementById('countdown2').innerHTML = "<div class='text-red-500 font-bold'>OFFER EXPIRED!</div>";
+                if (timeLeft < 0) {
+                    // Offer has expired
+                    const countdownElements = document.querySelectorAll('#countdown, #countdownTime');
+                    countdownElements.forEach(el => {
+                        el.innerHTML = '<span style="color: #ff4757; font-weight: bold;">OFFER EXPIRED!</span>';
+                    });
                     return;
                 }
                 
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                // Calculate time components
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                 
-                // Update both timers
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                // Format the countdown display
+                let timeString = '';
+                if (days > 0) {
+                    timeString = `${days}D ${hours.toString().padStart(2, '0')}H ${minutes.toString().padStart(2, '0')}M`;
+                } else {
+                    timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
                 
-                document.getElementById('hours2').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes2').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds2').textContent = seconds.toString().padStart(2, '0');
+                // Update both countdown displays
+                const mainCountdown = document.getElementById('countdown');
+                const animationCountdown = document.getElementById('countdownTime');
+                
+                if (mainCountdown) mainCountdown.textContent = timeString;
+                if (animationCountdown) animationCountdown.textContent = timeString;
             }
             
+            // Update immediately and then every second
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
         
-        // Payment button handlers
-        function initPaymentButtons() {
-            // Stripe payment
-            document.getElementById('stripe-btn').addEventListener('click', function() {
-                // Replace with your actual Stripe payment link
-                window.open('https://buy.stripe.com/your-payment-link', '_blank');
-            });
-            
-            document.getElementById('purchase-btn').addEventListener('click', function() {
-                // Replace with your actual Stripe payment link
-                window.open('https://buy.stripe.com/your-payment-link', '_blank');
-            });
-            
-            // PayPal payment
-            document.getElementById('paypal-btn').addEventListener('click', function() {
-                // Replace with your actual PayPal payment link
-                window.open('https://www.paypal.com/paypalme/your-payment-link', '_blank');
-            });
-        }
-        
-        // Social proof counter animation
-        function animateSocialProof() {
-            const counter = document.getElementById('social-counter');
-            if (counter) {
-                setInterval(() => {
-                    const currentCount = parseInt(counter.textContent);
-                    const newCount = currentCount + Math.floor(Math.random() * 3) + 1;
-                    counter.textContent = newCount;
-                }, 30000); // Update every 30 seconds
-            }
-        }
-        
-        // Scroll reveal functionality
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-            
-            function checkReveal() {
-                reveals.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('active');
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', checkReveal);
-            checkReveal(); // Check on load
-        }
-        
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            initCountdown();
-            initPaymentButtons();
-            animateSocialProof();
-            initScrollReveal();
+            console.log('Animation loaded successfully');
             
-            // Show initial elements immediately
-            setTimeout(() => {
-                const initialElements = document.querySelectorAll('.reveal');
-                initialElements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('active');
-                    }, index * 200);
+            // Initialize countdown timer
+            initCountdown();
+            
+            // Initialize payment functionality
+            initPaymentButtons();
+            
+            // Add click event listener as backup
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                console.log('CTA button found, adding event listener');
+                ctaButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Button clicked via event listener');
+                    hideAnimationOverlay();
                 });
-            }, 500);
+            } else {
+                console.error('CTA button not found');
+            }
+            
+            // Optional: Auto-hide after 15 seconds for testing
+            setTimeout(() => {
+                console.log('Auto-hiding animation for demo');
+                // hideAnimationOverlay(); // Uncomment this line to test auto-hide
+            }, 15000);
+            
+            // Test button functionality immediately
+            console.log('Testing button click in 2 seconds...');
+            setTimeout(() => {
+                const button = document.querySelector('.cta-button');
+                if (button) {
+                    console.log('Button element found:', button);
+                    console.log('Button onclick:', button.getAttribute('onclick'));
+                    console.log('Button click handlers:', button);
+                } else {
+                    console.error('Button not found!');
+                }
+            }, 2000);
+        });
+        
+        // Payment System
+        let runeRushAPI;
+        let stripeInstance;
+        
+        function initPaymentButtons() {
+            console.log('Initializing payment system...');
+            
+            // Initialize API client (it's already initialized in api.js as 'api')
+            if (typeof RuneRushAPI !== 'undefined') {
+                runeRushAPI = new RuneRushAPI();
+                console.log('RuneRushAPI initialized');
+            } else if (typeof api !== 'undefined') {
+                runeRushAPI = api;
+                console.log('Using api instance from api.js');
+            } else {
+                console.error('RuneRushAPI not found - check js/api.js');
+                // Create a mock API for testing purposes
+                runeRushAPI = {
+                    createCheckoutSession: async () => {
+                        alert('Payment system not configured. This would normally redirect to Stripe checkout.');
+                        return Promise.resolve({ success: false, message: 'API not configured' });
+                    }
+                };
+            }
+            
+        // Initialize Stripe (it's already initialized in api.js)
+        if (typeof Stripe !== 'undefined' && window.stripe) {
+            stripeInstance = window.stripe;
+            console.log('Stripe initialized from api.js');
+        } else if (typeof Stripe !== 'undefined') {
+            stripeInstance = Stripe('pk_test_51QgUHnAZqMCvJvdPVUSlF3xHfW7FmkHHOmzUTg2naNLzYiAqO8MdnQ7a0eqxJaNF9OHQu9JYvQfL1XJHs4qUgS2J00XPYsYcqW');
+            console.log('Stripe initialized with fallback key');
+        } else {
+            console.warn('Stripe not loaded - payment functionality may be limited');
+        }
+            
+            // Add event listeners to all payment buttons
+            const paymentButtons = document.querySelectorAll('.payment-button, button[id*="payment"]');
+            console.log(`Found ${paymentButtons.length} payment buttons`);
+            
+            paymentButtons.forEach(button => {
+                button.addEventListener('click', handlePaymentClick);
+                console.log('Added payment handler to button:', button.textContent);
+            });
+            
+            // Also handle Stripe and PayPal specific buttons
+            const stripeButtons = document.querySelectorAll('button:contains("Stripe")');
+            const paypalButtons = document.querySelectorAll('button:contains("PayPal")');
+            
+            // Find buttons by text content since CSS selectors don't support :contains
+            document.querySelectorAll('button').forEach(button => {
+                if (button.textContent.includes('Stripe')) {
+                    button.addEventListener('click', () => handlePaymentClick(null, 'stripe'));
+                } else if (button.textContent.includes('PayPal')) {
+                    button.addEventListener('click', () => handlePaymentClick(null, 'paypal'));
+                }
+            });
+        }
+        
+        async function handlePaymentClick(event, paymentMethod = 'stripe') {
+            if (event) event.preventDefault();
+            
+            console.log('Payment button clicked, method:', paymentMethod);
+            
+            try {
+                // Show loading state
+                const button = event ? event.target : document.querySelector('.payment-button');
+                const originalText = button.textContent;
+                button.textContent = '🔄 Processing...';
+                button.disabled = true;
+                
+                if (paymentMethod === 'stripe') {
+                    await handleStripePayment();
+                } else if (paymentMethod === 'paypal') {
+                    await handlePayPalPayment();
+                }
+                
+            } catch (error) {
+                console.error('Payment error:', error);
+                
+                // Show more helpful error message
+                let errorMessage = 'Payment failed. Please try again or contact support.';
+                if (error.message.includes('API server not running')) {
+                    errorMessage = '💡 This is expected when testing locally!\n\nThe payment system requires a backend API server to be running.\n\nFor testing purposes, the form validation works correctly.';
+                }
+                alert(errorMessage);
+                
+                // Reset button state
+                if (event) {
+                    event.target.textContent = originalText;
+                    event.target.disabled = false;
+                }
+            }
+        }
+        
+        async function handleStripePayment() {
+            console.log('Creating Stripe checkout session...');
+            
+            try {
+                // Get customer details
+                const email = prompt('Please enter your email address:');
+                if (!email) {
+                    throw new Error('Email is required for purchase');
+                }
+                
+                const firstName = prompt('Please enter your first name:');
+                if (!firstName) {
+                    throw new Error('First name is required for purchase');
+                }
+                
+                const lastName = prompt('Please enter your last name:');
+                if (!lastName) {
+                    throw new Error('Last name is required for purchase');
+                }
+                
+                // Create checkout session through API
+                const checkoutData = {
+                    email: email.trim(),
+                    first_name: firstName.trim(),
+                    last_name: lastName.trim(),
+                    product_type: 'core', // Default to core product
+                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
+                    cancel_url: window.location.origin + '/cancel'
+                };
+                
+                console.log('Creating checkout session with data:', checkoutData);
+                
+                // Check if we're running locally for testing
+                if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.log('Local testing mode - showing mock payment success');
+                    alert(`✅ Mock Payment Success!\n\nCustomer: ${firstName} ${lastName}\nEmail: ${email}\nAmount: $49\n\nIn production, this would redirect to Stripe checkout.`);
+                    return;
+                }
+                
+                const response = await runeRushAPI.createCheckoutSession(checkoutData);
+                console.log('Checkout session created:', response);
+                
+                if (response.success && response.data.url) {
+                    // Redirect to Stripe Checkout
+                    console.log('Redirecting to Stripe Checkout:', response.data.url);
+                    window.location.href = response.data.url;
+                } else {
+                    throw new Error('Failed to create checkout session: ' + (response.message || 'Unknown error'));
+                }
+                
+            } catch (error) {
+                console.error('Stripe payment error:', error);
+                
+                // Provide more helpful error message
+                if (error.message.includes('NetworkError') || error.message.includes('fetch')) {
+                    throw new Error('Payment system is not available (API server not running). This is expected when testing locally.');
+                } else {
+                    throw error;
+                }
+            }
+        }
+        
+        async function handlePayPalPayment() {
+            console.log('Redirecting to PayPal...');
+            
+            try {
+                // For now, redirect to a PayPal payment page
+                // In production, you'd create a PayPal order through your API
+                const paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?' + 
+                    'cmd=_xclick&' +
+                    'business=your-paypal-email@example.com&' +
+                    'item_name=RuneRUSH - 50 Premium n8n Templates&' +
+                    'amount=49.00&' +
+                    'currency_code=USD&' +
+                    'return=https://yourdomain.com/success&' +
+                    'cancel_return=https://yourdomain.com/cancel';
+                
+                window.location.href = paypalUrl;
+                
+            } catch (error) {
+                console.error('PayPal payment error:', error);
+                throw error;
+            }
+        }
+    </script>
+    
+    <script>
+        // Particle System (embedded to avoid local resource issues)
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('particleCanvas');
+            if (!canvas) return;
+            
+            const context = canvas.getContext('2d');
+            
+            // Canvas Setup
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+            
+            // Particle System
+            const particles = [];
+            
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 1,
+                    vy: (Math.random() - 0.5) * 1,
+                    size: Math.random() * 1.5 + 0.5,
+                    color: `rgba(0, 255, 255, ${Math.random() * 0.5 + 0.2})`
+                });
+            }
+            
+            function updateParticles() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    
+                    context.beginPath();
+                    context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    context.fillStyle = p.color;
+                    context.fill();
+                });
+                
+                requestAnimationFrame(updateParticles);
+            }
+            
+            updateParticles();
         });
     </script>
 </body>
