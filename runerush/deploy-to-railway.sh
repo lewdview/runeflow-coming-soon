@@ -56,10 +56,9 @@ echo "Enter your Stripe configuration:"
 read -p "Stripe Publishable Key (pk_test_...): " stripe_pub_key
 read -p "Stripe Secret Key (sk_test_...): " stripe_secret_key
 
-# Use pre-configured SendGrid API key
+# Ask for SendGrid API key
 echo ""
-echo "✅ Using pre-configured SendGrid API key..."
-sendgrid_key="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"
+read -p "SendGrid API Key (SG.xxx...): " sendgrid_key
 
 # Ask for domain
 echo ""
@@ -73,7 +72,8 @@ railway variables set NODE_ENV=production
 railway variables set PORT=3000
 railway variables set STRIPE_PUBLISHABLE_KEY="$stripe_pub_key"
 railway variables set STRIPE_SECRET_KEY="$stripe_secret_key"
-railway variables set STRIPE_WEBHOOK_SECRET="whsec_w0910cwCsm67aAzkcKFF39zFLsp6gtjW"
+read -p "Stripe Webhook Secret (whsec_...): " webhook_secret
+railway variables set STRIPE_WEBHOOK_SECRET="$webhook_secret"
 railway variables set SENDGRID_API_KEY="$sendgrid_key"
 railway variables set FROM_EMAIL="support@$domain_name"
 railway variables set FROM_NAME="RuneRUSH Support"

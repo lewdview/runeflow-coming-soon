@@ -5,7 +5,7 @@
 
 const https = require('https');
 
-const SENDGRID_API_KEY = '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';
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || 'YOUR_SENDGRID_API_KEY_HERE';
 
 console.log('🧪 Testing SendGrid API Key...');
 console.log('================================');
