@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f0f23"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="76.8" fill="url(#bgGradient)"/>
+  
+  <!-- Circuit pattern -->
+  <pattern id="circuit" patternUnits="userSpaceOnUse" width="40" height="40">
+    <path d="M 10,30 L 30,30 L 30,10" stroke="#00ffff" stroke-width="1" fill="none" opacity="0.3"/>
+  </pattern>
+  <rect width="512" height="512" fill="url(#circuit)"/>
+  
+  <!-- Main rune symbol -->
+  <g transform="translate(256, 256)" filter="url(#glow)">
+    <!-- Central diamond -->
+    <path d="M 0,-80 L 60,0 L 0,80 L -60,0 Z" fill="none" stroke="#00ffff" stroke-width="6"/>
+    
+    <!-- Connecting lines -->
+    <line x1="0" y1="-80" x2="0" y2="-120" stroke="#00ffff" stroke-width="4"/>
+    <line x1="0" y1="80" x2="0" y2="120" stroke="#00ffff" stroke-width="4"/>
+    <line x1="-60" y1="0" x2="-100" y2="0" stroke="#00ffff" stroke-width="4"/>
+    <line x1="60" y1="0" x2="100" y2="0" stroke="#00ffff" stroke-width="4"/>
+    
+    <!-- Corner symbols -->
+    <circle cx="0" cy="-120" r="8" fill="#ff6b35"/>
+    <circle cx="0" cy="120" r="8" fill="#ff6b35"/>
+    <circle cx="-100" cy="0" r="8" fill="#ff6b35"/>
+    <circle cx="100" cy="0" r="8" fill="#ff6b35"/>
+    
+    <!-- Inner pattern -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#00ffff" stroke-width="3"/>
+    <path d="M -14,-14 L 14,14 M 14,-14 L -14,14" stroke="#00ffff" stroke-width="3"/>
+  </g>
+</svg>
