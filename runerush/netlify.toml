@@ -22,8 +22,18 @@
   status = 200
 
 [[redirects]]
-  from = "/*"
+  from = "/runerush"
   to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/launch"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/coming-soon.html"
   status = 200
 
 [[headers]]

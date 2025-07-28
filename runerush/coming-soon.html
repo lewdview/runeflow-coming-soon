@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow.xyz - Logo Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .animation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Particle System Background */
+        .particle-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float-particle 8s linear infinite;
+            opacity: 0;
+        }
+        
+        /* Rune Symbols (Phase 1: 0-3s) */
+        .rune-container {
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            opacity: 0;
+            animation: rune-entrance 3s ease-out forwards;
+        }
+        
+        .rune {
+            font-size: 120px;
+            color: #00ffff;
+            font-weight: 800;
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px #00ffff;
+            animation: rune-glow 2s ease-in-out infinite alternate;
+            opacity: 0;
+        }
+        
+        .rune:nth-child(1) { animation-delay: 0.5s; }
+        .rune:nth-child(2) { animation-delay: 1s; }
+        .rune:nth-child(3) { animation-delay: 1.5s; }
+        
+        /* Circuit Transition (Phase 2: 3-6s) */
+        .circuit-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: circuit-emerge 3s ease-in-out 3s forwards;
+        }
+        
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            height: 2px;
+            animation: circuit-flow 2s ease-in-out infinite;
+        }
+        
+        .circuit-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ffff;
+            animation: node-pulse 1.5s ease-in-out infinite;
+        }
+        
+        /* Logo Formation (Phase 3: 6-10s) */
+        .logo-container {
+            position: absolute;
+            opacity: 0;
+            animation: logo-formation 4s ease-out 6s forwards, logo-ambient-loop 8s ease-in-out 14s infinite;
+            text-align: center;
+        }
+        
+        .logo-text {
+            font-size: 80px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            letter-spacing: 3px;
+        }
+        
+        .logo-subtitle {
+            font-size: 24px;
+            color: #888;
+            margin-top: 20px;
+            opacity: 0;
+            animation: subtitle-fade 2s ease-out 8s forwards;
+            letter-spacing: 2px;
+        }
+        
+        .est-2024 {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #666;
+            opacity: 0;
+            animation: smoke-appear 2s ease-out 9s forwards;
+        }
+        
+        /* Data Stream Effects */
+        .data-stream {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #00ff00;
+            opacity: 0.7;
+            animation: stream-flow 6s linear infinite;
+        }
+        
+        /* Keyframe Animations */
+        @keyframes float-particle {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0);
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+        
+        @keyframes rune-entrance {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(180deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        @keyframes rune-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px #00ffff,
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff;
+                opacity: 1;
+            }
+            100% {
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px #00ffff,
+                    0 0 120px #00ffff;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes circuit-emerge {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes circuit-flow {
+            0% { 
+                width: 0;
+                opacity: 0; 
+            }
+            50% { 
+                opacity: 1;
+                width: 200px; 
+            }
+            100% { 
+                width: 400px;
+                opacity: 0; 
+            }
+        }
+        
+        @keyframes node-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 15px #00ffff;
+            }
+            50% { 
+                transform: scale(1.5);
+                box-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff;
+            }
+        }
+        
+        @keyframes logo-formation {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotateY(90deg);
+                filter: blur(20px);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1) rotateY(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes subtitle-fade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes smoke-appear {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+                filter: blur(3px);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translateX(-50%) translateY(0);
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes stream-flow {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .rune-container {
+                width: 300px;
+                height: 200px;
+            }
+            
+            .rune {
+                font-size: 60px;
+            }
+            
+            .logo-text {
+                font-size: 40px;
+            }
+            
+            .logo-subtitle {
+                font-size: 16px;
+            }
+        }
+        
+        /* Vault Locked Section (Phase 4: 10-14s) */
+        .vault-container {
+            position: absolute;
+            opacity: 0;
+            animation: vault-appear 4s ease-out 10s forwards, vault-ambient-loop 6s ease-in-out 14s infinite;
+            text-align: center;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .vault-lock {
+            font-size: 60px;
+            color: #ff6b35;
+            text-shadow: 0 0 20px #ff6b35, 0 0 40px #ff6b35;
+            animation: lock-pulse 2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        .vault-text {
+            font-size: 24px;
+            color: #ffab00;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 171, 0, 0.5);
+        }
+        
+        .vault-description {
+            font-size: 16px;
+            color: #888;
+            opacity: 0.8;
+            max-width: 400px;
+            line-height: 1.4;
+        }
+        
+        .template-count {
+            font-size: 48px;
+            color: #00ffff;
+            font-weight: 800;
+            text-shadow: 0 0 30px #00ffff;
+            animation: count-glow 3s ease-in-out infinite alternate;
+            margin: 15px 0;
+        }
+        
+        /* Audio Visualization Effect */
+        .audio-bars {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 3px;
+            opacity: 0;
+            animation: bars-appear 2s ease-out 7s forwards;
+        }
+        
+        .audio-bar {
+            width: 4px;
+            background: linear-gradient(to top, #00ffff, #ff00ff);
+            border-radius: 2px;
+            animation: bar-bounce 1.5s ease-in-out infinite;
+        }
+        
+        .audio-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .audio-bar:nth-child(2) { height: 35px; animation-delay: 0.1s; }
+        .audio-bar:nth-child(3) { height: 50px; animation-delay: 0.2s; }
+        .audio-bar:nth-child(4) { height: 30px; animation-delay: 0.3s; }
+        .audio-bar:nth-child(5) { height: 45px; animation-delay: 0.4s; }
+        .audio-bar:nth-child(6) { height: 25px; animation-delay: 0.5s; }
+        .audio-bar:nth-child(7) { height: 40px; animation-delay: 0.6s; }
+        
+        @keyframes bars-appear {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        @keyframes bar-bounce {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+        
+        @keyframes vault-appear {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+                filter: blur(10px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(-50%) scale(1.1);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes lock-pulse {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 20px #ff6b35, 0 0 40px #ff6b35;
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 30px #ff6b35, 0 0 60px #ff6b35, 0 0 80px #ff6b35;
+            }
+        }
+        
+        @keyframes count-glow {
+            0% {
+                text-shadow: 0 0 20px #00ffff;
+            }
+            100% {
+                text-shadow: 0 0 40px #00ffff, 0 0 60px #00ffff, 0 0 80px #00ffff;
+            }
+        }
+        
+        /* Ambient Loop Animations */
+        @keyframes logo-ambient-loop {
+            0%, 100% {
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: scale(1.02) rotateY(1deg);
+                opacity: 0.95;
+            }
+            50% {
+                transform: scale(0.98) rotateY(0deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: scale(1.01) rotateY(-1deg);
+                opacity: 0.95;
+            }
+        }
+        
+        @keyframes vault-ambient-loop {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            33% {
+                transform: translateX(-50%) scale(1.03);
+                opacity: 0.92;
+            }
+            66% {
+                transform: translateX(-50%) scale(0.97);
+                opacity: 0.88;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <!-- Particle Background -->
+        <div class="particle-field" id="particleField"></div>
+        
+        <!-- Phase 1: Rune Formation -->
+        <div class="rune-container">
+            <div class="rune">ᚠ</div>
+            <div class="rune">ᚢ</div>
+            <div class="rune">ᚦ</div>
+        </div>
+        
+        <!-- Phase 2: Circuit Overlay -->
+        <div class="circuit-overlay">
+            <div class="circuit-line" style="top: 30%; left: 10%; width: 200px; animation-delay: 0.5s;"></div>
+            <div class="circuit-line" style="top: 50%; right: 15%; width: 300px; animation-delay: 1s;"></div>
+            <div class="circuit-line" style="top: 70%; left: 20%; width: 250px; animation-delay: 1.5s;"></div>
+            
+            <div class="circuit-node" style="top: 30%; left: 20%;"></div>
+            <div class="circuit-node" style="top: 50%; right: 25%;"></div>
+            <div class="circuit-node" style="top: 70%; left: 35%;"></div>
+            <div class="circuit-node" style="top: 40%; left: 60%;"></div>
+            <div class="circuit-node" style="top: 60%; right: 40%;"></div>
+        </div>
+        
+        <!-- Phase 3: Logo Formation -->
+        <div class="logo-container">
+            <div class="logo-text">RuneFlow</div>
+            <div class="logo-subtitle">Ancient Power. Modern Automation.</div>
+            <div class="est-2024">Est. 2024</div>
+        </div>
+        
+        <!-- Phase 4: Vault Locked Section -->
+        <div class="vault-container">
+            <div class="vault-lock">🔒</div>
+            <div class="vault-text">VAULT CURRENTLY LOCKED</div>
+            <div class="template-count">8,100+</div>
+            <div class="vault-description">
+                Premium automation templates secured in the vault.<br>
+                Reserve your access to unlock the complete collection.
+            </div>
+        </div>
+        
+        <!-- Audio Visualization -->
+        <div class="audio-bars">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+        </div>
+        
+        <!-- Data Streams -->
+        <div class="data-stream" style="top: 20%; animation-delay: 4s;">01101001 11010010 10110101</div>
+        <div class="data-stream" style="top: 80%; animation-delay: 4.5s;">RUNE_FLOW_INIT::SUCCESS</div>
+        <div class="data-stream" style="top: 60%; animation-delay: 5s;">AUTOMATION_CORE_LOADED</div>
+        <div class="data-stream" style="top: 40%; animation-delay: 11s;">VAULT_STATUS::LOCKED</div>
+        <div class="data-stream" style="top: 85%; animation-delay: 12s;">TEMPLATE_COUNT::8100</div>
+    </div>
+
+    <script>
+        // Generate particles dynamically
+        function createParticles() {
+            const particleField = document.getElementById('particleField');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+                particleField.appendChild(particle);
+            }
+        }
+        
+        // Add binary rain effect
+        function createBinaryRain() {
+            const container = document.querySelector('.animation-container');
+            
+            for (let i = 0; i < 20; i++) {
+                const stream = document.createElement('div');
+                stream.classList.add('data-stream');
+                stream.textContent = generateBinaryString();
+                stream.style.left = Math.random() * 100 + '%';
+                stream.style.top = Math.random() * 100 + '%';
+                stream.style.animationDelay = (3 + Math.random() * 4) + 's';
+                stream.style.fontSize = (8 + Math.random() * 8) + 'px';
+                stream.style.opacity = 0.3 + Math.random() * 0.4;
+                container.appendChild(stream);
+            }
+        }
+        
+        function generateBinaryString() {
+            let binary = '';
+            for (let i = 0; i < 12; i++) {
+                binary += Math.random() > 0.5 ? '1' : '0';
+            }
+            return binary;
+        }
+        
+        // Sound effect simulation (visual cues)
+        function addSoundCues() {
+            const audioBars = document.querySelector('.audio-bars');
+            if (audioBars) {
+                // Create additional visual effects to simulate sound
+                setTimeout(() => {
+                    document.body.style.animation = 'none';
+                }, 2000);
+            }
+        }
+        
+        // Initialize animation
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createBinaryRain();
+            addSoundCues();
+            
+            // Add click to restart (only if user wants to see intro again)
+            document.addEventListener('click', () => {
+                location.reload();
+            });
+        });
+        
+        // Add Matrix-style rune dissolve effect
+        setTimeout(() => {
+            const runes = document.querySelectorAll('.rune');
+            runes.forEach((rune, index) => {
+                setTimeout(() => {
+                    rune.style.animation = 'rune-dissolve 1s ease-out forwards';
+                    rune.style.transform = 'scale(0) rotate(180deg)';
+                    rune.style.opacity = '0';
+                }, index * 200);
+            });
+        }, 2800);
+    </script>
+</body>
+</html>
