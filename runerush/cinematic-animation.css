@@ -1,0 +1,992 @@
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #0a0a0a, #1a1a2e, #0f0f23);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    perspective: 2000px;
+    cursor: crosshair;
+}
+
+/* MAIN CONTAINER */
+.animation-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+/* BACKGROUND ELEMENTS */
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: 
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 0, 0, 0.03) 2px, rgba(255, 0, 0, 0.03) 4px),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px);
+    z-index: 5;
+}
+
+/* HIDDEN CLASS */
+.hidden {
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* PHASE 1: RUNEFLOW LOGO */
+.logo {
+    font-size: clamp(60px, 8vw, 120px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #00d4ff, #0099cc, #004466);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.8),
+        0 0 40px rgba(0, 212, 255, 0.6),
+        0 0 80px rgba(0, 212, 255, 0.4);
+    z-index: 10;
+    position: relative;
+    animation: logoPulse 1s ease-in-out infinite;
+}
+
+.logo::before {
+    content: 'RuneFlow';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #00d4ff, #001a22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    z-index: -1;
+    filter: blur(20px);
+    animation: logoHalo 2s linear infinite;
+}
+
+/* PHASE 2: FLOATING TEXTS - BURNING STEEL EFFECT */
+.floating-text {
+    position: absolute;
+    font-weight: 800;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 15;
+    transform-style: preserve-3d;
+}
+
+.templates-text {
+    font-size: clamp(40px, 5vw, 70px);
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff6b35, #ff4500, #ffaa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 30px rgba(255, 107, 53, 0.8),
+        0 0 60px rgba(255, 69, 0, 0.6),
+        0 0 100px rgba(255, 170, 0, 0.4);
+    animation: burningSteel 2s ease-in-out infinite;
+}
+
+.price-text {
+    font-size: clamp(30px, 3.5vw, 50px);
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.old-price {
+    color: #ff4757;
+    font-weight: 800;
+    position: relative;
+    text-shadow: 0 0 20px #ff4757;
+    white-space: nowrap;
+}
+
+/* BLADE MARK - $49 slashes across like a sword */
+.scar-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ff4757, #8B0000, #ff4757, transparent);
+    box-shadow: 
+        0 0 15px #ff4757,
+        0 0 30px rgba(255, 71, 87, 0.5);
+    position: relative;
+    animation: bladeSlash 0.5s ease-out;
+    transform: rotate(-15deg);
+    flex-shrink: 0;
+}
+
+.scar-line::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.8), transparent);
+    filter: blur(2px);
+}
+
+.new-price {
+    color: #ff4500;
+    text-shadow: 
+        0 0 20px #ff4500,
+        0 0 40px rgba(255, 69, 0, 0.8),
+        0 0 60px rgba(255, 69, 0, 0.6);
+    font-weight: 800;
+    animation: priceForge 1s ease-out;
+    white-space: nowrap;
+}
+
+/* SWORD SLASH EFFECTS - ENHANCED VISIBILITY */
+.sword-slash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+}
+
+.blade {
+    position: absolute;
+    width: 800px;
+    height: 15px;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 10%, #ff4757 30%, #ffffff 50%, #8B0000 70%, #ff4757 90%, transparent 100%);
+    top: 50%;
+    left: -800px;
+    transform: rotate(-30deg) translateY(-50%);
+    box-shadow: 
+        0 0 30px #ffffff,
+        0 0 60px #ff4757,
+        0 0 120px rgba(255, 71, 87, 0.8),
+        0 0 200px rgba(139, 0, 0, 0.6);
+    filter: blur(0.5px);
+    animation: swordSlash 2s ease-out;
+}
+
+.blade-trail {
+    position: absolute;
+    width: 1200px;
+    height: 8px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 20%, rgba(255, 71, 87, 0.6) 50%, rgba(255, 255, 255, 0.4) 80%, transparent 100%);
+    top: 50%;
+    left: -1200px;
+    transform: rotate(-30deg) translateY(-50%);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+    animation: swordTrail 2s 0.2s ease-out;
+}
+
+/* MOLTEN METAL EFFECTS */
+.molten-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 18;
+    opacity: 0;
+}
+
+.molten-drop {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, #ff4500 0%, #ff6b35 50%, #8B0000 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 
+        0 0 15px #ff4500,
+        0 0 30px rgba(255, 69, 0, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.molten-drop:nth-child(1) {
+    left: 48%;
+    animation: moltenDrip 2s 0s ease-out;
+}
+
+.molten-drop:nth-child(2) {
+    left: 50%;
+    animation: moltenDrip 2s 0.3s ease-out;
+}
+
+.molten-drop:nth-child(3) {
+    left: 52%;
+    animation: moltenDrip 2s 0.6s ease-out;
+}
+
+.molten-spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #ffaa00 0%, #ff4500 70%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff4500;
+    top: 50%;
+    left: 50%;
+}
+
+.molten-spark:nth-child(4) {
+    animation: sparkFly 1.5s 0.2s ease-out;
+}
+
+.molten-spark:nth-child(5) {
+    animation: sparkFly 1.5s 0.8s ease-out;
+}
+
+/* PHASE 3: RUNERUSH (HIDDEN UNTIL REVEAL) */
+.runerush {
+    position: absolute;
+    font-size: clamp(80px, 10vw, 150px);
+    font-weight: 800;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    /* Completely invisible until reveal */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* BLOOD DRIP EFFECTS */
+.blood-drips {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+}
+
+.blood-drop {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background: linear-gradient(180deg, #8B0000 0%, #660000 50%, #440000 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 
+        0 0 8px #8B0000,
+        inset 0 1px 2px rgba(255, 0, 0, 0.3);
+    opacity: 0;
+}
+
+.blood-drop:nth-child(1) {
+    left: 30%;
+    animation: bloodDrip 3s 0s ease-out infinite;
+}
+
+.blood-drop:nth-child(2) {
+    left: 50%;
+    animation: bloodDrip 3s 1s ease-out infinite;
+}
+
+.blood-drop:nth-child(3) {
+    left: 70%;
+    animation: bloodDrip 3s 2s ease-out infinite;
+}
+
+/* PHASE 4: CTA CONTAINER */
+.cta-container {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 25;
+}
+
+.cta-button {
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 800;
+    padding: 15px 30px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 
+        0 0 40px rgba(255, 69, 0, 0.6),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 20px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 10px 50px rgba(255, 69, 0, 0.8),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.countdown-display {
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 14px;
+    color: #ff4757;
+    margin-bottom: 5px;
+}
+
+.countdown-time {
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 800;
+    color: #ff4500;
+    text-shadow: 0 0 20px #ff4500;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px rgba(0, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff, 0 0 120px rgba(0, 255, 255, 0.8);
+    }
+}
+
+@keyframes runerushEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.6) rotateY(180deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+/* CINEMATIC ANIMATIONS */
+
+/* Logo Shatter Effect */
+@keyframes logoShatter {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+        filter: blur(0px);
+    }
+    25% {
+        transform: scale(1.1) rotateY(15deg);
+        filter: blur(2px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.9) rotateY(-30deg);
+        filter: blur(5px);
+    }
+    75% {
+        opacity: 0.3;
+        transform: scale(0.5) rotateY(45deg);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotateY(90deg);
+        filter: blur(20px);
+    }
+}
+
+/* Float In Animation */
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100px) scale(0.8);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(-10px) scale(1.1);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0px) scale(1);
+        filter: blur(0px);
+    }
+}
+
+/* RuneRUSH Forge Animation */
+@keyframes runerushForge {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) rotateZ(180deg);
+        filter: blur(15px);
+        text-shadow: 0 0 100px #ff4500;
+    }
+    25% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.7) rotateZ(90deg);
+        filter: blur(8px);
+        text-shadow: 0 0 80px #ff4500, 0 0 120px #8B0000;
+    }
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2) rotateZ(45deg);
+        filter: blur(4px);
+        text-shadow: 0 0 60px #ff4500, 0 0 100px #8B0000, 0 0 140px rgba(255, 69, 0, 0.8);
+    }
+    75% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.9) rotateZ(10deg);
+        filter: blur(2px);
+        text-shadow: 0 0 40px #ff4500, 0 0 80px #8B0000, 0 0 120px rgba(255, 69, 0, 0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+        filter: blur(0px);
+        text-shadow: 0 0 30px #ff4500, 0 0 60px #ff4500, 0 0 120px rgba(255, 69, 0, 0.7);
+    }
+}
+
+/* CTA Slam Animation */
+@keyframes ctaSlam {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-100px) rotateX(-90deg) scale(0.5);
+        box-shadow: 0 0 0 rgba(255, 69, 0, 0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(20px) rotateX(10deg) scale(1.2);
+        box-shadow: 0 20px 60px rgba(255, 69, 0, 0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0px) rotateX(0deg) scale(1);
+        box-shadow: 0 0 40px rgba(255, 69, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Countdown Burn Animation */
+@keyframes countdownBurn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+        filter: blur(10px);
+        text-shadow: 0 0 0 #ff4757;
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.2);
+        filter: blur(3px);
+        text-shadow: 0 0 30px #ff4757, 0 0 60px #ff4500;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        filter: blur(0px);
+        text-shadow: 0 0 20px #ff4757, 0 0 40px #ff4500;
+    }
+}
+
+/* Detonator Blink Animation */
+@keyframes detonatorBlink {
+    0%, 100% {
+        opacity: 1;
+        color: #ff4500;
+        text-shadow: 0 0 20px #ff4500;
+    }
+    50% {
+        opacity: 0.3;
+        color: #ff4757;
+        text-shadow: 0 0 40px #ff4757, 0 0 60px #8B0000;
+    }
+}
+
+/* Enhanced Color Palette */
+.logo {
+    /* Blue-black energy (dying star) */
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #00ffff, #1a1a2e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.runerush {
+    /* Molten crimson + gunmetal gray */
+    background: linear-gradient(135deg, #8B0000, #ff4500, #2F4F4F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Blood-runes typography */
+.runerush::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, #8B0000, transparent);
+    animation: bloodDrip 2s ease-out infinite;
+}
+
+@keyframes bloodDrip {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(0.5) translateY(20px);
+    }
+}
+
+/* Smoldering crater background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
+    z-index: -1;
+    animation: craterSmolder 4s ease-in-out infinite;
+}
+
+@keyframes craterSmolder {
+    0%, 100% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.2) contrast(1.1);
+    }
+}
+
+/* NEW VIOLENT CINEMATIC ANIMATIONS */
+
+/* Burning Steel Effect for Templates */
+@keyframes burningSteel {
+    0%, 100% {
+        text-shadow: 
+            0 0 30px rgba(255, 107, 53, 0.8),
+            0 0 60px rgba(255, 69, 0, 0.6),
+            0 0 100px rgba(255, 170, 0, 0.4);
+        filter: brightness(1);
+    }
+    25% {
+        text-shadow: 
+            0 0 40px rgba(255, 107, 53, 1),
+            0 0 80px rgba(255, 69, 0, 0.8),
+            0 0 120px rgba(255, 170, 0, 0.6),
+            0 0 160px rgba(255, 0, 0, 0.4);
+        filter: brightness(1.3);
+    }
+    50% {
+        text-shadow: 
+            0 0 50px rgba(255, 107, 53, 1.2),
+            0 0 100px rgba(255, 69, 0, 1),
+            0 0 150px rgba(255, 170, 0, 0.8),
+            0 0 200px rgba(255, 0, 0, 0.6);
+        filter: brightness(1.5);
+    }
+    75% {
+        text-shadow: 
+            0 0 40px rgba(255, 107, 53, 1),
+            0 0 80px rgba(255, 69, 0, 0.8),
+            0 0 120px rgba(255, 170, 0, 0.6),
+            0 0 180px rgba(139, 0, 0, 0.5);
+        filter: brightness(1.2);
+    }
+}
+
+/* Blade Slash Animation */
+@keyframes bladeSlash {
+    0% {
+        width: 0;
+        opacity: 0;
+        transform: rotate(-15deg) scaleX(0);
+        box-shadow: 0 0 0 transparent;
+    }
+    30% {
+        width: 80px;
+        opacity: 1;
+        transform: rotate(-15deg) scaleX(1.2);
+        box-shadow: 
+            0 0 25px #ff4757,
+            0 0 50px rgba(255, 71, 87, 0.8),
+            0 0 100px rgba(139, 0, 0, 0.6);
+    }
+    100% {
+        width: 80px;
+        opacity: 1;
+        transform: rotate(-15deg) scaleX(1);
+        box-shadow: 
+            0 0 15px #ff4757,
+            0 0 30px rgba(255, 71, 87, 0.5);
+    }
+}
+
+/* Price Forge Animation */
+@keyframes priceForge {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotateZ(45deg);
+        text-shadow: 0 0 100px #ff4500;
+        filter: blur(10px);
+    }
+    25% {
+        opacity: 0.6;
+        transform: scale(1.3) rotateZ(20deg);
+        text-shadow: 
+            0 0 60px #ff4500,
+            0 0 120px rgba(255, 69, 0, 0.8),
+            0 0 180px rgba(139, 0, 0, 0.6);
+        filter: blur(5px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(0.9) rotateZ(-10deg);
+        text-shadow: 
+            0 0 40px #ff4500,
+            0 0 80px rgba(255, 69, 0, 0.9),
+            0 0 120px rgba(139, 0, 0, 0.7);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+        text-shadow: 
+            0 0 20px #ff4500,
+            0 0 40px rgba(255, 69, 0, 0.8),
+            0 0 60px rgba(255, 69, 0, 0.6);
+        filter: blur(0px);
+    }
+}
+
+/* Enhanced Logo Halo for Dying Star Effect */
+@keyframes logoHalo {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: rotate(90deg) scale(1.1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+        opacity: 0.7;
+    }
+    75% {
+        transform: rotate(270deg) scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Obsidian Shatter - Enhanced Logo Destruction */
+@keyframes logoShatter {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg) rotateX(0deg);
+        filter: blur(0px) brightness(1);
+        text-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.8),
+            0 0 40px rgba(0, 212, 255, 0.6),
+            0 0 80px rgba(0, 212, 255, 0.4);
+    }
+    15% {
+        transform: scale(1.05) rotateY(5deg) rotateX(-2deg);
+        filter: blur(1px) brightness(1.2);
+        text-shadow: 
+            0 0 30px rgba(0, 212, 255, 1),
+            0 0 60px rgba(0, 212, 255, 0.8),
+            0 0 120px rgba(0, 212, 255, 0.6);
+    }
+    30% {
+        opacity: 0.9;
+        transform: scale(0.95) rotateY(-10deg) rotateX(5deg);
+        filter: blur(3px) brightness(0.8);
+        text-shadow: 
+            0 0 25px rgba(0, 212, 255, 0.7),
+            0 0 50px rgba(0, 212, 255, 0.5),
+            0 0 100px rgba(0, 212, 255, 0.3);
+    }
+    60% {
+        opacity: 0.5;
+        transform: scale(0.7) rotateY(25deg) rotateX(-15deg) rotateZ(10deg);
+        filter: blur(8px) brightness(0.4);
+        text-shadow: 
+            0 0 15px rgba(0, 212, 255, 0.4),
+            0 0 30px rgba(0, 212, 255, 0.2),
+            0 0 60px rgba(0, 212, 255, 0.1);
+    }
+    85% {
+        opacity: 0.2;
+        transform: scale(0.3) rotateY(60deg) rotateX(-30deg) rotateZ(25deg);
+        filter: blur(15px) brightness(0.2);
+        text-shadow: 
+            0 0 10px rgba(0, 212, 255, 0.2),
+            0 0 20px rgba(0, 212, 255, 0.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotateY(90deg) rotateX(-45deg) rotateZ(45deg);
+        filter: blur(25px) brightness(0);
+        text-shadow: none;
+    }
+}
+
+/* Enhanced RuneRUSH Forge - Like a Forged Weapon */
+@keyframes runerushForge {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, -50%) scale(0.1) rotateZ(270deg) rotateY(180deg);
+        filter: blur(30px) brightness(0.2);
+        text-shadow: 0 0 200px #ff4500;
+    }
+    15% {
+        opacity: 0.2;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(0.4) rotateZ(180deg) rotateY(135deg);
+        filter: blur(20px) brightness(0.5);
+        text-shadow: 
+            0 0 150px #ff4500,
+            0 0 200px rgba(139, 0, 0, 0.8);
+    }
+    35% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.8) rotateZ(90deg) rotateY(90deg);
+        filter: blur(12px) brightness(0.8);
+        text-shadow: 
+            0 0 100px #ff4500,
+            0 0 150px rgba(139, 0, 0, 0.9),
+            0 0 200px rgba(255, 69, 0, 0.7);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.3) rotateZ(30deg) rotateY(30deg);
+        filter: blur(6px) brightness(1.2);
+        text-shadow: 
+            0 0 80px #ff4500,
+            0 0 120px rgba(139, 0, 0, 1),
+            0 0 160px rgba(255, 69, 0, 0.8),
+            0 0 200px rgba(255, 107, 53, 0.6);
+    }
+    85% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.9) rotateZ(5deg) rotateY(5deg);
+        filter: blur(2px) brightness(1.1);
+        text-shadow: 
+            0 0 50px #ff4500,
+            0 0 100px rgba(139, 0, 0, 0.9),
+            0 0 140px rgba(255, 69, 0, 0.7),
+            0 0 180px rgba(255, 107, 53, 0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateZ(0deg) rotateY(0deg);
+        filter: blur(0px) brightness(1);
+        text-shadow: 
+            0 0 30px #ff4500,
+            0 0 60px #ff4500,
+            0 0 120px rgba(255, 69, 0, 0.7),
+            0 0 160px rgba(139, 0, 0, 0.4);
+    }
+}
+
+/* NEW SWORD, MOLTEN METAL, AND BLOOD ANIMATIONS */
+
+/* Sword Slash Animation - ENHANCED VISIBILITY */
+@keyframes swordSlash {
+    0% {
+        left: -800px;
+        opacity: 0;
+        transform: rotate(-30deg) translateY(-50%) scaleX(0);
+        box-shadow: 0 0 0 transparent;
+    }
+    10% {
+        left: -200px;
+        opacity: 1;
+        transform: rotate(-30deg) translateY(-50%) scaleX(0.8);
+        box-shadow: 
+            0 0 50px #ffffff,
+            0 0 100px #ff4757;
+    }
+    30% {
+        left: 20%;
+        opacity: 1;
+        transform: rotate(-30deg) translateY(-50%) scaleX(1.2);
+        box-shadow: 
+            0 0 80px #ffffff,
+            0 0 160px #ff4757,
+            0 0 240px rgba(255, 71, 87, 0.8);
+    }
+    60% {
+        left: 80%;
+        opacity: 1;
+        transform: rotate(-30deg) translateY(-50%) scaleX(1);
+        box-shadow: 
+            0 0 60px #ffffff,
+            0 0 120px #ff4757;
+    }
+    100% {
+        left: 150%;
+        opacity: 0;
+        transform: rotate(-30deg) translateY(-50%) scaleX(0.5);
+        box-shadow: 0 0 0 transparent;
+    }
+}
+
+@keyframes swordTrail {
+    0% {
+        left: -1200px;
+        opacity: 0;
+        transform: rotate(-30deg) translateY(-50%);
+    }
+    5% {
+        left: -400px;
+        opacity: 0.9;
+        transform: rotate(-30deg) translateY(-50%);
+    }
+    25% {
+        left: 10%;
+        opacity: 0.8;
+        transform: rotate(-30deg) translateY(-50%);
+    }
+    50% {
+        left: 60%;
+        opacity: 0.6;
+        transform: rotate(-30deg) translateY(-50%);
+    }
+    100% {
+        left: 150%;
+        opacity: 0;
+        transform: rotate(-30deg) translateY(-50%);
+    }
+}
+
+/* Molten Metal Drip Animation */
+@keyframes moltenDrip {
+    0% {
+        top: 45%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
+    30% {
+        top: 55%;
+        transform: translateX(-50%) scale(1);
+    }
+    60% {
+        top: 70%;
+        opacity: 0.8;
+        transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+        top: 90%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.3);
+    }
+}
+
+/* Spark Fly Animation */
+@keyframes sparkFly {
+    0% {
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        top: 20%;
+        left: 70%;
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+
+/* Blood Drip Animation */
+@keyframes bloodDrip {
+    0% {
+        top: -10px;
+        opacity: 0;
+        transform: scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    30% {
+        top: 20px;
+        transform: scale(1);
+    }
+    60% {
+        top: 50px;
+        opacity: 0.8;
+        transform: scale(0.9);
+    }
+    90% {
+        top: 80px;
+        opacity: 0.3;
+        transform: scale(0.6);
+    }
+    100% {
+        top: 100px;
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+

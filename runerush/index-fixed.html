@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rune Rush - 50 Premium n8n Templates for $49 (Limited Time)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            overflow-x: hidden;
+        }
+        
+        /* Animation Overlay Styles - HIGHEST PRIORITY */
+        #animation-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 99999 !important;
+            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23) !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            font-family: 'JetBrains Mono', monospace !important;
+            perspective: 2000px !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+        
+        /* Circuit Grid Background */
+        .circuit-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        /* Main Logo - Phase 1 */
+        #animation-overlay .logo {
+            font-size: 110px !important;
+            font-weight: 900 !important;
+            color: #00ffff !important;
+            text-shadow: 
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px rgba(0, 255, 255, 0.5) !important;
+            opacity: 0;
+            animation: 
+                logoEntrance 2s 0.5s ease-out forwards,
+                logoPulse 3s 0.5s ease-in-out infinite,
+                logoFracture 1.5s 2.5s ease-in forwards !important;
+            transform-style: preserve-3d;
+            z-index: 10;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) scale(0.3) rotateY(180deg) rotateX(45deg);
+            text-align: center !important;
+            pointer-events: none !important;
+            filter: blur(20px);
+            letter-spacing: 3px !important;
+            -webkit-text-stroke: 2px rgba(0, 255, 255, 0.3) !important;
+        }
+        
+        #animation-overlay .logo::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: 
+                conic-gradient(from 0deg, 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent, 
+                    rgba(0, 255, 255, 0.3), 
+                    transparent);
+            border-radius: 50%;
+            animation: logoHalo 2s linear infinite;
+            z-index: -1;
+        }
+        
+        /* Logo Fragments for Breaking Effect */
+        .logo-fragment {
+            font-size: 110px !important;
+            font-weight: 900 !important;
+            color: #00ffff !important;
+            text-shadow: 
+                0 0 20px #00ffff,
+                0 0 40px #00ffff,
+                0 0 80px rgba(0, 255, 255, 0.5) !important;
+            opacity: 0;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+            text-align: center !important;
+            pointer-events: none !important;
+            letter-spacing: 3px !important;
+            -webkit-text-stroke: 2px rgba(0, 255, 255, 0.3) !important;
+            z-index: 11;
+        }
+        
+        .fragment-1 {
+            animation: fragmentExplode1 2s 2.5s ease-out forwards;
+        }
+        
+        .fragment-2 {
+            animation: fragmentExplode2 2s 2.6s ease-out forwards;
+        }
+        
+        .fragment-3 {
+            animation: fragmentExplode3 2s 2.7s ease-out forwards;
+        }
+        
+        .fragment-4 {
+            animation: fragmentExplode4 2s 2.8s ease-out forwards;
+        }
+        
+        .fragment-5 {
+            animation: fragmentExplode5 2s 2.9s ease-out forwards;
+        }
+        
+        /* Floating Elements - Phase 2 */
+        .floating-element {
+            position: absolute;
+            font-weight: 800;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 15;
+        }
+        
+        .template-counter {
+            font-size: 70px;
+            color: #ff6b35;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                elementFloat 4s 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff6b35,
+                0 0 60px rgba(255, 107, 53, 0.5);
+        }
+        
+        .price-strike {
+            font-size: 60px;
+            color: #ff4757;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: 
+                elementSlideIn 1.5s 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                priceStrike 2s 4.5s ease-out forwards;
+            text-shadow: 
+                0 0 25px #ff4757,
+                0 0 50px rgba(255, 71, 87, 0.5);
+        }
+        
+        /* RuneRUSH - Phase 3 */
+        #animation-overlay .runerush {
+            font-size: 120px;
+            font-weight: 800;
+            color: #ff4500;
+            position: absolute;
+            opacity: 0;
+            transform-style: preserve-3d;
+            z-index: 20;
+            animation: 
+                runerushMaterialize 2s 6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                runerushGlow 2s 8s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+            display: none; /* Hide main logo, we'll use fragments */
+        }
+        
+        /* RuneRUSH Fragment System - Phase 3 */
+        .runerush-fragments {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+        }
+        
+        .runerush-fragment {
+            position: absolute;
+            font-size: 120px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ff4500;
+            opacity: 0;
+            transform-style: preserve-3d;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+            pointer-events: none;
+        }
+        
+        /* Individual fragment starting positions (scattered explosion points) */
+        .runerush-r1 {
+            top: 20%;
+            left: 10%;
+            animation: fragmentAssemble 2s 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-u {
+            top: 80%;
+            left: 20%;
+            animation: fragmentAssemble 2s 4.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-n {
+            top: 15%;
+            right: 15%;
+            animation: fragmentAssemble 2s 4.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-e {
+            bottom: 20%;
+            right: 10%;
+            animation: fragmentAssemble 2s 5.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-r2 {
+            top: 60%;
+            left: 5%;
+            animation: fragmentAssemble 2s 5.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-u2 {
+            bottom: 10%;
+            left: 50%;
+            animation: fragmentAssemble 2s 5.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-s {
+            top: 30%;
+            right: 5%;
+            animation: fragmentAssemble 2s 5.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .runerush-h {
+            bottom: 30%;
+            left: 15%;
+            animation: fragmentAssemble 2s 5.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        /* Final assembled logo */
+        .runerush-final {
+            position: absolute;
+            font-size: 120px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ff4500;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 25;
+            animation: 
+                finalLogoAppear 1.5s 7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                runerushGlow 2s 8.5s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px #ff4500,
+                0 0 60px #ff4500,
+                0 0 120px rgba(255, 69, 0, 0.7);
+        }
+        
+        /* CTA Button - Phase 4 */
+        #animation-overlay .cta-button {
+            font-size: 32px;
+            font-weight: 800;
+            padding: 20px 40px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 
+                0 0 40px rgba(255, 69, 0, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            cursor: pointer;
+            animation: 
+                ctaAppear 1.5s 8.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                ctaPulse 2s 10s ease-in-out infinite;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 25;
+        }
+        
+        /* Subliminal Runes */
+        .subliminal-rune {
+            position: absolute;
+            font-size: 50px;
+            color: rgba(0, 255, 100, 0.3);
+            opacity: 0;
+            animation: 
+                runeAppear 2s ease-in-out infinite,
+                runeOrbit 20s linear infinite;
+            z-index: 5;
+        }
+        
+        .rune-wealth {
+            top: 30%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+        
+        .rune-strength {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* Countdown Integration */
+        .countdown-display {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #ff4757;
+            opacity: 0;
+            animation: countdownAppear 1s 9s forwards;
+            z-index: 22;
+            text-align: center;
+        }
+        
+        .countdown-time {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff4500;
+            text-shadow: 0 0 20px #ff4500;
+            animation: countdownBlink 1s infinite;
+        }
+        
+        /* Particle Burst Effects */
+        .particle-burst {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #00ffff, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleBurst 3s ease-out infinite;
+        }
+        
+        /* Energy Waves */
+        .energy-wave {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 2px solid rgba(255, 69, 0, 0.3);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: energyWave 4s ease-out infinite;
+        }
+        
+        .wave-1 {
+            animation-delay: 3.2s;
+        }
+        
+        .wave-2 {
+            animation-delay: 3.4s;
+            width: 500px;
+            height: 500px;
+        }
+        
+        .wave-3 {
+            animation-delay: 3.6s;
+            width: 600px;
+            height: 600px;
+        }
+        
+        /* Orbiting Energy Phases */
+        .energy-orb {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #00ffff, rgba(0, 255, 255, 0.3));
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            box-shadow: 0 0 15px #00ffff;
+            animation: energyOrbit 3s linear infinite;
+        }
+        
+        .orb-1 {
+            animation-delay: 2.2s;
+            animation-duration: 2.5s;
+        }
+        
+        .orb-2 {
+            animation-delay: 2.4s;
+            animation-duration: 3s;
+        }
+        
+        .orb-3 {
+            animation-delay: 2.6s;
+            animation-duration: 2.8s;
+        }
+        
+        .orb-4 {
+            animation-delay: 2.8s;
+            animation-duration: 3.2s;
+        }
+        
+        .orb-5 {
+            animation-delay: 3s;
+            animation-duration: 2.3s;
+        }
+        
+        .orb-6 {
+            animation-delay: 3.2s;
+            animation-duration: 2.7s;
+        }
+        
+        /* Animation Keyframes */
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        @keyframes logoEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.3) rotateY(180deg) rotateX(45deg); 
+                filter: blur(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg); 
+                filter: blur(0px); 
+            }
+        }
+        
+        @keyframes logoPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px rgba(0, 255, 255, 0.5);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px #00ffff,
+                    0 0 60px #00ffff,
+                    0 0 120px rgba(0, 255, 255, 0.8);
+            }
+        }
+        
+        @keyframes logoHalo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes logoFracture {
+            0% { 
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg) rotateZ(0deg); 
+                opacity: 1;
+                filter: blur(0px) brightness(1);
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px rgba(0, 255, 255, 0.5);
+            }
+            25% {
+                transform: translate(-50%, -50%) scale(1.1) rotateY(15deg) rotateZ(-5deg);
+                opacity: 0.9;
+                filter: blur(2px) brightness(1.2);
+                text-shadow: 
+                    0 0 30px #ff0000,
+                    0 0 50px #ff0000,
+                    0 0 100px rgba(255, 0, 0, 0.7);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.3) rotateY(45deg) rotateZ(15deg); 
+                opacity: 0.6; 
+                filter: blur(8px) brightness(0.8) contrast(2);
+                text-shadow: 
+                    5px 5px 20px #ff0000,
+                    -5px -5px 20px #00ffff,
+                    0 0 60px rgba(255, 255, 255, 0.8);
+            }
+            75% {
+                transform: translate(-50%, -50%) scale(0.7) rotateY(120deg) rotateZ(-30deg);
+                opacity: 0.3;
+                filter: blur(15px) brightness(0.4) contrast(3);
+                text-shadow: 
+                    10px 10px 30px #ff0000,
+                    -10px -10px 30px #00ffff,
+                    0 0 40px rgba(255, 255, 255, 0.5);
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(0.1) rotateY(180deg) rotateZ(45deg); 
+                opacity: 0; 
+                filter: blur(25px) brightness(0) contrast(5);
+                text-shadow: none;
+            }
+        }
+        
+        @keyframes elementSlideIn {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(100px) rotateX(90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+        
+        @keyframes elementFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes priceStrike {
+            0% { color: #ff4757; }
+            100% { 
+                color: #666; 
+                text-decoration: line-through;
+            }
+        }
+        
+        @keyframes runerushMaterialize {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.1) rotateY(270deg) rotateZ(180deg); 
+                filter: blur(30px);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.3) rotateY(135deg) rotateZ(90deg); 
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg) rotateZ(0deg); 
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes runerushGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 30px #ff4500,
+                    0 0 60px #ff4500,
+                    0 0 120px rgba(255, 69, 0, 0.7);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 40px #ff4500,
+                    0 0 80px #ff4500,
+                    0 0 160px rgba(255, 69, 0, 1);
+            }
+        }
+        
+        @keyframes ctaAppear {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(50px) rotateX(-90deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0) rotateX(0deg); 
+            }
+        }
+        
+        @keyframes ctaPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 40px rgba(255, 69, 0, 0.6),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 60px rgba(255, 69, 0, 1),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        @keyframes runeAppear {
+            0%, 90% { opacity: 0; }
+            5%, 85% { opacity: 0.5; }
+        }
+        
+        @keyframes runeOrbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        
+        @keyframes particleBurst {
+            0% { 
+                opacity: 1; 
+                transform: scale(0) translateY(0); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1) translateY(-50px); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.5) translateY(-100px); 
+            }
+        }
+        
+        @keyframes countdownAppear {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        @keyframes countdownBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes energyWave {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        
+        @keyframes energyOrbit {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
+            }
+        }
+        
+        /* Fragment Explosion Animations */
+        @keyframes fragmentExplode1 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-200%, -150%) scale(0.3) rotate(-45deg);
+                filter: blur(20px);
+            }
+        }
+        
+        @keyframes fragmentExplode2 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(50%, -200%) scale(0.2) rotate(90deg);
+                filter: blur(25px);
+            }
+        }
+        
+        @keyframes fragmentExplode3 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(100%, 0%) scale(0.4) rotate(180deg);
+                filter: blur(15px);
+            }
+        }
+        
+        @keyframes fragmentExplode4 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-150%, 100%) scale(0.25) rotate(-90deg);
+                filter: blur(30px);
+            }
+        }
+        
+        @keyframes fragmentExplode5 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(150%, 150%) scale(0.1) rotate(270deg);
+                filter: blur(35px);
+            }
+        }
+        
+        /* Fragment Assembly Animation */
+        @keyframes fragmentAssemble {
+            0% {
+                opacity: 0;
+                transform: 
+                    scale(0.2) 
+                    rotate(720deg) 
+                    translateZ(-1000px);
+                filter: blur(20px);
+            }
+            30% {
+                opacity: 0.7;
+                transform: 
+                    scale(0.8) 
+                    rotate(360deg) 
+                    translateZ(-500px);
+                filter: blur(10px);
+            }
+            70% {
+                opacity: 0.9;
+                transform: 
+                    scale(1.1) 
+                    rotate(180deg) 
+                    translateZ(-100px);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 0;
+                transform: 
+                    scale(1) 
+                    rotate(0deg) 
+                    translateZ(0px);
+                filter: blur(0px);
+                left: 50%;
+                top: 50%;
+            }
+        }
+        
+        /* Final Logo Appearance */
+        @keyframes finalLogoAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.1) rotateY(270deg);
+                filter: blur(30px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2) rotateY(135deg);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+        
+        /* Main page content (hidden initially) */
+        .main-content {
+            display: none;
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .main-content.visible {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #animation-overlay .logo { font-size: 60px !important; }
+            .template-counter { font-size: 50px; }
+            .price-strike { font-size: 40px; }
+            #animation-overlay .runerush { font-size: 80px; }
+            #animation-overlay .cta-button { font-size: 24px; padding: 15px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animation Overlay -->
+    <div id="animation-overlay">
+        <div class="animation-container">
+            <!-- Background Elements -->
+            <canvas class="particle-canvas" id="particleCanvas"></canvas>
+            <div class="circuit-grid"></div>
+
+            <!-- Phase 1: Logo -->
+            <div class="logo">RuneFlow</div>
+            
+            <!-- Logo Fragments for Destruction -->
+            <div class="logo-fragment fragment-1">Run</div>
+            <div class="logo-fragment fragment-2">e</div>
+            <div class="logo-fragment fragment-3">Fl</div>
+            <div class="logo-fragment fragment-4">o</div>
+            <div class="logo-fragment fragment-5">w</div>
+
+            <!-- Phase 2: Floating Elements -->
+            <div class="floating-element template-counter">50 TEMPLATES</div>
+            <div class="floating-element price-strike">$200 → $49</div>
+
+            <!-- Phase 3: RuneRUSH Fragments -->
+            <div class="runerush-fragment runerush-r1">R</div>
+            <div class="runerush-fragment runerush-u">u</div>
+            <div class="runerush-fragment runerush-n">n</div>
+            <div class="runerush-fragment runerush-e">e</div>
+            <div class="runerush-fragment runerush-r2">R</div>
+            <div class="runerush-fragment runerush-u2">U</div>
+            <div class="runerush-fragment runerush-s">S</div>
+            <div class="runerush-fragment runerush-h">H</div>
+            
+            <!-- Final Assembled Logo -->
+            <div class="runerush-final">RuneRUSH</div>
+
+            <!-- Phase 4: CTA -->
+            <button class="cta-button" onclick="hideAnimationOverlay()">GET ACCESS NOW</button>
+            
+            <!-- Countdown -->
+            <div class="countdown-display">
+                <div>TIME LEFT:</div>
+                <div class="countdown-time" id="countdownTime">72H 00M</div>
+            </div>
+
+            <!-- Subliminal Runes -->
+            <div class="subliminal-rune rune-wealth">ᚠ <!-- Fehu: Wealth --></div>
+            <div class="subliminal-rune rune-strength">ᚢ <!-- Uruz: Strength --></div>
+
+            		<!-- Dynamic Particle Bursts -->
+            		<div class="particle-burst" style="top: 20%; left: 30%; animation-delay: 2s;"></div>
+            		<div class="particle-burst" style="top: 60%; right: 20%; animation-delay: 4s;"></div>
+            		<div class="particle-burst" style="bottom: 30%; left: 10%; animation-delay: 6s;"></div>
+            		<div class="particle-burst" style="top: 40%; left: 80%; animation-delay: 3s;"></div>
+            		<div class="particle-burst" style="top: 70%; left: 20%; animation-delay: 5s;"></div>
+            		<div class="particle-burst" style="top: 10%; right: 15%; animation-delay: 7s;"></div>
+
+            		<!-- Energy Waves -->
+            		<div class="energy-wave wave-1"></div>
+            		<div class="energy-wave wave-2"></div>
+            		<div class="energy-wave wave-3"></div>
+            		
+            		<!-- Orbiting Energy Phases -->
+            		<div class="energy-orb orb-1"></div>
+            		<div class="energy-orb orb-2"></div>
+            		<div class="energy-orb orb-3"></div>
+            		<div class="energy-orb orb-4"></div>
+            		<div class="energy-orb orb-5"></div>
+            		<div class="energy-orb orb-6"></div>
+        </div>
+    </div>
+    
+    <!-- Main Content (shown after animation) -->
+    <div class="main-content" id="main-content">
+        <h1 style="text-align: center; color: #333; font-size: 48px; margin-bottom: 30px;">⚡ RUNE RUSH</h1>
+        <h2 style="text-align: center; color: #666; font-size: 24px; margin-bottom: 50px;">50 Premium n8n Templates for $49</h2>
+        
+        <div style="text-align: center; padding: 50px; background: #f9f9f9; border-radius: 10px;">
+            <h3 style="color: #333; margin-bottom: 20px;">🔥 Get 50 Premium n8n Runes for $49</h3>
+            <p style="color: #666; font-size: 18px; margin-bottom: 30px;">Normally $200 - Today Only!</p>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <button style="background: #10b981; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">💳 Pay with Stripe - $49</button>
+                <button style="background: #3b82f6; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">🅿️ Pay with PayPal - $49</button>
+            </div>
+            
+            <p style="margin-top: 20px; color: #888; font-size: 14px;">🔒 Secure checkout • 💰 30-day guarantee • ⚡ Instant download</p>
+        </div>
+        
+        <div style="margin-top: 50px;">
+            <h3 style="text-align: center; color: #333; margin-bottom: 30px;">What You Get:</h3>
+            <ul style="max-width: 600px; margin: 0 auto; font-size: 16px; line-height: 1.8;">
+                <li>✅ 50 battle-tested n8n templates</li>
+                <li>✅ One-click JSON imports</li>
+                <li>✅ Commercial rights included</li>
+                <li>✅ Step-by-step setup guides</li>
+                <li>✅ Lifetime updates</li>
+                <li>✅ Private Discord community</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Hide animation overlay function
+        function hideAnimationOverlay() {
+            const overlay = document.getElementById('animation-overlay');
+            const mainContent = document.getElementById('main-content');
+            
+            if (overlay) {
+                overlay.style.transition = 'opacity 1s ease-out';
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    mainContent.classList.add('visible');
+                }, 1000);
+            }
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Animation loaded successfully');
+            
+            // Optional: Auto-hide after 15 seconds for testing
+            setTimeout(() => {
+                console.log('Auto-hiding animation for demo');
+                // hideAnimationOverlay();
+            }, 15000);
+        });
+    </script>
+    <script src="runeflow-to-runerush-ultimate.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow → RuneRUSH | Cinematic Transformation</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cinematic-animation.css">
+</head>
+<body>
+    <div class="animation-container">
+        <!-- Background Elements -->
+        <canvas class="particle-canvas" id="particleCanvas"></canvas>
+        <div class="glitch-overlay" id="glitchOverlay"></div>
+        
+        <!-- Phase 1: RuneFlow Logo (Center Stage) -->
+        <div class="logo" id="runeFlowLogo">RuneFlow</div>
+
+        <!-- Phase 2: Shatter and Reveal -->
+        <div class="floating-text templates-text" id="templatesText">50 TEMPLATES</div>
+        <div class="floating-text price-text" id="priceText">
+            <span class="old-price">$200</span>
+            <span class="scar-line"></span>
+            <span class="new-price">$49</span>
+        </div>
+
+        <!-- Sword Slash Effect -->
+        <div class="sword-slash" id="swordSlash">
+            <div class="blade"></div>
+            <div class="blade-trail"></div>
+        </div>
+
+        <!-- Molten Metal Effects -->
+        <div class="molten-container" id="moltenContainer">
+            <div class="molten-drop"></div>
+            <div class="molten-drop"></div>
+            <div class="molten-drop"></div>
+            <div class="molten-spark"></div>
+            <div class="molten-spark"></div>
+        </div>
+
+        <!-- Phase 3: RuneRUSH (Completely Hidden Until Reveal) -->
+        <div class="runerush hidden" id="runeRushText">
+            RuneRUSH
+            <div class="blood-drips">
+                <div class="blood-drop"></div>
+                <div class="blood-drop"></div>
+                <div class="blood-drop"></div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Call to Action (Hidden) -->
+        <div class="cta-container hidden" id="ctaContainer">
+            <button class="cta-button">GET ACCESS NOW</button>
+            <div class="countdown-display" id="countdown">
+                <div class="countdown-label">TIME LEFT:</div>
+                <div class="countdown-time">72H LEFT</div>
+            </div>
+        </div>
+        
+        <!-- Test Button for Sword -->
+        <button id="testSword" style="position: fixed; top: 10px; left: 10px; z-index: 100; padding: 10px; background: red; color: white; border: none; cursor: pointer;">TEST SWORD</button>
+    </div>
+
+    <script src="cinematic-animation.js"></script>
+</body>
+</html>
