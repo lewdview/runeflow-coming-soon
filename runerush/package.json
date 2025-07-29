@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node test-connection.js",
-    "start-prod": "node server.js",
+    "start": "node server.js",
+    "test-connection": "node test-connection.js",
     "migrate": "node scripts/migrate.js",
     "seed": "node scripts/seed.js"
   },
