@@ -75,7 +75,7 @@ class StripeService {
                     customer_name: customerName
                 },
                 billing_address_collection: 'auto',
-                shipping_address_collection: null, // Digital product, no shipping
+                // shipping_address_collection removed for digital products
                 allow_promotion_codes: true, // Allow discount codes
             });
 

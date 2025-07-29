@@ -51,7 +51,6 @@ async function testStripe() {
                 customer_name: 'Test User'
             },
             billing_address_collection: 'auto',
-            shipping_address_collection: null,
             allow_promotion_codes: true,
         });
         
