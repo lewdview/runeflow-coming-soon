@@ -319,7 +319,7 @@ class Database {
     }
 
     async getDownloadByToken(token) {
-        const sql = 'SELECT * FROM downloads WHERE download_token = ? AND expires_at > datetime("now")';
+        const sql = 'SELECT * FROM downloads WHERE download_token = ? AND expires_at > NOW()';
         return await this.get(sql, [token]);
     }
 
@@ -327,7 +327,7 @@ class Database {
         const sql = `
             SELECT COUNT(*) as count 
             FROM downloads 
-            WHERE ip_address = ? AND created_at > datetime('now', '-${timeWindow}')
+            WHERE ip_address = ? AND created_at > NOW() - INTERVAL '${timeWindow}'
         `;
         const result = await this.get(sql, [ip_address]);
         return result ? result.count : 0;
@@ -356,7 +356,7 @@ class Database {
     async getPendingEmails() {
         const sql = `
             SELECT * FROM email_sequences 
-            WHERE status = 'pending' AND scheduled_at <= datetime('now')
+            WHERE status = 'pending' AND scheduled_at <= NOW()
             ORDER BY scheduled_at ASC
         `;
         return await this.query(sql);
@@ -392,7 +392,7 @@ class Database {
                 product_type
             FROM orders 
             WHERE status = 'completed' 
-            AND created_at >= datetime('now', '-${days} days')
+            AND created_at >= NOW() - INTERVAL '${days} days'
             GROUP BY product_type
         `;
         return await this.query(sql);
@@ -407,7 +407,7 @@ class Database {
                 product_type
             FROM orders 
             WHERE status = 'completed' 
-            AND created_at >= datetime('now', '-${days} days')
+            AND created_at >= NOW() - INTERVAL '${days} days'
             GROUP BY DATE(created_at), product_type
             ORDER BY date DESC
         `;

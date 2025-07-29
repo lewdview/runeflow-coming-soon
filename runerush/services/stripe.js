@@ -43,7 +43,7 @@ class StripeService {
                         price_data: {
                             currency: 'usd',
                             product: this.products.pro_bundle,
-                            unit_amount: 7900, // $79
+                            unit_amount: 8800, // $88
                         },
                         quantity: 1,
                     }];
