@@ -50,8 +50,12 @@ async function verifyPassword(password, hash) {
  * Get client IP address from request
  */
 function getClientIP(req) {
-    return req.headers['x-forwarded-for'] || 
-           req.headers['x-real-ip'] || 
+    const forwardedIPs = req.headers['x-forwarded-for'];
+    if (forwardedIPs) {
+        // Split by comma and get the first IP
+        return forwardedIPs.split(',')[0].trim();
+    }
+    return req.headers['x-real-ip'] || 
            req.connection.remoteAddress || 
            req.socket.remoteAddress ||
            (req.connection.socket ? req.connection.socket.remoteAddress : null) ||
