@@ -1,0 +1,124 @@
+/* RuneFlow Brand Styles */
+
+:root {
+  /* RuneFlow Brand Colors */
+  --runeflow-primary: #00ffff;
+  --runeflow-secondary: #ff6b35;
+  --runeflow-accent: #ff4500;
+  --runeflow-dark: #0a0a0a;
+  --runeflow-light: #ffffff;
+  --runeflow-gray: #888888;
+  
+  /* RuneFlow Gradients */
+  --runeflow-gradient-primary: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+  --runeflow-gradient-secondary: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
+  --runeflow-gradient-bg: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
+  
+  /* RuneFlow Fonts */
+  --runeflow-font-primary: 'JetBrains Mono', monospace;
+  --runeflow-font-secondary: 'Inter', sans-serif;
+}
+
+/* Logo Classes */
+.runeflow-logo {
+  background-image: url('images/logos/runeflow-logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.runeflow-logo-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.runeflow-logo-md {
+  width: 64px;
+  height: 64px;
+}
+
+.runeflow-logo-lg {
+  width: 128px;
+  height: 128px;
+}
+
+.runeflow-logo-xl {
+  width: 200px;
+  height: 200px;
+}
+
+/* Text Logo Classes */
+.runeflow-text-logo {
+  font-family: var(--runeflow-font-primary);
+  font-weight: 800;
+  background: var(--runeflow-gradient-primary);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+  letter-spacing: 2px;
+}
+
+/* Brand Colors */
+.runeflow-text-primary { color: var(--runeflow-primary); }
+.runeflow-text-secondary { color: var(--runeflow-secondary); }
+.runeflow-text-accent { color: var(--runeflow-accent); }
+
+.runeflow-bg-primary { background-color: var(--runeflow-primary); }
+.runeflow-bg-secondary { background-color: var(--runeflow-secondary); }
+.runeflow-bg-accent { background-color: var(--runeflow-accent); }
+.runeflow-bg-dark { background: var(--runeflow-gradient-bg); }
+
+/* Brand Effects */
+.runeflow-glow {
+  text-shadow: 
+    0 0 10px var(--runeflow-primary),
+    0 0 20px var(--runeflow-primary),
+    0 0 40px var(--runeflow-primary);
+}
+
+.runeflow-shadow {
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(0, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes runeflow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--runeflow-primary);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px var(--runeflow-primary),
+      0 0 40px var(--runeflow-primary);
+    transform: scale(1.05);
+  }
+}
+
+.runeflow-pulse {
+  animation: runeflow-pulse 2s ease-in-out infinite;
+}
+
+/* Responsive Logo */
+@media (max-width: 768px) {
+  .runeflow-logo-responsive {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 769px) {
+  .runeflow-logo-responsive {
+    width: 200px;
+    height: 200px;
+  }
+}

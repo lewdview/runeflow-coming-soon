@@ -408,6 +408,39 @@ app.post('/api/analytics/pageview', [
 });
 
 // =============================================================================
+// TEST ROUTES (Development)
+// =============================================================================
+
+// Test download system
+app.get('/api/test/downloads', async (req, res) => {
+    try {
+        // Get all files from database
+        const files = await db.all('SELECT * FROM files WHERE is_active = 1');
+        
+        // Get sample user
+        const users = await db.all('SELECT * FROM users LIMIT 1');
+        
+        res.json({
+            success: true,
+            data: {
+                files_in_database: files.length,
+                files: files,
+                sample_user: users[0] || null,
+                s3_config: {
+                    bucket: process.env.S3_BUCKET_NAME ? '✅ Set' : '❌ Missing',
+                    access_key: process.env.AWS_ACCESS_KEY_ID ? '✅ Set' : '❌ Missing',
+                    secret_key: process.env.AWS_SECRET_ACCESS_KEY ? '✅ Set' : '❌ Missing',
+                    region: process.env.AWS_REGION || 'us-east-1'
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Test route error:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// =============================================================================
 // ADMIN ROUTES (Protected)
 // =============================================================================
 
