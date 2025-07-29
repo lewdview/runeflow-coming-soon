@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Your RuneRUSH Purchase</title>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        gtag('config', 'G-6T37CPF1B8', {
+            page_title: 'RuneRush - Purchase',
+            page_location: window.location.href,
+            send_page_view: true
+        });
         
         // Track purchase screen view
         gtag('event', 'page_view', {
             page_title: 'Purchase Screen',
             page_location: window.location.href
+        });
+        
+        // Track when user reaches checkout
+        gtag('event', 'begin_checkout', {
+            currency: 'USD',
+            value: 49.00,
+            items: [{
+                item_id: 'runerush-50-templates',
+                item_name: 'RuneRush 50 Templates',
+                category: 'Digital Product',
+                quantity: 1,
+                price: 49.00
+            }]
         });
     </script>
     

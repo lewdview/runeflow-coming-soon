@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Cancelled - RuneRush</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-6T37CPF1B8', {
+            page_title: 'RuneRush - Payment Cancelled',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        // Track payment cancellation
+        gtag('event', 'checkout_cancelled', {
+            event_category: 'Purchase Flow',
+            event_label: 'Payment Cancelled'
+        });
+        
+        // Track abandonment
+        gtag('event', 'purchase_abandoned', {
+            event_category: 'Purchase Flow',
+            event_label: 'Cancel Page View'
+        });
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: #ffffff; min-height: 100vh; overflow-x: hidden; }

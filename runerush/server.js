@@ -77,8 +77,11 @@ app.use(express.urlencoded({ extended: true }));
 // Apply rate limiting to API routes
 app.use('/api', rateLimitMiddleware);
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
+// Serve static files for RuneRush app at /runerush/
+app.use('/runerush', express.static(path.join(__dirname)));
+
+// Serve root static files (vault page)
+app.use(express.static(path.join(__dirname, '..')));
 
 // =============================================================================
 // API ROUTES
@@ -547,8 +550,13 @@ app.get('/api/admin/users', adminAuth, async (req, res) => {
 // FRONTEND ROUTES
 // =============================================================================
 
-// Serve main landing page
+// Serve vault page at root
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
+// Serve RuneRush app at /runerush/
+app.get('/runerush/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 

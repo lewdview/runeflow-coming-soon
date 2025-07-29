@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RuneFlow → RuneRUSH | Cinematic Transformation</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-6T37CPF1B8', {
+            page_title: 'RuneRush - Cinematic Animation',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        // Track animation page view
+        gtag('event', 'animation_viewed', {
+            event_category: 'Engagement',
+            event_label: 'Cinematic Animation Page'
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cinematic-animation.css">
 </head>

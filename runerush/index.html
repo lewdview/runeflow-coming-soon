@@ -12,13 +12,24 @@
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        gtag('config', 'G-6T37CPF1B8', {
+            page_title: 'Rune Rush - Home',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        // Track custom events
+        gtag('event', 'page_view', {
+            page_title: 'Rune Rush - Home',
+            page_location: window.location.href
+        });
     </script>
     
     <!-- API Client -->

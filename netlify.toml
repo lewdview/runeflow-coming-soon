@@ -51,7 +51,13 @@
   to = "/.netlify/functions/coinbase-webhook"
   status = 200
 
-# Catch-all for SPA
+# RuneRush app redirect
+[[redirects]]
+  from = "/runerush/*"
+  to = "/runerush/index.html"
+  status = 200
+
+# Catch-all for SPA (vault page)
 [[redirects]]
   from = "/*"
   to = "/index.html"

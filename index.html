@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RuneFlow.xyz - Logo Animation</title>
+    <title>RuneFlow.XYZ - Vault :: Open (RuneRush)</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-6T37CPF1B8', {
+            page_title: 'RuneFlow - Vault Open (RuneRush)',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        // Track vault page view
+        gtag('event', 'vault_accessed', {
+            event_category: 'Engagement',
+            event_label: 'RuneFlow Vault Open'
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap');
         
