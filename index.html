@@ -826,8 +826,11 @@
             const vaultButton = document.getElementById('vaultButton');
 
             vaultButton.onclick = function(event) {
+                console.log('[DEBUG] Vault button clicked!');
+                console.log('[DEBUG] Event details:', event);
                 event.stopPropagation();
                 event.preventDefault();
+                console.log('[DEBUG] Redirecting to runerush/index.html');
                 window.location.href = "runerush/index.html";
             };
 

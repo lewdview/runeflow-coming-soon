@@ -12,6 +12,15 @@
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
     <!-- API Client -->
     <script src="js/api.js"></script>
     <style>
@@ -1153,7 +1162,7 @@
             <div style="margin-top: 30px;">
                 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                     <button style="background: #1a73e8; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">💳 Pay with Stripe - $49</button>
-                    <button style="background: #0070ba; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">🅿️ Pay with PayPal - $49</button>
+                    <button class="payment-button coinbase-btn" style="background: #0052ff; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">₿ Pay with Coinbase - $49</button>
                 </div>
                 <p style="font-size: 14px; opacity: 0.8;">🔒 Secure checkout • 💰 30-day guarantee • ⚡ Instant download</p>
             </div>
@@ -1337,9 +1346,11 @@
             // Find buttons by text content since CSS selectors don't support :contains
             document.querySelectorAll('button').forEach(button => {
                 if (button.textContent.includes('Stripe')) {
-                    button.addEventListener('click', () => handlePaymentClick(null, 'stripe'));
+                    button.addEventListener('click', (e) => handlePaymentClick(e, 'stripe'));
+                } else if (button.textContent.includes('Coinbase')) {
+                    button.addEventListener('click', (e) => handlePaymentClick(e, 'coinbase'));
                 } else if (button.textContent.includes('PayPal')) {
-                    button.addEventListener('click', () => handlePaymentClick(null, 'paypal'));
+                    button.addEventListener('click', (e) => handlePaymentClick(e, 'paypal'));
                 }
             });
         }
@@ -1349,120 +1360,25 @@
             
             console.log('Payment button clicked, method:', paymentMethod);
             
-            try {
-                // Show loading state
-                const button = event ? event.target : document.querySelector('.payment-button');
-                const originalText = button.textContent;
-                button.textContent = '🔄 Processing...';
-                button.disabled = true;
-                
-                if (paymentMethod === 'stripe') {
-                    await handleStripePayment();
-                } else if (paymentMethod === 'paypal') {
-                    await handlePayPalPayment();
-                }
-                
-            } catch (error) {
-                console.error('Payment error:', error);
-                
-                // Show more helpful error message
-                let errorMessage = 'Payment failed. Please try again or contact support.';
-                if (error.message.includes('API server not running')) {
-                    errorMessage = '💡 This is expected when testing locally!\n\nThe payment system requires a backend API server to be running.\n\nFor testing purposes, the form validation works correctly.';
-                }
-                alert(errorMessage);
-                
-                // Reset button state
-                if (event) {
-                    event.target.textContent = originalText;
-                    event.target.disabled = false;
-                }
+            // Track analytics and redirect immediately without async complications
+            if (typeof gtag === 'function') {
+                gtag('event', 'begin_checkout', {
+                    event_category: 'Purchase Flow',
+                    event_label: `${paymentMethod} from Landing Page`
+                });
             }
+            
+            // Redirect immediately to purchase screen
+            window.location.href = 'purchase.html';
         }
         
+        // These functions are now simplified since we handle everything in handlePaymentClick
         async function handleStripePayment() {
-            console.log('Creating Stripe checkout session...');
-            
-            try {
-                // Get customer details
-                const email = prompt('Please enter your email address:');
-                if (!email) {
-                    throw new Error('Email is required for purchase');
-                }
-                
-                const firstName = prompt('Please enter your first name:');
-                if (!firstName) {
-                    throw new Error('First name is required for purchase');
-                }
-                
-                const lastName = prompt('Please enter your last name:');
-                if (!lastName) {
-                    throw new Error('Last name is required for purchase');
-                }
-                
-                // Create checkout session through API
-                const checkoutData = {
-                    email: email.trim(),
-                    first_name: firstName.trim(),
-                    last_name: lastName.trim(),
-                    product_type: 'core', // Default to core product
-                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
-                    cancel_url: window.location.origin + '/cancel'
-                };
-                
-                console.log('Creating checkout session with data:', checkoutData);
-                
-                // Check if we're running locally for testing
-                if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                    console.log('Local testing mode - showing mock payment success');
-                    alert(`✅ Mock Payment Success!\n\nCustomer: ${firstName} ${lastName}\nEmail: ${email}\nAmount: $49\n\nIn production, this would redirect to Stripe checkout.`);
-                    return;
-                }
-                
-                const response = await runeRushAPI.createCheckoutSession(checkoutData);
-                console.log('Checkout session created:', response);
-                
-                if (response.success && response.data.url) {
-                    // Redirect to Stripe Checkout
-                    console.log('Redirecting to Stripe Checkout:', response.data.url);
-                    window.location.href = response.data.url;
-                } else {
-                    throw new Error('Failed to create checkout session: ' + (response.message || 'Unknown error'));
-                }
-                
-            } catch (error) {
-                console.error('Stripe payment error:', error);
-                
-                // Provide more helpful error message
-                if (error.message.includes('NetworkError') || error.message.includes('fetch')) {
-                    throw new Error('Payment system is not available (API server not running). This is expected when testing locally.');
-                } else {
-                    throw error;
-                }
-            }
+            window.location.href = 'purchase.html';
         }
         
         async function handlePayPalPayment() {
-            console.log('Redirecting to PayPal...');
-            
-            try {
-                // For now, redirect to a PayPal payment page
-                // In production, you'd create a PayPal order through your API
-                const paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?' + 
-                    'cmd=_xclick&' +
-                    'business=your-paypal-email@example.com&' +
-                    'item_name=RuneRUSH - 50 Premium n8n Templates&' +
-                    'amount=49.00&' +
-                    'currency_code=USD&' +
-                    'return=https://yourdomain.com/success&' +
-                    'cancel_return=https://yourdomain.com/cancel';
-                
-                window.location.href = paypalUrl;
-                
-            } catch (error) {
-                console.error('PayPal payment error:', error);
-                throw error;
-            }
+            window.location.href = 'purchase.html';
         }
     </script>
     

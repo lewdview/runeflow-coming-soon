@@ -1,57 +1,46 @@
 {
-  "name": "runeflow-coming-soon",
+  "name": "runeflow-deployment",
   "version": "1.0.0",
-  "description": "RuneFlow.xyz - Ancient Power. Modern Automation.",
-  "main": "index.html",
+  "description": "RuneFlow.xyz - RuneRUSH Backend",
+  "main": "runerush/server.js",
   "scripts": {
-    "start": "node automation/server.js",
-    "dev": "live-server --port=3000 --host=0.0.0.0",
-    "build": "npm run optimize",
-    "build-static": "mkdir -p dist && cp -r assets dist/ && cp -r netlify dist/ && cp *.html dist/ 2>/dev/null || true && cp *.css dist/ 2>/dev/null || true && cp *.js dist/ 2>/dev/null || true && node scripts/build-analytics.js",
-    "optimize": "node automation/optimize.js",
-    "deploy": "node automation/deploy.js",
-    "social-blast": "node social-media-campaigns/social-blast.js",
-    "schedule-posts": "node social-media-campaigns/scheduler.js",
-    "analytics": "node automation/analytics.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node runerush/server.js",
+    "dev": "nodemon runerush/server.js",
+    "build": "echo 'No build needed'"
   },
   "keywords": [
     "n8n",
     "automation",
     "templates",
     "runeflow",
-    "coming-soon",
-    "landing-page"
+    "runerush",
+    "payments"
   ],
   "author": "WebHalla",
   "license": "MIT",
   "dependencies": {
-    "archiver": "^5.3.2",
-    "axios": "^1.6.2",
-    "clean-css": "^5.3.3",
-    "coinbase-commerce-node": "^1.0.4",
+    "@sendgrid/mail": "^7.7.0",
+    "aws-sdk": "^2.1505.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "cron": "^3.1.6",
-    "crypto": "^1.0.1",
-    "csvtojson": "^2.0.10",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "fs-extra": "^11.2.0",
-    "html-minifier": "^4.0.0",
-    "node-cron": "^4.2.1",
-    "nodemailer": "^6.9.8",
-    "pg": "^8.11.3",
-    "sharp": "^0.32.6",
-    "twitter-api-v2": "^1.24.0",
-    "uglify-js": "^3.17.4"
+    "express-validator": "^7.0.1",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "paypal-rest-sdk": "^1.8.1",
+    "rate-limiter-flexible": "^5.0.0",
+    "sqlite3": "^5.1.6",
+    "stripe": "^14.12.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "live-server": "^1.2.2",
-    "node-fetch": "^2.7.0",
     "nodemon": "^3.0.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.0.0"
   }
 }

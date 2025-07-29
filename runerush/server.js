@@ -622,11 +622,12 @@ async function startServer() {
         console.log('✅ Database migrations completed');
 
         // Start server
-        app.listen(PORT, () => {
+        const HOST = process.env.HOST || '0.0.0.0';
+        app.listen(PORT, HOST, () => {
             console.log(`
 🚀 Rune Rush Backend Server Started!
 
-📍 Server: http://localhost:${PORT}
+📍 Server: http://${HOST}:${PORT}
 🎯 Environment: ${process.env.NODE_ENV || 'development'}
 📊 Database: ${process.env.DATABASE_URL || 'SQLite (default)'}
 

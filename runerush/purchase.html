@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your RuneRUSH Purchase</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        // Track purchase screen view
+        gtag('event', 'page_view', {
+            page_title: 'Purchase Screen',
+            page_location: window.location.href
+        });
+    </script>
+    
+    <!-- Stripe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Coinbase Commerce -->
+    <script src="https://unpkg.com/@coinbase/commerce-js@1.2.0/dist/commerce.js"></script>
+    
+    <!-- API Client -->
+    <script src="js/api.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .purchase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            min-height: calc(100vh - 40px);
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .sidebar {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .step.active .step-number {
+            background: #667eea;
+            color: white;
+        }
+        
+        .step.completed .step-number {
+            background: #10b981;
+            color: white;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .payment-methods {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .payment-method:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .payment-method.selected {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .payment-method .method-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .payment-method .method-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        
+        .payment-method .method-details h4 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .payment-method .method-details p {
+            margin: 2px 0 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .radio-input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Sidebar Styles */
+        .order-summary h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        
+        .product-info h4 {
+            margin: 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .product-info p {
+            margin: 4px 0 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .total-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .total-row.final {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .guarantee {
+            background: #f0f9f0;
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .guarantee-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .guarantee h4 {
+            margin: 0 0 5px 0;
+            color: #10b981;
+        }
+        
+        .guarantee p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .upsell-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upsell-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .upsell-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .upsell-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+        
+        .upsell-section p {
+            margin: 0 0 20px 0;
+            opacity: 0.9;
+        }
+        
+        .upsell-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .upsell-features li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .upsell-features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+        }
+        
+        .upsell-toggle {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .upsell-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #0ea574;
+            transform: translateY(-2px);
+        }
+        
+        .security-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .security-info .icon {
+            margin-right: 8px;
+        }
+        
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #c33;
+        }
+        
+        .success-message {
+            background: #efe;
+            border: 1px solid #cfc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #393;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .purchase-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content,
+            .sidebar {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="purchase-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="logo">RuneRUSH</div>
+            <div class="subtitle">Complete your purchase to unlock 50 premium n8n templates</div>
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <span>Details</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span>Payment</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span>Complete</span>
+                </div>
+            </div>
+            
+            <form id="purchaseForm">
+                <!-- Customer Details -->
+                <div class="form-section">
+                    <h3>👤 Your Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company (Optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <select id="role" name="role">
+                                <option value="">Select your role...</option>
+                                <option value="developer">Developer</option>
+                                <option value="agency_owner">Agency Owner</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="entrepreneur">Entrepreneur</option>
+                                <option value="consultant">Consultant</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upsell Section -->
+                <div class="upsell-section" id="upsellSection">
+                    <div class="upsell-content">
+                        <h3>🚀 Upgrade to RuneRUSH PRO</h3>
+                        <p><strong>Limited Time:</strong> Add 50 more advanced templates for just $39 more (normally $97)</p>
+                        <ul class="upsell-features">
+                            <li>12 Advanced AI & Automation Templates</li>
+                            <li>13 Advanced Email Marketing Workflows</li>
+                            <li>14 Complex Business Process Automations</li>
+                            <li>7 Advanced Social Media Tools</li>
+                            <li>4 Advanced E-commerce Integrations</li>
+                            <li>Priority Email Support</li>
+                            <li>Bonus: Video Tutorial Series ($197 value)</li>
+                        </ul>
+                        <div class="upsell-toggle">
+                            <input type="checkbox" id="proUpgrade" name="proUpgrade" class="upsell-checkbox">
+                            <label for="proUpgrade">
+                                <strong>Yes, upgrade me to PRO for +$39</strong><br>
+                                <small>100 total templates + bonuses (Save $58 today!)</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Methods -->
+                <div class="form-section">
+                    <h3>💳 Choose Payment Method</h3>
+                    
+                    <div class="payment-methods">
+                        <!-- Stripe Payment -->
+                        <div class="payment-method selected" data-method="stripe">
+                            <div class="method-info">
+                                <div class="method-icon">💳</div>
+                                <div class="method-details">
+                                    <h4>Credit Card (Stripe)</h4>
+                                    <p>Visa, Mastercard, American Express</p>
+                                </div>
+                            </div>
+                            <input type="radio" name="paymentMethod" value="stripe" class="radio-input" checked>
+                        </div>
+                        
+                        <!-- Coinbase Payment -->
+                        <div class="payment-method" data-method="coinbase">
+                            <div class="method-info">
+                                <div class="method-icon">₿</div>
+                                <div class="method-details">
+                                    <h4>Cryptocurrency (Coinbase)</h4>
+                                    <p>Bitcoin, Ethereum, USDC, and more</p>
+                                </div>
+                            </div>
+                            <input type="radio" name="paymentMethod" value="coinbase" class="radio-input">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success" id="submitBtn" style="width: 100%; font-size: 18px; padding: 20px;">
+                    🚀 Complete Purchase - $<span id="totalPrice">49</span>
+                </button>
+                
+                <div class="security-info">
+                    <span class="icon">🔒</span>
+                    Secure checkout • 30-day money-back guarantee • Instant delivery
+                </div>
+            </form>
+            
+            <!-- Messages -->
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            <div id="successMessage" class="success-message" style="display: none;"></div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="order-summary">
+                <h3>📋 Order Summary</h3>
+                
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4>RuneRUSH Core Bundle</h4>
+                        <p>50 Premium n8n Templates</p>
+                    </div>
+                    <div class="product-price">$49</div>
+                </div>
+                
+                <div class="product-item" id="proUpgradeItem" style="display: none;">
+                    <div class="product-info">
+                        <h4>PRO Upgrade</h4>
+                        <p>+50 Advanced Templates + Bonuses</p>
+                    </div>
+                    <div class="product-price">$39</div>
+                </div>
+                
+                <div class="total-section">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span>$<span id="subtotal">49</span></span>
+                    </div>
+                    <div class="total-row" id="discountRow" style="display: none;">
+                        <span>Discount:</span>
+                        <span style="color: #10b981;">-$<span id="discount">0</span></span>
+                    </div>
+                    <div class="total-row final">
+                        <span>Total:</span>
+                        <span>$<span id="finalTotal">49</span></span>
+                    </div>
+                </div>
+                
+                <div class="guarantee">
+                    <span class="guarantee-icon">🛡️</span>
+                    <h4>30-Day Guarantee</h4>
+                    <p>Not satisfied? Get your money back, no questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Google Analytics tracking
+        function trackEvent(eventName, parameters = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, parameters);
+            }
+        }
+        
+        // Track page load
+        trackEvent('purchase_screen_view', {
+            event_category: 'Purchase Flow',
+            event_label: 'Step 1 - Details'
+        });
+        
+        // Payment method selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+        
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', function() {
+                // Remove selected class from all methods
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                
+                // Add selected class to clicked method
+                this.classList.add('selected');
+                
+                // Check the corresponding radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+                
+                // Track payment method selection
+                trackEvent('payment_method_selected', {
+                    event_category: 'Purchase Flow',
+                    event_label: radio.value
+                });
+            });
+        });
+        
+        // Pro upgrade toggle
+        const proUpgradeCheckbox = document.getElementById('proUpgrade');
+        const proUpgradeItem = document.getElementById('proUpgradeItem');
+        const subtotalSpan = document.getElementById('subtotal');
+        const finalTotalSpan = document.getElementById('finalTotal');
+        const totalPriceSpan = document.getElementById('totalPrice');
+        
+        proUpgradeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Show PRO upgrade in order summary
+                proUpgradeItem.style.display = 'flex';
+                
+                // Update totals
+                subtotalSpan.textContent = '88';
+                finalTotalSpan.textContent = '88';
+                totalPriceSpan.textContent = '88';
+                
+                // Track upsell acceptance
+                trackEvent('upsell_accepted', {
+                    event_category: 'Purchase Flow',
+                    event_label: 'PRO Upgrade',
+                    value: 39
+                });
+            } else {
+                // Hide PRO upgrade
+                proUpgradeItem.style.display = 'none';
+                
+                // Reset totals
+                subtotalSpan.textContent = '49';
+                finalTotalSpan.textContent = '49';
+                totalPriceSpan.textContent = '49';
+                
+                // Track upsell rejection
+                trackEvent('upsell_rejected', {
+                    event_category: 'Purchase Flow',
+                    event_label: 'PRO Upgrade'
+                });
+            }
+        });
+        
+        // Form submission
+        const purchaseForm = document.getElementById('purchaseForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        
+        purchaseForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const customerData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                role: formData.get('role'),
+                proUpgrade: formData.get('proUpgrade') === 'on',
+                paymentMethod: formData.get('paymentMethod')
+            };
+            
+            // Validate required fields
+            if (!customerData.firstName || !customerData.lastName || !customerData.email) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+            
+            // Track purchase attempt
+            trackEvent('purchase_attempt', {
+                event_category: 'Purchase Flow',
+                event_label: customerData.paymentMethod,
+                value: customerData.proUpgrade ? 88 : 49
+            });
+            
+            // Show loading state
+            submitBtn.textContent = '🔄 Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+                if (customerData.paymentMethod === 'stripe') {
+                    await handleStripePayment(customerData);
+                } else if (customerData.paymentMethod === 'coinbase') {
+                    await handleCoinbasePayment(customerData);
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                showError(error.message || 'Payment failed. Please try again.');
+                
+                // Track payment failure
+                trackEvent('purchase_failed', {
+                    event_category: 'Purchase Flow',
+                    event_label: error.message || 'Unknown error'
+                });
+                
+                // Reset button
+                submitBtn.textContent = `🚀 Complete Purchase - $${customerData.proUpgrade ? '88' : '49'}`;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        async function handleStripePayment(customerData) {
+            try {
+                // Determine product type
+                const productType = customerData.proUpgrade ? 'pro_bundle' : 'core';
+                
+                const checkoutData = {
+                    email: customerData.email,
+                    first_name: customerData.firstName,
+                    last_name: customerData.lastName,
+                    product_type: productType,
+                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
+                    cancel_url: window.location.origin + '/purchase',
+                    metadata: {
+                        company: customerData.company || '',
+                        role: customerData.role || '',
+                        upgrade: customerData.proUpgrade ? 'yes' : 'no'
+                    }
+                };
+                
+                // Check if running locally
+                if (window.location.protocol === 'file:' || 
+                    window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1') {
+                    
+                    showSuccess(`✅ Mock Payment Success!
+                    
+Customer: ${customerData.firstName} ${customerData.lastName}
+Email: ${customerData.email}
+Product: ${customerData.proUpgrade ? 'PRO Bundle ($88)' : 'Core Bundle ($49)'}
+Payment: Stripe
+
+In production, this would redirect to Stripe checkout.`);
+                    return;
+                }
+                
+                // Create checkout session
+                const response = await api.createCheckoutSession(checkoutData);
+                
+                if (response.success && response.data.url) {
+                    // Track successful checkout creation
+                    trackEvent('checkout_created', {
+                        event_category: 'Purchase Flow',
+                        event_label: 'Stripe',
+                        value: customerData.proUpgrade ? 88 : 49
+                    });
+                    
+                    // Redirect to Stripe Checkout
+                    window.location.href = response.data.url;
+                } else {
+                    throw new Error(response.message || 'Failed to create checkout session');
+                }
+                
+            } catch (error) {
+                console.error('Stripe payment error:', error);
+                throw new Error('Payment system unavailable. Please try again or contact support.');
+            }
+        }
+        
+        async function handleCoinbasePayment(customerData) {
+            try {
+                // For now, show a message about Coinbase integration
+                showError('Coinbase payment integration coming soon! Please use credit card for now.');
+                
+                // Track Coinbase attempt
+                trackEvent('coinbase_attempted', {
+                    event_category: 'Purchase Flow',
+                    event_label: 'Not yet implemented'
+                });
+                
+                // Reset button
+                submitBtn.textContent = `🚀 Complete Purchase - $${customerData.proUpgrade ? '88' : '49'}`;
+                submitBtn.disabled = false;
+                
+            } catch (error) {
+                console.error('Coinbase payment error:', error);
+                throw error;
+            }
+        }
+        
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Form validation
+        const requiredFields = document.querySelectorAll('input[required]');
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = '#10b981';
+                }
+            });
+        });
+        
+        // Email validation
+        const emailField = document.getElementById('email');
+        emailField.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.value)) {
+                this.style.borderColor = '#ff6b6b';
+            } else {
+                this.style.borderColor = '#10b981';
+            }
+        });
+        
+        // Track form field interactions
+        const formFields = document.querySelectorAll('input, select');
+        formFields.forEach(field => {
+            field.addEventListener('focus', function() {
+                trackEvent('form_field_focused', {
+                    event_category: 'Purchase Flow',
+                    event_label: this.name || this.id
+                });
+            });
+        });
+    </script>
+</body>
+</html>
