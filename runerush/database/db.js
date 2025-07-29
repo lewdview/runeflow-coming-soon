@@ -1,86 +1,208 @@
 const sqlite3 = require('sqlite3').verbose();
+const { Pool } = require('pg');
 const path = require('path');
 const fs = require('fs');
 
 class Database {
     constructor() {
         this.db = null;
-        this.dbPath = process.env.DATABASE_URL || './database/rune_rush.db';
+        this.pool = null;
+        this.isPostgres = !!process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('postgresql');
+        this.dbPath = './database/rune_rush.db'; // SQLite fallback
     }
 
     async connect() {
-        return new Promise((resolve, reject) => {
-            // Ensure database directory exists
-            const dbDir = path.dirname(this.dbPath);
-            if (!fs.existsSync(dbDir)) {
-                fs.mkdirSync(dbDir, { recursive: true });
-            }
-
-            this.db = new sqlite3.Database(this.dbPath, (err) => {
-                if (err) {
-                    console.error('Error opening database:', err);
-                    reject(err);
-                } else {
-                    console.log('Connected to SQLite database');
-                    // Enable foreign keys
-                    this.db.run('PRAGMA foreign_keys = ON');
-                    resolve();
-                }
+        if (this.isPostgres) {
+            // PostgreSQL connection
+            this.pool = new Pool({
+                connectionString: process.env.DATABASE_URL,
+                ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
             });
-        });
+            
+            try {
+                await this.pool.query('SELECT NOW()');
+                console.log('Connected to PostgreSQL database');
+                return;
+            } catch (err) {
+                console.error('Error connecting to PostgreSQL:', err);
+                throw err;
+            }
+        } else {
+            // SQLite connection (fallback)
+            return new Promise((resolve, reject) => {
+                // Ensure database directory exists
+                const dbDir = path.dirname(this.dbPath);
+                if (!fs.existsSync(dbDir)) {
+                    fs.mkdirSync(dbDir, { recursive: true });
+                }
+
+                this.db = new sqlite3.Database(this.dbPath, (err) => {
+                    if (err) {
+                        console.error('Error opening database:', err);
+                        reject(err);
+                    } else {
+                        console.log('Connected to SQLite database');
+                        // Enable foreign keys
+                        this.db.run('PRAGMA foreign_keys = ON');
+                        resolve();
+                    }
+                });
+            });
+        }
     }
 
     async migrate() {
-        const schemaPath = path.join(__dirname, 'schema.sql');
-        const schema = fs.readFileSync(schemaPath, 'utf8');
-        
-        return new Promise((resolve, reject) => {
-            this.db.exec(schema, (err) => {
-                if (err) {
-                    console.error('Migration failed:', err);
-                    reject(err);
-                } else {
-                    console.log('Database migration completed successfully');
-                    resolve();
-                }
+        if (this.isPostgres) {
+            // For PostgreSQL, we'll create tables if they don't exist
+            const createTables = `
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    email VARCHAR(255) UNIQUE NOT NULL,
+                    license_key VARCHAR(50) UNIQUE NOT NULL,
+                    first_name VARCHAR(100),
+                    last_name VARCHAR(100),
+                    is_lifetime BOOLEAN DEFAULT FALSE,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE TABLE IF NOT EXISTS orders (
+                    id SERIAL PRIMARY KEY,
+                    user_id INTEGER REFERENCES users(id),
+                    amount INTEGER NOT NULL,
+                    currency VARCHAR(3) DEFAULT 'usd',
+                    product_type VARCHAR(50) NOT NULL,
+                    stripe_payment_intent_id VARCHAR(255),
+                    paypal_payment_id VARCHAR(255),
+                    status VARCHAR(20) DEFAULT 'pending',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE TABLE IF NOT EXISTS analytics (
+                    id SERIAL PRIMARY KEY,
+                    event_type VARCHAR(50) NOT NULL,
+                    user_id INTEGER REFERENCES users(id),
+                    order_id INTEGER REFERENCES orders(id),
+                    metadata JSONB,
+                    ip_address INET,
+                    user_agent TEXT,
+                    referrer VARCHAR(500),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+            `;
+            
+            try {
+                await this.pool.query(createTables);
+                console.log('Database migration completed successfully');
+            } catch (err) {
+                console.error('Migration failed:', err);
+                throw err;
+            }
+        } else {
+            // SQLite migration
+            const schemaPath = path.join(__dirname, 'schema.sql');
+            const schema = fs.readFileSync(schemaPath, 'utf8');
+            
+            return new Promise((resolve, reject) => {
+                this.db.exec(schema, (err) => {
+                    if (err) {
+                        console.error('Migration failed:', err);
+                        reject(err);
+                    } else {
+                        console.log('Database migration completed successfully');
+                        resolve();
+                    }
+                });
             });
-        });
+        }
+    }
+
+    convertSqlToPostgres(sql, params) {
+        // Convert SQLite ? placeholders to PostgreSQL $1, $2, etc.
+        let pgSql = sql;
+        let paramIndex = 1;
+        while (pgSql.includes('?')) {
+            pgSql = pgSql.replace('?', `$${paramIndex}`);
+            paramIndex++;
+        }
+        return pgSql;
     }
 
     async query(sql, params = []) {
-        return new Promise((resolve, reject) => {
-            this.db.all(sql, params, (err, rows) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(rows);
-                }
+        if (this.isPostgres) {
+            try {
+                const pgSql = this.convertSqlToPostgres(sql, params);
+                const result = await this.pool.query(pgSql, params);
+                return result.rows;
+            } catch (err) {
+                throw err;
+            }
+        } else {
+            return new Promise((resolve, reject) => {
+                this.db.all(sql, params, (err, rows) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(rows);
+                    }
+                });
             });
-        });
+        }
     }
 
     async run(sql, params = []) {
-        return new Promise((resolve, reject) => {
-            this.db.run(sql, params, function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve({ id: this.lastID, changes: this.changes });
+        if (this.isPostgres) {
+            try {
+                const pgSql = this.convertSqlToPostgres(sql, params);
+                let finalSql = pgSql;
+                
+                // Add RETURNING id for INSERT statements
+                if (pgSql.trim().toUpperCase().startsWith('INSERT')) {
+                    finalSql = pgSql + ' RETURNING id';
                 }
+                
+                const result = await this.pool.query(finalSql, params);
+                return { 
+                    id: result.rows[0]?.id, 
+                    changes: result.rowCount 
+                };
+            } catch (err) {
+                throw err;
+            }
+        } else {
+            return new Promise((resolve, reject) => {
+                this.db.run(sql, params, function(err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve({ id: this.lastID, changes: this.changes });
+                    }
+                });
             });
-        });
+        }
     }
 
     async get(sql, params = []) {
-        return new Promise((resolve, reject) => {
-            this.db.get(sql, params, (err, row) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(row);
-                }
+        if (this.isPostgres) {
+            try {
+                const pgSql = this.convertSqlToPostgres(sql, params);
+                const result = await this.pool.query(pgSql, params);
+                return result.rows[0] || null;
+            } catch (err) {
+                throw err;
+            }
+        } else {
+            return new Promise((resolve, reject) => {
+                this.db.get(sql, params, (err, row) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(row);
+                    }
+                });
             });
-        });
+        }
     }
 
     async close() {
