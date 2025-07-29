@@ -43,7 +43,7 @@ class StripeService {
                         price_data: {
                             currency: 'usd',
                             product: this.products.pro_bundle,
-                            unit_amount: 9900, // $99 (or your price)
+                            unit_amount: 7900, // $79
                         },
                         quantity: 1,
                     }];
@@ -53,7 +53,7 @@ class StripeService {
                         price_data: {
                             currency: 'usd',
                             product: this.products.pro_upgrade,
-                            unit_amount: 5000, // $50 upgrade (or your price)
+                            unit_amount: 3900, // $39
                         },
                         quantity: 1,
                     }];
