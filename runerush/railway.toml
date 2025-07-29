@@ -3,6 +3,5 @@ builder = "NIXPACKS"
 
 [deploy]
 startCommand = "npm --prefix runerush start"
-healthcheckPath = "/api/health"
-healthcheckTimeout = 300
+healthcheckTimeout = 600
 restartPolicyType = "ON_FAILURE"
