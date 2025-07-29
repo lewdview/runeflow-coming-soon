@@ -90,6 +90,51 @@ class Database {
                     referrer VARCHAR(500),
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
+                
+                CREATE TABLE IF NOT EXISTS email_sequences (
+                    id SERIAL PRIMARY KEY,
+                    user_id INTEGER REFERENCES users(id),
+                    sequence_type VARCHAR(50) NOT NULL,
+                    email_subject VARCHAR(255) NOT NULL,
+                    email_template VARCHAR(100) NOT NULL,
+                    status VARCHAR(20) DEFAULT 'pending',
+                    scheduled_at TIMESTAMP NOT NULL,
+                    sent_at TIMESTAMP NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE TABLE IF NOT EXISTS downloads (
+                    id SERIAL PRIMARY KEY,
+                    user_id INTEGER REFERENCES users(id),
+                    file_path VARCHAR(500) NOT NULL,
+                    ip_address INET,
+                    user_agent TEXT,
+                    download_token VARCHAR(100) UNIQUE NOT NULL,
+                    expires_at TIMESTAMP NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE TABLE IF NOT EXISTS files (
+                    id SERIAL PRIMARY KEY,
+                    filename VARCHAR(255) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    s3_key VARCHAR(500),
+                    file_size INTEGER,
+                    content_type VARCHAR(100),
+                    product_type VARCHAR(50) NOT NULL,
+                    is_active BOOLEAN DEFAULT TRUE,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE TABLE IF NOT EXISTS refunds (
+                    id SERIAL PRIMARY KEY,
+                    order_id INTEGER REFERENCES orders(id),
+                    stripe_refund_id VARCHAR(255),
+                    amount INTEGER NOT NULL,
+                    reason VARCHAR(255),
+                    status VARCHAR(20) DEFAULT 'pending',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
             `;
             
             try {
