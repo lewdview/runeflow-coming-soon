@@ -14,10 +14,10 @@
   # SMTP_PASS = "your_email_password"
   # FROM_EMAIL = "hello@runeflow.xyz"
 
-# API routes redirect to functions
+# API routes redirect to Railway backend
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "https://runeflow-production-93a9.up.railway.app/api/:splat"
   status = 200
 
 [[redirects]]
