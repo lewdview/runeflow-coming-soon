@@ -17,7 +17,7 @@
 # API routes redirect to Railway backend
 [[redirects]]
   from = "/api/*"
-  to = "https://runeflow-production-93a9.up.railway.app/api/:splat"
+  to = "https://runeflow.up.railway.app/api/:splat"
   status = 200
 
 [[redirects]]
