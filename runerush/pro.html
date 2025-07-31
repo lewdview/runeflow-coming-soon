@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuneFlow - Pro Bundle: 100 Premium n8n Templates</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6T37CPF1B8');
+    </script>
+    <style>
+        /* Navigation Styles */
+        .nav-header {
+            background: rgba(20, 20, 40, 0.95);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #00ffff;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link:hover {
+            color: white;
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+        .nav-link.active {
+            background: linear-gradient(135deg, #10b981, #2dd4bf);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .nav-link.premium {
+            background: linear-gradient(135deg, #FFD700, #ff6b35);
+            color: #222;
+            font-weight: 800;
+        }
+        .nav-link.premium:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .breadcrumb-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb-nav a:hover {
+            color: #00ffff;
+        }
+        .breadcrumb-nav .separator {
+            margin: 0 8px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .breadcrumb-nav .current {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        /* Comparison Table */
+        .comparison-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            color: #333;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .comparison-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .comparison-table .feature-name {
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+        }
+        .comparison-table .check {
+            color: #10b981;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .comparison-table .cross {
+            color: #e74c3c;
+            font-size: 18px;
+        }
+        .comparison-table .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+        .comparison-table .premium {
+            background: linear-gradient(135deg, #FFD700, #ff6b35);
+            color: #222;
+            font-weight: bold;
+        }
+        .comparison-cta {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        .comparison-cta.core {
+            background: linear-gradient(135deg, #10b981, #2dd4bf);
+            color: white;
+        }
+        .comparison-cta.pro {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .comparison-cta.complete {
+            background: linear-gradient(135deg, #FFD700, #ff6b35);
+            color: #222;
+        }
+        .comparison-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        /* Base styles from index.html, adapted for a permanent product page */
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
+            color: white;
+            overflow-x: hidden;
+        }
+        .main-content {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-container {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        .hero-container h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+        .hero-container p {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .payment-button {
+            background: linear-gradient(135deg, #10b981, #2dd4bf);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        .payment-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">⚡ RuneFlow :: RuneRUSH Vault Open</a>
+            <div class="nav-links">
+                <a href="core.html" class="nav-link">Core Pack - $49</a>
+                <a href="pro.html" class="nav-link active">Pro Bundle - $88</a>
+                <a href="complete.html" class="nav-link premium">Complete Vault - $499</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span class="separator">></span>
+                <a href="#">Products</a>
+                <span class="separator">></span>
+                <span class="current">Pro Bundle</span>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="hero-container">
+            <h1>Pro Bundle: 100 Premium n8n Templates</h1>
+            <p>Supercharge your automations with our Pro Bundle. Get access to 100 of our best templates, covering a wide range of use cases and integrations.</p>
+            <a href="purchase.html?product=pro" id="payment-btn-pro" class="payment-button" style="display: inline-block; text-decoration: none;">Get Instant Access - $88</a>
+        </div>
+
+        <div class="benefits-section">
+             <!-- Benefits can be listed here -->
+        </div>
+
+        <div class="template-showcase">
+            <!-- Template showcase can be listed here -->
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h2 style="text-align: center; margin-bottom: 20px; font-size: 36px; color: #333;">📊 Compare All Plans</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 18px; color: #666;">Choose the perfect package for your automation needs</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Features</th>
+                        <th>Core Pack<br><small>$49</small></th>
+                        <th class="highlight">Pro Bundle<br><small>$88</small></th>
+                        <th class="premium">Complete Vault<br><small>$499</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Templates Included</td>
+                        <td><strong>50</strong></td>
+                        <td class="highlight"><strong>100</strong></td>
+                        <td class="premium"><strong>8,100+</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">One-Click JSON Import</td>
+                        <td><span class="check">✓</span></td>
+                        <td class="highlight"><span class="check">✓</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Commercial Rights</td>
+                        <td><span class="check">✓</span></td>
+                        <td class="highlight"><span class="check">✓</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Starter Guide (PDF)</td>
+                        <td><span class="check">✓</span></td>
+                        <td class="highlight"><span class="check">✓</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Advanced Workflows</td>
+                        <td><span class="cross">✗</span></td>
+                        <td class="highlight"><span class="check">✓</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Priority Support</td>
+                        <td><span class="cross">✗</span></td>
+                        <td class="highlight"><span class="check">✓</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Lifetime Updates</td>
+                        <td><span class="cross">✗</span></td>
+                        <td class="highlight"><span class="cross">✗</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">VIP Support Channel</td>
+                        <td><span class="cross">✗</span></td>
+                        <td class="highlight"><span class="cross">✗</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Exclusive Bonuses</td>
+                        <td><span class="cross">✗</span></td>
+                        <td class="highlight"><span class="cross">✗</span></td>
+                        <td class="premium"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name"></td>
+                        <td>
+                            <a href="purchase.html?product=core" class="comparison-cta core" style="display: inline-block; text-decoration: none;">
+                                Choose Core - $49
+                            </a>
+                        </td>
+                        <td class="highlight">
+                            <a href="purchase.html?product=pro" class="comparison-cta pro" style="display: inline-block; text-decoration: none;">
+                                Choose Pro - $88
+                            </a>
+                        </td>
+                        <td class="premium">
+                            <a href="purchase.html?product=complete" class="comparison-cta complete" style="display: inline-block; text-decoration: none;">
+                                Choose Complete - $499
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY);
+
+        document.getElementById('payment-btn-pro').addEventListener('click', () => {
+            // Logic to create a Stripe Checkout session for the 'pro_bundle' product
+            fetch('/api/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ productType: 'pro_bundle' })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.url) {
+                    window.location.href = data.url;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

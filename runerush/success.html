@@ -18,32 +18,67 @@
             send_page_view: true
         });
         
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productType = urlParams.get('product_type') || urlParams.get('product') || 'core';
+        const sessionId = urlParams.get('session_id') || 'unknown';
+        
+        // Define product information
+        const productInfo = {
+            'core': {
+                name: 'RuneRush Core Bundle',
+                templates: '50 Premium n8n Templates',
+                value: 49.00,
+                item_id: 'runerush-core-bundle'
+            },
+            'pro_bundle': {
+                name: 'RuneRush Pro Bundle',
+                templates: '100 Premium n8n Templates',
+                value: 60.00,
+                item_id: 'runerush-pro-bundle'
+            },
+            'pro_upgrade': {
+                name: 'RuneRush Pro Upgrade',
+                templates: '+50 Additional Pro Templates',
+                value: 39.00,
+                item_id: 'runerush-pro-upgrade'
+            },
+            'complete_collection': {
+                name: 'RuneRush Complete Collection',
+                templates: '8100+ Premium n8n Templates',
+                value: 499.00,
+                item_id: 'runerush-complete-collection'
+            }
+        };
+        
+        const currentProduct = productInfo[productType] || productInfo['core'];
+        
         // Track successful purchase
         gtag('event', 'purchase', {
-            transaction_id: new URLSearchParams(window.location.search).get('session_id') || 'unknown',
-            value: 49.00, // You can make this dynamic based on the actual purchase
+            transaction_id: sessionId,
+            value: currentProduct.value,
             currency: 'USD',
             items: [{
-                item_id: 'runerush-50-templates',
-                item_name: 'RuneRush 50 Templates',
+                item_id: currentProduct.item_id,
+                item_name: currentProduct.name,
                 category: 'Digital Product',
                 quantity: 1,
-                price: 49.00
+                price: currentProduct.value
             }]
         });
         
         // Track conversion
         gtag('event', 'conversion', {
-            send_to: 'G-6T37CPF1B8/purchase', // Replace with your conversion ID
-            value: 49.00,
+            send_to: 'G-6T37CPF1B8/purchase',
+            value: currentProduct.value,
             currency: 'USD'
         });
         
         // Custom success event
         gtag('event', 'purchase_success', {
             event_category: 'Purchase Flow',
-            event_label: 'Success Page View',
-            value: 49.00
+            event_label: productType,
+            value: currentProduct.value
         });
     </script>
     <style>

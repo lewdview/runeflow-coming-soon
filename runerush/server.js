@@ -101,7 +101,7 @@ app.post('/api/payments/stripe/create-checkout', [
     body('email').isEmail().normalizeEmail(),
     body('first_name').trim().isLength({ min: 1 }),
     body('last_name').trim().isLength({ min: 1 }),
-    body('product_type').isIn(['core', 'pro_bundle', 'pro_upgrade']),
+    body('product_type').isIn(['core', 'pro_bundle', 'pro_upgrade', 'complete_collection']),
     body('success_url').isURL(),
     body('cancel_url').isURL()
 ], async (req, res) => {
@@ -603,6 +603,61 @@ app.get('/upsell', (req, res) => {
 // Download page
 app.get('/downloads', (req, res) => {
     res.sendFile(path.join(__dirname, 'downloads.html'));
+});
+
+// Success redirect route - handles post-purchase redirects
+app.get('/success', async (req, res) => {
+    try {
+        const { session_id, product_type } = req.query;
+        
+        if (!session_id) {
+            return res.redirect('/runerush/purchase.html?error=missing_session');
+        }
+        
+        // Optional: Verify the session with Stripe
+        const session = await stripeService.stripe.checkout.sessions.retrieve(session_id);
+        
+        if (session.payment_status !== 'paid') {
+            return res.redirect('/runerush/purchase.html?error=payment_incomplete');
+        }
+        
+        // Get user by email from session
+        const user = await db.getUserByEmail(session.customer_details.email);
+        
+        if (!user) {
+            return res.redirect('/runerush/purchase.html?error=user_not_found');
+        }
+        
+        // Product-specific success logic
+        const baseSuccessUrl = '/success.html';
+        const downloadUrl = `/downloads?key=${user.license_key}`;
+        
+        switch (product_type || session.metadata.product_type) {
+            case 'core':
+                // Core Bundle - redirect to downloads with license key
+                return res.redirect(downloadUrl);
+                
+            case 'pro_bundle':
+                // Pro Bundle - redirect to downloads with pro access
+                return res.redirect(downloadUrl);
+                
+            case 'pro_upgrade':
+                // Pro Upgrade - redirect to downloads 
+                return res.redirect(downloadUrl);
+                
+            case 'complete_collection':
+                // Complete Collection - redirect to downloads with full access
+                return res.redirect(downloadUrl);
+                
+            default:
+                // Fallback to general success page
+                return res.redirect(`${baseSuccessUrl}?session_id=${session_id}`);
+        }
+        
+    } catch (error) {
+        console.error('Success redirect error:', error);
+        res.redirect('/runerush/purchase.html?error=redirect_failed');
+    }
 });
 
 // =============================================================================

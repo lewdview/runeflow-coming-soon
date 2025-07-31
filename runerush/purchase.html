@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Your RuneRUSH Purchase</title>
+    <title>RuneRUSH - Premium Automation Templates</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T37CPF1B8"></script>
@@ -18,19 +21,17 @@
             send_page_view: true
         });
         
-        // Track purchase screen view
         gtag('event', 'page_view', {
             page_title: 'Purchase Screen',
             page_location: window.location.href
         });
         
-        // Track when user reaches checkout
         gtag('event', 'begin_checkout', {
             currency: 'USD',
             value: 49.00,
             items: [{
-                item_id: 'runerush-50-templates',
-                item_name: 'RuneRush 50 Templates',
+                item_id: 'runerush-core-bundle',
+                item_name: 'RuneRush Core Bundle',
                 category: 'Digital Product',
                 quantity: 1,
                 price: 49.00
@@ -41,13 +42,26 @@
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     
-    <!-- Coinbase Commerce -->
-    <script src="https://unpkg.com/@coinbase/commerce-js@1.2.0/dist/commerce.js"></script>
-    
     <!-- API Client -->
     <script src="js/api.js"></script>
     
     <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a6fd8;
+            --secondary: #764ba2;
+            --accent: #ff6b6b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b7280;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 16px 64px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 32px 128px rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -55,26 +69,243 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 25%, #be185d 50%, #b91c1c 75%, #3730a3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            background-attachment: fixed;
             min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(219, 39, 119, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
-        .purchase-container {
-            max-width: 1200px;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.8;
+                transform: translateX(-50%) scaleX(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(1.1);
+            }
+        }
+
+        /* Main layout */
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .main-grid {
             display: grid;
             grid-template-columns: 1fr 400px;
-            gap: 30px;
-            min-height: calc(100vh - 40px);
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .products-section {
+            animation: fadeInLeft 1s ease-out 0.5s both;
         }
         
         .main-content {
-            background: white;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Corner Ribbon */
+        .corner-ribbon {
+            position: absolute;
+            top: 15px;
+            right: -10px;
+            background: #ef4444;
+            color: white;
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            transform: rotate(15deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-radius: 3px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            overflow: visible;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-right: 15px;
+            color: #667eea;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .product-card {
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .product-card.selected {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.25);
+        }
+
+        .product-card .price {
+            font-size: 28px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .product-card .price span {
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .product-card .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .product-card .features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .product-card .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .upsell-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+        }
+
+        .upsell-card .card-icon,
+        .upsell-card .card-title,
+        .upsell-card .price,
+        .upsell-card .price span,
+        .upsell-card .features {
+            color: white;
+        }
+
+        .upsell-card .features li::before {
+            color: white;
+            content: '✨';
         }
         
         .sidebar {
@@ -90,16 +321,18 @@
         .logo {
             font-size: 32px;
             font-weight: 900;
-            color: #667eea;
+            color: white;
             margin-bottom: 10px;
             text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .subtitle {
             text-align: center;
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 30px;
             font-size: 16px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .step-indicator {
@@ -112,6 +345,8 @@
             display: flex;
             align-items: center;
             margin: 0 10px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .step-number {
@@ -282,13 +517,20 @@
             margin-bottom: 10px;
         }
         
-        .total-row.final {
-            font-weight: bold;
-            font-size: 18px;
-            color: #333;
-            padding-top: 10px;
-            border-top: 1px solid #e0e0e0;
+        .promo-section input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
+        
+        .promo-section input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
         
         .guarantee {
             background: #f0f9f0;
@@ -428,8 +670,13 @@
             align-items: center;
             justify-content: center;
             margin-top: 20px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
         }
         
         .security-info .icon {
@@ -472,125 +719,94 @@
     </style>
 </head>
 <body>
-    <div class="purchase-container">
-        <!-- Main Content -->
-        <div class="main-content">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
             <div class="logo">RuneRUSH</div>
-            <div class="subtitle">Complete your purchase to unlock 50 premium n8n templates</div>
+            <div class="subtitle">Modernize Your Workflow with Premium Templates</div>
             
             <!-- Step Indicator -->
             <div class="step-indicator">
-                <div class="step active">
-                    <div class="step-number">1</div>
-                    <span>Details</span>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <span>Payment</span>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <span>Complete</span>
-                </div>
+                <div class="step active"><div class="step-number">1</div><span>Products</span></div>
+                <div class="step"><div class="step-number">2</div><span>Details</span></div>
+                <div class="step"><div class="step-number">3</div><span>Payment</span></div>
             </div>
-            
+        </div>
+        
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Products Section -->
+            <div class="products-section">
+
             <form id="purchaseForm">
-                <!-- Customer Details -->
-                <div class="form-section">
-                    <h3>👤 Your Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
+
+                <!-- Product Selection -->
+                <div class="product-card-grid">
+                    <!-- Core Bundle Card -->
+                        <div class="card product-card" data-product="core" data-price="49">
+                            <div class="card-header">
+                                <div class="card-icon">📦</div>
+                                <h3 class="card-title">Core Bundle</h3>
+                            </div>
+                            <div class="price">$49</div>
+                            <ul class="features">
+                                <li>50 Premium n8n Templates</li>
+                                <li>Essential Workflow Automations</li>
+                                <li>Community Support Access</li>
+                            </ul>
                         </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
+
+                        <!-- Pro Bundle Card -->
+                        <!-- Complete Bundle Card -->
+                        <div class="card product-card" data-product="complete_bundle" data-price="499">
+                            <div class="card-header">
+                                <div class="card-icon">🏆</div>
+                                <h3 class="card-title">Complete Bundle</h3>
+                                <span class="corner-ribbon">Only 47 Left</span>
+                            </div>
+                            <div class="price">$499</div>
+                            <ul class="features">
+                                <li>8100+ Premium n8n Templates</li>
+                                <li>Master Automation Suite</li>
+                                <li>Exclusive Lifetime Access</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="company">Company (Optional)</label>
-                            <input type="text" id="company" name="company">
+
+                        <!-- Pro Bundle Card -->
+                        <div class="card product-card" data-product="pro_bundle" data-price="60">
+                            <div class="card-header">
+                                <div class="card-icon">💼</div>
+                                <h3 class="card-title">Pro Bundle</h3>
+                                <span class="corner-ribbon">Only 92 Left</span>
+                            </div>
+                            <div class="price">$60</div>
+                            <ul class="features">
+                                <li>100 Premium n8n Templates</li>
+                                <li>Advanced Workflow Automations</li>
+                                <li>Priority Customer Support</li>
+                            </ul>
                         </div>
-                        <div class="form-group">
-                            <label for="role">Your Role</label>
-                            <select id="role" name="role">
-                                <option value="">Select your role...</option>
-                                <option value="developer">Developer</option>
-                                <option value="agency_owner">Agency Owner</option>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="entrepreneur">Entrepreneur</option>
-                                <option value="consultant">Consultant</option>
-                                <option value="other">Other</option>
-                            </select>
+
+                    <!-- Pro Upgrade Card -->
+                    <div class="card product-card" data-product="pro_upgrade" data-price="39">
+                        <div class="card-header">
+                            <div class="card-icon">🚀</div>
+                            <h3 class="card-title">Pro Upgrade</h3>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Upsell Section -->
-                <div class="upsell-section" id="upsellSection">
-                    <div class="upsell-content">
-                        <h3>🚀 Upgrade to RuneRUSH PRO</h3>
-                        <p><strong>Limited Time:</strong> Add 50 more advanced templates for just $39 more (normally $97)</p>
-                        <ul class="upsell-features">
-                            <li>12 Advanced AI & Automation Templates</li>
-                            <li>13 Advanced Email Marketing Workflows</li>
-                            <li>14 Complex Business Process Automations</li>
-                            <li>7 Advanced Social Media Tools</li>
-                            <li>4 Advanced E-commerce Integrations</li>
+                        <div class="price">$39</div>
+                        <ul class="features">
+                            <li>+50 Additional Pro Templates</li>
+                            <li>Advanced Marketing & Sales Workflows</li>
                             <li>Priority Email Support</li>
-                            <li>Bonus: Video Tutorial Series ($197 value)</li>
                         </ul>
-                        <div class="upsell-toggle">
-                            <input type="checkbox" id="proUpgrade" name="proUpgrade" class="upsell-checkbox">
-                            <label for="proUpgrade">
-                                <strong>Yes, upgrade me to PRO for +$39</strong><br>
-                                <small>100 total templates + bonuses (Save $58 today!)</small>
-                            </label>
-                        </div>
                     </div>
                 </div>
+
+
+            </form>
                 
-                <!-- Payment Methods -->
-                <div class="form-section">
-                    <h3>💳 Choose Payment Method</h3>
-                    
-                    <div class="payment-methods">
-                        <!-- Stripe Payment -->
-                        <div class="payment-method selected" data-method="stripe">
-                            <div class="method-info">
-                                <div class="method-icon">💳</div>
-                                <div class="method-details">
-                                    <h4>Credit Card (Stripe)</h4>
-                                    <p>Visa, Mastercard, American Express</p>
-                                </div>
-                            </div>
-                            <input type="radio" name="paymentMethod" value="stripe" class="radio-input" checked>
-                        </div>
-                        
-                        <!-- Coinbase Payment -->
-                        <div class="payment-method" data-method="coinbase">
-                            <div class="method-info">
-                                <div class="method-icon">₿</div>
-                                <div class="method-details">
-                                    <h4>Cryptocurrency (Coinbase)</h4>
-                                    <p>Bitcoin, Ethereum, USDC, and more</p>
-                                </div>
-                            </div>
-                            <input type="radio" name="paymentMethod" value="coinbase" class="radio-input">
-                        </div>
-                    </div>
-                </div>
                 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-success" id="submitBtn" style="width: 100%; font-size: 18px; padding: 20px;">
-                    🚀 Complete Purchase - $<span id="totalPrice">49</span>
-                </button>
                 
                 <div class="security-info">
                     <span class="icon">🔒</span>
@@ -605,238 +821,212 @@
         
         <!-- Sidebar -->
         <div class="sidebar">
-            <div class="order-summary">
-                <h3>📋 Order Summary</h3>
-                
-                <div class="product-item">
-                    <div class="product-info">
-                        <h4>RuneRUSH Core Bundle</h4>
-                        <p>50 Premium n8n Templates</p>
-                    </div>
-                    <div class="product-price">$49</div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📋</div>
+                    <h3 class="card-title">Order Summary</h3>
                 </div>
                 
-                <div class="product-item" id="proUpgradeItem" style="display: none;">
-                    <div class="product-info">
-                        <h4>PRO Upgrade</h4>
-                        <p>+50 Advanced Templates + Bonuses</p>
-                    </div>
-                    <div class="product-price">$39</div>
+                <div id="orderSummaryContent">
+                    <p>Please select a product to begin.</p>
                 </div>
+
                 
                 <div class="total-section">
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span>$<span id="subtotal">49</span></span>
+                        <span>$<span id="subtotal">0.00</span></span>
                     </div>
                     <div class="total-row" id="discountRow" style="display: none;">
                         <span>Discount:</span>
-                        <span style="color: #10b981;">-$<span id="discount">0</span></span>
+                        <span style="color: #10b981;">-$<span id="discount">0.00</span></span>
                     </div>
                     <div class="total-row final">
-                        <span>Total:</span>
-                        <span>$<span id="finalTotal">49</span></span>
+                        <strong>Total:</strong>
+                        <strong>$<span id="finalTotal">0.00</span></strong>
                     </div>
                 </div>
                 
-                <div class="guarantee">
-                    <span class="guarantee-icon">🛡️</span>
-                    <h4>30-Day Guarantee</h4>
-                    <p>Not satisfied? Get your money back, no questions asked.</p>
+                <!-- Purchase Now Button -->
+                <button class="btn btn-success" id="purchaseNowBtn" style="width: 100%; font-size: 18px; padding: 20px; margin-top: 20px;" disabled>
+                    🌟 Purchase Now
+                </button>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                 <div class="card-header">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">Our Guarantee</h3>
                 </div>
+                <p style="text-align:center;">Not satisfied? Get your money back, no questions asked.</p>
             </div>
         </div>
     </div>
     
     <script>
-        // Initialize Google Analytics tracking
-        function trackEvent(eventName, parameters = {}) {
-            if (typeof gtag === 'function') {
-                gtag('event', eventName, parameters);
-            }
-        }
-        
-        // Track page load
-        trackEvent('purchase_screen_view', {
-            event_category: 'Purchase Flow',
-            event_label: 'Step 1 - Details'
-        });
-        
-        // Payment method selection
-        const paymentMethods = document.querySelectorAll('.payment-method');
-        const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
-        
-        paymentMethods.forEach(method => {
-            method.addEventListener('click', function() {
-                // Remove selected class from all methods
-                paymentMethods.forEach(m => m.classList.remove('selected'));
-                
-                // Add selected class to clicked method
-                this.classList.add('selected');
-                
-                // Check the corresponding radio button
-                const radio = this.querySelector('input[type="radio"]');
-                radio.checked = true;
-                
-                // Track payment method selection
-                trackEvent('payment_method_selected', {
-                    event_category: 'Purchase Flow',
-                    event_label: radio.value
-                });
-            });
-        });
-        
-        // Pro upgrade toggle
-        const proUpgradeCheckbox = document.getElementById('proUpgrade');
-        const proUpgradeItem = document.getElementById('proUpgradeItem');
+        const productCards = document.querySelectorAll('.product-card');
+        const buyNowButtons = document.querySelectorAll('.buy-now-btn');
+        const orderSummaryContent = document.getElementById('orderSummaryContent');
         const subtotalSpan = document.getElementById('subtotal');
         const finalTotalSpan = document.getElementById('finalTotal');
-        const totalPriceSpan = document.getElementById('totalPrice');
-        
-        proUpgradeCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                // Show PRO upgrade in order summary
-                proUpgradeItem.style.display = 'flex';
-                
-                // Update totals
-                subtotalSpan.textContent = '88';
-                finalTotalSpan.textContent = '88';
-                totalPriceSpan.textContent = '88';
-                
-                // Track upsell acceptance
-                trackEvent('upsell_accepted', {
-                    event_category: 'Purchase Flow',
-                    event_label: 'PRO Upgrade',
-                    value: 39
-                });
+        let selectedProducts = [];
+
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const product = card.dataset.product;
+                toggleProductSelection(product, card);
+            });
+        });
+
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.stopPropagation(); // prevent card click event
+                const product = button.dataset.product;
+                await handleFormSubmit(product);
+            });
+        });
+
+function toggleProductSelection(product, card) {
+            // Main bundles (core, pro_bundle, complete_bundle) are mutually exclusive
+            const mainBundles = ['core', 'pro_bundle', 'complete_bundle'];
+            
+            if (mainBundles.includes(product)) {
+                // Clear all selections and select only this main bundle
+                selectedProducts = [product];
+                productCards.forEach(card => card.classList.remove('selected'));
+                card.classList.add('selected');
+            } else if (product === 'pro_upgrade') {
+                // Pro upgrade can only be added to core bundle
+                if (selectedProducts.includes('core')) {
+                    // Toggle pro upgrade with core
+                    const upgradeIndex = selectedProducts.indexOf('pro_upgrade');
+                    if (upgradeIndex > -1) {
+                        selectedProducts.splice(upgradeIndex, 1);
+                        card.classList.remove('selected');
+                    } else {
+                        selectedProducts.push('pro_upgrade');
+                        card.classList.add('selected');
+                    }
+                } else {
+                    // If core is not selected, select core + pro_upgrade
+                    selectedProducts = ['core', 'pro_upgrade'];
+                    productCards.forEach(card => card.classList.remove('selected'));
+                    document.querySelector('[data-product="core"]').classList.add('selected');
+                    card.classList.add('selected');
+                }
+            }
+            
+            updateOrderSummary();
+            document.getElementById('purchaseNowBtn').disabled = selectedProducts.length === 0;
+        }
+
+        function updateOrderSummary() {
+            orderSummaryContent.innerHTML = '';
+            let subtotal = 0;
+
+            if (selectedProducts.length === 0) {
+                orderSummaryContent.innerHTML = '<p>Please select a product to begin.</p>';
             } else {
-                // Hide PRO upgrade
-                proUpgradeItem.style.display = 'none';
-                
-                // Reset totals
-                subtotalSpan.textContent = '49';
-                finalTotalSpan.textContent = '49';
-                totalPriceSpan.textContent = '49';
-                
-                // Track upsell rejection
-                trackEvent('upsell_rejected', {
-                    event_category: 'Purchase Flow',
-                    event_label: 'PRO Upgrade'
+                selectedProducts.forEach(product => {
+                    const card = document.querySelector(`.product-card[data-product="${product}"]`);
+                    const productName = card.querySelector('.card-title').textContent;
+                    const productPrice = parseFloat(card.dataset.price);
+                    subtotal += productPrice;
+
+                    const item = document.createElement('div');
+                    item.className = 'product-item';
+                    item.innerHTML = `
+                        <div class="product-info">
+                            <h4>${productName}</h4>
+                        </div>
+                        <div class="product-price">$${productPrice.toFixed(2)}</div>
+                    `;
+                    orderSummaryContent.appendChild(item);
                 });
             }
-        });
+
+            subtotalSpan.textContent = subtotal.toFixed(2);
+            finalTotalSpan.textContent = subtotal.toFixed(2);
+        }
         
-        // Form submission
-        const purchaseForm = document.getElementById('purchaseForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-        
-        purchaseForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Clear previous messages
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-            
-            // Get form data
-            const formData = new FormData(this);
+        async function handleFormSubmit(product) {
+            const purchaseForm = document.getElementById('purchaseForm');
+            const formData = new FormData(purchaseForm);
             const customerData = {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
                 email: formData.get('email'),
                 company: formData.get('company'),
                 role: formData.get('role'),
-                proUpgrade: formData.get('proUpgrade') === 'on',
-                paymentMethod: formData.get('paymentMethod')
             };
-            
-            // Validate required fields
+
             if (!customerData.firstName || !customerData.lastName || !customerData.email) {
                 showError('Please fill in all required fields.');
                 return;
             }
-            
-            // Track purchase attempt
+
+            let product_type = product;
+            let value = parseFloat(document.querySelector(`.product-card[data-product="${product}"]`).dataset.price);
+
+                            if (selectedProducts.includes('pro_bundle')) {
+                                 product_type = 'pro_bundle';
+                                 value = 88;
+                            } else if (selectedProducts.includes('core')) {
+                                 product_type = 'core';
+                                 value = 49;
+                            } else if (selectedProducts.includes('pro_upgrade')) {
+                                 product_type = 'pro_upgrade';
+                                 value = 39;
+                            }
+
+
             trackEvent('purchase_attempt', {
                 event_category: 'Purchase Flow',
-                event_label: customerData.paymentMethod,
-                value: customerData.proUpgrade ? 88 : 49
+                event_label: product_type,
+                value: value
             });
-            
-            // Show loading state
-            submitBtn.textContent = '🔄 Processing...';
-            submitBtn.disabled = true;
-            
+
             try {
-                if (customerData.paymentMethod === 'stripe') {
-                    await handleStripePayment(customerData);
-                } else if (customerData.paymentMethod === 'coinbase') {
-                    await handleCoinbasePayment(customerData);
-                }
+                await handleStripePayment(customerData, product_type);
             } catch (error) {
                 console.error('Payment error:', error);
                 showError(error.message || 'Payment failed. Please try again.');
-                
-                // Track payment failure
                 trackEvent('purchase_failed', {
                     event_category: 'Purchase Flow',
                     event_label: error.message || 'Unknown error'
                 });
-                
-                // Reset button
-                submitBtn.textContent = `🚀 Complete Purchase - $${customerData.proUpgrade ? '88' : '49'}`;
-                submitBtn.disabled = false;
             }
-        });
-        
-        async function handleStripePayment(customerData) {
+        }
+
+        async function handleStripePayment(customerData, productType) {
             try {
-                // Determine product type
-                const productType = customerData.proUpgrade ? 'pro_bundle' : 'core';
-                
                 const checkoutData = {
                     email: customerData.email,
                     first_name: customerData.firstName,
                     last_name: customerData.lastName,
                     product_type: productType,
-                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
+                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}&product_type=' + productType,
                     cancel_url: window.location.origin + '/purchase.html',
                     metadata: {
                         company: customerData.company || '',
                         role: customerData.role || '',
-                        upgrade: customerData.proUpgrade ? 'yes' : 'no'
+                        product: productType
                     }
                 };
                 
-                // Check if running locally
-                if (window.location.protocol === 'file:' || 
-                    window.location.hostname === 'localhost' || 
-                    window.location.hostname === '127.0.0.1') {
-                    
-                    showSuccess(`✅ Mock Payment Success!
-                    
-Customer: ${customerData.firstName} ${customerData.lastName}
-Email: ${customerData.email}
-Product: ${customerData.proUpgrade ? 'PRO Bundle ($88)' : 'Core Bundle ($49)'}
-Payment: Stripe
-
-In production, this would redirect to Stripe checkout.`);
+                if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    showSuccess(`✅ Mock Payment Success!\n\nCustomer: ${customerData.firstName} ${customerData.lastName}\nEmail: ${customerData.email}\nProduct: ${productType}\nPayment: Stripe\n\nIn production, this would redirect to Stripe checkout.`);
                     return;
                 }
                 
-                // Create checkout session
                 const response = await api.createCheckoutSession(checkoutData);
                 
                 if (response.success && response.data.url) {
-                    // Track successful checkout creation
                     trackEvent('checkout_created', {
                         event_category: 'Purchase Flow',
                         event_label: 'Stripe',
-                        value: customerData.proUpgrade ? 88 : 49
+                        value: parseFloat(finalTotalSpan.textContent)
                     });
-                    
-                    // Redirect to Stripe Checkout
                     window.location.href = response.data.url;
                 } else {
                     throw new Error(response.message || 'Failed to create checkout session');
@@ -848,20 +1038,16 @@ In production, this would redirect to Stripe checkout.`);
             }
         }
         
-        async function handleCoinbasePayment(customerData) {
+        async function handleCoinbasePayment(customerData, productType) {
             try {
                 // For now, show a message about Coinbase integration
-                showError('Coinbase payment integration coming soon! Please use credit card for now.');
+                showError('Coinbase payment is currently unavailable. Please use Stripe.');
                 
                 // Track Coinbase attempt
                 trackEvent('coinbase_attempted', {
                     event_category: 'Purchase Flow',
-                    event_label: 'Not yet implemented'
+                    event_label: productType
                 });
-                
-                // Reset button
-                submitBtn.textContent = `🚀 Complete Purchase - $${customerData.proUpgrade ? '88' : '49'}`;
-                submitBtn.disabled = false;
                 
             } catch (error) {
                 console.error('Coinbase payment error:', error);
@@ -870,15 +1056,26 @@ In production, this would redirect to Stripe checkout.`);
         }
         
         function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
             errorMessage.textContent = message;
             errorMessage.style.display = 'block';
             errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
         
         function showSuccess(message) {
+            const successMessage = document.getElementById('successMessage');
             successMessage.textContent = message;
             successMessage.style.display = 'block';
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Mock trackEvent function for analytics (replace with real implementation)
+        function trackEvent(eventName, params) {
+            console.log('Analytics Event:', eventName, params);
+            // In production, this would send data to Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, params);
+            }
         }
         
         // Form validation
@@ -893,16 +1090,18 @@ In production, this would redirect to Stripe checkout.`);
             });
         });
         
-        // Email validation
+        // Email validation (only if email field exists)
         const emailField = document.getElementById('email');
-        emailField.addEventListener('blur', function() {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(this.value)) {
-                this.style.borderColor = '#ff6b6b';
-            } else {
-                this.style.borderColor = '#10b981';
-            }
-        });
+        if (emailField) {
+            emailField.addEventListener('blur', function() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(this.value)) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = '#10b981';
+                }
+            });
+        }
         
         // Track form field interactions
         const formFields = document.querySelectorAll('input, select');
@@ -913,6 +1112,101 @@ In production, this would redirect to Stripe checkout.`);
                     event_label: this.name || this.id
                 });
             });
+        });
+        
+        // Auto-select product based on URL parameters
+        function autoSelectProductFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productParam = urlParams.get('product') || urlParams.get('productType');
+            
+            if (productParam) {
+                // Map URL parameter values to internal product IDs
+                const productMapping = {
+                    'core': 'core',
+                    'pro': 'pro_bundle',
+                    'pro_bundle': 'pro_bundle',
+                    'complete': 'complete_bundle',
+                    'complete_collection': 'complete_bundle',
+                    'pro_upgrade': 'pro_upgrade'
+                };
+                
+                const mappedProduct = productMapping[productParam.toLowerCase()];
+                
+                if (mappedProduct) {
+                    // Find the corresponding product card
+                    const productCard = document.querySelector(`[data-product="${mappedProduct}"]`);
+                    
+                    if (productCard) {
+                        // Trigger product selection
+                        setTimeout(() => {
+                            toggleProductSelection(mappedProduct, productCard);
+                            
+                            // Track auto-selection
+                            trackEvent('product_auto_selected', {
+                                event_category: 'Purchase Flow',
+                                event_label: mappedProduct,
+                                custom_parameter_1: 'from_url'
+                            });
+                            
+                            // Scroll to the selected product
+                            productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 500); // Small delay to ensure DOM is ready
+                    }
+                }
+            }
+        }
+        
+        // Initialize auto-selection on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            autoSelectProductFromURL();
+        });
+        
+        // Also run immediately in case DOMContentLoaded already fired
+        autoSelectProductFromURL();
+        
+        // Purchase Now button click handler
+        document.getElementById('purchaseNowBtn').addEventListener('click', () => {
+            if (selectedProducts.length > 0) {
+                let productKey;
+                
+                // Determine which Stripe link to use
+                if (selectedProducts.includes('core') && selectedProducts.includes('pro_upgrade')) {
+                    productKey = 'core_plus_upgrade'; // Core + Pro Upgrade combination
+                } else if (selectedProducts.includes('complete_bundle')) {
+                    productKey = 'complete_bundle';
+                } else if (selectedProducts.includes('pro_bundle')) {
+                    productKey = 'pro_bundle';
+                } else if (selectedProducts.includes('core')) {
+                    productKey = 'core';
+                } else if (selectedProducts.includes('pro_upgrade')) {
+                    productKey = 'pro_upgrade';
+                }
+                
+                // Define Stripe product links
+                const stripeLinks = {
+                    'core': 'https://buy.stripe.com/fZu9AT82n2wO6ew8b057W02',
+                    'pro_bundle': 'https://buy.stripe.com/bJe3cv4Qbdbs7iA1MC57W04',
+                    'complete_bundle': 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00',
+                    'pro_upgrade': 'https://buy.stripe.com/14AfZhfuPefw8mE2QG57W03',
+                    'core_plus_upgrade': 'https://buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01'
+                };
+                
+                // Track purchase attempt
+                trackEvent('purchase_attempt', {
+                    event_category: 'Purchase Flow',
+                    event_label: productKey,
+                    value: parseFloat(finalTotalSpan.textContent)
+                });
+                
+                // Redirect to Stripe product link
+                if (stripeLinks[productKey]) {
+                    window.location.href = stripeLinks[productKey];
+                } else {
+                    showError('Product not available. Please contact support.');
+                }
+            } else {
+                showError('Please select a product first.');
+            }
         });
     </script>
 </body>

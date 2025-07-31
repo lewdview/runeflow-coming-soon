@@ -118,10 +118,22 @@ class S3Service {
                 throw new Error('User not found');
             }
 
-            // Determine which files user has access to
-            const productTypes = ['main'];
-            if (user.is_lifetime) {
-                productTypes.push('upsell');
+            // Determine which files user has access to based on purchase history
+            const userOrders = await db.all('SELECT DISTINCT product_type FROM orders WHERE user_id = ? AND status = "completed"', [userId]);
+            const purchasedTypes = userOrders.map(order => order.product_type);
+            
+            const productTypes = ['core']; // Everyone gets core files
+            
+            // Check for specific purchases
+            if (purchasedTypes.includes('complete_collection')) {
+                // Complete collection gets everything
+                productTypes.push('pro_bundle', 'complete_collection', 'main', 'upsell');
+            } else if (purchasedTypes.includes('pro_bundle') || user.is_lifetime) {
+                // Pro bundle or lifetime gets pro files
+                productTypes.push('pro_bundle', 'upsell');
+            } else if (purchasedTypes.includes('main')) {
+                // Legacy main product support
+                productTypes.push('main');
             }
 
             const files = [];

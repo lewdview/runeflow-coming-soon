@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
@@ -878,17 +879,382 @@
         /* Main page content (hidden initially) */
         .main-content {
             display: none;
-            padding: 50px;
+            padding: 50px 20px;
             max-width: 1200px;
             margin: 0 auto;
             background: transparent;
             min-height: 100vh;
             position: relative;
             z-index: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Ensure all child containers respect the main content width */
+        .main-content > * {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Specifically constrain template showcase and other wide sections */
+        .template-showcase {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
         }
         
         .main-content.visible {
             display: block;
+        }
+
+        .hero-container {
+            position: relative;
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 50%, rgba(139, 92, 246, 0.95) 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            overflow: hidden;
+        }
+
+        .headline-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 35px;
+        }
+
+        .stats-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        /* Enhanced Button Styles */
+        .enhanced-btn:hover .btn-shine {
+            left: 100%;
+        }
+        
+        .enhanced-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+        }
+        
+        .payment-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .payment-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .payment-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+        
+        .payment-button:hover::before {
+            transform: translateX(100%);
+        }
+        
+        /* Button Icon Animations */
+        .payment-button i {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-button:hover i {
+            transform: translateY(-50%) scale(1.1);
+            color: rgba(255,255,255,1) !important;
+        }
+        
+        /* Template Showcase Enhancements */
+        .template-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .template-item:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4), 0 4px 12px rgba(0,0,0,0.2) !important;
+            border-color: rgba(102,126,234,0.6) !important;
+            background: rgba(102,126,234,0.3) !important;
+        }
+        
+        .template-item:hover::before {
+            left: 100%;
+        }
+        
+        .category-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2), 0 8px 20px rgba(0,0,0,0.1) !important;
+            border-color: rgba(102, 126, 234, 0.5) !important;
+        }
+        
+        /* Stats animation */
+        @keyframes statsPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .stats-number {
+            animation: statsPulse 2s ease-in-out infinite;
+        }
+        
+        /* Improved grid layout for categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* Better responsive design for template grids */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        
+        /* Category Cards */
+        .category-card {
+            background: linear-gradient(135deg, rgba(20, 20, 40, 0.8) 0%, rgba(30, 30, 50, 0.8) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-header h3 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .category-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin: 5px 0 0 0;
+            font-weight: 600;
+        }
+        
+        .category-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        
+        .template-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .template-item-more {
+            text-align: center;
+            padding: 15px;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+        
+        /* Enhanced category colors */
+        .category-ai {
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .category-ai .template-item {
+            background: rgba(102,126,234,0.2);
+            border-color: rgba(102,126,234,0.4);
+        }
+        
+        .category-ai .template-item:hover {
+            background: rgba(102,126,234,0.3) !important;
+            border-color: rgba(102,126,234,0.6) !important;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4) !important;
+        }
+        
+        .category-email {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .category-email .template-item {
+            background: rgba(16,185,129,0.2);
+            border-color: rgba(16,185,129,0.4);
+        }
+        
+        .category-email .template-item:hover {
+            background: rgba(16,185,129,0.3) !important;
+            border-color: rgba(16,185,129,0.6) !important;
+            box-shadow: 0 8px 25px rgba(16,185,129,0.4) !important;
+        }
+        
+        .category-ecommerce {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        .category-ecommerce .template-item {
+            background: rgba(245,158,11,0.2);
+            border-color: rgba(245,158,11,0.4);
+        }
+        
+        .category-ecommerce .template-item:hover {
+            background: rgba(245,158,11,0.3) !important;
+            border-color: rgba(245,158,11,0.6) !important;
+            box-shadow: 0 8px 25px rgba(245,158,11,0.4) !important;
+        }
+        
+        .category-automation {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .category-automation .template-item {
+            background: rgba(139,92,246,0.2);
+            border-color: rgba(139,92,246,0.4);
+        }
+        
+        .category-automation .template-item:hover {
+            background: rgba(139,92,246,0.3) !important;
+            border-color: rgba(139,92,246,0.6) !important;
+            box-shadow: 0 8px 25px rgba(139,92,246,0.4) !important;
+        }
+        
+        .category-social .template-item:hover {
+            background: rgba(236,72,153,0.3) !important;
+            border-color: rgba(236,72,153,0.6) !important;
+            box-shadow: 0 8px 25px rgba(236,72,153,0.4) !important;
+        }
+        
+        /* Hidden Template Sections */
+        .hidden-templates {
+            display: none;
+            transition: all 0.5s ease-in-out;
+            margin-top: 15px;
+        }
+        
+        .more-info-btn {
+            display: inline-block;
+            margin: 0 auto 15px auto;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            text-align: center;
+            transition: all 0.3s ease;
+            user-select: none;
+            border: none;
+        }
+        
+        .more-info-btn:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+        }
+        
+        .template-toggle-text {
+            margin-top: 5px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            user-select: none;
+        }
+        
+        /* Table Constraints */
+        .main-content table, 
+        .template-showcase table, 
+        table {
+            max-width: 1200px !important;
+            width: auto !important;
+            table-layout: auto !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            box-sizing: border-box !important;
+        }
+        
+        .main-content table td, 
+        .main-content table th,
+        .template-showcase table td, 
+        .template-showcase table th,
+        table td, 
+        table th {
+            word-wrap: break-word !important;
+            word-break: break-word !important;
+            max-width: 200px !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        /* Prevent any element from overflowing the container */
+        .main-content * {
+            box-sizing: border-box !important;
         }
         
         /* Responsive Design */
@@ -898,6 +1264,160 @@
             .price-strike { font-size: 40px; }
             #animation-overlay .runerush { font-size: 80px; }
             #animation-overlay .cta-button { font-size: 24px; padding: 15px 30px; }
+            
+            .enhanced-btn i { font-size: 16px !important; }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Mobile table constraints */
+            .main-content table td, 
+            .main-content table th,
+            table td, 
+            table th {
+                max-width: 150px !important;
+                font-size: 14px !important;
+            }
+        }
+
+        /* --- Comprehensive Mobile Optimization --- */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 30px 15px !important;
+            }
+
+            .hero-container {
+                padding: 40px 20px !important;
+            }
+
+            .headline-container {
+                margin-bottom: 25px !important;
+            }
+
+            .stats-container {
+                margin-bottom: 30px !important;
+            }
+
+            .hero-container h1[style] {
+                font-size: 38px !important;
+                line-height: 1.2 !important;
+            }
+
+            .hero-container p[style] {
+                font-size: 18px !important;
+            }
+            
+            .benefits-section li[style] {
+                font-size: 18px !important;
+                padding: 15px !important;
+            }
+
+            .template-showcase h2[style] {
+                font-size: 32px !important;
+            }
+            
+            .template-showcase p[style] {
+                font-size: 18px !important;
+            }
+            
+            [style*="font-size: 36px"] { font-size: 28px !important; }
+            [style*="font-size: 32px"] { font-size: 26px !important; }
+
+            .hero-container, .benefits-section, .template-showcase, [style*="padding: 60px"], [style*="padding: 50px"], [style*="padding: 40px"] {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 20px !important;
+            }
+
+            .payment-button, .enhanced-btn {
+                padding: 18px 30px !important;
+                font-size: 18px !important;
+            }
+            
+            #payment-btn-hero, #payment-btn-final {
+                font-size: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 10px !important;
+            }
+            
+            .hero-container {
+                padding: 30px 15px !important;
+            }
+
+            .headline-container {
+                margin-bottom: 20px !important;
+            }
+
+            .stats-container {
+                margin-bottom: 25px !important;
+            }
+
+            .hero-container h1[style] {
+                font-size: 30px !important;
+            }
+
+            .hero-container p[style] {
+                font-size: 16px !important;
+            }
+            
+            .benefits-section li[style] {
+                font-size: 16px !important;
+            }
+
+            .template-showcase h2[style] {
+                font-size: 26px !important;
+            }
+            
+            .template-showcase p[style] {
+                font-size: 16px !important;
+            }
+            
+            [style*="font-size: 28px"] { font-size: 22px !important; }
+            [style*="font-size: 26px"] { font-size: 20px !important; }
+
+            .hero-container, .benefits-section, .template-showcase, [style*="padding: 60px"], [style*="padding: 50px"], [style*="padding: 40px"] {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            .payment-button, .enhanced-btn {
+                padding: 15px 25px !important;
+                font-size: 16px !important;
+            }
+
+            #payment-btn-hero, #payment-btn-final {
+                font-size: 18px !important;
+            }
+            
+            #template-scroll-container {
+                height: 250px !important;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .template-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .category-card {
+                padding: 20px !important;
+            }
         }
     </style>
 </head>
@@ -975,210 +1495,668 @@
     <!-- Main Content (shown after animation) -->
     <div class="main-content" id="main-content">
         <!-- Hero Section -->
-        <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); color: white; border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 900;">🔥 Get 50 Premium n8n Runes for $49—This Weekend Only (Normally $200)</h1>
-            <p style="font-size: 22px; font-style: italic; margin-bottom: 30px; opacity: 0.9;">"One-click import templates that save 20+ hours/month on automations—before this weekend vault closes."</p>
+        <div class="hero-container">
+            <!-- Animated Background Pattern -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%); animation: float 15s ease-in-out infinite; pointer-events: none;"></div>
             
-            <!-- Countdown Timer -->
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 30px; display: inline-block;">
-                <div style="font-size: 18px; margin-bottom: 10px;">⏳ Weekend offer expires in:</div>
-                <div id="countdown" style="font-size: 36px; font-weight: bold; color: #ff4757;">00:00:00</div>
+            <!-- Main Headline Container -->
+        <div class="headline-container">
+                <div style="display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b35); color: white; padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);">
+                    ⚡ WEEKEND FLASH SALE ⚡
+                </div>
+                <h1 style="font-size: 52px; margin-bottom: 25px; font-weight: 900; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">🔥 Get 50 Premium n8n Runes for <span style="color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">$49</span>—This Weekend Only</h1>
+                <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 25px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2);">
+                    <span style="text-decoration: line-through; color: rgba(255,255,255,0.6); font-size: 18px;">Normally $200</span>
+                    <span style="color: #4caf50; font-weight: bold; margin-left: 10px; font-size: 20px;">Save 75%!</span>
+                </div>
+                <p style="font-size: 24px; font-style: italic; margin-bottom: 0; opacity: 0.95; max-width: 800px; margin: 0 auto; line-height: 1.4;">"One-click import templates that save 20+ hours/month on automations—before this weekend vault closes."</p>
             </div>
             
-            <!-- Social Proof -->
-            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 30px; display: inline-block;">
-                <span style="color: #4caf50;">🔥</span> <strong>127</strong> automation pros grabbed this last week
+            <!-- Stats and Social Proof Container -->
+        <div class="stats-container">
+                <!-- Countdown Timer -->
+                <div class="countdown-card" style="background: rgba(0,0,0,0.2); padding: 25px 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 25px rgba(0,0,0,0.2); min-width: 250px;">
+                    <div style="font-size: 16px; margin-bottom: 10px; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px;">⏳ Offer Expires In</div>
+                    <div id="countdown" style="font-size: 32px; font-weight: 900; color: #ff4757; text-shadow: 0 0 15px rgba(255, 71, 87, 0.5); font-family: 'JetBrains Mono', monospace;">00:00:00</div>
+                </div>
+                
+                <!-- Social Proof -->
+                <div class="social-proof-card" style="background: rgba(0,0,0,0.2); padding: 25px 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 25px rgba(0,0,0,0.2); min-width: 280px;">
+                    <div style="font-size: 16px; margin-bottom: 10px; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px;">🔥 Recent Activity</div>
+                    <div style="font-size: 20px; font-weight: bold;"><span style="color: #4caf50; font-size: 28px; font-weight: 900;">127</span> automation pros grabbed this last week</div>
+                </div>
             </div>
             
-            <button id="payment-btn-hero" class="payment-button" style="background: #10b981; color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 24px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3); transition: all 0.3s;">🟢 Get Instant Access → $49</button>
+            <!-- CTA Button Container -->
+            <div class="cta-container" style="position: relative; z-index: 2;">
+                <button id="payment-btn-hero" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #10b981, #2dd4bf, #14b8a6); color: white; padding: 25px 50px; border: none; border-radius: 50px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">
+                    <span style="position: relative; z-index: 2;">🟢 Get Instant Access → $49</span>
+                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                    <i class="fas fa-shopping-cart" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.8); font-size: 20px;"></i>
+                </button>
+                <div style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 10px;">
+                    🔒 Secure checkout • 💰 30-day guarantee • ⚡ Instant download
+                </div>
+            </div>
         </div>
         
         <!-- Benefits Section -->
-        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">✨ What You Get</h2>
-            <ul style="list-style: none; padding: 0; max-width: 700px; margin: 0 auto;">
-                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>50 battle-tested n8n templates</strong> (handpicked from 8,100+)</li>
-                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>One-click JSON imports</strong>—no manual setup</li>
-                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>Commercial rights included</strong> (use for client work)</li>
-                <li style="padding: 15px 0; font-size: 18px; border-bottom: 1px solid #f0f0f0;">✔ <strong>Bonus: "Rune Starter Guide"</strong> (PDF, $29 value) FREE</li>
-                <li style="padding: 15px 0; font-size: 18px;">✔ <strong>Instant delivery</strong>—download in <60 seconds</li>
+        <div class="benefits-section" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.95) 100%); padding: 50px; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(255, 255, 255, 0.3) inset; backdrop-filter: blur(15px); border: 2px solid rgba(0, 150, 255, 0.15);">
+            <h2 style="text-align: center; color: #222; margin-bottom: 40px; font-size: 36px; font-weight: 900; letter-spacing: 1px;">✨ What You Get</h2>
+            <ul style="list-style: none; padding: 0; max-width: 800px; margin: 0 auto;">
+                <li style="padding: 20px; font-size: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); display: flex; align-items: center; transition: all 0.3s ease;">
+                    <span style="color: #10b981; font-size: 28px; margin-right: 15px; text-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">✔</span>
+                    <span><strong>50 battle-tested n8n templates</strong> (handpicked from 8,100+)</span>
+                </li>
+                <li style="padding: 20px; font-size: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); display: flex; align-items: center; transition: all 0.3s ease;">
+                    <span style="color: #10b981; font-size: 28px; margin-right: 15px; text-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">✔</span>
+                    <span><strong>One-click JSON imports</strong>—no manual setup</span>
+                </li>
+                <li style="padding: 20px; font-size: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); display: flex; align-items: center; transition: all 0.3s ease;">
+                    <span style="color: #10b981; font-size: 28px; margin-right: 15px; text-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">✔</span>
+                    <span><strong>Commercial rights included</strong> (use for client work)</span>
+                </li>
+                <li style="padding: 20px; font-size: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); display: flex; align-items: center; transition: all 0.3s ease;">
+                    <span style="color: #10b981; font-size: 28px; margin-right: 15px; text-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">✔</span>
+                    <span><strong>Bonus: "Rune Starter Guide"</strong> (PDF, $29 value) FREE</span>
+                </li>
+                <li style="padding: 20px; font-size: 20px; display: flex; align-items: center; transition: all 0.3s ease;">
+                    <span style="color: #10b981; font-size: 28px; margin-right: 15px; text-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">✔</span>
+                    <span><strong>Instant delivery</strong>—download in <60 seconds</span>
+                </li>
             </ul>
         </div>
         
-        
-        <!-- Complete Template Showcase -->
-        <div style="background: transparent; padding: 20px 0; margin-bottom: 30px;">
-            <h2 style="text-align: center; color: #ffffff; margin-bottom: 20px; font-size: 36px; text-shadow: 0 0 10px rgba(0,255,255,0.5);">⚡ Complete Template Vault</h2>
-            <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 40px; font-style: italic;">The absolute best templates for immediate business impact</p>
+
+        <div class="template-showcase" style="background: linear-gradient(135deg, rgba(20, 20, 40, 0.95) 0%, rgba(30, 30, 50, 0.95) 50%, rgba(40, 20, 60, 0.95) 100%); padding: 60px 40px; border-radius: 25px; margin: 0 auto 40px auto; max-width: 1200px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 2px solid rgba(0, 255, 255, 0.2); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255, 107, 53, 0.08) 0%, transparent 50%); animation: float 25s ease-in-out infinite; pointer-events: none;"></div>
             
-            <!-- AI & Research Category -->
-            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
-                <h3 style="color: #667eea; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(102,126,234,0.3);">🤖 AI & Research (18 templates)</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">High-demand AI automation that customers desperately want</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Chatbot with Webhook Response Handler</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">WhatsApp AI Assistant with Document Knowledge Base</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">OpenAI-Powered Chat Assistant for HubSpot Support</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Email Analysis and Google Sheets Reporting</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Telegram AI Assistant with Web Search Capability</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Voice Chat using Webhook, Memory Manager, OpenAI & ElevenLabs</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Personal Shopper Chatbot for WooCommerce with RAG</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI chatbot that can search the web</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Customer feedback sentiment analysis</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Agent for Google Calendar Assistant using OpenAI</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Voice Chatbot with ElevenLabs & OpenAI for Restaurants</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Social Media Caption Creator for Airtable</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI web researcher for sales</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Document Q&A Using LangChain and OpenAI</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Discord AI-powered bot</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Telegram AI Chatbot</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI Agent to chat with Supabase/PostgreSQL DB</div>
-                    <div style="background: rgba(102,126,234,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(102,126,234,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Generate Images via API Using OpenAI</div>
+            <div style="position: relative; z-index: 2; text-align: center; margin-bottom: 50px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);">
+                    ⚡ PREMIUM TEMPLATE COLLECTION ⚡
+                </div>
+                <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 48px; font-weight: 900; text-shadow: 0 0 30px rgba(0,255,255,0.6); letter-spacing: 2px;">🏆 Complete Template Vault</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 22px; margin-bottom: 30px; font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">The absolute best templates for immediate business impact—handpicked from 8,100+ automations</p>
+                
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 900; color: #4caf50; text-shadow: 0 0 15px rgba(76, 175, 80, 0.5);">50</div>
+                        <div style="color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Premium Templates</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 900; color: #ff6b35; text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);">5</div>
+                        <div style="color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Categories</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 900; color: #667eea; text-shadow: 0 0 15px rgba(102, 126, 234, 0.5);">1-Click</div>
+                        <div style="color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Import Ready</div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Email Marketing Category -->
-            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
-                <h3 style="color: #10b981; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(16,185,129,0.3);">📧 Email Marketing (12 templates)</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Essential communication automation every business needs</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">ConvertKit Form Subscriber Notification</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">HubSpot Event Notification System</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Calendly Event Notification</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">JotForm Submission Notification</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Create and Send Outlook Draft with Attachment</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">MailChimp Activity Notification</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Email Bounce and Open Notifications via Postmark</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Forward Netflix Emails to Multiple Recipients via Gmail</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Asana Event Notifications for Team Updates</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Chargebee Event Notifications</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">RSS Feed Updates Sent to Telegram Channel</div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(16,185,129,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Monitor Website and Send Discord Alerts</div>
-                </div>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button class="more-info-btn" id="toggle-template-showcase">See the Included Templates ↓</button>
+                <div class="template-toggle-text" id="template-toggle-text">Click to expand the template showcase</div>
             </div>
-            
-            <!-- E-commerce Category -->
-            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
-                <h3 style="color: #f59e0b; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(245,158,11,0.3);">🛒 E-commerce (10 templates)</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Direct revenue-generating automation</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Daily Shopify Sales Update to Sheets and Slack</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Powered Personal Shopper for WooCommerce Store</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">WooCommerce AI Chatbot for Post-Sales Customer Support</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Business WhatsApp AI RAG Chatbot</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Sync Stripe Payments with Customer and Product Details</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Creating an Onfleet Task for a new Shopify Fulfillment</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">AI-Enhanced WooCommerce Product Import from Google Sheets</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Form to HubSpot with AI-Powered Summary and Follow-Up</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">LinkedIn Company Search and AI-Scored CRM Update</div>
-                    <div style="background: rgba(245,158,11,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Get company logo, icon, and information and store in Airtable</div>
+
+            <div class="hidden-templates" id="hidden-template-section">
+                <div class="category-grid">
+                    <!-- AI & Research -->
+                    <div class="category-card category-ai">
+                        <div class="category-header">
+                            <div class="category-icon"><span>🤖</span></div>
+                            <div>
+                                <h3>AI & Research</h3>
+                                <p>18 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">High-demand AI automation that customers desperately want.</p>
+                        <div class="template-grid">
+                            <div class="template-item">AI-Powered Chatbot with Webhook Response</div>
+                            <div class="template-item">WhatsApp AI Assistant with Document Knowledge Base</div>
+                            <div class="template-item">OpenAI-Powered Chat Assistant for HubSpot</div>
+                            <div class="template-item">AI-Powered Email Analysis and Google Sheets Reporting</div>
+                            <div class="template-item-more">+ 14 more premium AI templates...</div>
+                        </div>
+                    </div>
+                    <!-- Email & Outreach -->
+                    <div class="category-card category-email">
+                        <div class="category-header">
+                            <div class="category-icon"><span>💌</span></div>
+                            <div>
+                                <h3>Email & Outreach</h3>
+                                <p>12 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Automate your email marketing, follow-ups, and notifications.</p>
+                        <div class="template-grid">
+                            <div class="template-item">ConvertKit Form Subscriber Notification</div>
+                            <div class="template-item">HubSpot Event Notification System</div>
+                            <div class="template-item">Calendly Event Notification</div>
+                            <div class="template-item">JotForm Submission Notification</div>
+                            <div class="template-item-more">+ 8 more premium email templates...</div>
+                        </div>
+                    </div>
+                    <!-- E-commerce -->
+                    <div class="category-card category-ecommerce">
+                        <div class="category-header">
+                            <div class="category-icon"><span>🛒</span></div>
+                            <div>
+                                <h3>E-commerce</h3>
+                                <p>10 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Streamline your online store operations from sales to support.</p>
+                        <div class="template-grid">
+                            <div class="template-item">Daily Shopify Sales Update to Sheets and Slack</div>
+                            <div class="template-item">AI-Powered Personal Shopper for WooCommerce</div>
+                            <div class="template-item">WooCommerce AI Chatbot for Post-Sales Support</div>
+                            <div class="template-item">Sync Stripe Payments with Customer Details</div>
+                            <div class="template-item-more">+ 6 more premium e-commerce templates...</div>
+                        </div>
+                    </div>
+                    <!-- Automation & Ops -->
+                    <div class="category-card category-automation">
+                        <div class="category-header">
+                            <div class="category-icon"><span>⚙️</span></div>
+                            <div>
+                                <h3>Automation & Ops</h3>
+                                <p>5 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Optimize your business processes and internal workflows.</p>
+                        <div class="template-grid">
+                            <div class="template-item">Scheduled URL Health Check and Ping Monitor</div>
+                            <div class="template-item">Create Onfleet Task from Google Drive File Updates</div>
+                            <div class="template-item">Manually Add Events to Google Calendar</div>
+                            <div class="template-item">Daily Weather Data Fetch and Airtable Storage</div>
+                            <div class="template-item-more">+ 1 more premium automation template...</div>
+                        </div>
+                    </div>
+                    <!-- Social Media & Content -->
+                    <div class="category-card category-social">
+                        <div class="category-header">
+                            <div class="category-icon"><span>📱</span></div>
+                            <div>
+                                <h3>Social Media & Content</h3>
+                                <p>5 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Automate your content pipeline and social media presence.</p>
+                        <div class="template-grid">
+                            <div class="template-item">Tweet New Strava Activities Automatically</div>
+                            <div class="template-item">Upload Video to YouTube and Add to New Playlist</div>
+                            <div class="template-item">Send Welcome Message to Discord Channel</div>
+                            <div class="template-item">Discord Bot Responds to YouTube Queries with AI</div>
+                            <div class="template-item-more">+ 1 more premium social media template...</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Automation Category -->
-            <div style="margin-bottom: 40px; padding: 20px; background: transparent; border-radius: 0;">
-                <h3 style="color: #8b5cf6; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(139,92,246,0.3);">⚙️ Automation (6 templates)</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Core productivity automation</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
-                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Scheduled URL Health Check and Ping Monitor</div>
-                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Create Onfleet Task from Google Drive File Updates</div>
-                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Manually Add Events to Google Calendar</div>
-                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Manually Create New ClickUp Task</div>
-                    <div style="background: rgba(139,92,246,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Daily Weather Data Fetch and Airtable Storage</div>
-                </div>
-            </div>
-            
-            <!-- Social Media Category -->
-            <div style="margin-bottom: 30px; padding: 20px; background: transparent; border-radius: 0;">
-                <h3 style="color: #ec4899; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(236,72,153,0.3);">📱 Social Media (4 templates)</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px; font-style: italic;">Essential social automation</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
-                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Tweet New Strava Activities Automatically</div>
-                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Upload Video to YouTube and Add to New Playlist</div>
-                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Send Welcome Message to Discord Channel</div>
-                    <div style="background: rgba(236,72,153,0.1); padding: 12px; border-radius: 6px; border: 1px solid rgba(236,72,153,0.2); color: rgba(255,255,255,0.9); backdrop-filter: blur(5px);">Discord Bot Responds to YouTube Queries with AI</div>
-                </div>
-            </div>
-            
-            <!-- Pro Expansion Teaser -->
-            <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(238, 90, 36, 0.1) 100%); border-radius: 12px; border: 2px dashed #ff6b6b; margin-top: 40px;">
-                <h3 style="color: #ff4500; font-size: 28px; margin-bottom: 15px;">🚀 PLUS: RuneRUSH PRO Expansion Available</h3>
-                <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin-bottom: 20px;">50 additional advanced templates for power users and professionals</p>
-                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
-                    <div><strong style="color: #667eea;">+12</strong> Advanced AI & Research</div>
-                    <div><strong style="color: #10b981;">+13</strong> Advanced Email Marketing</div>
-                    <div><strong style="color: #f59e0b;">+4</strong> Advanced E-commerce</div>
-                    <div><strong style="color: #8b5cf6;">+14</strong> Advanced Automation</div>
-                    <div><strong style="color: #ec4899;">+7</strong> Advanced Social Media</div>
-                </div>
-                <p style="color: rgba(255,255,255,0.7); font-size: 16px; font-style: italic;">Available as upgrade after purchase for $39 (100 total templates)</p>
-            </div>
-        </div>
-        
-        <!-- Why This Beats Building Section -->
-        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">💎 Why This Beats Building from Scratch?</h2>
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 20px; margin: 20px 0; color: #e74c3c;">🚫 "Stop wasting hours debugging workflows—these runes just work."</p>
-                <p style="font-size: 20px; margin: 20px 0; color: #27ae60; font-style: italic;">💸 "At $49, you're paying <$1 per template (vs. $100s in trial/error)."</p>
-                <p style="font-size: 20px; margin: 20px 0; color: #3498db;">⚡ "Deploy in minutes—focus on scaling, not setup."</p>
-            </div>
-        </div>
-        
-        <!-- Who This Is For Section -->
-        <div style="background: rgba(248, 249, 250, 0.9); padding: 40px; border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">🎯 Who This Is For:</h2>
-            <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto; text-align: center;">
-                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Agencies</strong> (resell to clients)</li>
-                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>SaaS Founders</strong> (automate ops)</li>
-                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Freelancers</strong> (deliver faster)</li>
-                <li style="padding: 12px 0; font-size: 18px;">✔ <strong>Indie Hackers</strong> (save 20+ hrs/month)</li>
-            </ul>
-        </div>
-        
-        <!-- Urgency Section -->
-        <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(238, 90, 36, 0.9) 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="font-size: 28px; margin-bottom: 20px;">⚠️ Urgency Triggers</h2>
-            <p style="font-size: 20px; margin: 15px 0;">🔴 "This is the ONLY weekend we're offering 50 runes at this price."</p>
-            <p style="font-size: 20px; margin: 15px 0; font-style: italic;">🔴 "Download expires Sunday midnight—no re-downloads later."</p>
-            <button class="payment-button" style="background: #f39c12; color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 20px;">🟡 Get My 50 Runes Now → $49</button>
-        </div>
-        
-        <!-- FAQ Section -->
-        <div style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 32px;">🙋‍♂️ FAQ (Pre-Objections)</h2>
-            <div style="max-width: 700px; margin: 0 auto; text-align: left;">
-                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Q: "How do I import these?"</h3>
-                    <p style="color: #666; font-size: 16px;">A: "One-click JSON upload—we include a video walkthrough."</p>
-                </div>
-                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Q: "What if I don't need 50?"</h3>
-                    <p style="color: #666; font-size: 16px; font-style: italic;">A: "Even 2-3 templates pay for themselves—the rest are profit."</p>
-                </div>
-                <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Q: "Updates?"</h3>
-                    <p style="color: #666; font-size: 16px;">A: "This is a one-time bundle, but upgrades available inside."</p>
+                <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(238, 90, 36, 0.1) 100%); border-radius: 12px; border: 2px dashed #ff6b6b; margin-top: 40px;">
+                    <h3 style="color: #ff4500; font-size: 28px; margin-bottom: 15px;">🚀 PLUS: RuneRUSH PRO Expansion Available</h3>
                 </div>
             </div>
         </div>
         
-        <!-- Final CTA Section -->
-        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); color: white; padding: 50px 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.1);">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">🔥 Last Chance: Weekend Offer Ends Sunday</h2>
-            <button class="payment-button" style="background: #10b981; color: white; padding: 25px 50px; border: none; border-radius: 50px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); margin-bottom: 20px;">🟢 Get 50 Runes Now → $49</button>
-            <p style="font-size: 18px; font-style: italic; opacity: 0.9;">PS: "You'll kick yourself paying $200 on Monday."</p>
+        <!-- Enhanced Why This Beats Building Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(34, 197, 94, 0.95) 0%, rgba(16, 185, 129, 0.95) 50%, rgba(6, 182, 212, 0.95) 100%); color: white; padding: 50px 40px; border-radius: 20px; margin-bottom: 40px; text-align: center; backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.1); overflow: hidden;">
+            <!-- Animated Background Elements -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%); animation: float 14s ease-in-out infinite; pointer-events: none;"></div>
             
-            <!-- Payment Options -->
-            <div style="margin-top: 30px;">
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
-                    <button style="background: #1a73e8; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">💳 Pay with Stripe - $49</button>
-                    <button class="payment-button coinbase-btn" style="background: #0052ff; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">₿ Pay with Coinbase - $49</button>
+            <!-- Badge -->
+            <div style="display: inline-block; background: linear-gradient(135deg, #059669, #047857); color: white; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4); animation: pulse 2.5s infinite;">
+                💎 VALUE COMPARISON 💎
+            </div>
+            
+            <h2 style="font-size: 44px; margin-bottom: 30px; font-weight: 900; text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.2;">Why This Beats Building from Scratch?</h2>
+            
+            <!-- Comparison Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 35px 0; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(239, 68, 68, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(239, 68, 68, 0.3); position: relative;">
+                    <div style="position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">BUILDING FROM SCRATCH</div>
+                    <div style="font-size: 48px; margin: 20px 0 15px 0;">🚫</div>
+                    <h3 style="color: #fef2f2; font-size: 20px; font-weight: bold; margin-bottom: 15px;">The Hard Way</h3>
+                    <ul style="text-align: left; color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.6; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;">❌ 20+ hours debugging per workflow</li>
+                        <li style="margin-bottom: 8px;">❌ $100s wasted on trial/error</li>
+                        <li style="margin-bottom: 8px;">❌ Weeks to get one automation working</li>
+                        <li style="margin-bottom: 8px;">❌ No guarantee it'll actually work</li>
+                    </ul>
                 </div>
-                <p style="font-size: 14px; opacity: 0.8;">🔒 Secure checkout • 💰 30-day guarantee • ⚡ Instant download</p>
+                
+                <div style="background: rgba(16, 185, 129, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(16, 185, 129, 0.4); position: relative; transform: scale(1.05); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);">
+                    <div style="position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">RUNERUSH TEMPLATES</div>
+                    <div style="font-size: 48px; margin: 20px 0 15px 0;">⚡</div>
+                    <h3 style="color: #ecfdf5; font-size: 20px; font-weight: bold; margin-bottom: 15px;">The Smart Way</h3>
+                    <ul style="text-align: left; color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.6; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;">✅ Deploy in under 10 minutes</li>
+                        <li style="margin-bottom: 8px;">✅ Less than $1 per battle-tested template</li>
+                        <li style="margin-bottom: 8px;">✅ Instant results, zero debugging</li>
+                        <li style="margin-bottom: 8px;">✅ 30-day money-back guarantee</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Value Proposition -->
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; margin: 30px 0; border: 1px dashed rgba(255, 255, 255, 0.3); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 24px; margin: 15px 0; font-weight: bold; color: #FFD700;">🎯 "Focus on scaling your business, not debugging workflows"</p>
+                <p style="font-size: 20px; margin: 15px 0; font-style: italic; opacity: 0.95;">💡 "These templates have already solved the problems you're about to waste weeks on"</p>
+                <p style="font-size: 18px; margin: 15px 0; color: #a7f3d0; font-weight: bold;">🚀 "Join 847 pros who chose the smart path to automation success"</p>
             </div>
         </div>
+        
+        <!-- Enhanced Who This Is For Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(139, 92, 246, 0.95) 0%, rgba(167, 139, 250, 0.95) 50%, rgba(196, 181, 253, 0.95) 100%); color: white; padding: 50px 40px; border-radius: 20px; margin-bottom: 40px; text-align: center; backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.1); overflow: hidden;">
+            <!-- Animated Background Elements -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.05) 0%, transparent 50%); animation: float 15s ease-in-out infinite; pointer-events: none;"></div>
+            
+            <!-- Badge -->
+            <div style="display: inline-block; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); animation: pulse 2.5s infinite;">
+                🎯 TARGET AUDIENCE 🎯
+            </div>
+            
+            <h2 style="font-size: 44px; margin-bottom: 30px; font-weight: 900; text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.2;">Perfect For These Professionals</h2>
+            
+            <!-- Audience Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 35px 0; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(34, 197, 94, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(34, 197, 94, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(34, 197, 94, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
+                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">🏢</div>
+                    <h3 style="color: #ecfdf5; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Agencies</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Resell these templates to clients and charge premium rates for automation services</p>
+                </div>
+                
+                <div style="background: rgba(244, 114, 182, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(244, 114, 182, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(244, 114, 182, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
+                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">🚀</div>
+                    <h3 style="color: #fdf2f8; font-size: 22px; font-weight: bold; margin-bottom: 10px;">SaaS Founders</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Automate your operations and scale without hiring expensive developers</p>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(16, 185, 129, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(16, 185, 129, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
+                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">💼</div>
+                    <h3 style="color: #ecfdf5; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Freelancers</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Deliver client projects faster and increase your hourly value significantly</p>
+                </div>
+                
+                <div style="background: rgba(59, 130, 246, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(59, 130, 246, 0.3); position: relative; transition: all 0.3s ease; transform: scale(1.05); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-3px) scale(1.07)'; this.style.boxShadow='0 20px 50px rgba(59, 130, 246, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.3)'">
+                    <div style="position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">MOST POPULAR</div>
+                    <div style="font-size: 48px; margin: 20px 0 15px 0; filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));">⚡</div>
+                    <h3 style="color: #eff6ff; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Indie Hackers</h3>
+                    <p style="color: rgba(255,255,255,0.95); font-size: 16px; margin: 0; line-height: 1.5;">Save 20+ hours per month and focus on what really matters—growing your business</p>
+                </div>
+            </div>
+            
+            <!-- Value Statement -->
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; margin: 30px 0; border: 1px dashed rgba(255, 255, 255, 0.3); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 24px; margin: 15px 0; font-weight: bold; color: #FFD700;">💡 "Whether you're scaling an agency or building your first automation"</p>
+                <p style="font-size: 20px; margin: 15px 0; font-style: italic; opacity: 0.95;">⚡ "These templates eliminate the learning curve and get you results immediately"</p>
+                <p style="font-size: 18px; margin: 15px 0; color: #c4b5fd; font-weight: bold;">🎯 "Join the automation revolution—your competition already has"</p>
+            </div>
+        </div>
+        
+        <!-- Enhanced Urgency Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(220, 38, 127, 0.95) 0%, rgba(255, 59, 59, 0.95) 50%, rgba(255, 107, 107, 0.95) 100%); color: white; padding: 50px 30px; border-radius: 20px; margin-bottom: 40px; text-align: center; backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 20px 60px rgba(255, 59, 59, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.1); overflow: hidden;">
+            <!-- Animated Background Elements -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 50%); animation: float 12s ease-in-out infinite; pointer-events: none;"></div>
+            
+            <!-- Urgent Badge -->
+            <div style="display: inline-block; background: linear-gradient(135deg, #ff1744, #f50057); color: white; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(245, 0, 87, 0.4); animation: pulse 2s infinite;">
+                🚨 LIMITED TIME ALERT 🚨
+            </div>
+            
+            <h2 style="font-size: 42px; margin-bottom: 25px; font-weight: 900; text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.2;">⏰ Don't Miss Out!</h2>
+            
+            <!-- Scarcity Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; font-weight: 900; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); margin-bottom: 10px;">48H</div>
+                    <div style="font-size: 16px; opacity: 0.9;">Time Remaining</div>
+                    <div style="font-size: 14px; opacity: 0.7; margin-top: 5px;">Then price jumps to $200</div>
+                </div>
+                <div style="background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; font-weight: 900; color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 87, 0.6); margin-bottom: 10px;">76%</div>
+                    <div style="font-size: 16px; opacity: 0.9;">Discount Expires</div>
+                    <div style="font-size: 14px; opacity: 0.7; margin-top: 5px;">Save $151 right now</div>
+                </div>
+            </div>
+            
+            <!-- Urgency Messages -->
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 1px dashed rgba(255, 255, 255, 0.3);">
+                <p style="font-size: 22px; margin: 15px 0; font-weight: bold;">🔥 "This weekend-only vault contains our most requested templates"</p>
+                <p style="font-size: 20px; margin: 15px 0; font-style: italic; opacity: 0.9;">⚠️ "No extensions, no second chances—when it's gone, it's gone forever"</p>
+                <p style="font-size: 18px; margin: 15px 0; color: #FFD700; font-weight: bold;">💎 "Join 847 automation pros who've already claimed theirs"</p>
+            </div>
+            
+            <button id="payment-btn-urgency" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #F7931E 100%); color: #1a1a2e; padding: 25px 50px; border: none; border-radius: 50px; font-size: 24px; font-weight: 900; cursor: pointer; margin-top: 25px; box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 3s ease-in-out infinite alternate;">
+                <span style="position: relative; z-index: 2;">🚀 CLAIM MY VAULT NOW → $49</span>
+                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                <i class="fas fa-bolt" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 20px;"></i>
+            </button>
+        </div>
+        
+        <!-- Enhanced FAQ Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%); padding: 50px 40px; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1), 0 8px 25px rgba(102, 126, 234, 0.1); backdrop-filter: blur(15px); border: 2px solid rgba(102, 126, 234, 0.15); overflow: hidden;">
+            <!-- Background Pattern -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 1px 1px, rgba(102, 126, 234, 0.05) 1px, transparent 0); background-size: 20px 20px; opacity: 0.3; pointer-events: none;"></div>
+            
+            <div style="position: relative; z-index: 2;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <div style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);">
+                        ❓ QUESTIONS ANSWERED ❓
+                    </div>
+                    <h2 style="color: #333; margin-bottom: 15px; font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">💡 Everything You Need to Know</h2>
+                    <p style="color: #666; font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6;">Clear answers to help you make the right decision with complete confidence</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <!-- FAQ Item 1 -->
+                    <div style="margin-bottom: 25px; padding: 30px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%); border-radius: 15px; border-left: 5px solid #10b981; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 35px rgba(16, 185, 129, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(16, 185, 129, 0.1)'">
+                        <h3 style="color: #10b981; margin-bottom: 15px; font-size: 20px; font-weight: bold; display: flex; align-items: center;">🛠️ "How do I actually import and use these templates?"</h3>
+                        <p style="color: #374151; font-size: 17px; line-height: 1.6; margin: 0;">Super simple! Each template is a one-click JSON file that imports directly into n8n. We include step-by-step video tutorials, plus detailed setup guides for every template. You'll be running your first automation in under 10 minutes.</p>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div style="margin-bottom: 25px; padding: 30px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%); border-radius: 15px; border-left: 5px solid #f59e0b; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 35px rgba(245, 158, 11, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(245, 158, 11, 0.1)'">
+                        <h3 style="color: #f59e0b; margin-bottom: 15px; font-size: 20px; font-weight: bold; display: flex; align-items: center;">💰 "What if I only use a few templates? Is it still worth it?"</h3>
+                        <p style="color: #374151; font-size: 17px; line-height: 1.6; margin: 0;">Absolutely! Even if you only use 3-4 templates, you've already saved money (equivalent services cost $30-50 each). But here's the thing—once you see how powerful these are, you'll find yourself using way more than you expected. Our customers average 12 templates in their first month.</p>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div style="margin-bottom: 25px; padding: 30px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%); border-radius: 15px; border-left: 5px solid #8b5cf6; box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 35px rgba(139, 92, 246, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(139, 92, 246, 0.1)'">
+                        <h3 style="color: #8b5cf6; margin-bottom: 15px; font-size: 20px; font-weight: bold; display: flex; align-items: center;">🔧 "Do I need technical skills to use these?"</h3>
+                        <p style="color: #374151; font-size: 17px; line-height: 1.6; margin: 0;">Not at all! These templates are designed for business owners, not developers. If you can copy and paste, you can use these. We've removed all the technical complexity—you just import, configure your API keys (we show you how), and you're live.</p>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div style="margin-bottom: 25px; padding: 30px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(251, 113, 133, 0.05) 100%); border-radius: 15px; border-left: 5px solid #ec4899; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 35px rgba(236, 72, 153, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(236, 72, 153, 0.1)'">
+                        <h3 style="color: #ec4899; margin-bottom: 15px; font-size: 20px; font-weight: bold; display: flex; align-items: center;">🆕 "Will these templates get updated? What about new ones?"</h3>
+                        <p style="color: #374151; font-size: 17px; line-height: 1.6; margin: 0;">This Weekend Vault is a one-time collection, but you'll get notifications about major updates to existing templates. Plus, we offer upgrade paths to our full collection if you want access to new templates as we create them.</p>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div style="margin-bottom: 0; padding: 30px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.05) 100%); border-radius: 15px; border-left: 5px solid #3b82f6; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 35px rgba(59, 130, 246, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(59, 130, 246, 0.1)'">
+                        <h3 style="color: #3b82f6; margin-bottom: 15px; font-size: 20px; font-weight: bold; display: flex; align-items: center;">🛡️ "What if these don't work for my business?"</h3>
+                        <p style="color: #374151; font-size: 17px; line-height: 1.6; margin: 0;">We're so confident you'll love these templates that we offer a 30-day money-back guarantee. If you're not completely satisfied, just email us and we'll refund every penny. No questions asked, no hassles.</p>
+                    </div>
+                </div>
+                
+                <!-- Trust Badge -->
+                <div style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); border-radius: 15px; border: 2px dashed #22c55e;">
+                    <div style="color: #16a34a; font-size: 20px; font-weight: bold; margin-bottom: 10px;">💚 Still Have Questions?</div>
+                    <p style="color: #374151; font-size: 16px; margin: 0;">Email us at <strong>support@runerush.com</strong> and we'll get back to you within 2 hours</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Final CTA Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(17, 24, 39, 0.98) 0%, rgba(31, 41, 55, 0.98) 30%, rgba(55, 65, 81, 0.98) 60%, rgba(102, 126, 234, 0.98) 100%); color: white; padding: 60px 30px; border-radius: 25px; text-align: center; backdrop-filter: blur(20px); border: 3px solid rgba(255, 215, 0, 0.3); margin-bottom: 40px; box-shadow: 0 30px 80px rgba(102, 126, 234, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.1); overflow: hidden;">
+            <!-- Dynamic Background Effects -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.08) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(102, 126, 234, 0.06) 0%, transparent 50%); animation: float 18s ease-in-out infinite; pointer-events: none;"></div>
+            <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.03), transparent, rgba(102, 126, 234, 0.03), transparent); animation: rotate 30s linear infinite; pointer-events: none; opacity: 0.5;"></div>
+            
+            <div style="position: relative; z-index: 2;">
+                <!-- Final Call Badge -->
+                <div style="display: inline-block; background: linear-gradient(135deg, #ff1744, #f50057, #e91e63); color: white; padding: 12px 30px; border-radius: 35px; font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(245, 0, 87, 0.4); animation: pulse 2.5s infinite;">
+                    🔥 FINAL CALL 🔥
+                </div>
+                
+                <h2 style="font-size: 48px; margin-bottom: 25px; font-weight: 900; text-shadow: 0 6px 30px rgba(0,0,0,0.4); line-height: 1.1; background: linear-gradient(135deg, #FFD700, #FF6B35, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">⏰ Last Chance: Weekend Vault Closes Sunday</h2>
+                
+                <!-- Value Proposition -->
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; margin: 30px 0; backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2);">
+                    <p style="font-size: 24px; margin-bottom: 15px; font-weight: bold; color: #FFD700;">🎯 Don't Let This Slip Away</p>
+                    <p style="font-size: 18px; line-height: 1.6; margin: 15px 0; opacity: 0.95;">847 automation pros have already transformed their businesses with these templates. Join them before the vault locks forever.</p>
+                    
+                    <!-- Final Benefits -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 25px 0; text-align: left;">
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                            <div style="color: #10b981; font-size: 20px; font-weight: bold; margin-bottom: 8px;">⚡ Instant Access</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 14px;">Download in under 60 seconds</div>
+                        </div>
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.3);">
+                            <div style="color: #f59e0b; font-size: 20px; font-weight: bold; margin-bottom: 8px;">💰 Save $151</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 14px;">76% off regular price</div>
+                        </div>
+                        <div style="background: rgba(139, 92, 246, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3);">
+                            <div style="color: #8b5cf6; font-size: 20px; font-weight: bold; margin-bottom: 8px;">🛡️ Risk-Free</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 14px;">30-day money-back guarantee</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main CTA Button -->
+                <button id="payment-btn-final" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 30%, #F7931E 60%, #10b981 100%); color: #1a1a2e; padding: 30px 60px; border: none; border-radius: 60px; font-size: 28px; font-weight: 900; cursor: pointer; box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4), 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 25px; transition: all 0.3s ease; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 4s ease-in-out infinite alternate;">
+                    <span style="position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">🚀 GET MY WEEKEND VAULT → $49</span>
+                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                    <i class="fas fa-rocket" style="position: absolute; right: 25px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 22px;"></i>
+                </button>
+                
+                <!-- Social Proof -->
+                <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 15px; margin: 25px 0; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="color: #4ade80; font-size: 32px; font-weight: 900;">847</div>
+                            <div style="color: rgba(255,255,255,0.7); font-size: 14px;">Happy Customers</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="color: #fbbf24; font-size: 32px; font-weight: 900;">4.9★</div>
+                            <div style="color: rgba(255,255,255,0.7); font-size: 14px;">Average Rating</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="color: #f87171; font-size: 32px; font-weight: 900;">48H</div>
+                            <div style="color: rgba(255,255,255,0.7); font-size: 14px;">Time Remaining</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="font-size: 20px; font-style: italic; opacity: 0.9; margin: 20px 0;">💡 "Monday morning, you'll either be automating your business or wishing you had"</p>
+                
+                <!-- Payment Options -->
+                <div style="margin-top: 35px;">
+                    <div style="margin-bottom: 25px;">
+                        <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 20px;">Choose your preferred payment method:</p>
+                        <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                            <button id="stripe-btn" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #1a73e8, #4285f4, #1565c0); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(26, 115, 232, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
+                                <span style="position: relative; z-index: 2;">💳 Stripe Checkout - $49</span>
+                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                            </button>
+                            <button id="coinbase-btn" class="payment-button enhanced-btn coinbase-btn" style="position: relative; background: linear-gradient(135deg, #0052ff, #1652f0, #0040e6); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(0, 82, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
+                                <span style="position: relative; z-index: 2;">₿ Crypto Payment - $49</span>
+                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Trust Signals -->
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                            <span style="color: #10b981; font-size: 16px;">🔒</span>
+                            <span>256-bit SSL Encryption</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                            <span style="color: #f59e0b; font-size: 16px;">💰</span>
+                            <span>30-Day Money Back</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                            <span style="color: #8b5cf6; font-size: 16px;">⚡</span>
+                            <span>Instant Download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Complete Collection Section -->
+        <div style="position: relative; background: linear-gradient(135deg, rgba(20, 20, 40, 0.98) 0%, rgba(40, 20, 60, 0.98) 50%, rgba(60, 20, 40, 0.98) 100%); padding: 60px 40px; border-radius: 20px; margin: 50px 0; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1); border: 2px solid rgba(255, 215, 0, 0.3); overflow: hidden;">
+            <!-- Animated Background Elements -->
+            <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(102, 126, 234, 0.03) 0%, transparent 50%); animation: float 20s ease-in-out infinite; pointer-events: none;"></div>
+            
+            <!-- Premium Badge -->
+            <div style="display: inline-block; background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1a2e; padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">
+                ⚡ ULTIMATE TEMPLATE VAULT ⚡
+            </div>
+            
+            <h2 style="background: linear-gradient(135deg, #FFD700, #FF6B35, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; margin-bottom: 25px; font-size: 42px; font-weight: 900; text-shadow: 0 0 30px rgba(255, 215, 0, 0.3); line-height: 1.2;">🏆 Master Collection Access</h2>
+            
+            <!-- Value Proposition -->
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin: 30px 0; backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2);">
+                <p style="font-size: 24px; margin-bottom: 15px; color: #FFD700; font-weight: bold; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);">🎯 Everything You Need to Dominate Automation</p>
+                <p style="font-size: 18px; color: rgba(255,255,255,0.9); line-height: 1.6; margin-bottom: 20px;">Get instant access to our complete arsenal of over 8,100 meticulously crafted n8n templates, exclusive bonus content, and lifetime updates. This isn't just a collection—it's your automation empire.</p>
+                
+                <!-- Feature Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 25px 0; text-align: left;">
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(102, 126, 234, 0.3);">
+                        <div style="color: #667eea; font-size: 18px; font-weight: bold; margin-bottom: 8px;">🤖 8,100+ Templates</div>
+                        <div style="color: rgba(255,255,255,0.8); font-size: 14px;">Complete automation library</div>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                        <div style="color: #10b981; font-size: 18px; font-weight: bold; margin-bottom: 8px;">🎁 Exclusive Bonuses</div>
+                        <div style="color: rgba(255,255,255,0.8); font-size: 14px;">Worth $500+ in extras</div>
+                    </div>
+                    <div style="background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.3);">
+                        <div style="color: #f59e0b; font-size: 18px; font-weight: bold; margin-bottom: 8px;">♾️ Lifetime Access</div>
+                        <div style="color: rgba(255,255,255,0.8); font-size: 14px;">All future updates included</div>
+                    </div>
+                    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(139, 92, 246, 0.3);">
+                        <div style="color: #8b5cf6; font-size: 18px; font-weight: bold; margin-bottom: 8px;">🏅 VIP Support</div>
+                        <div style="color: rgba(255,255,255,0.8); font-size: 14px;">Priority assistance</div>
+                    </div>
+                </div>
+                
+                <!-- Auto-Scrolling Template List -->
+                <div style="margin: 30px 0; background: rgba(0, 0, 0, 0.2); border-radius: 15px; padding: 20px; border: 1px solid rgba(255, 215, 0, 0.1);">
+                    <h3 style="color: #FFD700; font-size: 20px; font-weight: bold; margin-bottom: 15px; text-align: center;">📋 Template Collection Preview</h3>
+                    <div id="template-scroll-container" style="height: 300px; overflow-y: auto; background: rgba(0, 0, 0, 0.3); border-radius: 10px; padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.8;">
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI-Powered Chatbot with Webhook Response Handler</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 WhatsApp AI Assistant with Document Knowledge Base</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 OpenAI-Powered Chat Assistant for HubSpot Support</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI-Powered Email Analysis and Google Sheets Reporting</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 Telegram AI Assistant with Web Search Capability</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI Voice Chat using Webhook, Memory Manager, OpenAI & ElevenLabs</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 Personal Shopper Chatbot for WooCommerce with RAG</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI chatbot that can search the web</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI Customer feedback sentiment analysis</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(102, 126, 234, 0.1); border-radius: 5px; border-left: 3px solid #667eea;">🤖 AI Agent for Google Calendar Assistant using OpenAI</div>
+                            
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 ConvertKit Form Subscriber Notification</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 HubSpot Event Notification System</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 Calendly Event Notification</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 JotForm Submission Notification</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 Create and Send Outlook Draft with Attachment</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(16, 185, 129, 0.1); border-radius: 5px; border-left: 3px solid #10b981;">📧 MailChimp Activity Notification</div>
+                            
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-radius: 5px; border-left: 3px solid #f59e0b;">🛒 Daily Shopify Sales Update to Sheets and Slack</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-radius: 5px; border-left: 3px solid #f59e0b;">🛒 AI-Powered Personal Shopper for WooCommerce Store</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-radius: 5px; border-left: 3px solid #f59e0b;">🛒 WooCommerce AI Chatbot for Post-Sales Customer Support</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-radius: 5px; border-left: 3px solid #f59e0b;">🛒 Business WhatsApp AI RAG Chatbot</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-radius: 5px; border-left: 3px solid #f59e0b;">🛒 Sync Stripe Payments with Customer and Product Details</div>
+                            
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(139, 92, 246, 0.1); border-radius: 5px; border-left: 3px solid #8b5cf6;">⚙️ Scheduled URL Health Check and Ping Monitor</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(139, 92, 246, 0.1); border-radius: 5px; border-left: 3px solid #8b5cf6;">⚙️ Create Onfleet Task from Google Drive File Updates</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(139, 92, 246, 0.1); border-radius: 5px; border-left: 3px solid #8b5cf6;">⚙️ Manually Add Events to Google Calendar</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(139, 92, 246, 0.1); border-radius: 5px; border-left: 3px solid #8b5cf6;">⚙️ Manually Create New ClickUp Task</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(139, 92, 246, 0.1); border-radius: 5px; border-left: 3px solid #8b5cf6;">⚙️ Daily Weather Data Fetch and Airtable Storage</div>
+                            
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(236, 72, 153, 0.1); border-radius: 5px; border-left: 3px solid #ec4899;">📱 Tweet New Strava Activities Automatically</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(236, 72, 153, 0.1); border-radius: 5px; border-left: 3px solid #ec4899;">📱 Upload Video to YouTube and Add to New Playlist</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(236, 72, 153, 0.1); border-radius: 5px; border-left: 3px solid #ec4899;">📱 Send Welcome Message to Discord Channel</div>
+                            <div style="margin-bottom: 10px; padding: 8px; background: rgba(236, 72, 153, 0.1); border-radius: 5px; border-left: 3px solid #ec4899;">📱 Discord Bot Responds to YouTube Queries with AI</div>
+                            
+                            <div style="color: rgba(255, 215, 0, 0.8); text-align: center; font-weight: bold; margin: 20px 0; font-size: 16px;">... and 8,000+ more premium templates!</div>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 10px; font-style: italic;">Scroll to explore • All templates include one-click JSON imports</p>
+                </div>
+            </div>
+            
+            <!-- Pricing & Scarcity -->
+            <div style="margin: 30px 0;">
+                <div style="background: rgba(255, 107, 107, 0.1); border: 2px dashed #ff4757; border-radius: 15px; padding: 20px; margin-bottom: 25px;">
+                    <p style="font-size: 16px; color: #ff4757; font-weight: bold; margin: 0;">⚠️ EXCLUSIVE RELEASE: Only 50 Master Vaults Available</p>
+                </div>
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
+                    <div style="text-align: center;">
+                        <div style="color: rgba(255,255,255,0.6); font-size: 16px; text-decoration: line-through;">Regular Price: $2,500</div>
+                        <div style="color: #FFD700; font-size: 48px; font-weight: 900; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">$499</div>
+                        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; display: inline-block;">Save $2,001 (80% OFF)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <button class="purchase-complete-collection" onclick="handleCompleteCollectionClick()" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #667eea 100%); color: #1a1a2e; padding: 25px 50px; border: none; border-radius: 50px; font-size: 24px; font-weight: 900; cursor: pointer; box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4), 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; overflow: hidden;">
+                <span style="position: relative; z-index: 2;">🚀 Claim Your Master Vault → $499</span>
+                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+            </button>
+            <a href="purchase.html?product=core" class="decline-link">No thank you, I'll just take the 50 runes for now.</a>
+            
+            <!-- Trust Signals -->
+            <div style="margin-top: 25px; color: rgba(255,255,255,0.7); font-size: 14px;">
+                🔒 Secure Checkout • ⚡ Instant Download • 💰 30-Day Guarantee
+            </div>
+        </div>
+        
+        <style>
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-10px, -10px) rotate(1deg); }
+            66% { transform: translate(10px, -5px) rotate(-1deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(245, 0, 87, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(245, 0, 87, 0.6);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+            }
+            50% {
+                box-shadow: 0 20px 50px rgba(255, 215, 0, 0.6), inset 0 2px 0 rgba(255,255,255,0.3);
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .purchase-complete-collection:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5), 0 10px 20px rgba(0,0,0,0.3) !important;
+            background: linear-gradient(135deg, #FFEDA0 0%, #FF8C42 50%, #8A63D2 100%);
+        }
+        
+        .purchase-complete-collection:hover div {
+            left: 100%;
+        }
+        
+        .purchase-complete-collection:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        .decline-link {
+            display: block;
+            margin-top: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .decline-link:hover {
+            color: #ffffff;
+        }
+        </style>
     </div>
+        </div>
 
     <script>
         // Global function scope - must be accessible from onclick
@@ -1262,6 +2240,43 @@
             setInterval(updateCountdown, 1000);
         }
         
+        function initTemplateShowcaseToggle() {
+            const toggleButton = document.getElementById('toggle-template-showcase');
+            const hiddenSection = document.getElementById('hidden-template-section');
+            const toggleText = document.getElementById('template-toggle-text');
+
+            console.log('Toggle button:', toggleButton);
+            console.log('Hidden section:', hiddenSection);
+            console.log('Toggle text:', toggleText);
+
+            if (toggleButton && hiddenSection && toggleText) {
+                toggleButton.addEventListener('click', () => {
+                    console.log('Toggle button clicked');
+                    const isHidden = hiddenSection.style.display === 'none' || hiddenSection.style.display === '';
+                    console.log('Is hidden:', isHidden);
+                    
+                    if (isHidden) {
+                        hiddenSection.style.display = 'block';
+                        toggleButton.textContent = 'Hide Templates';
+                        toggleText.textContent = 'Click to collapse the template showcase';
+                        console.log('Showing templates');
+                    } else {
+                        hiddenSection.style.display = 'none';
+                        toggleButton.textContent = 'Show More Templates';
+                        toggleText.textContent = 'Click to expand the template showcase';
+                        console.log('Hiding templates');
+                    }
+                });
+                console.log('Toggle functionality initialized successfully');
+            } else {
+                console.error('Missing elements for toggle functionality:', {
+                    toggleButton: !!toggleButton,
+                    hiddenSection: !!hiddenSection,
+                    toggleText: !!toggleText
+                });
+            }
+        }
+
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Animation loaded successfully');
@@ -1271,6 +2286,12 @@
             
             // Initialize payment functionality
             initPaymentButtons();
+            
+            // Initialize auto-scrolling template list
+            initAutoScrollingTemplateList();
+            
+            // Initialize template showcase toggle
+            initTemplateShowcaseToggle();
             
             // Add click event listener as backup
             const ctaButton = document.querySelector('.cta-button');
@@ -1350,10 +2371,6 @@
                 console.log('Added payment handler to button:', button.textContent);
             });
             
-            // Also handle Stripe and PayPal specific buttons
-            const stripeButtons = document.querySelectorAll('button:contains("Stripe")');
-            const paypalButtons = document.querySelectorAll('button:contains("PayPal")');
-            
             // Find buttons by text content since CSS selectors don't support :contains
             document.querySelectorAll('button').forEach(button => {
                 if (button.textContent.includes('Stripe')) {
@@ -1379,17 +2396,135 @@
                 });
             }
             
-            // Redirect immediately to purchase screen
-            window.location.href = 'purchase.html';
+            // Redirect immediately to purchase screen with product parameter
+            window.location.href = 'purchase.html?product=core';
         }
         
         // These functions are now simplified since we handle everything in handlePaymentClick
         async function handleStripePayment() {
-            window.location.href = 'purchase.html';
+            window.location.href = 'purchase.html?product=core';
         }
         
         async function handlePayPalPayment() {
-            window.location.href = 'purchase.html';
+            window.location.href = 'purchase.html?product=core';
+        }
+        
+        // Complete Collection handler
+        window.handleCompleteCollectionClick = function() {
+            console.log('Complete Collection button clicked');
+            
+            // Track analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'begin_checkout', {
+                    event_category: 'Purchase Flow',
+                    event_label: 'Complete Collection from Landing Page',
+                    value: 499
+                });
+            }
+            
+            // Redirect directly to Stripe payment link
+            window.location.href = 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00';
+        };
+        
+        // Auto-scrolling template list functionality
+        let autoScrollInterval;
+        let isUserControlling = false;
+        
+        function initAutoScrollingTemplateList() {
+            const scrollContainer = document.getElementById('template-scroll-container');
+            if (!scrollContainer) return;
+            
+            let scrollDirection = 1; // 1 for down, -1 for up
+            let scrollSpeed = 1; // pixels per interval
+            
+            function autoScroll() {
+                if (isUserControlling) return;
+                
+                const currentScroll = scrollContainer.scrollTop;
+                const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+                
+                // Change direction when reaching top or bottom
+                if (currentScroll >= maxScroll) {
+                    scrollDirection = -1;
+                } else if (currentScroll <= 0) {
+                    scrollDirection = 1;
+                }
+                
+                // Scroll smoothly
+                scrollContainer.scrollTop += scrollDirection * scrollSpeed;
+            }
+            
+            // Start auto-scrolling
+            function startAutoScroll() {
+                if (!autoScrollInterval) {
+                    autoScrollInterval = setInterval(autoScroll, 50); // 50ms intervals for smooth scrolling
+                }
+            }
+            
+            // Stop auto-scrolling
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
+            }
+            
+            // Event listeners for user interaction
+            scrollContainer.addEventListener('mouseenter', () => {
+                isUserControlling = true;
+                stopAutoScroll();
+            });
+            
+            scrollContainer.addEventListener('mouseleave', () => {
+                isUserControlling = false;
+                setTimeout(() => {
+                    if (!isUserControlling) {
+                        startAutoScroll();
+                    }
+                }, 1000); // Resume after 1 second delay
+            });
+            
+            scrollContainer.addEventListener('wheel', () => {
+                isUserControlling = true;
+                stopAutoScroll();
+                setTimeout(() => {
+                    if (!isUserControlling) {
+                        startAutoScroll();
+                    }
+                }, 3000); // Resume after 3 seconds of no wheel activity
+            });
+            
+            scrollContainer.addEventListener('touchstart', () => {
+                isUserControlling = true;
+                stopAutoScroll();
+            });
+            
+            scrollContainer.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    isUserControlling = false;
+                    startAutoScroll();
+                }, 2000); // Resume after 2 seconds on mobile
+            });
+            
+            // Focus and blur events for keyboard navigation
+            scrollContainer.addEventListener('focus', () => {
+                isUserControlling = true;
+                stopAutoScroll();
+            });
+            
+            scrollContainer.addEventListener('blur', () => {
+                isUserControlling = false;
+                setTimeout(() => {
+                    if (!isUserControlling) {
+                        startAutoScroll();
+                    }
+                }, 1000);
+            });
+            
+            // Start the auto-scroll initially
+            setTimeout(() => {
+                startAutoScroll();
+            }, 2000); // Start after 2 seconds delay
         }
     </script>
     

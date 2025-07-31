@@ -12,7 +12,8 @@ class StripeService {
         this.products = {
             core: 'prod_SlL1zWArTK3AHs',
             pro_bundle: 'prod_SlL8jakWjh1bNn',
-            pro_upgrade: 'prod_SlL5k4eZntQCK9'
+            pro_upgrade: 'prod_SlL5k4eZntQCK9',
+            complete_collection: 'prod_SlL9CompleteCollection' // $499 Complete Collection
         };
     }
 
@@ -58,12 +59,36 @@ class StripeService {
                         quantity: 1,
                     }];
                     break;
+                case 'complete_collection':
+                    lineItems = [{
+                        price_data: {
+                            currency: 'usd',
+                            product: this.products.complete_collection,
+                            unit_amount: 49900, // $499
+                        },
+                        quantity: 1,
+                    }];
+                    break;
                 default:
                     throw new Error('Invalid product type');
             }
 
             const session = await this.stripe.checkout.sessions.create({
-                payment_method_types: ['card'],
+                payment_method_types: [
+                    'card',
+                    'klarna',
+                    'afterpay_clearpay',
+                    'affirm',
+                    'bancontact',
+                    'ideal',
+                    'sofort',
+                    'p24',
+                    'giropay',
+                    'eps',
+                    'grabpay',
+                    'wechat_pay',
+                    'alipay'
+                ],
                 line_items: lineItems,
                 mode: mode,
                 success_url: successUrl,
@@ -75,8 +100,17 @@ class StripeService {
                     customer_name: customerName
                 },
                 billing_address_collection: 'auto',
+                automatic_tax: {
+                    enabled: true,
+                },
                 // shipping_address_collection removed for digital products
                 allow_promotion_codes: true, // Allow discount codes
+                invoice_creation: {
+                    enabled: true,
+                },
+                payment_intent_data: {
+                    setup_future_usage: 'off_session', // For future payments
+                },
             });
 
             return {
@@ -188,20 +222,87 @@ class StripeService {
      */
     async handleCheckoutSessionCompleted(session) {
         try {
-            const { id, amount_total, metadata, customer_email } = session;
-            const { product_type, customer_name } = metadata;
+            console.log('Processing checkout session:', session.id);
+            
+            // Retrieve the session with expanded line items to get product metadata
+            const sessionWithLineItems = await this.stripe.checkout.sessions.retrieve(
+                session.id,
+                { expand: ['line_items.data.price.product', 'customer'] }
+            );
 
-            // Process the same way as payment intent success
+            console.log('Session details:', {
+                session_id: sessionWithLineItems.id,
+                customer_email: sessionWithLineItems.customer_details?.email || sessionWithLineItems.customer?.email,
+                payment_status: sessionWithLineItems.payment_status,
+                line_items_count: sessionWithLineItems.line_items.data.length
+            });
+
+            const lineItems = sessionWithLineItems.line_items.data;
+            if (lineItems.length === 0) {
+                throw new Error('No line items found in checkout session');
+            }
+
+            const product = lineItems[0].price.product;
+            console.log('Product metadata:', product.metadata);
+            
+            // Try to get product_type from multiple sources
+            let product_type = product.metadata?.product_type || 
+                              sessionWithLineItems.metadata?.product_type;
+            
+            // If still no product_type, try to infer from product name or ID
+            if (!product_type) {
+                const productName = product.name?.toLowerCase() || '';
+                if (productName.includes('core')) product_type = 'core';
+                else if (productName.includes('pro bundle')) product_type = 'pro_bundle';
+                else if (productName.includes('complete')) product_type = 'complete_collection';
+                else if (productName.includes('upgrade')) product_type = 'pro_upgrade';
+            }
+
+            if (!product_type) {
+                console.error('No product_type found. Product:', product);
+                throw new Error(`Product ${product.id} is missing 'product_type' metadata and cannot be inferred.`);
+            }
+
+            // Get customer info from multiple possible sources
+            const customer_email = sessionWithLineItems.customer_details?.email || 
+                                 sessionWithLineItems.customer?.email ||
+                                 sessionWithLineItems.metadata?.customer_email;
+            
+            const customer_name = sessionWithLineItems.customer_details?.name || 
+                                sessionWithLineItems.customer?.name ||
+                                sessionWithLineItems.metadata?.customer_name ||
+                                'Customer';
+
+            if (!customer_email) {
+                throw new Error('No customer email found in session');
+            }
+
+            console.log(`Processing order for ${customer_email} - ${product_type}`);
+
+            // Process the order
             await this.processSuccessfulOrder({
-                payment_id: id,
-                amount: amount_total,
+                payment_id: session.id,
+                amount: sessionWithLineItems.amount_total,
                 customer_email,
                 customer_name,
                 product_type,
-                payment_method: 'stripe_checkout'
+                payment_method: 'stripe_payment_link'
             });
 
-            console.log(`✅ Checkout session completed for ${customer_email} - ${product_type}`);
+            console.log(`✅ Payment link checkout completed for ${customer_email} - ${product_type}`);
+
+            // Get the user's license key for email notification
+            const user = await db.getUserByEmail(customer_email);
+            if (!user) {
+                throw new Error('User not found after successful order processing');
+            }
+
+            // Send success email with download link
+            const downloadUrl = `${process.env.FRONTEND_URL || 'https://yourdomain.com'}/downloads?key=${user.license_key}`;
+            console.log(`Download URL for ${customer_email}: ${downloadUrl}`);
+            
+            // Note: You might want to send this via email rather than relying on redirect
+            // since Payment Links handle their own redirect flow
         } catch (error) {
             console.error('Checkout session completion handling failed:', error);
             throw error;
@@ -244,8 +345,8 @@ class StripeService {
 
             if (existingUser) {
                 user = existingUser;
-                // Update to lifetime if upsell
-                if (product_type === 'upsell' || product_type === 'pro_bundle') {
+                // Update to lifetime if upsell, pro_bundle, or complete_collection
+                if (product_type === 'upsell' || product_type === 'pro_bundle' || product_type === 'complete_collection') {
                     await db.run('UPDATE users SET is_lifetime = 1 WHERE id = ?', [user.id]);
                     user.is_lifetime = 1;
                 }
@@ -260,7 +361,7 @@ class StripeService {
                     license_key: licenseKey,
                     first_name,
                     last_name,
-                    is_lifetime: (product_type === 'upsell' || product_type === 'pro_bundle') ? 1 : 0
+                    is_lifetime: (product_type === 'upsell' || product_type === 'pro_bundle' || product_type === 'complete_collection') ? 1 : 0
                 });
 
                 user = await db.getUserByEmail(customer_email);
