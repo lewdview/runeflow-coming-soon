@@ -1,0 +1,30 @@
+# Ignore large template collections and unnecessary files
+FINAL_COLLECTIONS/
+templates/
+archive-old-zips/
+assets/
+RUNERUSH_COMPLETE_UPDATED/
+
+# Development files
+.git/
+node_modules/
+*.log
+.DS_Store
+*.zip
+*.json.backup*
+
+# Test files
+test-*.js
+debug-*.html
+
+# Documentation
+*.md
+!README.md
+
+# Scripts not needed in production
+copy_*.sh
+generate_*.py
+create_*.py
+analyze_*.py
+update_*.py
+runerush_sale_organizer.py
