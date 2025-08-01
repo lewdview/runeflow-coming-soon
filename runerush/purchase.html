@@ -1005,7 +1005,7 @@ function toggleProductSelection(product, card) {
                     first_name: customerData.firstName,
                     last_name: customerData.lastName,
                     product_type: productType,
-                    success_url: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}&product_type=' + productType,
+                    success_url: 'https://runeflow.xyz/runerush/success.html?session_id={CHECKOUT_SESSION_ID}&product_type=' + productType,
                     cancel_url: window.location.origin + '/purchase.html',
                     metadata: {
                         company: customerData.company || '',

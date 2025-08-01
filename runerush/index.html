@@ -265,7 +265,7 @@
         
         .runerush-fragment {
             position: absolute;
-            font-size: 120px;
+            font-size: clamp(60px, 12vw, 120px);
             font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
             color: #ff4500;
@@ -327,10 +327,10 @@
             animation: fragmentAssemble 2s 5.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         
-        /* Final assembled logo */
+        /* Final assembled logo - Responsive */
         .runerush-final {
             position: absolute;
-            font-size: 120px;
+            font-size: clamp(60px, 12vw, 120px);
             font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
             color: #ff4500;
@@ -1309,7 +1309,23 @@
             }
 
             .stats-container {
-                margin-bottom: 30px !important;
+                margin-bottom: 40px !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 25px !important;
+            }
+
+            /* Individual stat cards spacing */
+            .countdown-card, .social-proof-card {
+                width: 100% !important;
+                max-width: 320px !important;
+                margin: 0 auto 15px auto !important;
+            }
+
+            /* CTA Container spacing */
+            .cta-container {
+                margin-top: 30px !important;
+                padding-top: 25px !important;
             }
 
             .hero-container h1[style] {
@@ -1340,11 +1356,6 @@
             .hero-container, .benefits-section, .template-showcase, [style*="padding: 60px"], [style*="padding: 50px"], [style*="padding: 40px"] {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
-            }
-
-            .stats-container {
-                flex-direction: column;
-                gap: 20px !important;
             }
 
             .payment-button, .enhanced-btn {
@@ -1614,28 +1625,112 @@
 
 <div class="hidden-templates" id="hidden-template-section">
                 <div class="category-grid">
-                    <div class="template-grid">
-                        <div class="template-item">AI Social Media Caption Creator</div>
-                        <div class="template-item">Amazon Ads AI Optimization</div>
-                        <div class="template-item">Generate Instagram Content from Top Trends with AI Image Generation</div>
-                        <div class="template-item">Social Media AI Agent (Telegram)</div>
-                        <div class="template-item">AI Social Video Generator with GPT-4</div>
-                        <div class="template-item">AI Automated TikTok/YouTube Shorts/Reels Generator</div>
-                        <div class="template-item">AI Social Media Publisher from WordPress</div>
-                        <div class="template-item">AI-Powered YouTube Playlist Video Summarization and Analysis</div>
-                        <div class="template-item">Ultimate AI-Powered Chatbot for YouTube Summarization & Analysis</div>
-                        <div class="template-item">YouTube Comment Sentiment Analyzer</div>
-                        <div class="template-item">Analyze YouTube Video for Summaries, Transcripts, Content (Google Gemini AI)</div>
-                        <div class="template-item">Post New YouTube Videos to X (Twitter)</div>
-                        <div class="template-item">Simple LinkedIn Profile Collector</div>
-                        <div class="template-item">Convert YouTube Videos into SEO Blog Posts</div>
-                        <div class="template-item">Create Email Campaign From LinkedIn Post Interactions</div>
-                        <div class="template-item">Generate Company Stories from LinkedIn with Bright Data Google Gemini AI</div>
-                        <div class="template-item">LinkedIn Leads Scraping & Enrichment</div>
-                        <div class="template-item">Scrape Twitter for Mentions of Company</div>
-                        <div class="template-item">Online Marketing Weekly Report</div>
-                        <div class="template-item">Automated Social Media Content Publishing Factory System</div>
+                    <!-- AI-Powered Social Media Automation -->
+                    <div class="category-card category-social">
+                        <div class="category-header">
+                            <div class="category-icon"><span>🤖</span></div>
+                            <div>
+                                <h3>AI-Powered Social Media</h3>
+                                <p>15 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Advanced AI automation for content creation and social media management.</p>
+                        <div class="template-grid">
+                            <div class="template-item">AI Social Media Caption Creator</div>
+                            <div class="template-item">AI Social Video Generator with GPT-4</div>
+                            <div class="template-item">AI Automated TikTok/YouTube Shorts/Reels Generator</div>
+                            <div class="template-item">AI Social Media Publisher from WordPress</div>
+                            <div class="template-item">Social Media AI Agent (Telegram)</div>
+                            <div class="template-item">AI-Powered Instagram Content from Trending Topics</div>
+                            <div class="template-item">AI-Powered Social Media Caption Generator from Airtable</div>
+                            <div class="template-item">AI-Powered Social Media Content Manager for Telegram</div>
+                            <div class="template-item">AI-Powered Social Media Post Creator for Telegram</div>
+                            <div class="template-item">AI-Powered Social Video Creation and Multi-Platform Posting</div>
+                            <div class="template-item">AI-Powered Social Video Creation from Telegram Input</div>
+                            <div class="template-item">AI-Powered Twitter Interaction and Response</div>
+                            <div class="template-item">AI-Powered Video Creation and Social Media Distribution</div>
+                            <div class="template-item">AI-Powered Video Creation for Social Media Platforms</div>
+                            <div class="template-item">AI-Powered WordPress to Social Media Publisher</div>
+                        </div>
                     </div>
+                    
+                    <!-- YouTube & Video Automation -->
+                    <div class="category-card category-youtube">
+                        <div class="category-header">
+                            <div class="category-icon"><span>📺</span></div>
+                            <div>
+                                <h3>YouTube & Video Automation</h3>
+                                <p>12 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Comprehensive YouTube content analysis, automation, and optimization tools.</p>
+                        <div class="template-grid">
+                            <div class="template-item">AI-Powered YouTube Playlist Video Summarization and Analysis</div>
+                            <div class="template-item">Ultimate AI-Powered Chatbot for YouTube Summarization & Analysis</div>
+                            <div class="template-item">YouTube Comment Sentiment Analyzer</div>
+                            <div class="template-item">Analyze YouTube Video for Summaries, Transcripts, Content (Google Gemini AI)</div>
+                            <div class="template-item">Post New YouTube Videos to X (Twitter)</div>
+                            <div class="template-item">Convert YouTube Videos into SEO Blog Posts</div>
+                            <div class="template-item">AI News Aggregator and YouTube Playlist Generator</div>
+                            <div class="template-item">YouTube Channel Updates to Personalized Email Digest</div>
+                            <div class="template-item">YouTube Video Analysis and Content Generation</div>
+                            <div class="template-item">YouTube Automation (Complex 33 Nodes)</div>
+                            <div class="template-item">Generate Instagram Content from Top Trends with AI Image Generation</div>
+                            <div class="template-item">Search News using Perplexity AI and Post to X Twitter</div>
+                        </div>
+                    </div>
+                    
+                    <!-- LinkedIn & Professional Networks -->
+                    <div class="category-card category-linkedin">
+                        <div class="category-header">
+                            <div class="category-icon"><span>💼</span></div>
+                            <div>
+                                <h3>LinkedIn & Professional Networks</h3>
+                                <p>13 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Professional networking automation, lead generation, and content strategies.</p>
+                        <div class="template-grid">
+                            <div class="template-item">Simple LinkedIn Profile Collector</div>
+                            <div class="template-item">Create Email Campaign From LinkedIn Post Interactions</div>
+                            <div class="template-item">Generate Company Stories from LinkedIn with Bright Data Google Gemini AI</div>
+                            <div class="template-item">LinkedIn Leads Scraping & Enrichment</div>
+                            <div class="template-item">LinkedIn Web Scraping with Bright Data MCP Server Google Gemini</div>
+                            <div class="template-item">LinkedIn Company Search and AI-Scored CRM Update</div>
+                            <div class="template-item">LinkedIn Lead Scraping and Enrichment Automation</div>
+                            <div class="template-item">LinkedIn Post Engagement to Email Campaign Creator</div>
+                            <div class="template-item">LinkedIn Post to External API Trigger</div>
+                            <div class="template-item">LinkedIn Profile Data to Google Sheets Automation</div>
+                            <div class="template-item">LinkedIn Profile Scraper with AI Data Extraction</div>
+                            <div class="template-item">Scrape Twitter for Mentions of Company</div>
+                            <div class="template-item">Weekly Marketing Performance Report Generator</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Advertising & Analytics -->
+                    <div class="category-card category-ads">
+                        <div class="category-header">
+                            <div class="category-icon"><span>📊</span></div>
+                            <div>
+                                <h3>Advertising & Analytics</h3>
+                                <p>10 Premium Templates</p>
+                            </div>
+                        </div>
+                        <p class="category-description">Advanced advertising optimization and comprehensive marketing analytics.</p>
+                        <div class="template-grid">
+                            <div class="template-item">Amazon Ads AI Optimization</div>
+                            <div class="template-item">Online Marketing Weekly Report</div>
+                            <div class="template-item">Automated Social Media Content Publishing Factory System</div>
+                            <div class="template-item">Facebook Lead Capture to KlickTipp CRM</div>
+                            <div class="template-item">Instagram Chat Assistant with Memory and Response</div>
+                            <div class="template-item">Instagram Stats to Mattermost on Schedule</div>
+                            <div class="template-item">Multi-Platform Social Media Analytics Dashboard</div>
+                            <div class="template-item">Cross-Platform Ad Performance Tracker</div>
+                            <div class="template-item">Real-Time Social Media Metrics Monitor</div>
+                            <div class="template-item">Advanced ROI Calculator for Social Campaigns</div>
+                        </div>
+                    </div>
+                </div>
 <!-- Removed old categories to focus on core bundle -->
                     <!-- Email & Outreach -->
                     <div class="category-card category-email">

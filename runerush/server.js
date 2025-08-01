@@ -605,6 +605,11 @@ app.get('/downloads', (req, res) => {
     res.sendFile(path.join(__dirname, 'downloads.html'));
 });
 
+// Success page
+app.get('/runerush/success.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'success.html'));
+});
+
 // Success redirect route - handles post-purchase redirects
 app.get('/success', async (req, res) => {
     try {
@@ -678,31 +683,14 @@ app.get('/success', async (req, res) => {
             }
         }
         
-        // Product-specific success logic
-        const baseSuccessUrl = '/success.html';
-        const downloadUrl = `/downloads?key=${user.license_key}`;
+        // Show success page with purchase details instead of immediate redirect
+        const successUrl = `/runerush/success.html?session_id=${session_id}&product_type=${product_type || session.metadata?.product_type || 'core'}&license_key=${user.license_key}`;
         
-        switch (product_type || session.metadata.product_type) {
-            case 'core':
-                // Core Bundle - redirect to downloads with license key
-                return res.redirect(downloadUrl);
-                
-            case 'pro_bundle':
-                // Pro Bundle - redirect to downloads with pro access
-                return res.redirect(downloadUrl);
-                
-            case 'pro_upgrade':
-                // Pro Upgrade - redirect to downloads 
-                return res.redirect(downloadUrl);
-                
-            case 'complete_collection':
-                // Complete Collection - redirect to downloads with full access
-                return res.redirect(downloadUrl);
-                
-            default:
-                // Fallback to general success page
-                return res.redirect(`${baseSuccessUrl}?session_id=${session_id}`);
-        }
+        // Log successful purchase completion
+        console.log('✅ Purchase completed successfully for:', user.email, 'Product:', product_type || session.metadata?.product_type || 'core');
+        
+        // Always show success page first - user can access downloads from there or via email
+        return res.redirect(successUrl);
         
     } catch (error) {
         console.error('Success redirect error:', error);

@@ -22,6 +22,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const productType = urlParams.get('product_type') || urlParams.get('product') || 'core';
         const sessionId = urlParams.get('session_id') || 'unknown';
+        const licenseKey = urlParams.get('license_key');
         
         // Define product information
         const productInfo = {
@@ -91,6 +92,43 @@
         .success-message { font-size: 1.2rem; margin-bottom: 2rem; color: #cccccc; line-height: 1.6; }
         .download-section { background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; border-radius: 10px; padding: 2rem; margin: 2rem 0; }
         .email-highlight { color: #00ffff; font-weight: bold; }
+        .download-btn { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #00ff88, #00ffff); 
+            color: #000; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 50px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            cursor: pointer; 
+            margin: 10px 0; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+        .download-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5); 
+        }
+        .product-info { 
+            background: rgba(0, 255, 255, 0.1); 
+            border: 1px solid #00ffff; 
+            border-radius: 10px; 
+            padding: 1.5rem; 
+            margin: 1rem 0; 
+            text-align: left;
+        }
+        .license-key {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+        }
     </style>
 </head>
 <body>
@@ -98,13 +136,54 @@
         <div class="success-card">
             <div class="success-icon">✓</div>
             <h1 class="success-title">Payment Successful!</h1>
-            <p class="success-message">Thank you for your purchase! Your RuneRush n8n templates are being prepared for download.</p>
+            <p class="success-message">Thank you for your purchase! Your RuneRush n8n templates are ready for download.</p>
+            
+            <div class="product-info">
+                <h3>📦 Your Purchase</h3>
+                <p><strong id="product-name">RuneRush Core Bundle</strong></p>
+                <p id="template-count">50 Premium n8n Templates</p>
+                <div class="license-key" id="license-display" style="display: none;">
+                    <strong>License Key:</strong> <span id="license-key-value"></span>
+                </div>
+            </div>
+            
             <div class="download-section">
-                <h3>📧 Check Your Email</h3>
-                <p>Your <strong>50 Premium n8n Templates</strong> download link has been sent to your email address.</p>
-                <p><strong>Note:</strong> It may take up to 5 minutes for the email to arrive.</p>
+                <h3>🚀 Access Your Templates</h3>
+                <p>Choose how you'd like to access your templates:</p>
+                
+                <div style="margin: 20px 0;">
+                    <a href="#" class="download-btn" id="instant-download-btn" onclick="goToDownloads()">📥 Instant Download</a>
+                </div>
+                
+                <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 20px;">
+                    <h4>📧 Or Check Your Email</h4>
+                    <p>Your download link has also been sent to your email address.</p>
+                    <p><strong>Note:</strong> It may take up to 5 minutes for the email to arrive.</p>
+                </div>
             </div>
         </div>
+        
+        <script>
+            // Update page content based on product type
+            const currentProduct = productInfo[productType] || productInfo['core'];
+            document.getElementById('product-name').textContent = currentProduct.name;
+            document.getElementById('template-count').textContent = currentProduct.templates;
+            
+            // Show license key if available
+            if (licenseKey) {
+                document.getElementById('license-display').style.display = 'block';
+                document.getElementById('license-key-value').textContent = licenseKey;
+            }
+            
+            // Function to go to downloads page
+            function goToDownloads() {
+                if (licenseKey) {
+                    window.location.href = `/downloads?key=${licenseKey}`;
+                } else {
+                    alert('Please check your email for the download link.');
+                }
+            }
+        </script>
     </div>
 </body>
 </html>
