@@ -274,7 +274,13 @@ class Database {
             INSERT INTO users (email, license_key, first_name, last_name, is_lifetime)
             VALUES (?, ?, ?, ?, ?)
         `;
-        return await this.run(sql, [email, license_key, first_name, last_name, is_lifetime]);
+        const result = await this.run(sql, [email, license_key, first_name, last_name, is_lifetime]);
+        
+        // Return the created user
+        if (result.id) {
+            return await this.getUserByEmail(email);
+        }
+        throw new Error('Failed to create user');
     }
 
     async getUserByEmail(email) {
@@ -289,12 +295,12 @@ class Database {
 
     // Order operations
     async createOrder(orderData) {
-        const { user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id } = orderData;
+        const { user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id, status = 'pending' } = orderData;
         const sql = `
-            INSERT INTO orders (user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO orders (user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
-        return await this.run(sql, [user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id]);
+        return await this.run(sql, [user_id, amount, currency, product_type, stripe_payment_intent_id, paypal_payment_id, status]);
     }
 
     async updateOrderStatus(orderId, status) {

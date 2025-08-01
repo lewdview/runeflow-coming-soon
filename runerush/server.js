@@ -621,11 +621,44 @@ app.get('/success', async (req, res) => {
             return res.redirect('/runerush/purchase.html?error=payment_incomplete');
         }
         
-        // Get user by email from session
-        const user = await db.getUserByEmail(session.customer_details.email);
+        // Get user by email from session, create if not found
+        let user = await db.getUserByEmail(session.customer_details.email);
         
         if (!user) {
-            return res.redirect('/runerush/purchase.html?error=user_not_found');
+            // Create new user from Stripe session data
+            const licenseKey = generateLicenseKey();
+            const userData = {
+                email: session.customer_details.email,
+                first_name: session.customer_details.name?.split(' ')[0] || 'Customer',
+                last_name: session.customer_details.name?.split(' ').slice(1).join(' ') || '',
+                license_key: licenseKey,
+                product_type: product_type || session.metadata?.product_type || 'core',
+                payment_method: 'stripe',
+                amount: session.amount_total / 100, // Convert from cents
+                currency: session.currency?.toUpperCase() || 'USD'
+            };
+            
+            try {
+                user = await db.createUser(userData);
+                console.log('✅ Created new user from Stripe session:', user.email);
+                
+                // Also create an order record
+                const orderData = {
+                    user_id: user.id,
+                    amount: session.amount_total / 100, // Convert from cents
+                    currency: session.currency?.toUpperCase() || 'USD',
+                    product_type: product_type || session.metadata?.product_type || 'core',
+                    stripe_payment_intent_id: session.payment_intent,
+                    status: 'completed'
+                };
+                
+                await db.createOrder(orderData);
+                console.log('✅ Created order record for user:', user.email);
+                
+            } catch (createError) {
+                console.error('❌ Failed to create user/order:', createError);
+                return res.redirect('/runerush/purchase.html?error=user_creation_failed');
+            }
         }
         
         // Product-specific success logic
