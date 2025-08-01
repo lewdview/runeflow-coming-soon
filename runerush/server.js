@@ -614,10 +614,18 @@ app.get('/success', async (req, res) => {
             return res.redirect('/runerush/purchase.html?error=missing_session');
         }
         
-        // Optional: Verify the session with Stripe
-        const session = await stripeService.stripe.checkout.sessions.retrieve(session_id);
+        // Verify the session with Stripe
+        let session;
+        try {
+            session = await stripeService.stripe.checkout.sessions.retrieve(session_id);
+            console.log('✅ Retrieved Stripe session:', session_id, 'Status:', session.payment_status);
+        } catch (stripeError) {
+            console.error('❌ Failed to retrieve Stripe session:', session_id, stripeError.message);
+            return res.redirect('/runerush/purchase.html?error=stripe_session_failed');
+        }
         
         if (session.payment_status !== 'paid') {
+            console.warn('⚠️ Session payment status not paid:', session.payment_status);
             return res.redirect('/runerush/purchase.html?error=payment_incomplete');
         }
         
