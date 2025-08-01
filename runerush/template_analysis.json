@@ -1,0 +1,1266 @@
+{
+  "templates": [
+    {
+      "rune_number": 1,
+      "title": "RuneFlow Rune 0001 Send updates about the position of the ISS every minute to a topic in ActiveMQ",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0001_Send_updates_about_the_position_of_the_ISS_every_minute_to_a_topic_in_ActiveMQ_ScheduledTasks_Basic_Simple.json"
+    },
+    {
+      "rune_number": 2,
+      "title": "RuneFlow Rune 0002 Mattermost Notification on Webhook Trigger",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0002_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple.json"
+    },
+    {
+      "rune_number": 3,
+      "title": "RuneFlow Rune 0003 Scheduled API Data Fetcher",
+      "category": "Social Media & Content",
+      "complexity": "Advanced",
+      "integration": "Telegram",
+      "filename": "RuneFlow_Rune_0003_Scheduled_API_Data_Fetcher_TelegramBot_Advanced_Telegram.json"
+    },
+    {
+      "rune_number": 4,
+      "title": "RuneFlow Rune 0004 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0004_General_Purpose_Automation_ProcessAutomation_Standard_Manual_Nodes14_dateTime_manualTrigger_set_V1.json"
+    },
+    {
+      "rune_number": 5,
+      "title": "RuneFlow Rune 0005 Get messages with a certain label remove the label and add a new one",
+      "category": "Email & Outreach",
+      "complexity": "Basic",
+      "integration": "Gmail",
+      "filename": "RuneFlow_Rune_0005_Get_messages_with_a_certain_label_remove_the_label_and_add_a_new_one_EmailAutomation_Basic_Gmail.json"
+    },
+    {
+      "rune_number": 6,
+      "title": "RuneFlow Rune 0006 Database Management",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0006_Database_Management_Automation_DatabaseOps_Standard_PostgreSQL.json"
+    },
+    {
+      "rune_number": 7,
+      "title": "RuneFlow Rune 0007 Webhook Data Processing",
+      "category": "Automation & Ops",
+      "complexity": "Standard",
+      "integration": "10Nodes",
+      "filename": "RuneFlow_Rune_0007_Webhook_Data_Processing_WebhookHandling_Standard_10Nodes.json"
+    },
+    {
+      "rune_number": 8,
+      "title": "RuneFlow Rune 0008 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Enterprise",
+      "filename": "RuneFlow_Rune_0008_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes42_code_form_formTrigger_V3.json"
+    },
+    {
+      "rune_number": 9,
+      "title": "RuneFlow Rune 0009 MongoDB Agent",
+      "category": "AI & Research",
+      "complexity": "Standard",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0009_MongoDB_Agent_AIProcessing_Standard_OpenAI.json"
+    },
+    {
+      "rune_number": 10,
+      "title": "RuneFlow Rune 0010 Webhook Data Processing",
+      "category": "Automation & Ops",
+      "complexity": "Enterprise",
+      "integration": "23Nodes",
+      "filename": "RuneFlow_Rune_0010_Webhook_Data_Processing_WebhookHandling_Enterprise_23Nodes.json"
+    },
+    {
+      "rune_number": 11,
+      "title": "RuneFlow Rune 0011 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0011_AI-Powered_Automation_AIProcessing_Advanced_OpenAI_Nodes24_agent_chatTrigger_executeWorkf_V1.json"
+    },
+    {
+      "rune_number": 12,
+      "title": "RuneFlow Rune 0012 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0012_General_Purpose_Automation_ProcessAutomation_Advanced_Manual.json"
+    },
+    {
+      "rune_number": 13,
+      "title": "RuneFlow Rune 0013 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0013_General_Purpose_Automation_ProcessAutomation_Advanced_19Nodes.json"
+    },
+    {
+      "rune_number": 14,
+      "title": "RuneFlow Rune 0014 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Basic",
+      "filename": "RuneFlow_Rune_0014_AI-Powered_Automation_AIProcessing_Basic_Sheets.json"
+    },
+    {
+      "rune_number": 15,
+      "title": "RuneFlow Rune 0015 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0015_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets.json"
+    },
+    {
+      "rune_number": 16,
+      "title": "RuneFlow Rune 0016 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0016_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes16_code_googleSheets_httpRequest_V1.json"
+    },
+    {
+      "rune_number": 17,
+      "title": "RuneFlow Rune 0017 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0017_General_Purpose_Automation_AIProcessing_Standard_Sheets.json"
+    },
+    {
+      "rune_number": 18,
+      "title": "RuneFlow Rune 0018 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0018_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes18_code_convertToFile_googleSheet_V2.json"
+    },
+    {
+      "rune_number": 19,
+      "title": "RuneFlow Rune 0019 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Enterprise",
+      "filename": "RuneFlow_Rune_0019_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI.json"
+    },
+    {
+      "rune_number": 20,
+      "title": "RuneFlow Rune 0020 Mattermost Notification on Webhook Trigger",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0020_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple_Nodes8_mattermost_pagerDuty_webhook_V1.json"
+    },
+    {
+      "rune_number": 21,
+      "title": "RuneFlow Rune 0021 Database Management",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Enterprise",
+      "filename": "RuneFlow_Rune_0021_Database_Management_Automation_DatabaseOps_Enterprise_MySQL.json"
+    },
+    {
+      "rune_number": 22,
+      "title": "RuneFlow Rune 0022 AI Email Assistant",
+      "category": "Email & Outreach",
+      "complexity": "Advanced",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0022_AI_Email_Assistant_EmailAutomation_Advanced_OpenAI.json"
+    },
+    {
+      "rune_number": 23,
+      "title": "RuneFlow Rune 0023 NameCheap Dynamic DNS DDNS",
+      "category": "Automation & Ops",
+      "complexity": "Standard",
+      "integration": "Scheduled",
+      "filename": "RuneFlow_Rune_0023_NameCheap_Dynamic_DNS_DDNS_ScheduledTasks_Standard_Scheduled.json"
+    },
+    {
+      "rune_number": 24,
+      "title": "RuneFlow Rune 0024 Analyze email headers for IPs and spoofing 3",
+      "category": "Automation & Ops",
+      "complexity": "Enterprise",
+      "integration": "Webhook",
+      "filename": "RuneFlow_Rune_0024_Analyze_email_headers_for_IPs_and_spoofing_3_WebhookHandling_Enterprise_Webhook.json"
+    },
+    {
+      "rune_number": 25,
+      "title": "RuneFlow Rune 0025 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0025_General_Purpose_Automation_ProcessAutomation_Standard_Manual.json"
+    },
+    {
+      "rune_number": 26,
+      "title": "RuneFlow Rune 0026 Read RSS feed from two different sources",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0026_Read_RSS_feed_from_two_different_sources_Automation_Basic_Simple.json"
+    },
+    {
+      "rune_number": 27,
+      "title": "RuneFlow Rune 0027 Build your first AI MCP Server",
+      "category": "AI & Research",
+      "complexity": "Enterprise",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0027_Build_your_first_AI_MCP_Server_AIProcessing_Enterprise_OpenAI.json"
+    },
+    {
+      "rune_number": 28,
+      "title": "RuneFlow Rune 0028 Slack Integration",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Basic",
+      "filename": "RuneFlow_Rune_0028_Slack_Integration_Automation_SlackIntegration_Basic_Airtable.json"
+    },
+    {
+      "rune_number": 29,
+      "title": "RuneFlow Rune 0029 Create update and get a subscriber using the MailerLite node",
+      "category": "AI & Research",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0029_Create_update_and_get_a_subscriber_using_the_MailerLite_node_AIProcessing_Basic_Simple.json"
+    },
+    {
+      "rune_number": 30,
+      "title": "RuneFlow Rune 0030 HR Job Posting and Evaluation with AI",
+      "category": "Email & Outreach",
+      "complexity": "Enterprise",
+      "integration": "Airtable",
+      "filename": "RuneFlow_Rune_0030_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable.json"
+    },
+    {
+      "rune_number": 31,
+      "title": "RuneFlow Rune 0031 HR Job Posting and Evaluation with AI",
+      "category": "Email & Outreach",
+      "complexity": "Enterprise",
+      "integration": "Airtable",
+      "filename": "RuneFlow_Rune_0031_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable_Nodes37_agent_airtable_airtableTool_V1.json"
+    },
+    {
+      "rune_number": 32,
+      "title": "RuneFlow Rune 0032 Reservation Medcin",
+      "category": "AI & Research",
+      "complexity": "Advanced",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0032_Reservation_Medcin_AIProcessing_Advanced_OpenAI.json"
+    },
+    {
+      "rune_number": 33,
+      "title": "RuneFlow Rune 0033 Empty Workflow",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Simple",
+      "filename": "RuneFlow_Rune_0033_Empty_Workflow_Automation_Basic_Simple.json"
+    },
+    {
+      "rune_number": 34,
+      "title": "RuneFlow Rune 0034 AI-Driven WooCommerce Product Importer with SEO",
+      "category": "Social Media & Content",
+      "complexity": "Advanced",
+      "integration": "Sheets",
+      "filename": "RuneFlow_Rune_0034_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets.json"
+    },
+    {
+      "rune_number": 35,
+      "title": "RuneFlow Rune 0035 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+      "category": "AI & Research",
+      "complexity": "Advanced",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0035_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI.json"
+    },
+    {
+      "rune_number": 36,
+      "title": "RuneFlow Rune 0036 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+      "category": "AI & Research",
+      "complexity": "Advanced",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0036_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI_Nodes13_agent_chatTrigger_lmChatOpenAi_V1.json"
+    },
+    {
+      "rune_number": 37,
+      "title": "RuneFlow Rune 0037 AI-Driven WooCommerce Product Importer with SEO",
+      "category": "Social Media & Content",
+      "complexity": "Advanced",
+      "integration": "Sheets",
+      "filename": "RuneFlow_Rune_0037_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets_Nodes17_chainLlm_code_googleSheets_V1.json"
+    },
+    {
+      "rune_number": 38,
+      "title": "RuneFlow Rune 0038 AI Social Media Caption Creator",
+      "category": "AI & Research",
+      "complexity": "Standard",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0038_AI_Social_Media_Caption_Creator_AIProcessing_Standard_OpenAI.json"
+    },
+    {
+      "rune_number": 39,
+      "title": "RuneFlow Rune 0039 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Enterprise",
+      "filename": "RuneFlow_Rune_0039_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes30_agent_airtable_executeWorkflow_V1.json"
+    },
+    {
+      "rune_number": 40,
+      "title": "RuneFlow Rune 0040 Amazon Ads AI Optimization",
+      "category": "Email & Outreach",
+      "complexity": "Enterprise",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0040_Amazon_Ads_AI_Optimization_EmailAutomation_Enterprise_OpenAI.json"
+    },
+    {
+      "rune_number": 41,
+      "title": "RuneFlow Rune 0041 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+      "category": "AI & Research",
+      "complexity": "Enterprise",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0041_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI.json"
+    },
+    {
+      "rune_number": 42,
+      "title": "RuneFlow Rune 0042 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+      "category": "AI & Research",
+      "complexity": "Enterprise",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0042_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI_Nodes51_agent_aggregate_bambooHr_V1.json"
+    },
+    {
+      "rune_number": 43,
+      "title": "RuneFlow Rune 0043 Business Canvas Generator",
+      "category": "AI & Research",
+      "complexity": "Enterprise",
+      "integration": "28Nodes",
+      "filename": "RuneFlow_Rune_0043_Business_Canvas_Generator_AIProcessing_Enterprise_28Nodes.json"
+    },
+    {
+      "rune_number": 44,
+      "title": "RuneFlow Rune 0044 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0044_General_Purpose_Automation_EmailAutomation_Standard_Gmail.json"
+    },
+    {
+      "rune_number": 45,
+      "title": "RuneFlow Rune 0045 General Purpose",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0045_General_Purpose_Automation_EmailAutomation_Standard_Gmail_Nodes8_chainLlm_extractFromFile_formT_V1.json"
+    },
+    {
+      "rune_number": 46,
+      "title": "RuneFlow Rune 0046 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Enterprise",
+      "filename": "RuneFlow_Rune_0046_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes31_agent_aggregate_chatTrigger_V2.json"
+    },
+    {
+      "rune_number": 47,
+      "title": "RuneFlow Rune 0047 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Advanced",
+      "filename": "RuneFlow_Rune_0047_AI-Powered_Automation_AIProcessing_Advanced_OpenAI.json"
+    },
+    {
+      "rune_number": 48,
+      "title": "RuneFlow Rune 0048 Webhook Data Processing",
+      "category": "Email & Outreach",
+      "complexity": "Advanced",
+      "integration": "OpenAI",
+      "filename": "RuneFlow_Rune_0048_Webhook_Data_Processing_EmailAutomation_Advanced_OpenAI.json"
+    },
+    {
+      "rune_number": 49,
+      "title": "RuneFlow Rune 0049 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Standard",
+      "filename": "RuneFlow_Rune_0049_AI-Powered_Automation_AIProcessing_Standard_OpenAI.json"
+    },
+    {
+      "rune_number": 50,
+      "title": "RuneFlow Rune 0050 AI-Powered",
+      "category": "Automation & Ops",
+      "complexity": "Basic",
+      "integration": "Basic",
+      "filename": "RuneFlow_Rune_0050_AI-Powered_Automation_AIProcessing_Basic_OpenAI.json"
+    }
+  ],
+  "categories": {
+    "Automation & Ops": [
+      {
+        "rune_number": 1,
+        "title": "RuneFlow Rune 0001 Send updates about the position of the ISS every minute to a topic in ActiveMQ",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0001_Send_updates_about_the_position_of_the_ISS_every_minute_to_a_topic_in_ActiveMQ_ScheduledTasks_Basic_Simple.json"
+      },
+      {
+        "rune_number": 2,
+        "title": "RuneFlow Rune 0002 Mattermost Notification on Webhook Trigger",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0002_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple.json"
+      },
+      {
+        "rune_number": 4,
+        "title": "RuneFlow Rune 0004 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0004_General_Purpose_Automation_ProcessAutomation_Standard_Manual_Nodes14_dateTime_manualTrigger_set_V1.json"
+      },
+      {
+        "rune_number": 6,
+        "title": "RuneFlow Rune 0006 Database Management",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0006_Database_Management_Automation_DatabaseOps_Standard_PostgreSQL.json"
+      },
+      {
+        "rune_number": 7,
+        "title": "RuneFlow Rune 0007 Webhook Data Processing",
+        "category": "Automation & Ops",
+        "complexity": "Standard",
+        "integration": "10Nodes",
+        "filename": "RuneFlow_Rune_0007_Webhook_Data_Processing_WebhookHandling_Standard_10Nodes.json"
+      },
+      {
+        "rune_number": 8,
+        "title": "RuneFlow Rune 0008 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Enterprise",
+        "filename": "RuneFlow_Rune_0008_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes42_code_form_formTrigger_V3.json"
+      },
+      {
+        "rune_number": 10,
+        "title": "RuneFlow Rune 0010 Webhook Data Processing",
+        "category": "Automation & Ops",
+        "complexity": "Enterprise",
+        "integration": "23Nodes",
+        "filename": "RuneFlow_Rune_0010_Webhook_Data_Processing_WebhookHandling_Enterprise_23Nodes.json"
+      },
+      {
+        "rune_number": 11,
+        "title": "RuneFlow Rune 0011 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0011_AI-Powered_Automation_AIProcessing_Advanced_OpenAI_Nodes24_agent_chatTrigger_executeWorkf_V1.json"
+      },
+      {
+        "rune_number": 12,
+        "title": "RuneFlow Rune 0012 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0012_General_Purpose_Automation_ProcessAutomation_Advanced_Manual.json"
+      },
+      {
+        "rune_number": 13,
+        "title": "RuneFlow Rune 0013 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0013_General_Purpose_Automation_ProcessAutomation_Advanced_19Nodes.json"
+      },
+      {
+        "rune_number": 14,
+        "title": "RuneFlow Rune 0014 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Basic",
+        "filename": "RuneFlow_Rune_0014_AI-Powered_Automation_AIProcessing_Basic_Sheets.json"
+      },
+      {
+        "rune_number": 15,
+        "title": "RuneFlow Rune 0015 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0015_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets.json"
+      },
+      {
+        "rune_number": 16,
+        "title": "RuneFlow Rune 0016 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0016_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes16_code_googleSheets_httpRequest_V1.json"
+      },
+      {
+        "rune_number": 17,
+        "title": "RuneFlow Rune 0017 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0017_General_Purpose_Automation_AIProcessing_Standard_Sheets.json"
+      },
+      {
+        "rune_number": 18,
+        "title": "RuneFlow Rune 0018 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0018_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes18_code_convertToFile_googleSheet_V2.json"
+      },
+      {
+        "rune_number": 19,
+        "title": "RuneFlow Rune 0019 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Enterprise",
+        "filename": "RuneFlow_Rune_0019_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI.json"
+      },
+      {
+        "rune_number": 20,
+        "title": "RuneFlow Rune 0020 Mattermost Notification on Webhook Trigger",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0020_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple_Nodes8_mattermost_pagerDuty_webhook_V1.json"
+      },
+      {
+        "rune_number": 21,
+        "title": "RuneFlow Rune 0021 Database Management",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Enterprise",
+        "filename": "RuneFlow_Rune_0021_Database_Management_Automation_DatabaseOps_Enterprise_MySQL.json"
+      },
+      {
+        "rune_number": 23,
+        "title": "RuneFlow Rune 0023 NameCheap Dynamic DNS DDNS",
+        "category": "Automation & Ops",
+        "complexity": "Standard",
+        "integration": "Scheduled",
+        "filename": "RuneFlow_Rune_0023_NameCheap_Dynamic_DNS_DDNS_ScheduledTasks_Standard_Scheduled.json"
+      },
+      {
+        "rune_number": 24,
+        "title": "RuneFlow Rune 0024 Analyze email headers for IPs and spoofing 3",
+        "category": "Automation & Ops",
+        "complexity": "Enterprise",
+        "integration": "Webhook",
+        "filename": "RuneFlow_Rune_0024_Analyze_email_headers_for_IPs_and_spoofing_3_WebhookHandling_Enterprise_Webhook.json"
+      },
+      {
+        "rune_number": 25,
+        "title": "RuneFlow Rune 0025 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0025_General_Purpose_Automation_ProcessAutomation_Standard_Manual.json"
+      },
+      {
+        "rune_number": 26,
+        "title": "RuneFlow Rune 0026 Read RSS feed from two different sources",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0026_Read_RSS_feed_from_two_different_sources_Automation_Basic_Simple.json"
+      },
+      {
+        "rune_number": 28,
+        "title": "RuneFlow Rune 0028 Slack Integration",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Basic",
+        "filename": "RuneFlow_Rune_0028_Slack_Integration_Automation_SlackIntegration_Basic_Airtable.json"
+      },
+      {
+        "rune_number": 33,
+        "title": "RuneFlow Rune 0033 Empty Workflow",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0033_Empty_Workflow_Automation_Basic_Simple.json"
+      },
+      {
+        "rune_number": 39,
+        "title": "RuneFlow Rune 0039 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Enterprise",
+        "filename": "RuneFlow_Rune_0039_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes30_agent_airtable_executeWorkflow_V1.json"
+      },
+      {
+        "rune_number": 44,
+        "title": "RuneFlow Rune 0044 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0044_General_Purpose_Automation_EmailAutomation_Standard_Gmail.json"
+      },
+      {
+        "rune_number": 45,
+        "title": "RuneFlow Rune 0045 General Purpose",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0045_General_Purpose_Automation_EmailAutomation_Standard_Gmail_Nodes8_chainLlm_extractFromFile_formT_V1.json"
+      },
+      {
+        "rune_number": 46,
+        "title": "RuneFlow Rune 0046 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Enterprise",
+        "filename": "RuneFlow_Rune_0046_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes31_agent_aggregate_chatTrigger_V2.json"
+      },
+      {
+        "rune_number": 47,
+        "title": "RuneFlow Rune 0047 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Advanced",
+        "filename": "RuneFlow_Rune_0047_AI-Powered_Automation_AIProcessing_Advanced_OpenAI.json"
+      },
+      {
+        "rune_number": 49,
+        "title": "RuneFlow Rune 0049 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Standard",
+        "filename": "RuneFlow_Rune_0049_AI-Powered_Automation_AIProcessing_Standard_OpenAI.json"
+      },
+      {
+        "rune_number": 50,
+        "title": "RuneFlow Rune 0050 AI-Powered",
+        "category": "Automation & Ops",
+        "complexity": "Basic",
+        "integration": "Basic",
+        "filename": "RuneFlow_Rune_0050_AI-Powered_Automation_AIProcessing_Basic_OpenAI.json"
+      }
+    ],
+    "Social Media & Content": [
+      {
+        "rune_number": 3,
+        "title": "RuneFlow Rune 0003 Scheduled API Data Fetcher",
+        "category": "Social Media & Content",
+        "complexity": "Advanced",
+        "integration": "Telegram",
+        "filename": "RuneFlow_Rune_0003_Scheduled_API_Data_Fetcher_TelegramBot_Advanced_Telegram.json"
+      },
+      {
+        "rune_number": 34,
+        "title": "RuneFlow Rune 0034 AI-Driven WooCommerce Product Importer with SEO",
+        "category": "Social Media & Content",
+        "complexity": "Advanced",
+        "integration": "Sheets",
+        "filename": "RuneFlow_Rune_0034_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets.json"
+      },
+      {
+        "rune_number": 37,
+        "title": "RuneFlow Rune 0037 AI-Driven WooCommerce Product Importer with SEO",
+        "category": "Social Media & Content",
+        "complexity": "Advanced",
+        "integration": "Sheets",
+        "filename": "RuneFlow_Rune_0037_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets_Nodes17_chainLlm_code_googleSheets_V1.json"
+      }
+    ],
+    "Email & Outreach": [
+      {
+        "rune_number": 5,
+        "title": "RuneFlow Rune 0005 Get messages with a certain label remove the label and add a new one",
+        "category": "Email & Outreach",
+        "complexity": "Basic",
+        "integration": "Gmail",
+        "filename": "RuneFlow_Rune_0005_Get_messages_with_a_certain_label_remove_the_label_and_add_a_new_one_EmailAutomation_Basic_Gmail.json"
+      },
+      {
+        "rune_number": 22,
+        "title": "RuneFlow Rune 0022 AI Email Assistant",
+        "category": "Email & Outreach",
+        "complexity": "Advanced",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0022_AI_Email_Assistant_EmailAutomation_Advanced_OpenAI.json"
+      },
+      {
+        "rune_number": 30,
+        "title": "RuneFlow Rune 0030 HR Job Posting and Evaluation with AI",
+        "category": "Email & Outreach",
+        "complexity": "Enterprise",
+        "integration": "Airtable",
+        "filename": "RuneFlow_Rune_0030_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable.json"
+      },
+      {
+        "rune_number": 31,
+        "title": "RuneFlow Rune 0031 HR Job Posting and Evaluation with AI",
+        "category": "Email & Outreach",
+        "complexity": "Enterprise",
+        "integration": "Airtable",
+        "filename": "RuneFlow_Rune_0031_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable_Nodes37_agent_airtable_airtableTool_V1.json"
+      },
+      {
+        "rune_number": 40,
+        "title": "RuneFlow Rune 0040 Amazon Ads AI Optimization",
+        "category": "Email & Outreach",
+        "complexity": "Enterprise",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0040_Amazon_Ads_AI_Optimization_EmailAutomation_Enterprise_OpenAI.json"
+      },
+      {
+        "rune_number": 48,
+        "title": "RuneFlow Rune 0048 Webhook Data Processing",
+        "category": "Email & Outreach",
+        "complexity": "Advanced",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0048_Webhook_Data_Processing_EmailAutomation_Advanced_OpenAI.json"
+      }
+    ],
+    "AI & Research": [
+      {
+        "rune_number": 9,
+        "title": "RuneFlow Rune 0009 MongoDB Agent",
+        "category": "AI & Research",
+        "complexity": "Standard",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0009_MongoDB_Agent_AIProcessing_Standard_OpenAI.json"
+      },
+      {
+        "rune_number": 27,
+        "title": "RuneFlow Rune 0027 Build your first AI MCP Server",
+        "category": "AI & Research",
+        "complexity": "Enterprise",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0027_Build_your_first_AI_MCP_Server_AIProcessing_Enterprise_OpenAI.json"
+      },
+      {
+        "rune_number": 29,
+        "title": "RuneFlow Rune 0029 Create update and get a subscriber using the MailerLite node",
+        "category": "AI & Research",
+        "complexity": "Basic",
+        "integration": "Simple",
+        "filename": "RuneFlow_Rune_0029_Create_update_and_get_a_subscriber_using_the_MailerLite_node_AIProcessing_Basic_Simple.json"
+      },
+      {
+        "rune_number": 32,
+        "title": "RuneFlow Rune 0032 Reservation Medcin",
+        "category": "AI & Research",
+        "complexity": "Advanced",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0032_Reservation_Medcin_AIProcessing_Advanced_OpenAI.json"
+      },
+      {
+        "rune_number": 35,
+        "title": "RuneFlow Rune 0035 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+        "category": "AI & Research",
+        "complexity": "Advanced",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0035_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI.json"
+      },
+      {
+        "rune_number": 36,
+        "title": "RuneFlow Rune 0036 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+        "category": "AI & Research",
+        "complexity": "Advanced",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0036_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI_Nodes13_agent_chatTrigger_lmChatOpenAi_V1.json"
+      },
+      {
+        "rune_number": 38,
+        "title": "RuneFlow Rune 0038 AI Social Media Caption Creator",
+        "category": "AI & Research",
+        "complexity": "Standard",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0038_AI_Social_Media_Caption_Creator_AIProcessing_Standard_OpenAI.json"
+      },
+      {
+        "rune_number": 41,
+        "title": "RuneFlow Rune 0041 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+        "category": "AI & Research",
+        "complexity": "Enterprise",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0041_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI.json"
+      },
+      {
+        "rune_number": 42,
+        "title": "RuneFlow Rune 0042 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+        "category": "AI & Research",
+        "complexity": "Enterprise",
+        "integration": "OpenAI",
+        "filename": "RuneFlow_Rune_0042_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI_Nodes51_agent_aggregate_bambooHr_V1.json"
+      },
+      {
+        "rune_number": 43,
+        "title": "RuneFlow Rune 0043 Business Canvas Generator",
+        "category": "AI & Research",
+        "complexity": "Enterprise",
+        "integration": "28Nodes",
+        "filename": "RuneFlow_Rune_0043_Business_Canvas_Generator_AIProcessing_Enterprise_28Nodes.json"
+      }
+    ]
+  },
+  "html_updates": {
+    "Automation & Ops": {
+      "icon": "\u2699\ufe0f",
+      "count": 31,
+      "template_items": [
+        "<div class=\"template-item\">RuneFlow Rune 0001 Send updates about the position of the ISS every minute to a topic in ActiveMQ</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0002 Mattermost Notification on Webhook Trigger</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0004 General Purpose</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0006 Database Management</div>",
+        "<div class=\"template-item-more\">+ 27 more premium automation & ops templates...</div>"
+      ],
+      "all_templates": [
+        {
+          "rune_number": 1,
+          "title": "RuneFlow Rune 0001 Send updates about the position of the ISS every minute to a topic in ActiveMQ",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0001_Send_updates_about_the_position_of_the_ISS_every_minute_to_a_topic_in_ActiveMQ_ScheduledTasks_Basic_Simple.json"
+        },
+        {
+          "rune_number": 2,
+          "title": "RuneFlow Rune 0002 Mattermost Notification on Webhook Trigger",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0002_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple.json"
+        },
+        {
+          "rune_number": 4,
+          "title": "RuneFlow Rune 0004 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0004_General_Purpose_Automation_ProcessAutomation_Standard_Manual_Nodes14_dateTime_manualTrigger_set_V1.json"
+        },
+        {
+          "rune_number": 6,
+          "title": "RuneFlow Rune 0006 Database Management",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0006_Database_Management_Automation_DatabaseOps_Standard_PostgreSQL.json"
+        },
+        {
+          "rune_number": 7,
+          "title": "RuneFlow Rune 0007 Webhook Data Processing",
+          "category": "Automation & Ops",
+          "complexity": "Standard",
+          "integration": "10Nodes",
+          "filename": "RuneFlow_Rune_0007_Webhook_Data_Processing_WebhookHandling_Standard_10Nodes.json"
+        },
+        {
+          "rune_number": 8,
+          "title": "RuneFlow Rune 0008 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Enterprise",
+          "filename": "RuneFlow_Rune_0008_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes42_code_form_formTrigger_V3.json"
+        },
+        {
+          "rune_number": 10,
+          "title": "RuneFlow Rune 0010 Webhook Data Processing",
+          "category": "Automation & Ops",
+          "complexity": "Enterprise",
+          "integration": "23Nodes",
+          "filename": "RuneFlow_Rune_0010_Webhook_Data_Processing_WebhookHandling_Enterprise_23Nodes.json"
+        },
+        {
+          "rune_number": 11,
+          "title": "RuneFlow Rune 0011 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0011_AI-Powered_Automation_AIProcessing_Advanced_OpenAI_Nodes24_agent_chatTrigger_executeWorkf_V1.json"
+        },
+        {
+          "rune_number": 12,
+          "title": "RuneFlow Rune 0012 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0012_General_Purpose_Automation_ProcessAutomation_Advanced_Manual.json"
+        },
+        {
+          "rune_number": 13,
+          "title": "RuneFlow Rune 0013 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0013_General_Purpose_Automation_ProcessAutomation_Advanced_19Nodes.json"
+        },
+        {
+          "rune_number": 14,
+          "title": "RuneFlow Rune 0014 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Basic",
+          "filename": "RuneFlow_Rune_0014_AI-Powered_Automation_AIProcessing_Basic_Sheets.json"
+        },
+        {
+          "rune_number": 15,
+          "title": "RuneFlow Rune 0015 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0015_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets.json"
+        },
+        {
+          "rune_number": 16,
+          "title": "RuneFlow Rune 0016 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0016_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes16_code_googleSheets_httpRequest_V1.json"
+        },
+        {
+          "rune_number": 17,
+          "title": "RuneFlow Rune 0017 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0017_General_Purpose_Automation_AIProcessing_Standard_Sheets.json"
+        },
+        {
+          "rune_number": 18,
+          "title": "RuneFlow Rune 0018 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0018_General_Purpose_Automation_ScheduledTasks_Advanced_Sheets_Nodes18_code_convertToFile_googleSheet_V2.json"
+        },
+        {
+          "rune_number": 19,
+          "title": "RuneFlow Rune 0019 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Enterprise",
+          "filename": "RuneFlow_Rune_0019_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI.json"
+        },
+        {
+          "rune_number": 20,
+          "title": "RuneFlow Rune 0020 Mattermost Notification on Webhook Trigger",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0020_Mattermost_Notification_on_Webhook_Trigger_WebhookHandling_Basic_Simple_Nodes8_mattermost_pagerDuty_webhook_V1.json"
+        },
+        {
+          "rune_number": 21,
+          "title": "RuneFlow Rune 0021 Database Management",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Enterprise",
+          "filename": "RuneFlow_Rune_0021_Database_Management_Automation_DatabaseOps_Enterprise_MySQL.json"
+        },
+        {
+          "rune_number": 23,
+          "title": "RuneFlow Rune 0023 NameCheap Dynamic DNS DDNS",
+          "category": "Automation & Ops",
+          "complexity": "Standard",
+          "integration": "Scheduled",
+          "filename": "RuneFlow_Rune_0023_NameCheap_Dynamic_DNS_DDNS_ScheduledTasks_Standard_Scheduled.json"
+        },
+        {
+          "rune_number": 24,
+          "title": "RuneFlow Rune 0024 Analyze email headers for IPs and spoofing 3",
+          "category": "Automation & Ops",
+          "complexity": "Enterprise",
+          "integration": "Webhook",
+          "filename": "RuneFlow_Rune_0024_Analyze_email_headers_for_IPs_and_spoofing_3_WebhookHandling_Enterprise_Webhook.json"
+        },
+        {
+          "rune_number": 25,
+          "title": "RuneFlow Rune 0025 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0025_General_Purpose_Automation_ProcessAutomation_Standard_Manual.json"
+        },
+        {
+          "rune_number": 26,
+          "title": "RuneFlow Rune 0026 Read RSS feed from two different sources",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0026_Read_RSS_feed_from_two_different_sources_Automation_Basic_Simple.json"
+        },
+        {
+          "rune_number": 28,
+          "title": "RuneFlow Rune 0028 Slack Integration",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Basic",
+          "filename": "RuneFlow_Rune_0028_Slack_Integration_Automation_SlackIntegration_Basic_Airtable.json"
+        },
+        {
+          "rune_number": 33,
+          "title": "RuneFlow Rune 0033 Empty Workflow",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0033_Empty_Workflow_Automation_Basic_Simple.json"
+        },
+        {
+          "rune_number": 39,
+          "title": "RuneFlow Rune 0039 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Enterprise",
+          "filename": "RuneFlow_Rune_0039_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes30_agent_airtable_executeWorkflow_V1.json"
+        },
+        {
+          "rune_number": 44,
+          "title": "RuneFlow Rune 0044 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0044_General_Purpose_Automation_EmailAutomation_Standard_Gmail.json"
+        },
+        {
+          "rune_number": 45,
+          "title": "RuneFlow Rune 0045 General Purpose",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0045_General_Purpose_Automation_EmailAutomation_Standard_Gmail_Nodes8_chainLlm_extractFromFile_formT_V1.json"
+        },
+        {
+          "rune_number": 46,
+          "title": "RuneFlow Rune 0046 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Enterprise",
+          "filename": "RuneFlow_Rune_0046_AI-Powered_Automation_AIProcessing_Enterprise_OpenAI_Nodes31_agent_aggregate_chatTrigger_V2.json"
+        },
+        {
+          "rune_number": 47,
+          "title": "RuneFlow Rune 0047 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Advanced",
+          "filename": "RuneFlow_Rune_0047_AI-Powered_Automation_AIProcessing_Advanced_OpenAI.json"
+        },
+        {
+          "rune_number": 49,
+          "title": "RuneFlow Rune 0049 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Standard",
+          "filename": "RuneFlow_Rune_0049_AI-Powered_Automation_AIProcessing_Standard_OpenAI.json"
+        },
+        {
+          "rune_number": 50,
+          "title": "RuneFlow Rune 0050 AI-Powered",
+          "category": "Automation & Ops",
+          "complexity": "Basic",
+          "integration": "Basic",
+          "filename": "RuneFlow_Rune_0050_AI-Powered_Automation_AIProcessing_Basic_OpenAI.json"
+        }
+      ]
+    },
+    "Social Media & Content": {
+      "icon": "\ud83d\udcf1",
+      "count": 3,
+      "template_items": [
+        "<div class=\"template-item\">RuneFlow Rune 0003 Scheduled API Data Fetcher</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0034 AI-Driven WooCommerce Product Importer with SEO</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0037 AI-Driven WooCommerce Product Importer with SEO</div>"
+      ],
+      "all_templates": [
+        {
+          "rune_number": 3,
+          "title": "RuneFlow Rune 0003 Scheduled API Data Fetcher",
+          "category": "Social Media & Content",
+          "complexity": "Advanced",
+          "integration": "Telegram",
+          "filename": "RuneFlow_Rune_0003_Scheduled_API_Data_Fetcher_TelegramBot_Advanced_Telegram.json"
+        },
+        {
+          "rune_number": 34,
+          "title": "RuneFlow Rune 0034 AI-Driven WooCommerce Product Importer with SEO",
+          "category": "Social Media & Content",
+          "complexity": "Advanced",
+          "integration": "Sheets",
+          "filename": "RuneFlow_Rune_0034_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets.json"
+        },
+        {
+          "rune_number": 37,
+          "title": "RuneFlow Rune 0037 AI-Driven WooCommerce Product Importer with SEO",
+          "category": "Social Media & Content",
+          "complexity": "Advanced",
+          "integration": "Sheets",
+          "filename": "RuneFlow_Rune_0037_AI-Driven_WooCommerce_Product_Importer_with_SEO_TelegramBot_Advanced_Sheets_Nodes17_chainLlm_code_googleSheets_V1.json"
+        }
+      ]
+    },
+    "Email & Outreach": {
+      "icon": "\ud83d\udc8c",
+      "count": 6,
+      "template_items": [
+        "<div class=\"template-item\">RuneFlow Rune 0005 Get messages with a certain label remove the label and add a new one</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0022 AI Email Assistant</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0030 HR Job Posting and Evaluation with AI</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0031 HR Job Posting and Evaluation with AI</div>",
+        "<div class=\"template-item-more\">+ 2 more premium email & outreach templates...</div>"
+      ],
+      "all_templates": [
+        {
+          "rune_number": 5,
+          "title": "RuneFlow Rune 0005 Get messages with a certain label remove the label and add a new one",
+          "category": "Email & Outreach",
+          "complexity": "Basic",
+          "integration": "Gmail",
+          "filename": "RuneFlow_Rune_0005_Get_messages_with_a_certain_label_remove_the_label_and_add_a_new_one_EmailAutomation_Basic_Gmail.json"
+        },
+        {
+          "rune_number": 22,
+          "title": "RuneFlow Rune 0022 AI Email Assistant",
+          "category": "Email & Outreach",
+          "complexity": "Advanced",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0022_AI_Email_Assistant_EmailAutomation_Advanced_OpenAI.json"
+        },
+        {
+          "rune_number": 30,
+          "title": "RuneFlow Rune 0030 HR Job Posting and Evaluation with AI",
+          "category": "Email & Outreach",
+          "complexity": "Enterprise",
+          "integration": "Airtable",
+          "filename": "RuneFlow_Rune_0030_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable.json"
+        },
+        {
+          "rune_number": 31,
+          "title": "RuneFlow Rune 0031 HR Job Posting and Evaluation with AI",
+          "category": "Email & Outreach",
+          "complexity": "Enterprise",
+          "integration": "Airtable",
+          "filename": "RuneFlow_Rune_0031_HR_Job_Posting_and_Evaluation_with_AI_EmailAutomation_Enterprise_Airtable_Nodes37_agent_airtable_airtableTool_V1.json"
+        },
+        {
+          "rune_number": 40,
+          "title": "RuneFlow Rune 0040 Amazon Ads AI Optimization",
+          "category": "Email & Outreach",
+          "complexity": "Enterprise",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0040_Amazon_Ads_AI_Optimization_EmailAutomation_Enterprise_OpenAI.json"
+        },
+        {
+          "rune_number": 48,
+          "title": "RuneFlow Rune 0048 Webhook Data Processing",
+          "category": "Email & Outreach",
+          "complexity": "Advanced",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0048_Webhook_Data_Processing_EmailAutomation_Advanced_OpenAI.json"
+        }
+      ]
+    },
+    "AI & Research": {
+      "icon": "\ud83e\udd16",
+      "count": 10,
+      "template_items": [
+        "<div class=\"template-item\">RuneFlow Rune 0009 MongoDB Agent</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0027 Build your first AI MCP Server</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0029 Create update and get a subscriber using the MailerLite node</div>",
+        "<div class=\"template-item\">RuneFlow Rune 0032 Reservation Medcin</div>",
+        "<div class=\"template-item-more\">+ 6 more premium ai & research templates...</div>"
+      ],
+      "all_templates": [
+        {
+          "rune_number": 9,
+          "title": "RuneFlow Rune 0009 MongoDB Agent",
+          "category": "AI & Research",
+          "complexity": "Standard",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0009_MongoDB_Agent_AIProcessing_Standard_OpenAI.json"
+        },
+        {
+          "rune_number": 27,
+          "title": "RuneFlow Rune 0027 Build your first AI MCP Server",
+          "category": "AI & Research",
+          "complexity": "Enterprise",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0027_Build_your_first_AI_MCP_Server_AIProcessing_Enterprise_OpenAI.json"
+        },
+        {
+          "rune_number": 29,
+          "title": "RuneFlow Rune 0029 Create update and get a subscriber using the MailerLite node",
+          "category": "AI & Research",
+          "complexity": "Basic",
+          "integration": "Simple",
+          "filename": "RuneFlow_Rune_0029_Create_update_and_get_a_subscriber_using_the_MailerLite_node_AIProcessing_Basic_Simple.json"
+        },
+        {
+          "rune_number": 32,
+          "title": "RuneFlow Rune 0032 Reservation Medcin",
+          "category": "AI & Research",
+          "complexity": "Advanced",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0032_Reservation_Medcin_AIProcessing_Advanced_OpenAI.json"
+        },
+        {
+          "rune_number": 35,
+          "title": "RuneFlow Rune 0035 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+          "category": "AI & Research",
+          "complexity": "Advanced",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0035_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI.json"
+        },
+        {
+          "rune_number": 36,
+          "title": "RuneFlow Rune 0036 Integrating AI with Open-Meteo API for Enhanced Weather Forecasting",
+          "category": "AI & Research",
+          "complexity": "Advanced",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0036_Integrating_AI_with_Open-Meteo_API_for_Enhanced_Weather_Forecasting_AIProcessing_Advanced_OpenAI_Nodes13_agent_chatTrigger_lmChatOpenAi_V1.json"
+        },
+        {
+          "rune_number": 38,
+          "title": "RuneFlow Rune 0038 AI Social Media Caption Creator",
+          "category": "AI & Research",
+          "complexity": "Standard",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0038_AI_Social_Media_Caption_Creator_AIProcessing_Standard_OpenAI.json"
+        },
+        {
+          "rune_number": 41,
+          "title": "RuneFlow Rune 0041 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+          "category": "AI & Research",
+          "complexity": "Enterprise",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0041_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI.json"
+        },
+        {
+          "rune_number": 42,
+          "title": "RuneFlow Rune 0042 BambooHR AI-Powered Company Policies and Benefits Chatbot",
+          "category": "AI & Research",
+          "complexity": "Enterprise",
+          "integration": "OpenAI",
+          "filename": "RuneFlow_Rune_0042_BambooHR_AI-Powered_Company_Policies_and_Benefits_Chatbot_AIProcessing_Enterprise_OpenAI_Nodes51_agent_aggregate_bambooHr_V1.json"
+        },
+        {
+          "rune_number": 43,
+          "title": "RuneFlow Rune 0043 Business Canvas Generator",
+          "category": "AI & Research",
+          "complexity": "Enterprise",
+          "integration": "28Nodes",
+          "filename": "RuneFlow_Rune_0043_Business_Canvas_Generator_AIProcessing_Enterprise_28Nodes.json"
+        }
+      ]
+    }
+  }
+}

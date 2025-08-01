@@ -369,7 +369,7 @@ class Database {
 
     // File operations
     async getFilesByProductType(product_type) {
-        const sql = 'SELECT * FROM files WHERE product_type = ? AND is_active = 1';
+        const sql = 'SELECT * FROM files WHERE product_type = ? AND is_active = TRUE';
         return await this.query(sql, [product_type]);
     }
 
