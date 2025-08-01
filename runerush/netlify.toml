@@ -13,13 +13,13 @@
 
 [[redirects]]
   from = "/success*"
-  to = "https://runeflow.up.railway.app/success:splat"
+  to = "https://runeflow.up.railway.app/success?:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/downloads*"
-  to = "https://runeflow.up.railway.app/downloads:splat"
+  to = "https://runeflow.up.railway.app/downloads?:splat"
   status = 200
   force = true
 
