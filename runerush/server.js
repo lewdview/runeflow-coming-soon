@@ -655,6 +655,15 @@ app.get('/success', async (req, res) => {
                 await db.createOrder(orderData);
                 console.log('✅ Created order record for user:', user.email);
                 
+                // Send welcome email with download links
+                try {
+                    await emailService.sendWelcomeEmail(user, product_type || session.metadata?.product_type || 'core');
+                    console.log('✅ Welcome email sent to:', user.email);
+                } catch (emailError) {
+                    console.error('❌ Failed to send welcome email:', emailError);
+                    // Don't fail the purchase flow if email fails
+                }
+                
             } catch (createError) {
                 console.error('❌ Failed to create user/order:', createError);
                 return res.redirect('/runerush/purchase.html?error=user_creation_failed');
