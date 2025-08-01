@@ -611,6 +611,9 @@ app.get('/runerush/success.html', (req, res) => {
 });
 
 // Success redirect route - handles post-purchase redirects
+// NOTE: Currently unused - Stripe redirects directly to /runerush/success.html
+// Uncomment and use this route if you want server-side payment validation before showing success
+/*
 app.get('/success', async (req, res) => {
     try {
         const { session_id, product_type } = req.query;
@@ -697,6 +700,7 @@ app.get('/success', async (req, res) => {
         res.redirect('/runerush/purchase.html?error=redirect_failed');
     }
 });
+*/
 
 // =============================================================================
 // ERROR HANDLING
