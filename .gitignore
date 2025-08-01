@@ -19,6 +19,7 @@ logs/
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
 
 # Data files (if sensitive)
 data/emails.json
