@@ -8,11 +8,11 @@ Your RuneRUSH payment system is now **95% configured** with only final deploymen
 
 #### **Stripe Configuration:**
 - **Product IDs:** ✅ Integrated
-  - Core Bundle: `prod_SlL1zWArTK3AHs`
-  - PRO Bundle: `prod_SlL8jakWjh1bNn` 
-  - PRO Upgrade: `prod_SlL5k4eZntQCK9`
-- **Webhook Secret:** ✅ `whsec_w0910cwCsm67aAzkcKFF39zFLsp6gtjW`
-- **Publishable Key:** ✅ `pk_test_51QgUHnAZqMCvJvdPVUSlF3xHfW7FmkHHOmzUTg2naNLzYiAqO8MdnQ7a0eqxJaNF9OHQu9JYvQfL1XJHs4qUgS2J00XPYsYcqW`
+  - Core Bundle: `${STRIPE_CORE_PRODUCT_ID}`
+  - PRO Bundle: `${STRIPE_PRO_PRODUCT_ID}` 
+  - PRO Upgrade: `${STRIPE_PRO_UPGRADE_PRODUCT_ID}`
+- **Webhook Secret:** ✅ `${STRIPE_WEBHOOK_SECRET}`
+- **Publishable Key:** ✅ `${STRIPE_PUBLISHABLE_KEY}`
 
 #### **SendGrid Email Service:**
 - **API Key:** ✅ Configured in environment variables
