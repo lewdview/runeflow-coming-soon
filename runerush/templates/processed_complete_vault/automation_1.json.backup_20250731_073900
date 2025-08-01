@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "automation_1"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_1",
+    "template_name": "Automation 1",
+    "original_filename": "automation_1",
+    "category": "Integration Hub",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:44.300123",
+    "nodes_count": 0,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1672\\n\\n📋 Template: Process_Webhook_Data_and_Respond_with_Custom_Function\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        -280,
+        -80
+      ],
+      "parameters": {
+        "functionCode": "// Code here will run only once, no matter how many input items there are.\n// More info and help: https://docs.n8n.io/nodes/n8n-nodes-base.function\n\n// Loop over inputs and add a new field called 'myNewField' to the JSON of each one\nc_id = items[0].json.headers['x-adobesign-clientid'];\n\nfor (item of items) {\n item.json.myNewField = 1;\n item.json.clientID = c_id;\n}\n\nreturn items;"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "POST",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -540,
+        -160
+      ],
+      "webhookId": "dfe2a7a8-c0f7-41e1-9bf7-15e2b6e98741",
+      "parameters": {
+        "path": "test1",
+        "options": {},
+        "httpMethod": "POST",
+        "responseMode": "responseNode"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "reg-GET",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -540,
+        20
+      ],
+      "webhookId": "5356a36b-1090-4470-ad87-7cfdb6c18daf",
+      "parameters": {
+        "path": "test1",
+        "options": {},
+        "responseMode": "responseNode"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "webhook-response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        -100,
+        -80
+      ],
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "x-adobesign-clientid",
+                "value": "={{$node[\"Function\"].json[\"clientID\"]}}"
+              }
+            ]
+          }
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "SetWebhookData",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        60,
+        -80
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "webhookData",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"] }}"
+            },
+            {
+              "name": "agreement_ID",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"id\"] }}"
+            },
+            {
+              "name": "all_participants",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"participantSetsInfo\"] }}"
+            },
+            {
+              "name": "agreement_status",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"status\"] }}"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "POST": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reg-GET": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "webhook-response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "webhook-response": {
+      "main": [
+        [
+          {
+            "node": "SetWebhookData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Process_Webhook_Data_and_Respond_with_Custom_Function",
+      "rune_number": "1672"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Process_Webhook_Data_and_Respond_with_Custom_Function",
+    "template_name": "Process Webhook Data And Respond With Custom Function",
+    "original_filename": "Process_Webhook_Data_and_Respond_with_Custom_Function",
+    "category": "AI & Research",
+    "quality_score": 3,
+    "processed_date": "2025-07-31T07:29:55.202557",
+    "nodes_count": 6,
+    "has_credentials": false,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1672"
+}

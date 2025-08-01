@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Send_Emergency_Alert_via_SIGNL4_Manually\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "SIGNL4",
+      "type": "n8n-nodes-base.signl4",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "message": "This is a test alert sent from n8n to SIGNL4",
+        "additionalFields": {
+          "title": "Sample Title"
+        }
+      },
+      "credentials": {
+        "signl4Api": "Signl4 Team Secret"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "SIGNL4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Send_Emergency_Alert_via_SIGNL4_Manually"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Send_Emergency_Alert_via_SIGNL4_Manually",
+    "template_name": "Send Emergency Alert Via Signl4 Manually",
+    "original_filename": "Send_Emergency_Alert_via_SIGNL4_Manually",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:50.789426",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

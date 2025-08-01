@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Download_Google_Drive_File_and_Save_Locally\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "fileId": "1dJEBaECGmua09YP7W6WCBu66icIq32yRadQpk",
+        "options": {},
+        "operation": "download"
+      },
+      "credentials": {
+        "googleApi": "n8n-test-service-account"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "fileName": "/data/downloaded_file.pdf"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "Download_Google_Drive_File_and_Save_Locally"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Download_Google_Drive_File_and_Save_Locally",
+    "template_name": "Download Google Drive File And Save Locally",
+    "original_filename": "Download_Google_Drive_File_and_Save_Locally",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:39.727238",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

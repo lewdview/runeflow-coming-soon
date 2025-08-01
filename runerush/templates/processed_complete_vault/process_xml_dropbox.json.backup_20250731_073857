@@ -1,0 +1,166 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: process_xml_dropbox\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "To JSON",
+      "type": "n8n-nodes-base.xml",
+      "position": [
+        700,
+        300
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Change title",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "slideshow.title",
+              "value": "New Title Name"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Get XML Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "url": "https://httpbin.org/xml",
+        "responseFormat": "string"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Dropbox",
+      "type": "n8n-nodes-base.dropbox",
+      "position": [
+        1300,
+        300
+      ],
+      "parameters": {
+        "path": "/my-xml-file.xml",
+        "fileContent": "={{$node[\"To XML\"].data[\"data\"]}}"
+      },
+      "credentials": {
+        "dropboxApi": ""
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "To XML",
+      "type": "n8n-nodes-base.xml",
+      "position": [
+        1100,
+        300
+      ],
+      "parameters": {
+        "mode": "jsonToxml",
+        "options": {}
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "To XML": {
+      "main": [
+        [
+          {
+            "node": "Dropbox",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To JSON": {
+      "main": [
+        [
+          {
+            "node": "Change title",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Change title": {
+      "main": [
+        [
+          {
+            "node": "To XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get XML Data": {
+      "main": [
+        [
+          {
+            "node": "To JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "process_xml_dropbox"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "process_xml_dropbox",
+    "template_name": "Process Xml Dropbox",
+    "original_filename": "process_xml_dropbox",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:39.148024",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

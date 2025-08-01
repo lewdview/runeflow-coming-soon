@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2744\\n\\n📋 Template: process_1\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mock Data",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        802,
+        307
+      ],
+      "parameters": {
+        "functionCode": "return [\n {\n json: {\n id: 1,\n name: \"Jim\"\n }\n },\n {\n json: {\n id: 2,\n name: \"Stefan\"\n }\n },\n {\n json: {\n id: 3,\n name: \"Hans\"\n }\n }\n];"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Create an array of objects",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1052,
+        307
+      ],
+      "parameters": {
+        "functionCode": "return [\n {\n json: {\n data_object: items.map(item => item.json),\n },\n }\n];\n"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Mock Data": {
+      "main": [
+        [
+          {
+            "node": "Create an array of objects",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "process_1",
+      "rune_number": "2744"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "process_1",
+    "template_name": "Process 1",
+    "original_filename": "process_1",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:54.743409",
+    "nodes_count": 3,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2744"
+}

@@ -1,0 +1,114 @@
+{
+  "id": "114",
+  "name": "Send daily weather updates via a message in Line",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4810\\n\\n📋 Template: Daily_Weather_Updates_via_Line_Messaging\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "position": [
+        890,
+        380
+      ],
+      "parameters": {
+        "message": "=Hey! The temperature outside is {{$node[\"OpenWeatherMap\"].json[\"main\"][\"temp\"]}}°C.",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "lineNotifyOAuth2Api": "line-credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        490,
+        380
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 9
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "OpenWeatherMap",
+      "type": "n8n-nodes-base.openWeatherMap",
+      "position": [
+        690,
+        380
+      ],
+      "parameters": {
+        "cityName": "berlin"
+      },
+      "credentials": {
+        "openWeatherMapApi": "owm"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Daily_Weather_Updates_via_Line_Messaging",
+      "rune_number": "4810"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4810"
+}

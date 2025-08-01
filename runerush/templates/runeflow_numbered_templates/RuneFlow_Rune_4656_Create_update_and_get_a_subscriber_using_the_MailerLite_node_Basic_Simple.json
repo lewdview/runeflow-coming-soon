@@ -1,0 +1,146 @@
+{
+  "id": "96",
+  "name": "Create, update and get a subscriber using the MailerLite node",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4656\\n\\n📋 Template: Create,_update_and_get_a_subscriber_using_the_MailerLite_node\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        310,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "MailerLite",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        510,
+        300
+      ],
+      "parameters": {
+        "email": "harshil@n8n.io",
+        "additionalFields": {
+          "name": "Harshil"
+        }
+      },
+      "credentials": {
+        "mailerLiteApi": "mailerlite"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "MailerLite1",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        710,
+        300
+      ],
+      "parameters": {
+        "operation": "update",
+        "subscriberId": "={{$node[\"MailerLite\"].json[\"email\"]}}",
+        "updateFields": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "value": "Berlin",
+                "fieldId": "city"
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "mailerLiteApi": "mailerlite"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "MailerLite2",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        910,
+        300
+      ],
+      "parameters": {
+        "operation": "get",
+        "subscriberId": "={{$node[\"MailerLite\"].json[\"email\"]}}"
+      },
+      "credentials": {
+        "mailerLiteApi": "mailerlite"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "MailerLite": {
+      "main": [
+        [
+          {
+            "node": "MailerLite1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MailerLite1": {
+      "main": [
+        [
+          {
+            "node": "MailerLite2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "MailerLite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Create,_update_and_get_a_subscriber_using_the_MailerLite_node",
+      "rune_number": "4656"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4656"
+}

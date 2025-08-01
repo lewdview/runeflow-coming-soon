@@ -1,0 +1,87 @@
+{
+  "id": "92",
+  "name": "Send an SMS to a number whenever you go out",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 7471\\n\\n📋 Template: webhook_automation_pushcut_twilio\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Pushcut Trigger",
+      "type": "n8n-nodes-base.pushcutTrigger",
+      "position": [
+        470,
+        300
+      ],
+      "webhookId": "",
+      "parameters": {
+        "actionName": "Leaving Home"
+      },
+      "credentials": {
+        "pushcutApi": "Pushcut Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "to": "123",
+        "from": "123",
+        "message": "=I'm {{$node[\"Pushcut Trigger\"].json[\"input\"]}}"
+      },
+      "credentials": {
+        "twilioApi": "twilio"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Pushcut Trigger": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "webhook_automation_pushcut_twilio",
+      "rune_number": "7471"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "7471"
+}

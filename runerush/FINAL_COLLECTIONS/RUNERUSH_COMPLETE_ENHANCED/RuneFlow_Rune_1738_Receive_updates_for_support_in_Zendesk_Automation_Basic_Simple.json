@@ -1,0 +1,75 @@
+{
+  "id": "33",
+  "name": "Receive updates for support in Zendesk",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1738\\n\\n📋 Template: Receive_updates_for_support_in_Zendesk\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Zendesk Trigger",
+      "type": "n8n-nodes-base.zendeskTrigger",
+      "position": [
+        690,
+        300
+      ],
+      "webhookId": "7d01a119-83c7-43b7-8668-a2f26b95d225",
+      "parameters": {
+        "options": {},
+        "conditions": {
+          "all": [
+            {}
+          ]
+        }
+      },
+      "credentials": {
+        "zendeskApi": "zendesk-token"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Receive_updates_for_support_in_Zendesk",
+      "rune_number": "1738"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Receive_updates_for_support_in_Zendesk",
+    "template_name": "Receive Updates For Support In Zendesk",
+    "original_filename": "Receive_updates_for_support_in_Zendesk",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:59.108442",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1738"
+}

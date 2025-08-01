@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "instanceId": "43da491ee7afc3232a99276a123dc774d0498da8891013b60e82828d6f1f40c7",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Scheduled_Elasticsearch_Data_Fetch_and_Conditional_Proces...",
+      "rune_number": "5948"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5948\\n\\n📋 Template: Scheduled_Elasticsearch_Data_Fetch_and_Conditional_Proces...\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "77af14bb-db74-4069-adcc-d66e3bb3f893",
+      "name": "Cron Trigger",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        400,
+        300
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 12,
+              "minute": 15
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "286b8b82-78c5-458a-b708-79f0b7d1437c",
+      "name": "Elasticsearch Query",
+      "type": "n8n-nodes-base.elasticsearch",
+      "position": [
+        600,
+        300
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "425719a5-41d2-4f3a-80ba-241620d9f793",
+      "name": "Check for Alerts",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        800,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"hits\"][\"total\"][\"value\"]}}",
+              "operation": "greater"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "a2c6bd3d-c65d-4653-8183-9525a4c3af79",
+      "name": "Create Work Item",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1040,
+        280
+      ],
+      "parameters": {
+        "url": "https://dev.azure.com/<organization>/<project>/_apis/wit/workitems/$Task?api-version=7.1-preview.3",
+        "options": {},
+        "authentication": "basicAuth",
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Content-Type",
+              "value": "application/json-patch+json"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "71ee087f-4f75-4544-b26a-95c7ce12d020",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1060,
+        460
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cron Trigger": {
+      "main": [
+        [
+          {
+            "node": "Elasticsearch Query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Alerts": {
+      "main": [
+        [
+          {
+            "node": "Create Work Item",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Elasticsearch Query": {
+      "main": [
+        [
+          {
+            "node": "Check for Alerts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5948"
+}

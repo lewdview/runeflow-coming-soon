@@ -1,0 +1,810 @@
+manifest_info:
+  contact: bryan@runeflow.co
+  created_date: '2025-07-31'
+  description: Core bundle of RuneFlow automation templates for platform ingestion
+  provider: RuneFlow
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  total_templates: 50
+  version: '1.0'
+  website: https://runeflow.co
+templates:
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/1744_workflow_1744.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 14
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: 1744_workflow_1744
+  template_name: 1744_workflow_1744
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/2620_workflow_2620.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 24
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: 2620_workflow_2620
+  template_name: 2620_workflow_2620
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/3218_workflow_3218.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 16
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: 3218_workflow_3218
+  template_name: 3218_workflow_3218
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/3251_workflow_3251.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 11
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: 3251_workflow_3251
+  template_name: 3251_workflow_3251
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/3280_workflow_3280.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 18
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: 3280_workflow_3280
+  template_name: 3280_workflow_3280
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/AI-Powered_Chatbot_with_Webhook_Response_Handler.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 19
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: AI-Powered_Chatbot_with_Webhook_Response_Handler
+  template_name: AI-Powered_Chatbot_with_Webhook_Response_Handler
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 8
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI
+  template_name: AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI
+  website: https://runeflow.co
+- category: HR & and & Recruitment
+  contact: bryan@runeflow.co
+  description: Strategic Insights
+  file_path: runerush-core-50-templates/Automatically_Adjust_Plex_Server_Performance.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 22
+    runeflow_category: ᛒᚢ Business Intelligence
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Automatically_Adjust_Plex_Server_Performance
+  template_name: Automatically_Adjust_Plex_Server_Performance
+  website: https://runeflow.co
+- category: HR & and & Recruitment
+  contact: bryan@runeflow.co
+  description: Strategic Insights
+  file_path: runerush-core-50-templates/CV_Evaluation_-_Error_Handling_complex_13nodes.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 14
+    runeflow_category: ᛒᚢ Business Intelligence
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: CV_Evaluation_-_Error_Handling_complex_13nodes
+  template_name: CV_Evaluation_-_Error_Handling_complex_13nodes
+  website: https://runeflow.co
+- category: Email & and & Communication
+  contact: bryan@runeflow.co
+  description: Engage Customers
+  file_path: runerush-core-50-templates/Chargebee_Event_Notifications.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛖᛗ Email Marketing
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Chargebee_Event_Notifications
+  template_name: Chargebee_Event_Notifications
+  website: https://runeflow.co
+- category: Email & and & Communication
+  contact: bryan@runeflow.co
+  description: Engage Customers
+  file_path: runerush-core-50-templates/ConvertKit_Form_Subscriber_Notification.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛖᛗ Email Marketing
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: ConvertKit_Form_Subscriber_Notification
+  template_name: ConvertKit_Form_Subscriber_Notification
+  website: https://runeflow.co
+- category: HR & and & Recruitment
+  contact: bryan@runeflow.co
+  description: Strategic Insights
+  file_path: runerush-core-50-templates/Create_a_company_in_Salesmate.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᛒᚢ Business Intelligence
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Create_a_company_in_Salesmate
+  template_name: Create_a_company_in_Salesmate
+  website: https://runeflow.co
+- category: Personal & Automation
+  contact: bryan@runeflow.co
+  description: Streamline Workflows
+  file_path: runerush-core-50-templates/Create_a_new_task_in_Todoist.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᚢ Automation
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Create_a_new_task_in_Todoist
+  template_name: Create_a_new_task_in_Todoist
+  website: https://runeflow.co
+- category: Personal & Automation
+  contact: bryan@runeflow.co
+  description: Streamline Workflows
+  file_path: runerush-core-50-templates/Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᚢ Automation
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated
+  template_name: Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/FTP_File_Upload_and_HTTP_Request_Automation.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: FTP_File_Upload_and_HTTP_Request_Automation
+  template_name: FTP_File_Upload_and_HTTP_Request_Automation
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Fetch_Cocktail_Data_and_Save_as_Local_JSON_File.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Fetch_Cocktail_Data_and_Save_as_Local_JSON_File
+  template_name: Fetch_Cocktail_Data_and_Save_as_Local_JSON_File
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/Format_and_Validate_US_Phone_Numbers.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 8
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Format_and_Validate_US_Phone_Numbers
+  template_name: Format_and_Validate_US_Phone_Numbers
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Generate_Images_via_API_Using_OpenAI.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 8
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Generate_Images_via_API_Using_OpenAI
+  template_name: Generate_Images_via_API_Using_OpenAI
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 27
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting
+  template_name: Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Image_Generation_via_Webhook_Trigger_and_AI_Response.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 8
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Image_Generation_via_Webhook_Trigger_and_AI_Response
+  template_name: Image_Generation_via_Webhook_Trigger_and_AI_Response
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/Initialize_Standup_Bot_with_Binary_File_Setup.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Initialize_Standup_Bot_with_Binary_File_Setup
+  template_name: Initialize_Standup_Bot_with_Binary_File_Setup
+  website: https://runeflow.co
+- category: Personal & Automation
+  contact: bryan@runeflow.co
+  description: Streamline Workflows
+  file_path: runerush-core-50-templates/Manually_Add_New_Task_to_Google_Tasks_List.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᚢ Automation
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Manually_Add_New_Task_to_Google_Tasks_List
+  template_name: Manually_Add_New_Task_to_Google_Tasks_List
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/Manually_Triggered_RSS_Feed_Reader.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Manually_Triggered_RSS_Feed_Reader
+  template_name: Manually_Triggered_RSS_Feed_Reader
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Parse_and_Structure_AI-Generated_Text_Responses.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 12
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Parse_and_Structure_AI-Generated_Text_Responses
+  template_name: Parse_and_Structure_AI-Generated_Text_Responses
+  website: https://runeflow.co
+- category: Email & and & Communication
+  contact: bryan@runeflow.co
+  description: Engage Customers
+  file_path: runerush-core-50-templates/Receive_updates_for_events_in_ClickUp.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛖᛗ Email Marketing
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Receive_updates_for_events_in_ClickUp
+  template_name: Receive_updates_for_events_in_ClickUp
+  website: https://runeflow.co
+- category: Email & and & Communication
+  contact: bryan@runeflow.co
+  description: Engage Customers
+  file_path: runerush-core-50-templates/Receive_updates_when_a_form_is_submitted_in_Wufoo.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛖᛗ Email Marketing
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Receive_updates_when_a_form_is_submitted_in_Wufoo
+  template_name: Receive_updates_when_a_form_is_submitted_in_Wufoo
+  website: https://runeflow.co
+- category: Email & and & Communication
+  contact: bryan@runeflow.co
+  description: Engage Customers
+  file_path: runerush-core-50-templates/Receive_updates_when_a_new_list_is_created_in_Affinity.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛖᛗ Email Marketing
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Receive_updates_when_a_new_list_is_created_in_Affinity
+  template_name: Receive_updates_when_a_new_list_is_created_in_Affinity
+  website: https://runeflow.co
+- category: Personal & Automation
+  contact: bryan@runeflow.co
+  description: Streamline Workflows
+  file_path: runerush-core-50-templates/Scheduled_URL_Health_Check_and_Ping_Monitor.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᚨᚢ Automation
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Scheduled_URL_Health_Check_and_Ping_Monitor
+  template_name: Scheduled_URL_Health_Check_and_Ping_Monitor
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Sync_and_Analyze_Postgres_Data_with_AI_Assistance.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 20
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Sync_and_Analyze_Postgres_Data_with_AI_Assistance
+  template_name: Sync_and_Analyze_Postgres_Data_with_AI_Assistance
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/Track_New_Toggl_Time_Entries_Automatically.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Track_New_Toggl_Time_Entries_Automatically
+  template_name: Track_New_Toggl_Time_Entries_Automatically
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Translate_Web_Content_Using_DeepL_API.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Translate_Web_Content_Using_DeepL_API
+  template_name: Translate_Web_Content_Using_DeepL_API
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/Tweet_New_Strava_Activities_Automatically.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Tweet_New_Strava_Activities_Automatically
+  template_name: Tweet_New_Strava_Activities_Automatically
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/Twitter_Post_Conditional_Action_Trigger.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Twitter_Post_Conditional_Action_Trigger
+  template_name: Twitter_Post_Conditional_Action_Trigger
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/Web_Request_Handler_with_Email_Notifications.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 16
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Web_Request_Handler_with_Email_Notifications
+  template_name: Web_Request_Handler_with_Email_Notifications
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/Webhook_Triggers_HTTP_Request_and_Response.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 4
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: Webhook_Triggers_HTTP_Request_and_Response
+  template_name: Webhook_Triggers_HTTP_Request_and_Response
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/automation_httprequest_deepl.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: automation_httprequest_deepl
+  template_name: automation_httprequest_deepl
+  website: https://runeflow.co
+- category: Personal & Automation
+  contact: bryan@runeflow.co
+  description: Streamline Workflows
+  file_path: runerush-core-50-templates/automation_manual_googlecalendar.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᚢ Automation
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: automation_manual_googlecalendar
+  template_name: automation_manual_googlecalendar
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/automation_manual_mailjet.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: automation_manual_mailjet
+  template_name: automation_manual_mailjet
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/automation_manual_twitter.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: automation_manual_twitter
+  template_name: automation_manual_twitter
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/automation_rssfeedread_manual.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: automation_rssfeedread_manual
+  template_name: automation_rssfeedread_manual
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/process_airtop_manual.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 6
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: process_airtop_manual
+  template_name: process_airtop_manual
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/process_code_wait_7nodes.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: true
+    has_webhooks: false
+    nodes_count: 8
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: process_code_wait_7nodes
+  template_name: process_code_wait_7nodes
+  website: https://runeflow.co
+- category: Social & Media
+  contact: bryan@runeflow.co
+  description: Content Distribution
+  file_path: runerush-core-50-templates/scheduled_automation_httprequest_twitter.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 5
+    runeflow_category: ᛊᛟ Social Media
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: scheduled_automation_httprequest_twitter
+  template_name: scheduled_automation_httprequest_twitter
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/webhook_automation_copper.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_copper
+  template_name: webhook_automation_copper
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/webhook_automation_demio_typeform.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 3
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_demio_typeform
+  template_name: webhook_automation_demio_typeform
+  website: https://runeflow.co
+- category: Forms & and & Surveys
+  contact: bryan@runeflow.co
+  description: Workflow Orchestration
+  file_path: runerush-core-50-templates/webhook_automation_jotform.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᚦᚨ Task Management
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_jotform
+  template_name: webhook_automation_jotform
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/webhook_automation_keap.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: true
+    has_manual_trigger: false
+    has_webhooks: false
+    nodes_count: 2
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_keap
+  template_name: webhook_automation_keap
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/webhook_automation_notion.json
+  metadata:
+    has_ai_nodes: false
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 5
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_notion
+  template_name: webhook_automation_notion
+  website: https://runeflow.co
+- category: Other & Templates
+  contact: bryan@runeflow.co
+  description: Connect Everything
+  file_path: runerush-core-50-templates/webhook_automation_respondtowebhook_7nodes.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 8
+    runeflow_category: ᛁᚾ Integration Hub
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_automation_respondtowebhook_7nodes
+  template_name: webhook_automation_respondtowebhook_7nodes
+  website: https://runeflow.co
+- category: AI & and & Research
+  contact: bryan@runeflow.co
+  description: Intelligent Data Processing
+  file_path: runerush-core-50-templates/webhook_process_httprequest_complex_14nodes.json
+  metadata:
+    has_ai_nodes: true
+    has_credentials: false
+    has_manual_trigger: false
+    has_webhooks: true
+    nodes_count: 19
+    runeflow_category: ᚨᛁ AI & Research
+  provider: RuneFlow - Norse Automation Mastery
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  template_id: webhook_process_httprequest_complex_14nodes
+  template_name: webhook_process_httprequest_complex_14nodes
+  website: https://runeflow.co

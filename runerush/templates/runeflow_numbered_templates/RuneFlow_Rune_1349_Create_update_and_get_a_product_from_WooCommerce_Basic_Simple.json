@@ -1,0 +1,158 @@
+{
+  "id": "187",
+  "name": "Create, update and get a product from WooCommerce",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1349\\n\\n📋 Template: Manage_WooCommerce_Products_Create,_Update,_and_Retrieve\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "WooCommerce",
+      "type": "n8n-nodes-base.wooCommerce",
+      "position": [
+        430,
+        300
+      ],
+      "parameters": {
+        "name": "n8n Sweatshirt",
+        "imagesUi": {
+          "imagesValues": []
+        },
+        "metadataUi": {
+          "metadataValues": []
+        },
+        "additionalFields": {
+          "description": "Stay warm with this sweatshirt!",
+          "regularPrice": "30"
+        }
+      },
+      "credentials": {
+        "wooCommerceApi": "woocommerce"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "WooCommerce1",
+      "type": "n8n-nodes-base.wooCommerce",
+      "position": [
+        630,
+        300
+      ],
+      "parameters": {
+        "operation": "update",
+        "productId": "={{$node[\"WooCommerce\"].json[\"id\"]}}",
+        "updateFields": {
+          "stockQuantity": 100
+        }
+      },
+      "credentials": {
+        "wooCommerceApi": "woocommerce"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "WooCommerce2",
+      "type": "n8n-nodes-base.wooCommerce",
+      "position": [
+        830,
+        300
+      ],
+      "parameters": {
+        "operation": "get",
+        "productId": "={{$node[\"WooCommerce\"].json[\"id\"]}}"
+      },
+      "credentials": {
+        "wooCommerceApi": "woocommerce"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "WooCommerce": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce1": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Manage_WooCommerce_Products_Create,_Update,_and_Retrieve",
+      "rune_number": "1349"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manage_WooCommerce_Products_Create_Update_and_Retrieve",
+    "template_name": "Manage Woocommerce Products Create Update And Retrieve",
+    "original_filename": "Manage_WooCommerce_Products_Create,_Update,_and_Retrieve",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:41.942077",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1349"
+}

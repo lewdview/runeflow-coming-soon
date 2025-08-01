@@ -1,0 +1,175 @@
+{
+  "id": "110",
+  "name": "Get SSL Certificate",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2920\\n\\n📋 Template: process_uproc_functionitem\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        240,
+        290
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Create Domain Item",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        450,
+        290
+      ],
+      "parameters": {
+        "functionCode": "item.domain = \"n8n.io\";\nreturn item;"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Get SSL Certificate",
+      "type": "n8n-nodes-base.uproc",
+      "position": [
+        650,
+        290
+      ],
+      "parameters": {
+        "tool": "getDomainCertificate",
+        "group": "internet",
+        "domain": "= {{$node[\"Create Domain Item\"].json[\"domain\"]}}",
+        "additionalOptions": {}
+      },
+      "credentials": {
+        "uprocApi": "miquel-uproc"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Send Expired Alarm",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1070,
+        270
+      ],
+      "parameters": {
+        "text": "=The certificate of the domain {{$node[\"Create Domain Item\"].json[\"domain\"]}} has expired!",
+        "chatId": "-1415703867",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": "test killia bot"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Certificate has expired?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        840,
+        290
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Get SSL Certificate\"].json[\"message\"][\"valid\"]+\"\"}}",
+              "value2": "false"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Create Domain Item": {
+      "main": [
+        [
+          {
+            "node": "Get SSL Certificate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get SSL Certificate": {
+      "main": [
+        [
+          {
+            "node": "Certificate has expired?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Create Domain Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Certificate has expired?": {
+      "main": [
+        [
+          {
+            "node": "Send Expired Alarm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "process_uproc_functionitem",
+      "rune_number": "2920"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "process_uproc_functionitem",
+    "template_name": "Process Uproc Functionitem",
+    "original_filename": "process_uproc_functionitem",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:59.088741",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2920"
+}

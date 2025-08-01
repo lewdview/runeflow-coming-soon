@@ -1,0 +1,239 @@
+{
+  "id": 1,
+  "name": "Google Cal to Zoom meeting",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: scheduled_automation_cron_datetime_6nodes\\n📁 Category: Personal & Automation\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        0,
+        330
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Zoom",
+      "type": "n8n-nodes-base.zoom",
+      "position": [
+        380,
+        410
+      ],
+      "parameters": {
+        "topic": "=Meeting with {{$node[\"IF Zoom meeting\"].json[\"summary\"]}}",
+        "authentication": "oAuth2",
+        "additionalFields": {
+          "duration": "={{(Date.parse($node[\"IF Zoom meeting\"].json[\"end\"][\"dateTime\"])-Date.parse($node[\"IF Zoom meeting\"].json[\"start\"][\"dateTime\"]))/(60*1000)}}",
+          "settings": {},
+          "timeZone": "={{$node[\"IF Zoom meeting\"].json[\"start\"][\"timeZone\"]}}",
+          "startTime": "={{$node[\"IF Zoom meeting\"].json[\"start\"][\"dateTime\"]}}"
+        }
+      },
+      "credentials": {
+        "zoomOAuth2Api": {
+          "id": "3",
+          "name": "Zoom account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "position": [
+        200,
+        230
+      ],
+      "parameters": {
+        "value": "={{new Date().toISOString()}}",
+        "action": "calculate",
+        "options": {},
+        "duration": 12,
+        "timeUnit": "hours",
+        "dataPropertyName": "later"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        350,
+        230
+      ],
+      "parameters": {
+        "options": {
+          "timeMax": "={{$node[\"Date & Time\"].json[\"later\"]}}",
+          "timeMin": "={{new Date(new Date().getTime() + (0 * 60 * 60 * 1000)).toISOString()}}",
+          "singleEvents": true
+        },
+        "calendar": "REPLACE_WITH_CALENDAR_ID",
+        "operation": "getAll"
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1",
+          "name": "Google Calendar account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "IF Zoom meeting",
+      "type": "n8n-nodes-base.if",
+      "notes": "filters out:\n- existing Zoom meetings made by Calendly\n- in person zoom meetings\n- signal meetings\n- canceled Calendly meetings (\"transparent\")",
+      "position": [
+        180,
+        430
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"transparency\"]}}",
+              "value2": "transparent",
+              "operation": "notContains"
+            },
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "value2": "=signal",
+              "operation": "notContains"
+            },
+            {
+              "value1": "{{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "value2": "minute meeting",
+              "operation": "notContains"
+            },
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "value2": "in person",
+              "operation": "notContains"
+            }
+          ],
+          "boolean": []
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron Once a Day",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        0,
+        170
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 7
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": true,
+  "settings": {},
+  "connections": {
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron Once a Day": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "IF Zoom meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Zoom meeting": {
+      "main": [
+        [
+          {
+            "node": "Zoom",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Personal & Automation",
+      "template_name": "scheduled_automation_cron_datetime_6nodes"
+    }
+  },
+  "runeflow_category": "ᚨᚢ Automation",
+  "runeflow_description": "Streamline Workflows",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "scheduled_automation_cron_datetime_6nodes",
+    "template_name": "Scheduled Automation Cron Datetime 6Nodes",
+    "original_filename": "scheduled_automation_cron_datetime_6nodes",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:55.376106",
+    "nodes_count": 7,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

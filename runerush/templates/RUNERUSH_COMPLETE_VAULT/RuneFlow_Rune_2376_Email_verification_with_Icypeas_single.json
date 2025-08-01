@@ -1,0 +1,192 @@
+{
+  "id": "IwOOVikQC7cn9VTv",
+  "meta": {
+    "instanceId": "a897062ac3223eacd9c7736276b653c446bc776a63cde2a42a2949ad984f7092",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Verify_Single_Email_Address_Using_Icypeas_API",
+      "rune_number": "2376"
+    }
+  },
+  "name": "Email verification with Icypeas (single)",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2376\\n\\n📋 Template: Verify_Single_Email_Address_Using_Icypeas_API\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "83105cfd-9107-4dae-8282-07c6594ebbd2",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        1460,
+        460
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "7146ee71-e4fc-4c1f-bdbd-af1466525fef",
+      "name": "Run email verification (single)",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2180,
+        460
+      ],
+      "parameters": {
+        "url": "={{ $json.api.url }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "authentication": "genericCredentialType",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "=uyqsdqkudhfiqudhfiqduhfiqdhfqif@gmail.com"
+            }
+          ]
+        },
+        "genericAuthType": "httpHeaderAuth",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-ROCK-TIMESTAMP",
+              "value": "={{ $json.api.timestamp }}"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KGXtUrqC6lNLwW2w",
+          "name": "Header Auth account"
+        }
+      },
+      "typeVersion": 4.1
+    },
+    {
+      "id": "1e004997-dfc6-45ad-9351-9a096cb4c991",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1280,
+        200
+      ],
+      "parameters": {
+        "height": 250.2614840989399,
+        "content": "## Email verification with Icypeas (single)\n\nThis workflow demonstrates how to perform an email verification using Icypeas. Visit https://icypeas.com to create your account.\n\n\n"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "c56e06c9-971b-47ea-9c23-af639933479b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1607,
+        276
+      ],
+      "parameters": {
+        "width": 506,
+        "height": 1030,
+        "content": "## Authenticates to your Icypeas account\n\nThis code node utilizes your API key, API secret, and User ID to establish a connection with your Icypeas account.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpen this node and insert your API Key, API secret, and User ID within the quotation marks. You can locate these credentials on your Icypeas profile at https://app.icypeas.com/bo/profile. Here is the extract of what you have to change :\n\nconst API_KEY = \"**PUT_API_KEY_HERE**\";\nconst API_SECRET = \"**PUT_API_SECRET_HERE**\";\nconst USER_ID = \"**PUT_USER_ID_HERE**\";\n\nDo not change any other line of the code.\n\nIf you are a self-hosted user, follow these steps to activate the crypto module :\n\n1.Access your n8n instance:\nLog in to your n8n instance using your web browser by navigating to the URL of your instance, for example: http://your-n8n-instance.com.\n\n2.Go to Settings:\nIn the top-right corner, click on your username, then select \"Settings.\"\n\n3.Select General Settings:\nIn the left menu, click on \"General.\"\n\n4.Enable the Crypto module:\nScroll down to the \"Additional Node Packages\" section. You will see an option called \"crypto\" with a checkbox next to it. Check this box to enable the Crypto module.\n\n5.Save the changes:\nAt the bottom of the page, click \"Save\" to apply the changes.\n\nOnce you've followed these steps, the Crypto module should be activated for your self-hosted n8n instance. Make sure to save your changes and optionally restart your n8n instance for the changes to take effect.\n\n\n\n\n\n\n\n\n\n\n\n"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "0b0425b7-52e7-4d4c-8c7f-6fb4821b9ce1",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2113,
+        280
+      ],
+      "parameters": {
+        "width": 492,
+        "height": 748,
+        "content": "## Performs an email verification on your Icypeas account\n\n\nThis node executes an HTTP request (POST) to verify the email you have provided in the body section, using Icypeas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n### You need to create credentials in the HTTP Request node :\n\n➔ In the Credential for Header Auth, click on - Create new Credential -.\n➔ In the Name section, write “Authorization”\n➔ In the Value section, select expression (located just above the field on the right when you hover on top of it) and write {{ $json.api.key + ':' + $json.api.signature }} .\n➔ Then click on “Save” to save the changes.\n\n### To verify the email :\n\n➔ go to the Body Parameters section,\n➔ create a new parameter,\n➔ enter \"email\" in the Name field.\n➔ put the email you want to verify in the Value field.\n\nYou will find the result here : https://app.icypeas.com/bo/singlesearch?task=email-verification.\n"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "7784528c-863c-4940-9fe2-f257884a6a73",
+      "name": "Authenticates to your Icypeas account",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1800,
+        460
+      ],
+      "parameters": {
+        "jsCode": "const BASE_URL = \"https://app.icypeas.com\";\nconst PATH = \"/api/email-verification\";\nconst METHOD = \"POST\";\n\n// Change here\nconst API_KEY = \"PUT_API_KEY_HERE\";\nconst API_SECRET = \"PUT_API_SECRET_HERE\";\nconst USER_ID = \"PUT_USER_ID_HERE\";\n////////////////\n\nconst genSignature = (\n path,\n method,\n secret,\n timestamp = new Date().toISOString()\n) => {\n const Crypto = require('crypto');\n const payload = `${method}${path}${timestamp}`.toLowerCase();\n const sign = Crypto.createHmac(\"sha1\", secret).update(payload).digest(\"hex\");\n\n return sign;\n};\n\nconst fullPath = `${BASE_URL}${PATH}`;\n$input.first().json.api = {\n timestamp: new Date().toISOString(),\n secret: API_SECRET,\n key: API_KEY,\n userId: USER_ID,\n url: fullPath,\n};\n$input.first().json.api.signature = genSignature(PATH, METHOD, API_SECRET, $input.first().json.api.timestamp);\nreturn $input.first();"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "39bdb71c-d7c4-4b1a-8e4f-938d30411190",
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Authenticates to your Icypeas account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Authenticates to your Icypeas account": {
+      "main": [
+        [
+          {
+            "node": "Run email verification (single)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Verify_Single_Email_Address_Using_Icypeas_API",
+    "template_name": "Verify Single Email Address Using Icypeas Api",
+    "original_filename": "Verify_Single_Email_Address_Using_Icypeas_API",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:59.938012",
+    "nodes_count": 7,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2376"
+}

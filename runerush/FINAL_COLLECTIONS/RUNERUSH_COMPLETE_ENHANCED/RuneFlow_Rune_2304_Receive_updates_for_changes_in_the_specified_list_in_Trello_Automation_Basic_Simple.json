@@ -1,0 +1,69 @@
+{
+  "id": "117",
+  "name": "Receive updates for changes in the specified list in Trello",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2304\\n\\n📋 Template: Trello_List_Change_Notifications\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Trello Trigger",
+      "type": "n8n-nodes-base.trelloTrigger",
+      "position": [
+        700,
+        250
+      ],
+      "parameters": {
+        "id": ""
+      },
+      "credentials": {
+        "trelloApi": ""
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Trello_List_Change_Notifications",
+      "rune_number": "2304"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Trello_List_Change_Notifications",
+    "template_name": "Trello List Change Notifications",
+    "original_filename": "Trello_List_Change_Notifications",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:43.743991",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2304"
+}

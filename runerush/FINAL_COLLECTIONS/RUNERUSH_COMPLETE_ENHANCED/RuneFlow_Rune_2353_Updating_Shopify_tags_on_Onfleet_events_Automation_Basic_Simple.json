@@ -1,0 +1,94 @@
+{
+  "name": "Updating Shopify tags on Onfleet events",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2353\\n\\n📋 Template: Updating_Shopify_tags_on_Onfleet_events\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Onfleet Trigger",
+      "type": "n8n-nodes-base.onfleetTrigger",
+      "position": [
+        460,
+        300
+      ],
+      "webhookId": "6d6a2bee-f83e-4ebd-a1d5-8708c34393dc",
+      "parameters": {
+        "triggerOn": "taskDelayed",
+        "additionalFields": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "operation": "update",
+        "updateFields": {
+          "tags": ""
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Onfleet Trigger": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "Updating_Shopify_tags_on_Onfleet_events",
+      "rune_number": "2353"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Updating_Shopify_tags_on_Onfleet_events",
+    "template_name": "Updating Shopify Tags On Onfleet Events",
+    "original_filename": "Updating_Shopify_tags_on_Onfleet_events",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:42.758252",
+    "nodes_count": 3,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2353"
+}

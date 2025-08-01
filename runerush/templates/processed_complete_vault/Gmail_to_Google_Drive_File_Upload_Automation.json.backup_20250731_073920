@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "instanceId": "1a23006df50de49624f69e85993be557d137b6efe723a867a7d68a84e0b32704",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Gmail_to_Google_Drive_File_Upload_Automation"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Gmail_to_Google_Drive_File_Upload_Automation\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "3c7ae816-6ce2-4b6b-893e-75c6b8756555",
+      "name": "Trigger - New Email",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "notes": "has:attachment",
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "simple": false,
+        "filters": {
+          "q": "has:attachment"
+        },
+        "options": {
+          "downloadAttachments": true
+        },
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        }
+      },
+      "notesInFlow": true,
+      "typeVersion": 1.1
+    },
+    {
+      "id": "b87b2211-03d3-4742-98c9-977ae4a8d581",
+      "name": "attach binary data outputs",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "functionCode": "let results = [];\n\nfor (item of items) {\n for (key of Object.keys(item.binary)) {\n results.push({\n json: {\n fileName: item.binary[key].fileName\n },\n binary: {\n data: item.binary[key],\n }\n });\n }\n}\n\nreturn results;"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "f8e19c97-0983-4365-bc63-179605050ef2",
+      "name": "upload files to google drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        1140,
+        300
+      ],
+      "parameters": {
+        "name": "={{ $json.fileName.split(\".\")[0] + \"-\" + $('Trigger - New Email').item.json.from.value[0].address + \".\" + $json.fileName.split(\".\")[1]}}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive",
+          "cachedResultName": "My Drive"
+        },
+        "options": {},
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultUrl": "https://drive.google.com/drive",
+          "cachedResultName": "/ (Root folder)"
+        }
+      },
+      "typeVersion": 3
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Trigger - New Email": {
+      "main": [
+        [
+          {
+            "node": "attach binary data outputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "attach binary data outputs": {
+      "main": [
+        [
+          {
+            "node": "upload files to google drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Gmail_to_Google_Drive_File_Upload_Automation",
+    "template_name": "Gmail To Google Drive File Upload Automation",
+    "original_filename": "Gmail_to_Google_Drive_File_Upload_Automation",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:58.599206",
+    "nodes_count": 4,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

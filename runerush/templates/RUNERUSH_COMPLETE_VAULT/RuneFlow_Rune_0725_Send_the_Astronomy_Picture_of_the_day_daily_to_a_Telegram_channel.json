@@ -1,0 +1,131 @@
+{
+  "id": "174",
+  "name": "Send the Astronomy Picture of the day daily to a Telegram channel",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 0725\\n\\n📋 Template: Daily_NASA_Space_Image_to_Telegram_Channel\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 20
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "NASA",
+      "type": "n8n-nodes-base.nasa",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "download": false,
+        "additionalFields": {}
+      },
+      "credentials": {
+        "nasaApi": "NASA"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "file": "={{$node[\"NASA\"].json[\"url\"]}}",
+        "chatId": "-485365454",
+        "operation": "sendPhoto",
+        "additionalFields": {
+          "caption": "={{$node[\"NASA\"].json[\"title\"]}}"
+        }
+      },
+      "credentials": {
+        "telegramApi": "Telegram n8n bot"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "NASA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NASA": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Daily_NASA_Space_Image_to_Telegram_Channel",
+      "rune_number": "0725"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Daily_NASA_Space_Image_to_Telegram_Channel",
+    "template_name": "Daily Nasa Space Image To Telegram Channel",
+    "original_filename": "Daily_NASA_Space_Image_to_Telegram_Channel",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:38.798204",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "0725"
+}

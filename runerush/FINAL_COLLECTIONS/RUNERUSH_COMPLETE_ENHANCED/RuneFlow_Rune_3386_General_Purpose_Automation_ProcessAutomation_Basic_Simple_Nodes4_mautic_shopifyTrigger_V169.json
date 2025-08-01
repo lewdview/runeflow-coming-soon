@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "instanceId": "237600ca44303ce91fa31ee72babcdc8493f55ee2c0e8aa2b78b3b4ce6f70bd9",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "webhook_automation_mautic_shopify",
+      "rune_number": "3386"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 3386\\n\\n📋 Template: webhook_automation_mautic_shopify\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "a5f74e05-acea-4ff4-b3b2-5997850be036",
+      "name": "On new customer",
+      "type": "n8n-nodes-base.shopifyTrigger",
+      "position": [
+        180,
+        420
+      ],
+      "webhookId": "8efd263c-73fb-481b-90d8-8ae0db929548",
+      "parameters": {
+        "topic": "customers/create",
+        "authentication": "accessToken"
+      },
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "37",
+          "name": "[UPDATE ME]"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "5b4a9e71-3aa7-40d8-a439-79a504c60a46",
+      "name": "Create contact",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        400,
+        420
+      ],
+      "parameters": {
+        "email": "={{$node[\"On new customer\"].json[\"email\"]}}",
+        "options": {},
+        "lastName": "={{$node[\"On new customer\"].json[\"last_name\"]}}",
+        "firstName": "={{$node[\"On new customer\"].json[\"first_name\"]}}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "mauticApi": {
+          "id": "34",
+          "name": "[UPDATE ME]"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "4b7b306e-1b4c-464f-b8f0-373167ded16f",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        600
+      ],
+      "parameters": {
+        "width": 332,
+        "height": 116,
+        "content": "### Add more fields to Mautic\nBy default, the first name, last name and email are pushed to Mautic. If you require more fields, add it in the `Create contact` node."
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "On new customer": {
+      "main": [
+        [
+          {
+            "node": "Create contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_automation_mautic_shopify",
+    "template_name": "Webhook Automation Mautic Shopify",
+    "original_filename": "webhook_automation_mautic_shopify",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:42.895145",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "3386"
+}

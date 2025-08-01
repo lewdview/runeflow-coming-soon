@@ -1,0 +1,122 @@
+{
+  "id": "3",
+  "name": "XML Conversion",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Convert_Data_to_XML_Format\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        510,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "xml",
+              "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?> <ORDERS05> <IDOC BEGIN=\"1\"> <EDI_DC40 SEGMENT=\"1\"> <TABNAM>EDI_DC40</TABNAM> </EDI_DC40> </IDOC> </ORDERS05>"
+            }
+          ]
+        },
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "position": [
+        740,
+        300
+      ],
+      "parameters": {
+        "options": {
+          "attrkey": "$",
+          "mergeAttrs": false,
+          "explicitRoot": true
+        },
+        "dataPropertyName": "xml"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Convert_Data_to_XML_Format"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Convert_Data_to_XML_Format",
+    "template_name": "Convert Data To Xml Format",
+    "original_filename": "Convert_Data_to_XML_Format",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:53.747840",
+    "nodes_count": 4,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

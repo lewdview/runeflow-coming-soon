@@ -1,0 +1,70 @@
+{
+  "id": "29",
+  "name": "Receive updates when a subscriber unsubscribes in Customer.io",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Customer_Unsubscribe_Alerts_from_Customer.io\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Customer.io Trigger",
+      "type": "n8n-nodes-base.customerIoTrigger",
+      "position": [
+        650,
+        260
+      ],
+      "webhookId": "88092579-1b8d-4d44-98d5-f24b3579cbc2",
+      "parameters": {
+        "events": [
+          "customer.unsubscribed"
+        ]
+      },
+      "credentials": {
+        "customerIoApi": "customerIO"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Customer_Unsubscribe_Alerts_from_Customer.io"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Customer_Unsubscribe_Alerts_from_Customer_io",
+    "template_name": "Customer Unsubscribe Alerts From Customer Io",
+    "original_filename": "Customer_Unsubscribe_Alerts_from_Customer.io",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:41.552265",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

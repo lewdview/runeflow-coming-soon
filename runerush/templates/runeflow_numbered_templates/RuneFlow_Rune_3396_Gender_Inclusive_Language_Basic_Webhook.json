@@ -1,0 +1,182 @@
+{
+  "id": "18",
+  "name": "Gender Inclusive Language",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 3396\\n\\n📋 Template: webhook_automation_noop\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        150,
+        450
+      ],
+      "parameters": {
+        "path": "webhook",
+        "options": {},
+        "httpMethod": "POST"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mattermost1",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        550,
+        300
+      ],
+      "parameters": {
+        "message": "May I suggest \"folks\" or “y'all”? We use gender inclusive language here. 😄",
+        "channelId": "={{$node[\"Webhook\"].json[\"body\"][\"channel_id\"]}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "credentials": {
+        "mattermostApi": "n8n Mattermost - Bot"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        340,
+        450
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "guys",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "Guys",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "bros",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "Bros",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "dudes",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "Dudes",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "gals",
+              "operation": "contains"
+            },
+            {
+              "value1": "={{$node[\"Webhook\"].json[\"body\"][\"text\"]}}",
+              "value2": "Gals",
+              "operation": "contains"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        550,
+        550
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    }
+  ],
+  "active": true,
+  "settings": {},
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Mattermost1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "webhook_automation_noop",
+      "rune_number": "3396"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_automation_noop",
+    "template_name": "Webhook Automation Noop",
+    "original_filename": "webhook_automation_noop",
+    "category": "AI & Research",
+    "quality_score": 4,
+    "processed_date": "2025-07-31T07:29:51.849257",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "3396"
+}

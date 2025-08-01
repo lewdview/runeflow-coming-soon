@@ -1,0 +1,197 @@
+{
+  "id": 83,
+  "name": "New WooCommerce Customer to Mautic",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5580\\n\\n📋 Template: New_WooCommerce_Customer_to_Mautic\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Check for Existing",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        280,
+        480
+      ],
+      "parameters": {
+        "options": {
+          "search": "={{$json[\"email\"]}}"
+        },
+        "operation": "getAll",
+        "authentication": "oAuth2"
+      },
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "54",
+          "name": "Mautic account"
+        }
+      },
+      "typeVersion": 1,
+      "alwaysOutputData": true
+    },
+    {
+      "name": "If New",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        460,
+        480
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Create Contact",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        680,
+        320
+      ],
+      "parameters": {
+        "email": "={{$node[\"Customer Created\"].json[\"email\"]}}",
+        "company": "={{$node[\"Customer Created\"].json[\"billing\"][\"company\"]}}",
+        "options": {},
+        "lastName": "={{$node[\"Customer Created\"].json[\"last_name\"]}}",
+        "firstName": "={{$node[\"Customer Created\"].json[\"first_name\"]}}",
+        "authentication": "oAuth2",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "54",
+          "name": "Mautic account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Update Contact",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        680,
+        580
+      ],
+      "parameters": {
+        "options": {},
+        "contactId": "={{$json[\"id\"]}}",
+        "operation": "update",
+        "updateFields": {
+          "lastName": "={{$node[\"Customer Created or Updated\"].json[\"last_name\"]}}",
+          "firstName": "={{$node[\"Customer Created or Updated\"].json[\"first_name\"]}}"
+        },
+        "authentication": "oAuth2"
+      },
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "54",
+          "name": "Mautic account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Customer Created or Updated",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "position": [
+        100,
+        480
+      ],
+      "webhookId": "5d89e322-a5e0-4cce-9eab-185e8375175b",
+      "parameters": {
+        "event": "customer.updated"
+      },
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "48",
+          "name": "WooCommerce account"
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "saveDataSuccessExecution": "all"
+  },
+  "connections": {
+    "If New": {
+      "main": [
+        [
+          {
+            "node": "Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Existing": {
+      "main": [
+        [
+          {
+            "node": "If New",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Customer Created or Updated": {
+      "main": [
+        [
+          {
+            "node": "Check for Existing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "New_WooCommerce_Customer_to_Mautic",
+      "rune_number": "5580"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5580"
+}

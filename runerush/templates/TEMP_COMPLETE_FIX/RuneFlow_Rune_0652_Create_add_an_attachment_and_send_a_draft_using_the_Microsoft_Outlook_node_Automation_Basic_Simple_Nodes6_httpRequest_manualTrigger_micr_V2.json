@@ -1,0 +1,182 @@
+{
+  "id": "193",
+  "name": "Create, add an attachment, and send a draft using the Microsoft Outlook node",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 0652\\n\\n📋 Template: Create,_add_an_attachment,_and_send_a_draft_using_the_Microsoft_Outlook_node\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "subject": "Hello from n8n!",
+        "resource": "draft",
+        "bodyContent": "<h1>Hello from n8n!</h1> <p>We are sending this email using the Microsoft Outlook node in <a href=\"https://n8n.io\">n8n</a></p> <p>Best,</p> <p>Sender</p>",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "credentials": {
+        "microsoftOutlookOAuth2Api": "Micrsoft Outlook Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "url": "https://n8n.io/n8n-logo.png",
+        "options": {},
+        "responseFormat": "file"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft Outlook1",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "resource": "messageAttachment",
+        "messageId": "={{$node[\"Microsoft Outlook\"].json[\"id\"]}}",
+        "additionalFields": {
+          "fileName": "n8n.png"
+        }
+      },
+      "credentials": {
+        "microsoftOutlookOAuth2Api": "Micrsoft Outlook Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft Outlook2",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "position": [
+        1050,
+        300
+      ],
+      "parameters": {
+        "resource": "draft",
+        "messageId": "={{$node[\"Microsoft Outlook\"].json[\"id\"]}}",
+        "operation": "send",
+        "additionalFields": {
+          "recipients": "abc@example.com"
+        }
+      },
+      "credentials": {
+        "microsoftOutlookOAuth2Api": "Micrsoft Outlook Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft Outlook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft Outlook1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Create,_add_an_attachment,_and_send_a_draft_using_the_Microsoft_Outlook_node",
+      "rune_number": "0652"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_add_an_attachment_and_send_a_draft_using_the_Microsoft_Outlook_node",
+    "template_name": "Create Add An Attachment And Send A Draft Using The Microsoft Outlook Node",
+    "original_filename": "Create,_add_an_attachment,_and_send_a_draft_using_the_Microsoft_Outlook_node",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:43.552043",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "0652"
+}

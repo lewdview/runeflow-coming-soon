@@ -1,0 +1,153 @@
+{
+  "id": "3",
+  "name": "Daily poems in Telegram",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2958\\n\\n📋 Template: scheduled_automation_httprequest_lingvanex\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -250,
+        400
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 10
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        350,
+        400
+      ],
+      "parameters": {
+        "text": "=✒️ Poem of the day:\n{{$node[\"HTTP Request\"].json[\"0\"][\"title\"]}} by {{$node[\"HTTP Request\"].json[\"0\"][\"poet\"][\"name\"]}}\n\n{{$node[\"HTTP Request\"].json[\"0\"][\"content\"]}}\n☁️",
+        "chatId": "123456789",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": "telegram_bot"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -50,
+        400
+      ],
+      "parameters": {
+        "url": "https://www.poemist.com/api/v1/randompoems",
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "LingvaNex",
+      "type": "n8n-nodes-base.lingvaNex",
+      "position": [
+        150,
+        400
+      ],
+      "parameters": {
+        "text": "={{$node[\"HTTP Request\"].json[\"0\"][\"content\"]}}",
+        "options": {},
+        "translateTo": "en_GB"
+      },
+      "credentials": {
+        "lingvaNexApi": "lingvanex_API"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LingvaNex": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "LingvaNex",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "scheduled_automation_httprequest_lingvanex",
+      "rune_number": "2958"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "scheduled_automation_httprequest_lingvanex",
+    "template_name": "Scheduled Automation Httprequest Lingvanex",
+    "original_filename": "scheduled_automation_httprequest_lingvanex",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:30:01.166824",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2958"
+}

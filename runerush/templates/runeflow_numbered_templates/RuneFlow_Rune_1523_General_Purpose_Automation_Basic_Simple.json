@@ -1,0 +1,168 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1523\\n\\n📋 Template: NextCloud_File_Upload_and_HTTP_Request_Automation\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        20,
+        180
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        420,
+        180
+      ],
+      "parameters": {
+        "url": "https://n8n.io/n8n-logo.png",
+        "options": {},
+        "responseFormat": "file"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "NextCloud",
+      "type": "n8n-nodes-base.nextCloud",
+      "position": [
+        220,
+        180
+      ],
+      "parameters": {
+        "path": "n8n",
+        "resource": "folder"
+      },
+      "credentials": {
+        "nextCloudApi": "nextcloud_creds"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "NextCloud1",
+      "type": "n8n-nodes-base.nextCloud",
+      "position": [
+        620,
+        180
+      ],
+      "parameters": {
+        "path": "n8n/logo.png",
+        "binaryDataUpload": true
+      },
+      "credentials": {
+        "nextCloudApi": "nextcloud_creds"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "NextCloud2",
+      "type": "n8n-nodes-base.nextCloud",
+      "position": [
+        820,
+        180
+      ],
+      "parameters": {
+        "path": "n8n",
+        "resource": "folder",
+        "operation": "list"
+      },
+      "credentials": {
+        "nextCloudApi": "nextcloud_creds"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "NextCloud": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NextCloud1": {
+      "main": [
+        [
+          {
+            "node": "NextCloud2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "NextCloud1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "NextCloud",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "NextCloud_File_Upload_and_HTTP_Request_Automation",
+      "rune_number": "1523"
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "NextCloud_File_Upload_and_HTTP_Request_Automation",
+    "template_name": "Nextcloud File Upload And Http Request Automation",
+    "original_filename": "NextCloud_File_Upload_and_HTTP_Request_Automation",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:39.274398",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1523"
+}

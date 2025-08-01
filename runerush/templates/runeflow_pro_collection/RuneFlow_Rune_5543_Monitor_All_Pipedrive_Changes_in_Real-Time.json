@@ -1,0 +1,55 @@
+{
+  "id": "115",
+  "name": "Receive updates for all changes in Pipedrive",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5543\\n\\n📋 Template: Monitor_All_Pipedrive_Changes_in_Real-Time\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Pipedrive Trigger",
+      "type": "n8n-nodes-base.pipedriveTrigger",
+      "position": [
+        750,
+        250
+      ],
+      "parameters": {},
+      "credentials": {
+        "pipedriveApi": ""
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "Monitor_All_Pipedrive_Changes_in_Real-Time",
+      "rune_number": "5543"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5543"
+}

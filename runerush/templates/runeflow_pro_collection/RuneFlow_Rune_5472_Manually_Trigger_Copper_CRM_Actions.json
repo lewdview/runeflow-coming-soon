@@ -1,0 +1,152 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5472\\n\\n📋 Template: Manually_Trigger_Copper_CRM_Actions\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        320
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Copper",
+      "type": "n8n-nodes-base.copper",
+      "position": [
+        450,
+        320
+      ],
+      "parameters": {
+        "name": "Harshil",
+        "resource": "person",
+        "additionalFields": {
+          "emails": {
+            "emailFields": [
+              {
+                "email": "harshil@n8n.io",
+                "category": "work"
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "copperApi": "Copper API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Copper1",
+      "type": "n8n-nodes-base.copper",
+      "position": [
+        650,
+        320
+      ],
+      "parameters": {
+        "personId": "={{$json[\"id\"]}}",
+        "resource": "person",
+        "operation": "update",
+        "updateFields": {
+          "phone_numbers": {
+            "phoneFields": [
+              {
+                "number": "1234567890",
+                "category": "work"
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "copperApi": "Copper API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Copper2",
+      "type": "n8n-nodes-base.copper",
+      "position": [
+        850,
+        320
+      ],
+      "parameters": {
+        "personId": "={{$json[\"id\"]}}",
+        "resource": "person",
+        "operation": "get"
+      },
+      "credentials": {
+        "copperApi": "Copper API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Copper": {
+      "main": [
+        [
+          {
+            "node": "Copper1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copper1": {
+      "main": [
+        [
+          {
+            "node": "Copper2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Copper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "Manually_Trigger_Copper_CRM_Actions",
+      "rune_number": "5472"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5472"
+}

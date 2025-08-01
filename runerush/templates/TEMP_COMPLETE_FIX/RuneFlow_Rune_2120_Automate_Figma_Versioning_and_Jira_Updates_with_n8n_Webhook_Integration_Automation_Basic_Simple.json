@@ -1,0 +1,180 @@
+{
+  "id": "5kYHogzDGeo21MxE",
+  "meta": {
+    "instanceId": "e7bcfb7f83803b3561455f2e97f622835eda64ae4467d4f2b8a5cf915b534600",
+    "templateCredsSetupCompleted": true,
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "Sync_Figma_Design_Changes_to_Jira_Tasks",
+      "rune_number": "2120"
+    }
+  },
+  "name": "Automate Figma Versioning and Jira Updates with n8n Webhook Integration",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2120\\n\\n📋 Template: Sync_Figma_Design_Changes_to_Jira_Tasks\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "a3853962-36ce-4a2f-b9d6-c2807652d7ff",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -20,
+        -260
+      ],
+      "parameters": {
+        "width": 700,
+        "height": 200,
+        "content": "## Note\nTo use this automation, you will need the Figma Commit Plugin installed and configured. The plugin sends the design version details via a webhook to trigger this n8n workflow.\n\nYou can find the Figma Commit Plugin on GitHub here:\n🔗 [Figma Commit Plugin on GitHub](https://github.com/omid-d3v/Figma-Commit-plugin-with-webhook/)\n\nMake sure to follow the setup instructions in the plugin’s documentation to get started."
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "843f1e0b-4c8b-4744-a9b7-8ce5725768bc",
+      "name": "Find Jira Issue",
+      "type": "n8n-nodes-base.jira",
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "issueKey": "={{ $json.issueLink }}",
+        "operation": "get",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "CBgXAIn2agwnaJ1Y",
+          "name": "Jira SW Cloud account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "59101813-9625-4d1f-b2b6-7ff442c1fe0f",
+      "name": "Add Comment in Issue",
+      "type": "n8n-nodes-base.jira",
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "comment": "={{ $('Figma Trigger').item.json.pageName }}{{ '\\n' }}{{ $('Figma Trigger').item.json.versionName }}{{ '\\n' }}{{ $('Figma Trigger').item.json.designLink }}{{ '\\n' }} {{ $now }}",
+        "options": {},
+        "issueKey": "={{ $json.key }}",
+        "resource": "issueComment"
+      },
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "CBgXAIn2agwnaJ1Y",
+          "name": "Jira SW Cloud account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "378150c5-b640-477a-861f-216e8b15c0e4",
+      "name": "Figma Trigger",
+      "type": "n8n-nodes-base.figmaTrigger",
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "b9fcde90-3e53-4958-b352-933891f95220",
+      "parameters": {
+        "teamId": "940915773877350235",
+        "triggerOn": "fileVersionUpdate"
+      },
+      "credentials": {
+        "figmaApi": {
+          "id": "DjRDveAKp5VxZRE8",
+          "name": "Figma account"
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": true,
+  "pinData": {
+    "Figma Trigger": [
+      {
+        "json": {
+          "status": "IN PROGRESS",
+          "pageName": "page: Favorait",
+          "issueLink": "JAJ-368",
+          "designLink": "test url ",
+          "versionName": "Changes: \n -nothing"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9525049e-7fca-4f83-bf6a-069d477f669e",
+  "connections": {
+    "Figma Trigger": {
+      "main": [
+        [
+          {
+            "node": "Find Jira Issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Jira Issue": {
+      "main": [
+        [
+          {
+            "node": "Add Comment in Issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Comment in Issue": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Sync_Figma_Design_Changes_to_Jira_Tasks",
+    "template_name": "Sync Figma Design Changes To Jira Tasks",
+    "original_filename": "Sync_Figma_Design_Changes_to_Jira_Tasks",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:40.530322",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2120"
+}

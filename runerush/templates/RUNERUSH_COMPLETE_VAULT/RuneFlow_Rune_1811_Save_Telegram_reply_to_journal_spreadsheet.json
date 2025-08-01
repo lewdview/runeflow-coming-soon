@@ -1,0 +1,121 @@
+{
+  "id": 4,
+  "name": "Save Telegram reply to journal spreadsheet",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1811\\n\\n📋 Template: Save_Telegram_reply_to_journal_spreadsheet\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Add entry to sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        700,
+        240
+      ],
+      "parameters": {
+        "options": {},
+        "sheetId": "YOUR_SPREADSHEET_ID",
+        "operation": "append"
+      },
+      "credentials": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Get journal reply",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [
+        220,
+        240
+      ],
+      "webhookId": "fe4a6042-d343-4a02-b443-6d32c38e094d",
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "credentials": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Parse message",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        460,
+        240
+      ],
+      "parameters": {
+        "functionCode": "// When telgram sees a message it will make sure its a reply to its message and from the user. \n// If thats the case then it will return {entry: string, date: string}\n\nconst botUsername = 'BOT_USERNAME'\nconst user = 'YOUR_USERNAME'\n\nconst res = item.message\n\nconst isReplyToBot = res.reply_to_message.from.username === botUsername\nconst isFromUser = res.from.username === user\n\n// This assumes your message is formatted as follows: \"SOME CUSTOM MESSAGE: YYYY-MM-DD\"\nconst date = res.reply_to_message.text.split(':')[1].replace(/\\s/g, '');\n\nconst journalEntry = res.text\n\nif (isReplyToBot && isFromUser) {\n return {entry: journalEntry, date}\n}\n\nreturn undefined;"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Parse message": {
+      "main": [
+        [
+          {
+            "node": "Add entry to sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get journal reply": {
+      "main": [
+        [
+          {
+            "node": "Parse message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Save_Telegram_reply_to_journal_spreadsheet",
+      "rune_number": "1811"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Save_Telegram_reply_to_journal_spreadsheet",
+    "template_name": "Save Telegram Reply To Journal Spreadsheet",
+    "original_filename": "Save_Telegram_reply_to_journal_spreadsheet",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:50.000447",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1811"
+}

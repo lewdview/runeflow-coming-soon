@@ -1,0 +1,179 @@
+{
+  "id": "205",
+  "name": "Get analytics of a website and store it Airtable",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Get_analytics_of_a_website_and_store_it_Airtable\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Analytics",
+      "type": "n8n-nodes-base.googleAnalytics",
+      "position": [
+        470,
+        300
+      ],
+      "parameters": {
+        "viewId": "",
+        "additionalFields": {
+          "metricsUi": {
+            "metricValues": [
+              {
+                "alias": "Sessions",
+                "expression": "ga:sessions"
+              }
+            ]
+          },
+          "dimensionUi": {
+            "dimensionValues": [
+              {
+                "name": "ga:country"
+              }
+            ]
+          },
+          "dateRangesUi": {
+            "dateRanges": {
+              "endDate": "2020-08-30T18:30:00.000Z",
+              "startDate": "2019-12-31T18:30:00.000Z"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "googleAnalyticsOAuth2": "analytics-dev"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "Metric",
+              "value": "={{$json[\"total\"]}}"
+            }
+          ],
+          "string": [
+            {
+              "name": "Country",
+              "value": "={{$json[\"ga:country\"]}}"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        870,
+        300
+      ],
+      "parameters": {
+        "table": "Table 1",
+        "options": {},
+        "operation": "append",
+        "application": ""
+      },
+      "credentials": {
+        "airtableApi": "Airtable Credentials n8n"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Analytics": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Google Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Get_analytics_of_a_website_and_store_it_Airtable"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Get_analytics_of_a_website_and_store_it_Airtable",
+    "template_name": "Get Analytics Of A Website And Store It Airtable",
+    "original_filename": "Get_analytics_of_a_website_and_store_it_Airtable",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:54.249039",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

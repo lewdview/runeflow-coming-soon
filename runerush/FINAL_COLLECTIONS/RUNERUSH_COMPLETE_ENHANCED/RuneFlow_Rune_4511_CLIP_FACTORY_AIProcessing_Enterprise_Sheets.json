@@ -1,0 +1,1193 @@
+{
+  "name": "CLIP FACTORY",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4511\\n\\n📋 Template: CLIP_FACTORY\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4511\\n\\n📋 Template: CLIP_FACTORY\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4511\\n\\n📋 Template: CLIP_FACTORY\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4511\\n\\n📋 Template: CLIP_FACTORY\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4511\\n\\n📋 Template: CLIP_FACTORY\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2180,
+        80
+      ],
+      "id": "b76b80dd-480b-451f-abb4-c18d5a2b352b",
+      "name": "Wait",
+      "webhookId": "8e4dca57-cfcf-4bc8-a739-1fb3f8942285"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8",
+          "mode": "list",
+          "cachedResultName": "R32 | The AI Clip Factory",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "production_status",
+              "lookupValue": "for production"
+            }
+          ]
+        },
+        "options": {
+          "returnFirstMatch": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2180,
+        -60
+      ],
+      "id": "672f5dbc-0910-474a-8291-07ae95abc39c",
+      "name": "Get Longform",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nZknbuOECvwuqe3W",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.klap.app/v2/tasks/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        80
+      ],
+      "id": "e97df636-6d03-45a1-8744-4962735efb3a",
+      "name": "Get Status",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.klap.app/v2/projects/{{ $json.folder_id }}/{{ $json.id }}/exports",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"preset_id\": \"123\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2020,
+        220
+      ],
+      "id": "8cd78954-22b7-4997-b430-2636290dd6d2",
+      "name": "Export Shorts",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.klap.app/v2/projects/{{ $json.folder_id }}/{{ $json.id }}/exports/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        220
+      ],
+      "id": "43b12d83-3f07-4374-8410-9f17c1c2c29c",
+      "name": "Get Shorts",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"post\": {\n \"target\": {\n \"targetType\": \"youtube\",\n \"title\": \"{{ $('Get Shorts Details').item.json.name }}\",\n \"privacyStatus\": \"unlisted\",\n \"shouldNotifySubscribers\":false\n },\n \"content\": {\n \"text\": \"{{ $('Get Shorts Details').item.json.publication_captions.youtube }}\",\n \"platform\": \"youtube\",\n \"mediaUrls\": [\"{{ $json.url }}\"]\n },\n \"accountId\": \"218\"\n }\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 10000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        640
+      ],
+      "id": "876bb62a-6d70-4b06-b3b0-0742c466390b",
+      "name": "🔺YOUTUBE",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"post\": {\n \"target\": {\n \"targetType\": \"instagram\"\n },\n \"content\": {\n \"text\": \"{{ $('Get Shorts Details').item.json.publication_captions.instagram }}\",\n \"platform\": \"instagram\",\n \"mediaUrls\": [\"{{ $json.url }}\"]\n },\n \"accountId\": \"4116\"\n }\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 10000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        500
+      ],
+      "id": "f8a6fe69-9f5e-48ff-ae08-c10fd9c6926e",
+      "name": "📷 INSTAGRAM",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"post\": {\n \"target\": {\n \"targetType\": \"tiktok\",\n \"isYourBrand\": false,\n \"disabledDuet\": false,\n \"privacyLevel\": \"PUBLIC_TO_EVERYONE\",\n \"isAiGenerated\": false,\n \"disabledStitch\": false,\n \"disabledComments\": false,\n \"isBrandedContent\": false\n },\n \"content\": {\n \"text\": \"{{ $('Get Shorts Details').item.json.publication_captions.tiktok }}\",\n \"platform\": \"tiktok\",\n \"mediaUrls\": [\"{{ $json.url }}\"]\n },\n \"accountId\": \"1119\"\n }\n} ",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 10000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        360
+      ],
+      "id": "cdf53422-ffe9-4c51-bf15-20f2aa3d8971",
+      "name": "🎵 TIKTOK",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"post\": {\n \"target\": {\n \"targetType\": \"linkedin\"\n },\n \"content\": {\n \"text\": \"{{ $('Get Shorts Details').item.json.publication_captions.linkedin }}\",\n \"platform\": \"linkedin\",\n \"mediaUrls\": [ \"{{ $json.url }}\" ]\n },\n \"accountId\": \"969\"\n }\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 10000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        780
+      ],
+      "id": "62fd6b39-43dc-48fc-b2a3-c9aaa9e6e899",
+      "name": "👔 LINKEDIN",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Step 2: Analyze Longform",
+        "height": 100,
+        "width": 700,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        80
+      ],
+      "id": "9d9b68ea-ad68-4ed6-85ae-25b2dc8a7812",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Step 3: Produce Shorts",
+        "height": 100,
+        "width": 540,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        220
+      ],
+      "id": "a7e8a4a0-01b5-4715-ac4a-4e980822390f",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Step 4: Publish Shorts",
+        "height": 100,
+        "width": 280,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        360
+      ],
+      "id": "1c635cc2-de44-40aa-9073-3020f8ab7409",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Step 1: Get Longform",
+        "height": 100,
+        "width": 840,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        -60
+      ],
+      "id": "b86485c4-f7e2-448a-a063-e5e1d22745c1",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2020,
+        -60
+      ],
+      "id": "da666649-8f0f-4cc6-97fd-7b1813a3bc10",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.klap.app/v2/tasks/video-to-shorts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n \"source_video_url\": \"{{ $json.longform_links }}\",\n\n \"language\": \"en\",\n \"target_clip_count\": 2,\n \"max_clip_count\": 2,\n\n\n \"editing_options\": {\n \"captions\": true,\n \"reframe\": true,\n \"emojis\": true,\n \"remove_silences\": true,\n \"intro_title\": false\n },\n\n\n \"dimensions\": {\n \"width\": 1080,\n \"height\": 1920\n },\n\n\n \"min_duration\": 15,\n \"max_duration\": 60,\n \"target_duration\": 30\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2020,
+        80
+      ],
+      "id": "b67865d2-f822-453f-a3ae-f031c8b1007e",
+      "name": "Analyze Longform",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "20719646-7931-45f3-bb0e-e850d79a5b2d",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "ready",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2500,
+        80
+      ],
+      "id": "c4f6536a-63e1-4b3c-8615-f64a547d62c5",
+      "name": "Ready?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "20719646-7931-45f3-bb0e-e850d79a5b2d",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "ready",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2500,
+        220
+      ],
+      "id": "8617cffe-c160-4b1d-80df-7d248c82b099",
+      "name": "Ready? 2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8",
+          "mode": "list",
+          "cachedResultName": "R32 | The AI Clip Factory",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1447421682,
+          "mode": "list",
+          "cachedResultName": "Sheet2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit#gid=1447421682"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "==ROW()-1",
+            "shortform_links": "={{ $('Ready? 2').item.json.src_url }}",
+            "publishing_status": "for publishing",
+            "date_produced": "={{ new Date().toISOString().split('T')[0] }}",
+            "tiktok_caption": "={{ $('Get Shorts Details').item.json.publication_captions.tiktok }}",
+            "youtube_caption": "={{ $('Get Shorts Details').item.json.publication_captions.youtube }}",
+            "instagram_caption": "={{ $('Get Shorts Details').item.json.publication_captions.instagram }}",
+            "linkedin_caption": "={{ $('Get Shorts Details').item.json.publication_captions.linkedin }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shortform_links",
+              "displayName": "shortform_links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tiktok_caption",
+              "displayName": "tiktok_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "instagram_caption",
+              "displayName": "instagram_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "youtube_caption",
+              "displayName": "youtube_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "linkedin_caption",
+              "displayName": "linkedin_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "publishing_status",
+              "displayName": "publishing_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_produced",
+              "displayName": "date_produced",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1900,
+        360
+      ],
+      "id": "f6ecf033-fa1a-4dff-97dd-d4833bc7d48f",
+      "name": "Log Shorts",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nZknbuOECvwuqe3W",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.blotato.com/v2/media",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.shortform_links }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2020,
+        360
+      ],
+      "id": "0eeab28d-485c-43c2-83ca-8720b10c1e6f",
+      "name": "Load Shorts",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.klap.app/v2/projects/{{ $json.output_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        80
+      ],
+      "id": "1c488552-bbfb-4e31-89f3-b97c1ece7441",
+      "name": "Get Shorts Details",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4N174tejKVHluQI",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8",
+          "mode": "list",
+          "cachedResultName": "R32 | The AI Clip Factory",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GPItovC-npqC7NqNayxmJtpBYX7E074RWV19SOPVA7Q/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get Longform').item.json.id }}",
+            "date_produced": "={{ new Date().toISOString().split('T')[0] }}",
+            "production_status": "done"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "longform_links",
+              "displayName": "longform_links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "production_status",
+              "displayName": "production_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_produced",
+              "displayName": "date_produced",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2660,
+        220
+      ],
+      "id": "df40fa8d-e52c-4528-a608-91f976ea9030",
+      "name": "Update Longform Status",
+      "executeOnce": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nZknbuOECvwuqe3W",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8",
+          "mode": "list",
+          "cachedResultName": "R32 | The AI Clip Factory",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1447421682,
+          "mode": "list",
+          "cachedResultName": "Sheet2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Egz48qUvhVCWoaF11fedsgbuRNrN8JF8MapcZ7vw3j8/edit#gid=1447421682"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "shortform_links": "={{ $('Log Shorts').item.json.shortform_links }}",
+            "publishing_status": "done",
+            "date_published": "={{ new Date().toISOString().split('T')[0] }}"
+          },
+          "matchingColumns": [
+            "shortform_links"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shortform_links",
+              "displayName": "shortform_links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tiktok_caption",
+              "displayName": "tiktok_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "instagram_caption",
+              "displayName": "instagram_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "youtube_caption",
+              "displayName": "youtube_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "linkedin_caption",
+              "displayName": "linkedin_caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "publishing_status",
+              "displayName": "publishing_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_published",
+              "displayName": "date_published",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2660,
+        920
+      ],
+      "id": "d12753fb-a8a6-41ba-a95d-3b9d1190c52e",
+      "name": "Update Shorts Status",
+      "executeOnce": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nZknbuOECvwuqe3W",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2180,
+        220
+      ],
+      "id": "05c89ba7-dcb5-421a-9005-a1a474cb54c4",
+      "name": "Wait 2",
+      "webhookId": "50e4698e-d88d-4860-ac24-d5687be3f4d1"
+    },
+    {
+      "parameters": {
+        "content": "# THE AI CLIP FACTORY",
+        "height": 180,
+        "width": 1680,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        -160
+      ],
+      "id": "e835f3f5-2816-49d7-9462-2d30360996b1",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Longform": {
+      "main": [
+        [
+          {
+            "node": "Analyze Longform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Status": {
+      "main": [
+        [
+          {
+            "node": "Ready?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export Shorts": {
+      "main": [
+        [
+          {
+            "node": "Wait 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Shorts": {
+      "main": [
+        [
+          {
+            "node": "Ready? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Longform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Longform": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ready?": {
+      "main": [
+        [
+          {
+            "node": "Get Shorts Details",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ready? 2": {
+      "main": [
+        [
+          {
+            "node": "Update Longform Status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Shorts": {
+      "main": [
+        [
+          {
+            "node": "Load Shorts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Shorts": {
+      "main": [
+        [
+          {
+            "node": "🎵 TIKTOK",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "🔺YOUTUBE",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "📷 INSTAGRAM",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "👔 LINKEDIN",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update Shorts Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Shorts Details": {
+      "main": [
+        [
+          {
+            "node": "Export Shorts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Longform Status": {
+      "main": [
+        [
+          {
+            "node": "Log Shorts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 2": {
+      "main": [
+        [
+          {
+            "node": "Get Shorts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8ab17b75-52e9-4e18-95e3-8e4df219e1ff",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b49034d22b8d37ab06240a1fc9151c8a5abdbeec79427b26216d57ca8b61b938",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "CLIP_FACTORY",
+      "rune_number": "4511"
+    }
+  },
+  "id": "BKmhYmnWs8A8hscv",
+  "tags": [],
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4511"
+}

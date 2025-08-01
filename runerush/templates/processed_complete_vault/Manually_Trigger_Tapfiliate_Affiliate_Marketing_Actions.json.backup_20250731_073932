@@ -1,0 +1,152 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Manually_Trigger_Tapfiliate_Affiliate_Marketing_Actions\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Tapfiliate2",
+      "type": "n8n-nodes-base.tapfiliate",
+      "position": [
+        870,
+        300
+      ],
+      "parameters": {
+        "resource": "programAffiliate",
+        "programId": "testing-program-5",
+        "affiliateId": "={{$node[\"Tapfiliate\"].json[\"id\"]}}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "tapfiliateApi": "Tapfiliate API credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Tapfiliate1",
+      "type": "n8n-nodes-base.tapfiliate",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "resource": "affiliateMetadata",
+        "metadataUi": {
+          "metadataValues": [
+            {
+              "key": "tag",
+              "value": "n8n"
+            }
+          ]
+        },
+        "affiliateId": "={{$json[\"id\"]}}"
+      },
+      "credentials": {
+        "tapfiliateApi": "Tapfiliate API credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Tapfiliate",
+      "type": "n8n-nodes-base.tapfiliate",
+      "position": [
+        470,
+        300
+      ],
+      "parameters": {
+        "email": "n8ndocsburner@gmail.com",
+        "lastname": "Ryan",
+        "firstname": "Jack",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "tapfiliateApi": "Tapfiliate API credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Tapfiliate": {
+      "main": [
+        [
+          {
+            "node": "Tapfiliate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tapfiliate1": {
+      "main": [
+        [
+          {
+            "node": "Tapfiliate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Tapfiliate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "Manually_Trigger_Tapfiliate_Affiliate_Marketing_Actions"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manually_Trigger_Tapfiliate_Affiliate_Marketing_Actions",
+    "template_name": "Manually Trigger Tapfiliate Affiliate Marketing Actions",
+    "original_filename": "Manually_Trigger_Tapfiliate_Affiliate_Marketing_Actions",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:41.998923",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

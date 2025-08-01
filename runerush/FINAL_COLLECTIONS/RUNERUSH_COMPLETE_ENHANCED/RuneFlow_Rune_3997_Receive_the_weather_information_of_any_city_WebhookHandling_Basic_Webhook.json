@@ -1,0 +1,133 @@
+{
+  "id": "158",
+  "name": "Receive the weather information of any city",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 3997\\n\\n📋 Template: webhook_process_openweathermap_1\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        580,
+        340
+      ],
+      "webhookId": "45690b6a-2b01-472d-8839-5e83a74858e5",
+      "parameters": {
+        "path": "45690b6a-2b01-472d-8839-5e83a74858e5",
+        "options": {},
+        "responseData": "allEntries",
+        "responseMode": "lastNode"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "OpenWeatherMap",
+      "type": "n8n-nodes-base.openWeatherMap",
+      "position": [
+        770,
+        340
+      ],
+      "parameters": {
+        "cityName": "={{$node[\"Webhook\"].json[\"query\"][\"city\"]}}"
+      },
+      "credentials": {
+        "openWeatherMapApi": ""
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        970,
+        340
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "temp",
+              "value": "={{$node[\"OpenWeatherMap\"].json[\"main\"][\"temp\"]}}"
+            },
+            {
+              "name": "description",
+              "value": "={{$node[\"OpenWeatherMap\"].json[\"weather\"][0][\"description\"]}}"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "webhook_process_openweathermap_1",
+      "rune_number": "3997"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_process_openweathermap_1",
+    "template_name": "Webhook Process Openweathermap 1",
+    "original_filename": "webhook_process_openweathermap_1",
+    "category": "AI & Research",
+    "quality_score": 3,
+    "processed_date": "2025-07-31T07:29:57.047434",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "3997"
+}

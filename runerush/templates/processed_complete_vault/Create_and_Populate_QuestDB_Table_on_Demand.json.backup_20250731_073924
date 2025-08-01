@@ -1,0 +1,154 @@
+{
+  "id": "161",
+  "name": "Create a table and insert data into it",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Create_and_Populate_QuestDB_Table_on_Demand\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        440,
+        460
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        840,
+        460
+      ],
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "id"
+            }
+          ],
+          "string": [
+            {
+              "name": "name",
+              "value": "Tanay"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "QuestDB",
+      "type": "n8n-nodes-base.questDb",
+      "position": [
+        640,
+        460
+      ],
+      "parameters": {
+        "query": "CREATE TABLE test (id INT, name STRING);",
+        "operation": "executeQuery"
+      },
+      "credentials": {
+        "questDb": "QuestDB"
+      },
+      "typeVersion": 1,
+      "alwaysOutputData": true
+    },
+    {
+      "name": "QuestDB1",
+      "type": "n8n-nodes-base.questDb",
+      "position": [
+        1040,
+        460
+      ],
+      "parameters": {
+        "table": "test",
+        "columns": "id, name"
+      },
+      "credentials": {
+        "questDb": "QuestDB"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "QuestDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QuestDB": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "QuestDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "Create_and_Populate_QuestDB_Table_on_Demand"
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_and_Populate_QuestDB_Table_on_Demand",
+    "template_name": "Create And Populate Questdb Table On Demand",
+    "original_filename": "Create_and_Populate_QuestDB_Table_on_Demand",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:39.681289",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

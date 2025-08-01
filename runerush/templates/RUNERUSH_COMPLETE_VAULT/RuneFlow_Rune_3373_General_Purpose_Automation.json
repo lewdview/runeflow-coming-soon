@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 3373\\n\\n📋 Template: webhook_automation_hubspot\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Hubspot Trigger",
+      "type": "n8n-nodes-base.hubspotTrigger",
+      "position": [
+        700,
+        260
+      ],
+      "webhookId": "9fe8c037-be4f-4809-a7c2-96e509bfc52e",
+      "parameters": {
+        "appId": "dghert3",
+        "additionalFields": {
+          "maxConcurrentRequests": 5
+        }
+      },
+      "credentials": {
+        "hubspotDeveloperApi": "hubspot_trigger"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "webhook_automation_hubspot",
+      "rune_number": "3373"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_automation_hubspot",
+    "template_name": "Webhook Automation Hubspot",
+    "original_filename": "webhook_automation_hubspot",
+    "category": "Integration Hub",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:42.882601",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "3373"
+}

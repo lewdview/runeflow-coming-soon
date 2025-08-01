@@ -1,0 +1,104 @@
+{
+  "id": "0wfomsVO0TQtQkwU",
+  "meta": {
+    "instanceId": "2e75c9fb3cdcf631da470c0180f0739986baa0ee860de53281e9edc3491b82a3",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "Complete_Guide_to_Setting_Up_and_Generating_TOTP_Codes_in_n8n_🔐",
+      "rune_number": "0511"
+    }
+  },
+  "name": "Complete Guide to Setting Up and Generating TOTP Codes in n8n 🔐",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 0511\\n\\n📋 Template: Complete_Guide_to_Setting_Up_and_Generating_TOTP_Codes_in_n8n_🔐\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "0fe95b9a-be2b-4022-829e-8b6c801e5baf",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -280,
+        -340
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "02fee6b5-7770-4889-b9bb-89bface8872d",
+      "name": "TOTP",
+      "type": "n8n-nodes-base.totp",
+      "position": [
+        -40,
+        -340
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "credentials": {
+        "totpApi": {
+          "id": "9487Zco8UqMQWnpf",
+          "name": "TOTP account Mars55"
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "timezone": "Asia/Tehran",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1"
+  },
+  "versionId": "d7a5fff3-3fcd-45cd-ba06-564097567ff5",
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "TOTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Complete_Guide_to_Setting_Up_and_Generating_TOTP_Codes_in_n8n",
+    "template_name": "Complete Guide To Setting Up And Generating Totp Codes In N8N",
+    "original_filename": "Complete_Guide_to_Setting_Up_and_Generating_TOTP_Codes_in_n8n_🔐",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:39.622302",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "0511"
+}

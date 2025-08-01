@@ -1,0 +1,91 @@
+{
+  "id": "131",
+  "name": "Receive a Mattermost message when a user updates their profile on Facebook",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5040\\n\\n📋 Template: Facebook_Profile_Update_Alerts_via_Mattermost\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Facebook Trigger",
+      "type": "n8n-nodes-base.facebookTrigger",
+      "position": [
+        590,
+        260
+      ],
+      "webhookId": "14ba2eea-04a1-4659-b83e-0090ba480452",
+      "parameters": {
+        "appId": "",
+        "options": {
+          "includeValues": true
+        }
+      },
+      "credentials": {
+        "facebookGraphAppApi": "facebook"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        790,
+        260
+      ],
+      "parameters": {
+        "message": "=The user with uid {{$node[\"Facebook Trigger\"].json[\"uid\"]}} changed their {{$node[\"Facebook Trigger\"].json[\"changes\"][0][\"field\"]}} to {{$node[\"Facebook Trigger\"].json[\"changes\"][0][\"value\"][\"page\"]}}.",
+        "channelId": "13fx8838gtbj3d41a6a7c1w7fe",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "credentials": {
+        "mattermostApi": "mattermost"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Facebook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Facebook_Profile_Update_Alerts_via_Mattermost",
+      "rune_number": "5040"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5040"
+}

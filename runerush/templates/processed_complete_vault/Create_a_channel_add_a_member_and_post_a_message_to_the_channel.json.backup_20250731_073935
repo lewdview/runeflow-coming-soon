@@ -1,0 +1,150 @@
+{
+  "id": "178",
+  "name": "Create a channel, add a member, and post a message to the channel",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Create_a_channel,_add_a_member,_and_post_a_message_to_the_channel\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        340
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        470,
+        340
+      ],
+      "parameters": {
+        "teamId": "4zhpirmh97fn7jgp7qhyue5a6e",
+        "channel": "docs",
+        "resource": "channel",
+        "displayName": "Docs"
+      },
+      "credentials": {
+        "mattermostApi": "Mattermost Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mattermost1",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        670,
+        340
+      ],
+      "parameters": {
+        "userId": "5oiy71hukjgd9eprj1o4a3poio",
+        "resource": "channel",
+        "channelId": "={{$node[\"Mattermost\"].json[\"id\"]}}",
+        "operation": "addUser"
+      },
+      "credentials": {
+        "mattermostApi": "Mattermost Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mattermost2",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        870,
+        340
+      ],
+      "parameters": {
+        "message": "Hey! Welcome to the channel!",
+        "channelId": "={{$node[\"Mattermost\"].json[\"id\"]}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "credentials": {
+        "mattermostApi": "Mattermost Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Mattermost": {
+      "main": [
+        [
+          {
+            "node": "Mattermost1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mattermost1": {
+      "main": [
+        [
+          {
+            "node": "Mattermost2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Create_a_channel,_add_a_member,_and_post_a_message_to_the_channel"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_a_channel_add_a_member_and_post_a_message_to_the_channel",
+    "template_name": "Create A Channel Add A Member And Post A Message To The Channel",
+    "original_filename": "Create_a_channel,_add_a_member,_and_post_a_message_to_the_channel",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:48.229804",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

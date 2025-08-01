@@ -1,0 +1,512 @@
+manifest_info:
+  bundle_name: pro_50
+  contact: bryan@runeflow.co
+  created_date: '2025-07-31'
+  description: Pro 50 RuneFlow Templates - Premium Automation Collection
+  provider: RuneFlow
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  total_templates: 50
+  version: '1.0'
+  website: https://runeflow.co
+templates:
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 48
+  original_filename: Perplexity_Research_to_Web_Page_via_Telegram_Bot
+  processed_date: '2025-07-31T07:29:40.215124'
+  quality_score: 9
+  template_id: Perplexity_Research_to_Web_Page_via_Telegram_Bot
+  template_name: Perplexity Research To Web Page Via Telegram Bot
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 48
+  original_filename: webhook_process_executeworkflow_complex_47nodes
+  processed_date: '2025-07-31T07:29:40.810594'
+  quality_score: 9
+  template_id: webhook_process_executeworkflow_complex_47nodes
+  template_name: Webhook Process Executeworkflow Complex 47Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 35
+  original_filename: AI_Chatbot_for_Calendar_Management_and_Scheduling
+  processed_date: '2025-07-31T07:29:41.040401'
+  quality_score: 9
+  template_id: AI_Chatbot_for_Calendar_Management_and_Scheduling
+  template_name: Ai Chatbot For Calendar Management And Scheduling
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 35
+  original_filename: AI-Powered_Customer_Query_Response_System
+  processed_date: '2025-07-31T07:29:41.093771'
+  quality_score: 9
+  template_id: AI-Powered_Customer_Query_Response_System
+  template_name: Ai-Powered Customer Query Response System
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 51
+  original_filename: AI-Powered_Document_Chatbot_with_Google_Drive_Integration
+  processed_date: '2025-07-31T07:29:41.132120'
+  quality_score: 9
+  template_id: AI-Powered_Document_Chatbot_with_Google_Drive_Integration
+  template_name: Ai-Powered Document Chatbot With Google Drive Integration
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 28
+  original_filename: AI-Powered_Email_Analysis_and_Google_Sheets_Reporting
+  processed_date: '2025-07-31T07:29:41.151386'
+  quality_score: 9
+  template_id: AI-Powered_Email_Analysis_and_Google_Sheets_Reporting
+  template_name: Ai-Powered Email Analysis And Google Sheets Reporting
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 37
+  original_filename: AI-Powered_Phone_Agent_for_Calendar_Management
+  processed_date: '2025-07-31T07:29:41.183702'
+  quality_score: 9
+  template_id: AI-Powered_Phone_Agent_for_Calendar_Management
+  template_name: Ai-Powered Phone Agent For Calendar Management
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 36
+  original_filename: Automated_Personal_CV_Chatbot_with_Regular_Updates
+  processed_date: '2025-07-31T07:29:41.260922'
+  quality_score: 9
+  template_id: Automated_Personal_CV_Chatbot_with_Regular_Updates
+  template_name: Automated Personal Cv Chatbot With Regular Updates
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 25
+  original_filename: Business_WhatsApp_AI_RAG_Chatbot_complex_24nodes
+  processed_date: '2025-07-31T07:29:41.332293'
+  quality_score: 9
+  template_id: Business_WhatsApp_AI_RAG_Chatbot_complex_24nodes
+  template_name: Business Whatsapp Ai Rag Chatbot Complex 24Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 29
+  original_filename: Business_WhatsApp_AI_RAG_Chatbot_complex_28nodes
+  processed_date: '2025-07-31T07:29:41.341149'
+  quality_score: 9
+  template_id: Business_WhatsApp_AI_RAG_Chatbot_complex_28nodes
+  template_name: Business Whatsapp Ai Rag Chatbot Complex 28Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 25
+  original_filename: Classify_and_Email_WordPress_Form_Responses
+  processed_date: '2025-07-31T07:29:41.376075'
+  quality_score: 9
+  template_id: Classify_and_Email_WordPress_Form_Responses
+  template_name: Classify And Email Wordpress Form Responses
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 41
+  original_filename: Conditional_Data_Processing_and_Merging_Pipeline_1
+  processed_date: '2025-07-31T07:29:41.409999'
+  quality_score: 9
+  template_id: Conditional_Data_Processing_and_Merging_Pipeline_1
+  template_name: Conditional Data Processing And Merging Pipeline 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 41
+  original_filename: Conditional_Data_Processing_and_Merging_Pipeline
+  processed_date: '2025-07-31T07:29:41.415975'
+  quality_score: 9
+  template_id: Conditional_Data_Processing_and_Merging_Pipeline
+  template_name: Conditional Data Processing And Merging Pipeline
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 20
+  original_filename: Database_Sync_and_AI-Enhanced_Data_Processing
+  processed_date: '2025-07-31T07:29:41.581596'
+  quality_score: 9
+  template_id: Database_Sync_and_AI-Enhanced_Data_Processing
+  template_name: Database Sync And Ai-Enhanced Data Processing
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 35
+  original_filename: scheduled_automation_webhook_respondtowebhook_complex_34nodes
+  processed_date: '2025-07-31T07:29:42.343379'
+  quality_score: 9
+  template_id: scheduled_automation_webhook_respondtowebhook_complex_34nodes
+  template_name: Scheduled Automation Webhook Respondtowebhook Complex 34Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 20
+  original_filename: Sync_and_Analyze_Postgres_Data_with_AI_Assistance
+  processed_date: '2025-07-31T07:29:42.615763'
+  quality_score: 9
+  template_id: Sync_and_Analyze_Postgres_Data_with_AI_Assistance
+  template_name: Sync And Analyze Postgres Data With Ai Assistance
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: Voice-Enabled_AI_Chatbot_with_Document_Search
+  processed_date: '2025-07-31T07:29:42.761131'
+  quality_score: 9
+  template_id: Voice-Enabled_AI_Chatbot_with_Document_Search
+  template_name: Voice-Enabled Ai Chatbot With Document Search
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: Voice-Powered_AI_Assistant_with_Document_Knowledge
+  processed_date: '2025-07-31T07:29:42.765060'
+  quality_score: 9
+  template_id: Voice-Powered_AI_Assistant_with_Document_Knowledge
+  template_name: Voice-Powered Ai Assistant With Document Knowledge
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: webhook_automation_respondtowebhook_complex_23nodes_1
+  processed_date: '2025-07-31T07:29:42.906610'
+  quality_score: 9
+  template_id: webhook_automation_respondtowebhook_complex_23nodes_1
+  template_name: Webhook Automation Respondtowebhook Complex 23Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: webhook_automation_respondtowebhook_complex_23nodes
+  processed_date: '2025-07-31T07:29:42.912840'
+  quality_score: 9
+  template_id: webhook_automation_respondtowebhook_complex_23nodes
+  template_name: Webhook Automation Respondtowebhook Complex 23Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 20
+  original_filename: webhook_database_postgres_supabase_complex_19nodes_1
+  processed_date: '2025-07-31T07:29:42.990417'
+  quality_score: 9
+  template_id: webhook_database_postgres_supabase_complex_19nodes_1
+  template_name: Webhook Database Postgres Supabase Complex 19Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 20
+  original_filename: webhook_database_postgres_supabase_complex_19nodes
+  processed_date: '2025-07-31T07:29:42.997616'
+  quality_score: 9
+  template_id: webhook_database_postgres_supabase_complex_19nodes
+  template_name: Webhook Database Postgres Supabase Complex 19Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 51
+  original_filename: webhook_file_ops_summarize_complex_50nodes
+  processed_date: '2025-07-31T07:29:43.123777'
+  quality_score: 9
+  template_id: webhook_file_ops_summarize_complex_50nodes
+  template_name: Webhook File Ops Summarize Complex 50Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 36
+  original_filename: webhook_process_code_complex_35nodes
+  processed_date: '2025-07-31T07:29:43.155741'
+  quality_score: 9
+  template_id: webhook_process_code_complex_35nodes
+  template_name: Webhook Process Code Complex 35Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 41
+  original_filename: webhook_process_code_complex_40nodes_1
+  processed_date: '2025-07-31T07:29:43.161990'
+  quality_score: 9
+  template_id: webhook_process_code_complex_40nodes_1
+  template_name: Webhook Process Code Complex 40Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 41
+  original_filename: webhook_process_code_complex_40nodes
+  processed_date: '2025-07-31T07:29:43.173114'
+  quality_score: 9
+  template_id: webhook_process_code_complex_40nodes
+  template_name: Webhook Process Code Complex 40Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 28
+  original_filename: webhook_process_googledocstool_complex_27nodes
+  processed_date: '2025-07-31T07:29:43.273443'
+  quality_score: 9
+  template_id: webhook_process_googledocstool_complex_27nodes
+  template_name: Webhook Process Googledocstool Complex 27Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 25
+  original_filename: webhook_process_googlesheets_complex_24nodes
+  processed_date: '2025-07-31T07:29:43.279073'
+  quality_score: 9
+  template_id: webhook_process_googlesheets_complex_24nodes
+  template_name: Webhook Process Googlesheets Complex 24Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 35
+  original_filename: webhook_process_respondtowebhook_complex_34nodes
+  processed_date: '2025-07-31T07:29:43.376831'
+  quality_score: 9
+  template_id: webhook_process_respondtowebhook_complex_34nodes
+  template_name: Webhook Process Respondtowebhook Complex 34Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 37
+  original_filename: webhook_process_telegram_complex_36nodes
+  processed_date: '2025-07-31T07:29:43.431256'
+  quality_score: 9
+  template_id: webhook_process_telegram_complex_36nodes
+  template_name: Webhook Process Telegram Complex 36Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 25
+  original_filename: WhatsApp_AI_Chatbot_with_Business_Knowledge_Base
+  processed_date: '2025-07-31T07:29:43.474958'
+  quality_score: 9
+  template_id: WhatsApp_AI_Chatbot_with_Business_Knowledge_Base
+  template_name: Whatsapp Ai Chatbot With Business Knowledge Base
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 29
+  original_filename: WhatsApp_AI_Chatbot_with_Business_Knowledge_Integration
+  processed_date: '2025-07-31T07:29:43.481595'
+  quality_score: 9
+  template_id: WhatsApp_AI_Chatbot_with_Business_Knowledge_Integration
+  template_name: Whatsapp Ai Chatbot With Business Knowledge Integration
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 21
+  original_filename: Process_Incoming_Data_and_Generate_AI_Responses
+  processed_date: '2025-07-31T07:29:44.006313'
+  quality_score: 9
+  template_id: Process_Incoming_Data_and_Generate_AI_Responses
+  template_name: Process Incoming Data And Generate Ai Responses
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 114
+  original_filename: AI-Powered_Content_Analysis_and_Link_Management
+  processed_date: '2025-07-31T07:29:44.596247'
+  quality_score: 9
+  template_id: AI-Powered_Content_Analysis_and_Link_Management
+  template_name: Ai-Powered Content Analysis And Link Management
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 114
+  original_filename: webhook_database_googledocstool_code_complex_113nodes
+  processed_date: '2025-07-31T07:29:44.917560'
+  quality_score: 9
+  template_id: webhook_database_googledocstool_code_complex_113nodes
+  template_name: Webhook Database Googledocstool Code Complex 113Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 29
+  original_filename: AI-Powered_Chat_Assistant_with_Memory_and_Tools_1
+  processed_date: '2025-07-31T07:29:45.004138'
+  quality_score: 9
+  template_id: AI-Powered_Chat_Assistant_with_Memory_and_Tools_1
+  template_name: Ai-Powered Chat Assistant With Memory And Tools 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 22
+  original_filename: Daily_Google_Sheets_Update_with_AI-Powered_Summary
+  processed_date: '2025-07-31T07:29:45.362687'
+  quality_score: 9
+  template_id: Daily_Google_Sheets_Update_with_AI-Powered_Summary
+  template_name: Daily Google Sheets Update With Ai-Powered Summary
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 22
+  original_filename: webhook_communicate_googlesheets_complex_21nodes
+  processed_date: '2025-07-31T07:29:46.633773'
+  quality_score: 9
+  template_id: webhook_communicate_googlesheets_complex_21nodes
+  template_name: Webhook Communicate Googlesheets Complex 21Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 61
+  original_filename: webhook_file_ops_code_complex_60nodes_1
+  processed_date: '2025-07-31T07:29:46.728179'
+  quality_score: 9
+  template_id: webhook_file_ops_code_complex_60nodes_1
+  template_name: Webhook File Ops Code Complex 60Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 61
+  original_filename: webhook_file_ops_code_complex_60nodes
+  processed_date: '2025-07-31T07:29:46.739733'
+  quality_score: 9
+  template_id: webhook_file_ops_code_complex_60nodes
+  template_name: Webhook File Ops Code Complex 60Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 29
+  original_filename: webhook_process_respondtowebhook_complex_28nodes
+  processed_date: '2025-07-31T07:29:46.928015'
+  quality_score: 9
+  template_id: webhook_process_respondtowebhook_complex_28nodes
+  template_name: Webhook Process Respondtowebhook Complex 28Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 40
+  original_filename: 🤖_Telegram_Messaging_Agent_for_Text_Audio_Images_complex_39nodes_1
+  processed_date: '2025-07-31T07:29:47.078730'
+  quality_score: 9
+  template_id: Telegram_Messaging_Agent_for_Text_Audio_Images_complex_39nodes_1
+  template_name: Telegram Messaging Agent For Text Audio Images Complex 39Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 40
+  original_filename: 🤖_Telegram_Messaging_Agent_for_Text_Audio_Images_complex_39nodes
+  processed_date: '2025-07-31T07:29:47.087973'
+  quality_score: 9
+  template_id: Telegram_Messaging_Agent_for_Text_Audio_Images_complex_39nodes
+  template_name: Telegram Messaging Agent For Text Audio Images Complex 39Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 41
+  original_filename: AI-Powered_Form_Response_Analyzer_and_Router
+  processed_date: '2025-07-31T07:29:47.448493'
+  quality_score: 9
+  template_id: AI-Powered_Form_Response_Analyzer_and_Router
+  template_name: Ai-Powered Form Response Analyzer And Router
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 49
+  original_filename: AI-Powered_Telegram_Assistant_with_Note_Saving
+  processed_date: '2025-07-31T07:29:47.542903'
+  quality_score: 9
+  template_id: AI-Powered_Telegram_Assistant_with_Note_Saving
+  template_name: Ai-Powered Telegram Assistant With Note Saving
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: AI-Powered_Telegram_Bot_with_Long-Term_Memory_1
+  processed_date: '2025-07-31T07:29:47.567185'
+  quality_score: 9
+  template_id: AI-Powered_Telegram_Bot_with_Long-Term_Memory_1
+  template_name: Ai-Powered Telegram Bot With Long-Term Memory 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: AI-Powered_Telegram_Bot_with_Long-Term_Memory
+  processed_date: '2025-07-31T07:29:47.571512'
+  quality_score: 9
+  template_id: AI-Powered_Telegram_Bot_with_Long-Term_Memory
+  template_name: Ai-Powered Telegram Bot With Long-Term Memory
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 49
+  original_filename: All-in-One_Telegram_Baserow_AI_Assistant_🤖🧠_Voice_Photo_Save_Notes_Long_Term_Mem_complex_48nodes
+  processed_date: '2025-07-31T07:29:47.641642'
+  quality_score: 9
+  template_id: All-in-One_Telegram_Baserow_AI_Assistant_Voice_Photo_Save_Notes_Long_Term_Mem_complex_48nodes
+  template_name: All-In-One Telegram Baserow Ai Assistant Voice Photo Save Notes Long
+    Term Mem Complex 48Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 24
+  original_filename: Automate_Your_RFP_Process_with_OpenAI_Assistants_complex_23nodes
+  processed_date: '2025-07-31T07:29:47.728694'
+  quality_score: 9
+  template_id: Automate_Your_RFP_Process_with_OpenAI_Assistants_complex_23nodes
+  template_name: Automate Your Rfp Process With Openai Assistants Complex 23Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 22
+  original_filename: bPxDenPJ5Ixx0txY_Line_Chatbot_Extract_Text_from_Pay_Slip_with_Gemini
+  processed_date: '2025-07-31T07:29:48.022290'
+  quality_score: 9
+  template_id: bPxDenPJ5Ixx0txY_Line_Chatbot_Extract_Text_from_Pay_Slip_with_Gemini
+  template_name: Bpxdenpj5Ixx0Txy Line Chatbot Extract Text From Pay Slip With Gemini

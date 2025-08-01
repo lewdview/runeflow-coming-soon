@@ -1,0 +1,166 @@
+{
+  "id": "21",
+  "name": "Upload video, create playlist and add video to playlist",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 6422\\n\\n📋 Template: Upload_Video_to_YouTube_and_Add_to_New_Playlist\\n📁 Category: Social & Media\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        210,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "YouTube",
+      "type": "n8n-nodes-base.youTube",
+      "position": [
+        610,
+        300
+      ],
+      "parameters": {
+        "title": "n8n",
+        "options": {},
+        "resource": "video",
+        "operation": "upload",
+        "categoryId": "28",
+        "regionCode": "IN",
+        "binaryProperty": "=data"
+      },
+      "credentials": {
+        "youTubeOAuth2Api": "google-youtube"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Read Binary File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [
+        410,
+        300
+      ],
+      "parameters": {
+        "filePath": ""
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "YouTube1",
+      "type": "n8n-nodes-base.youTube",
+      "position": [
+        810,
+        300
+      ],
+      "parameters": {
+        "title": "n8n",
+        "options": {},
+        "resource": "playlist",
+        "operation": "create"
+      },
+      "credentials": {
+        "youTubeOAuth2Api": "google-youtube"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "YouTube2",
+      "type": "n8n-nodes-base.youTube",
+      "position": [
+        1010,
+        300
+      ],
+      "parameters": {
+        "options": {},
+        "videoId": "={{$node[\"YouTube\"].json[\"id\"]}}",
+        "resource": "playlistItem",
+        "playlistId": ""
+      },
+      "credentials": {
+        "youTubeOAuth2Api": "google-youtube"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "YouTube": {
+      "main": [
+        [
+          {
+            "node": "YouTube1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "YouTube1": {
+      "main": [
+        [
+          {
+            "node": "YouTube2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Binary File": {
+      "main": [
+        [
+          {
+            "node": "YouTube",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Read Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Social & Media",
+      "template_name": "Upload_Video_to_YouTube_and_Add_to_New_Playlist",
+      "rune_number": "6422"
+    }
+  },
+  "runeflow_category": "ᛊᛟ Social Media",
+  "runeflow_description": "Content Distribution",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "6422"
+}

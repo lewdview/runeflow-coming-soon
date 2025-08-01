@@ -1,0 +1,136 @@
+{
+  "id": "wGv0NPBA0QLp4rQ6",
+  "meta": {
+    "instanceId": "b3c467df4053d13fe31cc98f3c66fa1d16300ba750506bfd019a0913cec71ea3",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "automation_httprequest_manual"
+    }
+  },
+  "name": "Upload video to drive via google script",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: automation_httprequest_manual\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "b89e494d-f85d-4ad5-b0ba-5699f59a58d5",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -300,
+        -40
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "061597f1-d57d-4733-bc9f-3a3070bd5e95",
+      "name": "Rename Uploaded Video",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        180,
+        -40
+      ],
+      "parameters": {
+        "fileId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $json.driveUrl }}"
+        },
+        "options": {},
+        "operation": "update",
+        "newUpdatedFileName": "Music Video 1"
+      },
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "l8Cc2MEVE7foBfbK",
+          "name": "Google Drive account"
+        }
+      },
+      "typeVersion": 3
+    },
+    {
+      "id": "7e8ff194-fdb7-43e4-afde-bba466ac9dd3",
+      "name": "Send URL to GDrive Script and Upload",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -60,
+        -40
+      ],
+      "parameters": {
+        "url": "\"your_google_script_web_app_url\"",
+        "method": "POST",
+        "options": {},
+        "jsonBody": "{\n \"videoUrl\": \"https://example.com/path/to/your.mp4\",\n \"secret\": \"your-strong-secret-here\"\n}",
+        "sendBody": true,
+        "specifyBody": "json"
+      },
+      "typeVersion": 4.2
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b554bac3-27d2-498a-9e5a-b98cde9ea593",
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Send URL to GDrive Script and Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send URL to GDrive Script and Upload": {
+      "main": [
+        [
+          {
+            "node": "Rename Uploaded Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_httprequest_manual",
+    "template_name": "Automation Httprequest Manual",
+    "original_filename": "automation_httprequest_manual",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:39.490823",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

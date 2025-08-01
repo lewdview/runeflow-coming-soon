@@ -1,0 +1,135 @@
+{
+  "id": "FDl4Ho3KYiA7MIxR",
+  "meta": {
+    "instanceId": "f6d3344846b38f0c35c069a91b2450f6527b26bb735b6301a692ce1cca2b2682",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "NetSuite_Data_Retrieval_via_Webhook_Trigger"
+    }
+  },
+  "name": "NetSuite Rest API workflow",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: NetSuite_Data_Retrieval_via_Webhook_Trigger\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "f7f90fb4-e29f-4bbf-a99d-ee2fde45cd06",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -380,
+        -40
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "9fcc1ce7-e9bf-4592-8bcd-7c77272a9c59",
+      "name": "NetSuite",
+      "type": "n8n-nodes-netsuite.netsuite",
+      "position": [
+        -40,
+        -180
+      ],
+      "parameters": {
+        "query": "={{ $json.query.suiteql }}",
+        "options": {},
+        "operation": "runSuiteQL"
+      },
+      "credentials": {
+        "netsuite": {
+          "id": "ro6Rl1oWY4KkFUYn",
+          "name": "NetSuite account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "1d615309-2cb0-4383-9698-2f80da0d4bf5",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -380,
+        -280
+      ],
+      "webhookId": "249328cc-587a-4269-b266-96fe60cfaeb9",
+      "parameters": {
+        "path": "249328cc-587a-4269-b266-96fe60cfaeb9",
+        "options": {},
+        "responseData": "allEntries",
+        "responseMode": "lastNode"
+      },
+      "typeVersion": 2
+    }
+  ],
+  "active": true,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d6823e59-8e07-44a6-b4af-b029da620523",
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NetSuite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NetSuite": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NetSuite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "NetSuite_Data_Retrieval_via_Webhook_Trigger",
+    "template_name": "Netsuite Data Retrieval Via Webhook Trigger",
+    "original_filename": "NetSuite_Data_Retrieval_via_Webhook_Trigger",
+    "category": "AI & Research",
+    "quality_score": 3,
+    "processed_date": "2025-07-31T07:29:54.698098",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  }
+}

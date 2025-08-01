@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "instanceId": "e634e668fe1fc93a75c4f2a7fc0dad807ca318b79654157eadb9578496acbc76",
+    "templateCredsSetupCompleted": true,
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Scheduled_Mailchimp_Updates_from_Google_Sheets",
+      "rune_number": "1921"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1921\\n\\n📋 Template: Scheduled_Mailchimp_Updates_from_Google_Sheets\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "a5f5621a-bd4c-45b8-be09-ebdda13ebb3e",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -280,
+        120
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "9447f0d4-1be3-4b8c-b172-3ff856f2197b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -280,
+        -160
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "4ffd30f6-6f56-42cd-9f1c-07b58adbe312",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -740,
+        -260
+      ],
+      "parameters": {
+        "color": 4,
+        "width": 371.1995072042308,
+        "height": 600.88409546716,
+        "content": "## Create Mailchimp contact based on Squarespace newsletter\nThis workflow will get Squarespace newsletter signups and create new Mailchimp contact in the given Audience on Mailchimp\n\nThis overcome the limitation between Squarespace forms and Mailchimp connection where only new, empty audience can be used\n\nYou can run the workflow on demand or by schedule\n\n## Spreadsheet template\n\nThe sheet columns are inspire from Squarespace newsletter block connection, but you can change the node to adapt new columns format\n\nClone the [sample sheet here](https://docs.google.com/spreadsheets/d/1wi2Ucb4b35e0-fuf-96sMnyzTft0ADz3MwdE_cG_WnQ/edit?usp=sharing)\n- Submitted On\t\n- Email Address\t\n- Name"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "7af3d027-ffb8-4ca0-84d4-06dbf3902e80",
+      "name": "Squarespace newsletter submissions",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15A3ZWzIBfONL4U_1XGJvtsS8HtMQ69qrpxd5C5L6Akg/edit#gid=0",
+          "cachedResultName": "Sheet1"
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "15A3ZWzIBfONL4U_1XGJvtsS8HtMQ69qrpxd5C5L6Akg",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15A3ZWzIBfONL4U_1XGJvtsS8HtMQ69qrpxd5C5L6Akg/edit?usp=drivesdk",
+          "cachedResultName": "n8n-submission"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JgI9maibw5DnBXRP",
+          "name": "Google Sheets account"
+        }
+      },
+      "typeVersion": 4.5
+    },
+    {
+      "id": "f0fe2c40-2971-4068-b5b0-57e70f65ff72",
+      "name": "Loop Over each item",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 3
+    },
+    {
+      "id": "ebad2d00-56b3-4dec-9e3b-d9cb6cc4aaf1",
+      "name": "Add new member to Mailchimp",
+      "type": "n8n-nodes-base.mailchimp",
+      "onError": "continueErrorOutput",
+      "position": [
+        540,
+        20
+      ],
+      "parameters": {
+        "email": "={{ $json['Email Address'] }}{{ $json.row_number }}",
+        "status": "subscribed",
+        "options": {
+          "timestampSignup": "={{ $json['Submitted On'] }}"
+        },
+        "mergeFieldsUi": {
+          "mergeFieldsValues": [
+            {
+              "name": "FNAME",
+              "value": "={{ $json.Name }}"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "mailchimpApi": {
+          "id": "E6kRZLAOwvNxFpNz",
+          "name": "Mailchimp account"
+        }
+      },
+      "typeVersion": 1,
+      "alwaysOutputData": false
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Squarespace newsletter submissions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over each item": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Add new member to Mailchimp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add new member to Mailchimp": {
+      "main": [
+        [
+          {
+            "node": "Loop Over each item",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Squarespace newsletter submissions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Squarespace newsletter submissions": {
+      "main": [
+        [
+          {
+            "node": "Loop Over each item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Scheduled_Mailchimp_Updates_from_Google_Sheets",
+    "template_name": "Scheduled Mailchimp Updates From Google Sheets",
+    "original_filename": "Scheduled_Mailchimp_Updates_from_Google_Sheets",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:40.442362",
+    "nodes_count": 7,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1921"
+}

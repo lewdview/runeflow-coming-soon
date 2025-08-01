@@ -1,0 +1,192 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2713\\n\\n📋 Template: file_ops_manual_filemaker\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "FileMaker",
+      "type": "n8n-nodes-base.filemaker",
+      "position": [
+        450,
+        320
+      ],
+      "parameters": {
+        "action": "create",
+        "layout": "My Form Layout",
+        "fieldsParametersUi": {
+          "fields": [
+            {
+              "name": "first_name",
+              "value": "Harshil"
+            },
+            {
+              "name": "last_name",
+              "value": "Agrawal"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "fileMaker": "FileMaker API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        320
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "FileMaker",
+      "type": "n8n-nodes-base.filemaker",
+      "position": [
+        450,
+        320
+      ],
+      "parameters": {
+        "action": "create",
+        "layout": "My Form Layout",
+        "fieldsParametersUi": {
+          "fields": [
+            {
+              "name": "first_name",
+              "value": "Harshil"
+            },
+            {
+              "name": "last_name",
+              "value": "Agrawal"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "fileMaker": "FileMaker API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "FileMaker2",
+      "type": "n8n-nodes-base.filemaker",
+      "position": [
+        650,
+        320
+      ],
+      "parameters": {
+        "modId": "={{$json[\"response\"][\"modId\"]}}",
+        "recid": "={{$json[\"response\"][\"recordId\"]}}",
+        "action": "edit",
+        "layout": "My Form Layout",
+        "fieldsParametersUi": {
+          "fields": [
+            {
+              "name": "address_country",
+              "value": "Germany"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "fileMaker": "FileMaker API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "FileMaker3",
+      "type": "n8n-nodes-base.filemaker",
+      "position": [
+        850,
+        320
+      ],
+      "parameters": {
+        "recid": "={{$node[\"FileMaker\"].json[\"response\"][\"recordId\"]}}",
+        "layout": "My Form Layout"
+      },
+      "credentials": {
+        "fileMaker": "FileMaker API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "FileMaker": {
+      "main": [
+        [
+          {
+            "node": "FileMaker2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FileMaker2": {
+      "main": [
+        [
+          {
+            "node": "FileMaker3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "FileMaker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "file_ops_manual_filemaker",
+      "rune_number": "2713"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "file_ops_manual_filemaker",
+    "template_name": "File Ops Manual Filemaker",
+    "original_filename": "file_ops_manual_filemaker",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:44.421089",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2713"
+}

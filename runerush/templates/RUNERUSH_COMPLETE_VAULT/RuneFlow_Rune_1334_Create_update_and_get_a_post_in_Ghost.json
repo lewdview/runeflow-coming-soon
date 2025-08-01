@@ -1,0 +1,155 @@
+{
+  "id": "170",
+  "name": "Create, update, and get a post in Ghost",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1334\\n\\n📋 Template: Manage_Ghost_Blog_Posts_Create,_Update,_and_Retrieve\\n📁 Category: Social & Media\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        310,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Ghost",
+      "type": "n8n-nodes-base.ghost",
+      "position": [
+        510,
+        300
+      ],
+      "parameters": {
+        "title": "Running ghost with n8n!",
+        "source": "adminApi",
+        "content": "<p>In this article, you will learn how to automate your Ghost site with n8n!</p>",
+        "operation": "create",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "ghostAdminApi": "Ghost Admin API"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Ghost1",
+      "type": "n8n-nodes-base.ghost",
+      "position": [
+        710,
+        300
+      ],
+      "parameters": {
+        "postId": "={{$node[\"Ghost\"].json[\"id\"]}}",
+        "source": "adminApi",
+        "operation": "update",
+        "updateFields": {
+          "status": "published"
+        }
+      },
+      "credentials": {
+        "ghostAdminApi": "Ghost Admin API"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Ghost2",
+      "type": "n8n-nodes-base.ghost",
+      "position": [
+        910,
+        300
+      ],
+      "parameters": {
+        "by": "id",
+        "source": "adminApi",
+        "options": {},
+        "identifier": "={{$node[\"Ghost\"].json[\"id\"]}}"
+      },
+      "credentials": {
+        "ghostAdminApi": "Ghost Admin API"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Ghost": {
+      "main": [
+        [
+          {
+            "node": "Ghost1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ghost1": {
+      "main": [
+        [
+          {
+            "node": "Ghost2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Ghost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Social & Media",
+      "template_name": "Manage_Ghost_Blog_Posts_Create,_Update,_and_Retrieve",
+      "rune_number": "1334"
+    }
+  },
+  "runeflow_category": "ᛊᛟ Social Media",
+  "runeflow_description": "Content Distribution",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manage_Ghost_Blog_Posts_Create_Update_and_Retrieve",
+    "template_name": "Manage Ghost Blog Posts Create Update And Retrieve",
+    "original_filename": "Manage_Ghost_Blog_Posts_Create,_Update,_and_Retrieve",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:49.310359",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1334"
+}

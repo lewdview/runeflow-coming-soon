@@ -1,0 +1,176 @@
+{
+  "id": "127",
+  "name": "Create, update, and get a profile in Humantic AI",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 0671\\n\\n📋 Template: Create,_update,_and_get_a_profile_in_Humantic_AI\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        290,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Humantic AI",
+      "type": "n8n-nodes-base.humanticAi",
+      "position": [
+        490,
+        300
+      ],
+      "parameters": {
+        "userId": "https://www.linkedin.com/in/harshil1712/"
+      },
+      "credentials": {
+        "humanticAiApi": "humantic"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        690,
+        300
+      ],
+      "parameters": {
+        "url": "",
+        "options": {},
+        "responseFormat": "file"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Humantic AI1",
+      "type": "n8n-nodes-base.humanticAi",
+      "position": [
+        890,
+        300
+      ],
+      "parameters": {
+        "userId": "={{$node[\"Humantic AI\"].json[\"results\"][\"userid\"]}}",
+        "operation": "update",
+        "sendResume": true
+      },
+      "credentials": {
+        "humanticAiApi": "humantic"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Humantic AI2",
+      "type": "n8n-nodes-base.humanticAi",
+      "position": [
+        1090,
+        300
+      ],
+      "parameters": {
+        "userId": "={{$node[\"Humantic AI\"].json[\"results\"][\"userid\"]}}",
+        "options": {
+          "persona": [
+            "hiring"
+          ]
+        },
+        "operation": "get"
+      },
+      "credentials": {
+        "humanticAiApi": "humantic"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Humantic AI": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Humantic AI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Humantic AI1": {
+      "main": [
+        [
+          {
+            "node": "Humantic AI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Humantic AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Create,_update,_and_get_a_profile_in_Humantic_AI",
+      "rune_number": "0671"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_update_and_get_a_profile_in_Humantic_AI",
+    "template_name": "Create Update And Get A Profile In Humantic Ai",
+    "original_filename": "Create,_update,_and_get_a_profile_in_Humantic_AI",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:48.338879",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "0671"
+}

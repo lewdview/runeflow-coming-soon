@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Manually_Triggered_Reddit_Data_Retrieval\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        340
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Reddit",
+      "type": "n8n-nodes-base.reddit",
+      "position": [
+        470,
+        340
+      ],
+      "parameters": {
+        "text": "This post was created using the Reddit node in n8n",
+        "title": "Created from n8n",
+        "subreddit": "n8n"
+      },
+      "credentials": {
+        "redditOAuth2Api": "Reddit OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Reddit1",
+      "type": "n8n-nodes-base.reddit",
+      "position": [
+        670,
+        340
+      ],
+      "parameters": {
+        "postId": "={{$json[\"id\"]}}",
+        "operation": "get",
+        "subreddit": "={{$node[\"Reddit\"].parameter[\"subreddit\"]}}"
+      },
+      "credentials": {
+        "redditOAuth2Api": "Reddit OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Reddit2",
+      "type": "n8n-nodes-base.reddit",
+      "position": [
+        870,
+        340
+      ],
+      "parameters": {
+        "postId": "={{$json[\"id\"]}}",
+        "resource": "postComment",
+        "commentText": "This comment was added from n8n!"
+      },
+      "credentials": {
+        "redditOAuth2Api": "Reddit OAuth Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Reddit": {
+      "main": [
+        [
+          {
+            "node": "Reddit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reddit1": {
+      "main": [
+        [
+          {
+            "node": "Reddit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Reddit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Manually_Triggered_Reddit_Data_Retrieval"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manually_Triggered_Reddit_Data_Retrieval",
+    "template_name": "Manually Triggered Reddit Data Retrieval",
+    "original_filename": "Manually_Triggered_Reddit_Data_Retrieval",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:54.651139",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

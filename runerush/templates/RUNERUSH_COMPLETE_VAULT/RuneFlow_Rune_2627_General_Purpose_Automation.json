@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2627\\n\\n📋 Template: automation_wise\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        470,
+        320
+      ],
+      "parameters": {
+        "amount": 500,
+        "resource": "quote",
+        "operation": "create",
+        "profileId": 16138858,
+        "sourceCurrency": "EUR",
+        "targetCurrency": "EUR",
+        "targetAccountId": 147767974
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise1",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        660,
+        320
+      ],
+      "parameters": {
+        "quoteId": "={{$json[\"id\"]}}",
+        "resource": "transfer",
+        "operation": "create",
+        "profileId": 16138858,
+        "targetAccountId": 147767974,
+        "additionalFields": {
+          "reference": "Thank you for the contribution"
+        }
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise2",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        870,
+        320
+      ],
+      "parameters": {
+        "resource": "transfer",
+        "operation": "execute",
+        "profileId": 16138858,
+        "transferId": "={{$json[\"id\"]}}"
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise3",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        1070,
+        320
+      ],
+      "parameters": {
+        "resource": "transfer",
+        "transferId": "={{$node[\"Wise1\"].json[\"id\"]}}"
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Wise": {
+      "main": [
+        [
+          {
+            "node": "Wise1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise1": {
+      "main": [
+        [
+          {
+            "node": "Wise2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise2": {
+      "main": [
+        [
+          {
+            "node": "Wise3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "automation_wise",
+      "rune_number": "2627"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_wise",
+    "template_name": "Automation Wise",
+    "original_filename": "automation_wise",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:44.370193",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2627"
+}

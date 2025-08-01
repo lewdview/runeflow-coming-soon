@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "instanceId": "84ba6d895254e080ac2b4916d987aa66b000f88d4d919a6b9c76848f9b8a7616",
+    "templateId": "2294",
+    "templateCredsSetupCompleted": true,
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "file_ops_httprequest_manual_6",
+      "rune_number": "2696"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2696\\n\\n📋 Template: file_ops_httprequest_manual_6\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "463ebdc7-9c6f-4464-9a0e-4078be11a787",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        280,
+        240
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "531d78cd-9f44-468a-9f88-30816922eb1b",
+      "name": "Write Result File to Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "position": [
+        1140,
+        240
+      ],
+      "parameters": {
+        "options": {},
+        "fileName": "document.pdf",
+        "operation": "write",
+        "dataPropertyName": "=data"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "7702ad91-05fd-4bfc-816a-3e863c1ca148",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        640,
+        60
+      ],
+      "parameters": {
+        "width": 420,
+        "height": 361,
+        "content": "## Authentication\nConversion requests must be authenticated. Please create \n[ConvertAPI account to get authentication secret](https://www.convertapi.com/a/signin)\n\nCreate a query auth credential with __secret__ as name and your secret from the convertAPI dashboard as value"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "09d95adb-3c05-4727-8d0b-498870d08cca",
+      "name": "Download File",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        480,
+        240
+      ],
+      "parameters": {
+        "url": "https://cdn.convertapi.com/cara/testfiles/document.docx",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "c5e25b57-ff04-4b4c-aab4-d92f8e18409e",
+      "name": "File conversion",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        800,
+        240
+      ],
+      "parameters": {
+        "url": "https://v2.convertapi.com/convert/docx/to/pdf",
+        "method": "POST",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "sendHeaders": true,
+        "authentication": "genericCredentialType",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "parameterType": "formBinaryData",
+              "inputDataFieldName": "=data"
+            }
+          ]
+        },
+        "genericAuthType": "httpQueryAuth",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/octet-stream"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "oHfHaXdP6a8AieHO",
+          "name": "Convertapi token"
+        }
+      },
+      "notesInFlow": true,
+      "typeVersion": 4.2
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "File conversion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File conversion": {
+      "main": [
+        [
+          {
+            "node": "Write Result File to Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "file_ops_httprequest_manual_6",
+    "template_name": "File Ops Httprequest Manual 6",
+    "original_filename": "file_ops_httprequest_manual_6",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:58.473353",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2696"
+}

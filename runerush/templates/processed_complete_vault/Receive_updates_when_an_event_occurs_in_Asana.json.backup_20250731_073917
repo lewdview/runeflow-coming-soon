@@ -1,0 +1,69 @@
+{
+  "id": "47",
+  "name": "Receive updates when an event occurs in Asana",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Receive_updates_when_an_event_occurs_in_Asana\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Asana-Trigger",
+      "type": "n8n-nodes-base.asanaTrigger",
+      "position": [
+        1490,
+        860
+      ],
+      "webhookId": "0de3b493-efb6-472c-9deb-80d28c89d28d",
+      "parameters": {
+        "resource": "Tweets",
+        "workspace": "Engineering"
+      },
+      "credentials": {
+        "asanaApi": "asana"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Receive_updates_when_an_event_occurs_in_Asana"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Receive_updates_when_an_event_occurs_in_Asana",
+    "template_name": "Receive Updates When An Event Occurs In Asana",
+    "original_filename": "Receive_updates_when_an_event_occurs_in_Asana",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:43.677024",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

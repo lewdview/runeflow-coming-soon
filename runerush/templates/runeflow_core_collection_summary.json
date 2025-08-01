@@ -1,0 +1,533 @@
+{
+  "collection": "RuneFlow Core Collection",
+  "description": "Essential automation templates for everyday workflows",
+  "template_count": 75,
+  "created": "2025-07-31T08:05:27.153849",
+  "templates": [
+    {
+      "rune_number": "0563",
+      "filename": "RuneFlow_Rune_0563_Webhook_Data_Processing.json",
+      "node_count": 5,
+      "quality_score": 7,
+      "complexity_score": 12.0
+    },
+    {
+      "rune_number": "0564",
+      "filename": "RuneFlow_Rune_0564_Webhook_Data_Processing.json",
+      "node_count": 5,
+      "quality_score": 7,
+      "complexity_score": 12.0
+    },
+    {
+      "rune_number": "3414",
+      "filename": "RuneFlow_Rune_3414_Webhook_Data_Processing.json",
+      "node_count": 5,
+      "quality_score": 7,
+      "complexity_score": 12.0
+    },
+    {
+      "rune_number": "3416",
+      "filename": "RuneFlow_Rune_3416_Webhook_Data_Processing.json",
+      "node_count": 5,
+      "quality_score": 7,
+      "complexity_score": 12.0
+    },
+    {
+      "rune_number": "0143",
+      "filename": "RuneFlow_Rune_0143_Slack_Notification_on_Webhook_Trigger.json",
+      "node_count": 10,
+      "quality_score": 7,
+      "complexity_score": 12.5
+    },
+    {
+      "rune_number": "0145",
+      "filename": "RuneFlow_Rune_0145_Slack_Notification_on_Webhook_Trigger.json",
+      "node_count": 10,
+      "quality_score": 7,
+      "complexity_score": 12.5
+    },
+    {
+      "rune_number": "0682",
+      "filename": "RuneFlow_Rune_0682_Slack_Notification_on_Webhook_Trigger.json",
+      "node_count": 10,
+      "quality_score": 7,
+      "complexity_score": 12.5
+    },
+    {
+      "rune_number": "3494",
+      "filename": "RuneFlow_Rune_3494_Slack_Notification_on_Webhook_Trigger.json",
+      "node_count": 10,
+      "quality_score": 7,
+      "complexity_score": 12.5
+    },
+    {
+      "rune_number": "0061",
+      "filename": "RuneFlow_Rune_0061_Webhook_Data_Processing.json",
+      "node_count": 7,
+      "quality_score": 7,
+      "complexity_score": 13.0
+    },
+    {
+      "rune_number": "0062",
+      "filename": "RuneFlow_Rune_0062_Webhook_Data_Processing.json",
+      "node_count": 7,
+      "quality_score": 7,
+      "complexity_score": 13.0
+    },
+    {
+      "rune_number": "3420",
+      "filename": "RuneFlow_Rune_3420_Webhook_Data_Processing.json",
+      "node_count": 7,
+      "quality_score": 7,
+      "complexity_score": 13.0
+    },
+    {
+      "rune_number": "3422",
+      "filename": "RuneFlow_Rune_3422_Webhook_Data_Processing.json",
+      "node_count": 7,
+      "quality_score": 7,
+      "complexity_score": 13.0
+    },
+    {
+      "rune_number": "4306",
+      "filename": "RuneFlow_Rune_4306_AWS_SNS_Message_Trigger_Alert.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4309",
+      "filename": "RuneFlow_Rune_4309_Acuity_Scheduling_Event_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4323",
+      "filename": "RuneFlow_Rune_4323_Affinity_List_Creation_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4372",
+      "filename": "RuneFlow_Rune_4372_Asana_Event_Notifications_for_Team_Updates.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4496",
+      "filename": "RuneFlow_Rune_4496_Bitbucket_Event_Notification_Trigger.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4517",
+      "filename": "RuneFlow_Rune_4517_Calendly_Event_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4534",
+      "filename": "RuneFlow_Rune_4534_Chargebee_Event_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4562",
+      "filename": "RuneFlow_Rune_4562_Clockify_Time_Entry_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4605",
+      "filename": "RuneFlow_Rune_4605_ConvertKit_Form_Subscriber_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4640",
+      "filename": "RuneFlow_Rune_4640_Copper_CRM_Event_Notification_Trigger.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4762",
+      "filename": "RuneFlow_Rune_4762_Customer_Unsubscribe_Alerts_from_Customer.io.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4871",
+      "filename": "RuneFlow_Rune_4871_Email_Bounce_and_Open_Notifications_via_Postmark.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4926",
+      "filename": "RuneFlow_Rune_4926_Eventbrite_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5088",
+      "filename": "RuneFlow_Rune_5088_Flow_Task_Update_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5192",
+      "filename": "RuneFlow_Rune_5192_GitLab_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5263",
+      "filename": "RuneFlow_Rune_5263_Gumroad_Sales_Notification_Alert.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5279",
+      "filename": "RuneFlow_Rune_5279_HubSpot_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5334",
+      "filename": "RuneFlow_Rune_5334_Invoice_Ninja_Alert_for_New_Activity.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5336",
+      "filename": "RuneFlow_Rune_5336_Jira_Issue_Notification_Trigger.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5339",
+      "filename": "RuneFlow_Rune_5339_JotForm_Submission_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5346",
+      "filename": "RuneFlow_Rune_5346_Keap_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5392",
+      "filename": "RuneFlow_Rune_5392_MailChimp_Activity_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5394",
+      "filename": "RuneFlow_Rune_5394_Mailjet_Event_Notification_Monitor.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5575",
+      "filename": "RuneFlow_Rune_5575_New_ActiveCampaign_Account_Alert_for_Admins.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5577",
+      "filename": "RuneFlow_Rune_5577_New_HelpScout_Customer_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "5670",
+      "filename": "RuneFlow_Rune_5670_PayPal_Billing_Plan_Activation_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6099",
+      "filename": "RuneFlow_Rune_6099_Shopify_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6328",
+      "filename": "RuneFlow_Rune_6328_TheHive_Event_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6365",
+      "filename": "RuneFlow_Rune_6365_Trello_List_Change_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6475",
+      "filename": "RuneFlow_Rune_6475_Webflow_Form_Submission_Notification.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6533",
+      "filename": "RuneFlow_Rune_6533_Wufoo_Form_Submission_Notifications.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "6568",
+      "filename": "RuneFlow_Rune_6568_Zendesk_Support_Ticket_Notification_System.json",
+      "node_count": 1,
+      "quality_score": 5,
+      "complexity_score": 3.0
+    },
+    {
+      "rune_number": "4922",
+      "filename": "RuneFlow_Rune_4922_Error_Notification_via_Email_Using_Mailgun.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5040",
+      "filename": "RuneFlow_Rune_5040_Facebook_Profile_Update_Alerts_via_Mattermost.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5188",
+      "filename": "RuneFlow_Rune_5188_GitHub_Release_Notifications_to_Slack_Channel.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5359",
+      "filename": "RuneFlow_Rune_5359_LemList_Trigger_to_Mattermost_Notification.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5461",
+      "filename": "RuneFlow_Rune_5461_Manually_Send_Message_on_Twake_Platform.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5518",
+      "filename": "RuneFlow_Rune_5518_Mattermost_Alert_for_New_Airtable_Data_Entries.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5861",
+      "filename": "RuneFlow_Rune_5861_SMS_Alert_When_Leaving_Home_via_Pushcut_Trigger.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "5862",
+      "filename": "RuneFlow_Rune_5862_SMS_Alert_for_Failed_Workflow_Notifications.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "6047",
+      "filename": "RuneFlow_Rune_6047_Send_Email_Alert_When_Workflow_Error_Occurs.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "6052",
+      "filename": "RuneFlow_Rune_6052_Send_Emergency_Alert_via_SIGNL4_Manually.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "6061",
+      "filename": "RuneFlow_Rune_6061_Send_SMS_Notification_Using_MSG91_Service.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "6062",
+      "filename": "RuneFlow_Rune_6062_Send_SMS_Notification_Using_Mocean_Service.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "6065",
+      "filename": "RuneFlow_Rune_6065_Send_Slack_Notification_on_Workflow_Error.json",
+      "node_count": 2,
+      "quality_score": 5,
+      "complexity_score": 3.5
+    },
+    {
+      "rune_number": "4807",
+      "filename": "RuneFlow_Rune_4807_Daily_Weather_Push_Notifications_to_Mobile.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "4808",
+      "filename": "RuneFlow_Rune_4808_Daily_Weather_Push_Notifications_via_Spontit.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "4809",
+      "filename": "RuneFlow_Rune_4809_Daily_Weather_Updates_via_Gotify_Notifications.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "4811",
+      "filename": "RuneFlow_Rune_4811_Daily_Weather_Updates_via_Push_Notifications.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "4914",
+      "filename": "RuneFlow_Rune_4914_Error_Alerts_to_Mattermost_and_Twilio.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "5375",
+      "filename": "RuneFlow_Rune_5375_LinkedIn_Post_to_External_API_Trigger.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "5521",
+      "filename": "RuneFlow_Rune_5521_Mattermost_to_PagerDuty_Alert_Relay_via_Webhook.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "5664",
+      "filename": "RuneFlow_Rune_5664_PagerDuty_Alert_to_Mattermost_Notification.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "6081",
+      "filename": "RuneFlow_Rune_6081_Send_daily_weather_updates_via_a_push_notification_using_Spontit.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "6082",
+      "filename": "RuneFlow_Rune_6082_Send_daily_weather_updates_via_a_push_notification_using_the_Pushcut_node.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "6100",
+      "filename": "RuneFlow_Rune_6100_Shopify_Order_Alerts_via_Twitter_and_Telegram.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "6307",
+      "filename": "RuneFlow_Rune_6307_Telegram_Notifications_from_Webhook_Triggers.json",
+      "node_count": 3,
+      "quality_score": 5,
+      "complexity_score": 4.0
+    },
+    {
+      "rune_number": "4701",
+      "filename": "RuneFlow_Rune_4701_Create_Twist_Channel_and_Send_Message_Automatically.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    },
+    {
+      "rune_number": "4782",
+      "filename": "RuneFlow_Rune_4782_Daily_Google_Sheets_Update_on_Schedule.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    },
+    {
+      "rune_number": "4920",
+      "filename": "RuneFlow_Rune_4920_Error_Notification_Via_Email_Alert.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    },
+    {
+      "rune_number": "5344",
+      "filename": "RuneFlow_Rune_5344_Kafka_Topic_Monitoring_with_SMS_Alerts.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    },
+    {
+      "rune_number": "5551",
+      "filename": "RuneFlow_Rune_5551_Monitor_Queue_and_Send_SMS_Notifications.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    },
+    {
+      "rune_number": "5905",
+      "filename": "RuneFlow_Rune_5905_Scheduled_API_Check_with_Conditional_Twilio_Notification.json",
+      "node_count": 4,
+      "quality_score": 5,
+      "complexity_score": 4.5
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Convert_Spreadsheet_to_Email_Attachment\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "notes": "Get email with JSON file",
+      "position": [
+        620,
+        140
+      ],
+      "parameters": {
+        "limit": 1,
+        "operation": "getAll",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "16",
+          "name": "gmail"
+        }
+      },
+      "notesInFlow": true,
+      "typeVersion": 1
+    },
+    {
+      "name": "write spreadsheet file",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "position": [
+        980,
+        140
+      ],
+      "parameters": {
+        "options": {
+          "fileName": "users_spreadsheet.csv"
+        },
+        "operation": "toFile",
+        "fileFormat": "csv"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "move binary data ",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        800,
+        140
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        200,
+        160
+      ],
+      "parameters": {
+        "width": 320,
+        "height": 80,
+        "content": "## JSON file > Sheets"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "move binary data ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "move binary data ": {
+      "main": [
+        [
+          {
+            "node": "write spreadsheet file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Convert_Spreadsheet_to_Email_Attachment"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Convert_Spreadsheet_to_Email_Attachment",
+    "template_name": "Convert Spreadsheet To Email Attachment",
+    "original_filename": "Convert_Spreadsheet_to_Email_Attachment",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:38.783793",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

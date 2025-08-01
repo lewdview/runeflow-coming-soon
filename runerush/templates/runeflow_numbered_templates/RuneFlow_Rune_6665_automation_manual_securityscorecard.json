@@ -1,0 +1,133 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 6665\\n\\n📋 Template: automation_manual_securityscorecard\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "SecurityScorecard",
+      "type": "n8n-nodes-base.securityScorecard",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "report": "full-scorecard-json",
+        "resource": "report",
+        "operation": "generate",
+        "scorecardIdentifier": "n8n.io"
+      },
+      "credentials": {
+        "securityScorecardApi": "SecurityScorecard Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "SecurityScorecard1",
+      "type": "n8n-nodes-base.securityScorecard",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "limit": 1,
+        "resource": "report"
+      },
+      "credentials": {
+        "securityScorecardApi": "SecurityScorecard Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "SecurityScorecard2",
+      "type": "n8n-nodes-base.securityScorecard",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "url": "={{$json[\"download_url\"]}}",
+        "resource": "report",
+        "operation": "download"
+      },
+      "credentials": {
+        "securityScorecardApi": "SecurityScorecard Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "SecurityScorecard": {
+      "main": [
+        [
+          {
+            "node": "SecurityScorecard1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SecurityScorecard1": {
+      "main": [
+        [
+          {
+            "node": "SecurityScorecard2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "SecurityScorecard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "automation_manual_securityscorecard",
+      "rune_number": "6665"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "6665"
+}

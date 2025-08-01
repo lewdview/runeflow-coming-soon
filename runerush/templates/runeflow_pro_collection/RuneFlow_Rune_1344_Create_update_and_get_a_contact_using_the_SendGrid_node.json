@@ -1,0 +1,154 @@
+{
+  "id": "209",
+  "name": "Create, update and get a contact using the SendGrid node",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1344\\n\\n📋 Template: Manage_SendGrid_Contacts_Create,_Update,_and_Retrieve\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "position": [
+        470,
+        300
+      ],
+      "parameters": {
+        "email": "",
+        "resource": "contact",
+        "additionalFields": {
+          "firstName": ""
+        }
+      },
+      "credentials": {
+        "sendGridApi": "SendGrid Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "SendGrid1",
+      "type": "n8n-nodes-base.sendGrid",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "email": "={{$node[\"SendGrid\"].parameter[\"email\"]}}",
+        "resource": "contact",
+        "additionalFields": {
+          "lastName": ""
+        }
+      },
+      "credentials": {
+        "sendGridApi": "SendGrid Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "SendGrid2",
+      "type": "n8n-nodes-base.sendGrid",
+      "position": [
+        870,
+        300
+      ],
+      "parameters": {
+        "by": "email",
+        "email": "={{$node[\"SendGrid\"].parameter[\"email\"]}}",
+        "resource": "contact",
+        "operation": "get"
+      },
+      "credentials": {
+        "sendGridApi": "SendGrid Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "SendGrid": {
+      "main": [
+        [
+          {
+            "node": "SendGrid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SendGrid1": {
+      "main": [
+        [
+          {
+            "node": "SendGrid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Manage_SendGrid_Contacts_Create,_Update,_and_Retrieve",
+      "rune_number": "1344"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manage_SendGrid_Contacts_Create_Update_and_Retrieve",
+    "template_name": "Manage Sendgrid Contacts Create Update And Retrieve",
+    "original_filename": "Manage_SendGrid_Contacts_Create,_Update,_and_Retrieve",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:49.348261",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1344"
+}

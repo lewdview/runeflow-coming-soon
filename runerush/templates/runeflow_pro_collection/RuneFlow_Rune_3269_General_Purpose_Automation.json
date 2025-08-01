@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "instanceId": "237600ca44303ce91fa31ee72babcdc8493f55ee2c0e8aa2b78b3b4ce6f70bd9",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "webhook_automation_calendly_mautic",
+      "rune_number": "3269"
+    }
+  },
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 3269\\n\\n📋 Template: webhook_automation_calendly_mautic\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "40216649-af2c-44df-83c6-75afe75dcdaf",
+      "name": "On new event",
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "position": [
+        400,
+        240
+      ],
+      "webhookId": "28087fc9-e623-48fe-949e-e002cbc7a817",
+      "parameters": {
+        "events": [
+          "invitee.created"
+        ]
+      },
+      "credentials": {
+        "calendlyApi": {
+          "id": "38",
+          "name": "[UPDATE ME]"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "46914a34-984e-4736-b2a3-6e97555b73c7",
+      "name": "Create/update contact",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        620,
+        240
+      ],
+      "parameters": {
+        "email": "={{$node[\"On new event\"].json[\"payload\"][\"email\"]}}",
+        "options": {},
+        "firstName": "={{$json[\"payload\"][\"name\"]}}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "mauticApi": {
+          "id": "34",
+          "name": "[UPDATE ME]"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "df809a8d-7b05-4ecc-a022-7bb12842b4bc",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -20,
+        180
+      ],
+      "parameters": {
+        "width": 313,
+        "height": 229,
+        "content": "### Create/update Mautic contact on a new Calendly event\n1. `On new event` triggers on new Calendly events.\n2. `Create/update contact` will create a contact in Mautic or update the contact's first name. If the contact's email is already in Mautic, then the first name will be overwritten to the new first name."
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "On new event": {
+      "main": [
+        [
+          {
+            "node": "Create/update contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_automation_calendly_mautic",
+    "template_name": "Webhook Automation Calendly Mautic",
+    "original_filename": "webhook_automation_calendly_mautic",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:51.734614",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "3269"
+}

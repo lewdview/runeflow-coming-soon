@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Scheduled_Mautic_Data_Export_to_Google_Sheets\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "GS Read Data2",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        240,
+        750
+      ],
+      "parameters": {
+        "range": "Data!A:P",
+        "options": {
+          "valueRenderMode": "FORMATTED_VALUE"
+        },
+        "sheetId": "1jKYwPE9DMFOYf1AeDuTvQ3GSM2GqaEJhGYNoisxSLpM"
+      },
+      "credentials": {
+        "googleApi": "n8n API"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "position": [
+        450,
+        750
+      ],
+      "parameters": {
+        "email": "={{$node[\"GS Read Data2\"].json[\"email\"]}}",
+        "options": {},
+        "firstName": "={{$node[\"GS Read Data2\"].json[\"firstname\"]}}",
+        "additionalFields": {
+          "mobile": "={{$node[\"GS Read Data2\"].json[\"mobile\"]}}"
+        }
+      },
+      "credentials": {
+        "mauticApi": "MauticAPI"
+      },
+      "notesInFlow": false,
+      "typeVersion": 1
+    },
+    {
+      "name": "GS Read Data2",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        240,
+        750
+      ],
+      "parameters": {
+        "range": "Data!A:P",
+        "options": {
+          "valueRenderMode": "FORMATTED_VALUE"
+        },
+        "sheetId": "1jKYwPE9DMFOYf1AeDuTvQ3GSM2GqaEJhGYNoisxSLpM"
+      },
+      "credentials": {
+        "googleApi": "n8n API"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        40,
+        750
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "unit": "minutes",
+              "value": 5
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "GS Read Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GS Read Data2": {
+      "main": [
+        [
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Scheduled_Mautic_Data_Export_to_Google_Sheets"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Scheduled_Mautic_Data_Export_to_Google_Sheets",
+    "template_name": "Scheduled Mautic Data Export To Google Sheets",
+    "original_filename": "Scheduled_Mautic_Data_Export_to_Google_Sheets",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:55.648002",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

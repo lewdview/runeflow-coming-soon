@@ -1,0 +1,168 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2465\\n\\n📋 Template: Wise_Transfer_Tracker_Update_Airtable_with_Transaction_Data\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise Trigger",
+      "type": "n8n-nodes-base.wiseTrigger",
+      "position": [
+        450,
+        280
+      ],
+      "webhookId": "df8c0c06-7d40-4e57-aaff-60f458e6997c",
+      "parameters": {
+        "event": "tranferStateChange",
+        "profileId": 16138858
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Wise",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        650,
+        280
+      ],
+      "parameters": {
+        "resource": "transfer",
+        "transferId": "={{$json[\"data\"][\"resource\"][\"id\"]}}"
+      },
+      "credentials": {
+        "wiseApi": "Wise API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        850,
+        280
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Transfer ID",
+              "value": "={{$json[\"id\"]}}"
+            },
+            {
+              "name": "Date",
+              "value": "={{$json[\"created\"]}}"
+            },
+            {
+              "name": "Reference",
+              "value": "={{$json[\"reference\"]}}"
+            },
+            {
+              "name": "Amount",
+              "value": "={{$json[\"sourceValue\"]}}"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        1050,
+        280
+      ],
+      "parameters": {
+        "table": "Table 1",
+        "options": {},
+        "operation": "append",
+        "application": ""
+      },
+      "credentials": {
+        "airtableApi": "Airtable Credentials n8n"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise Trigger": {
+      "main": [
+        [
+          {
+            "node": "Wise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Wise_Transfer_Tracker_Update_Airtable_with_Transaction_Data",
+      "rune_number": "2465"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Wise_Transfer_Tracker_Update_Airtable_with_Transaction_Data",
+    "template_name": "Wise Transfer Tracker Update Airtable With Transaction Data",
+    "original_filename": "Wise_Transfer_Tracker_Update_Airtable_with_Transaction_Data",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:38.932182",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2465"
+}

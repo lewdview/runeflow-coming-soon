@@ -1,0 +1,113 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Email_Attachment_Upload_to_NextCloud\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "IMAP Email",
+      "type": "n8n-nodes-base.emailReadImap",
+      "position": [
+        240,
+        420
+      ],
+      "parameters": {
+        "format": "resolved",
+        "mailbox": "Invoices",
+        "options": {
+          "customEmailConfig": "[\"ALL\"]"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Nextcloud",
+      "type": "n8n-nodes-base.nextCloud",
+      "position": [
+        940,
+        420
+      ],
+      "parameters": {
+        "path": "=Documents/Invoices/{{$json[\"date\"]}}_{{$json[\"from\"]}}_{{$binary.file.fileName}}",
+        "binaryDataUpload": true,
+        "binaryPropertyName": "file"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Map each attachment",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        620,
+        420
+      ],
+      "parameters": {
+        "functionCode": "const _ = require('lodash')\n\nconst sanitize = str => _.chain(str)\n .replace(/[^A-Za-z0-9&.-]/g, '-') // sanitise via whitelist of characters\n .replace(/-(?=-)/g, '') // remove repeated dashes - https://regexr.com/6ag8h\n .trim('-') // trim any leading/trailing dashes\n .truncate({\n length: 60,\n omission: '-' // when the string ends with '-', you'll know it was truncated\n })\n .value()\n\nconst result = _.flatMap(items.map(item => {\n //console.log({item})\n\n // Maps each attachment to a separate item\n return _.values(item.binary).map(file => {\n console.log(\"Saving attachement:\", file.fileName, 'from:', ...item.json.from.value)\n \n // sanitize filename but exclude extension\n const filename_parts = file.fileName.split('.')\n const ext = _.slice(filename_parts, filename_parts.length-1)\n const filename_main = _.join(_.dropRight(filename_parts), '.')\n file.fileName = sanitize(filename_main) + '.' + ext\n \n return {\n json: {\n from: sanitize(item.json.from.value[0].name),\n date: sanitize(new Date(item.json.date).toISOString().split(\"T\")[0]) // get date part \"2020-01-01\"\n }, \n binary: { file }\n }\n })\n}))\n\n//console.log(result)\nreturn result"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "IMAP Email": {
+      "main": [
+        [
+          {
+            "node": "Map each attachment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map each attachment": {
+      "main": [
+        [
+          {
+            "node": "Nextcloud",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Email_Attachment_Upload_to_NextCloud"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Email_Attachment_Upload_to_NextCloud",
+    "template_name": "Email Attachment Upload To Nextcloud",
+    "original_filename": "Email_Attachment_Upload_to_NextCloud",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:45.432668",
+    "nodes_count": 4,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

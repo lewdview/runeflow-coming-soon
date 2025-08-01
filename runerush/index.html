@@ -370,8 +370,16 @@
                 ctaAppear 1.5s 8.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
                 ctaPulse 2s 10s ease-in-out infinite;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 99999;
-            pointer-events: auto;
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+            -webkit-tap-highlight-color: rgba(255, 69, 0, 0.3);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
         }
         
         /* Subliminal Runes */
@@ -1808,7 +1816,7 @@
             <!-- Scarcity Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div style="background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 48px; font-weight: 900; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); margin-bottom: 10px;">48H</div>
+                    <div id="urgency-countdown" style="font-size: 48px; font-weight: 900; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace;">00:00:00</div>
                     <div style="font-size: 16px; opacity: 0.9;">Time Remaining</div>
                     <div style="font-size: 14px; opacity: 0.7; margin-top: 5px;">Then price jumps to $200</div>
                 </div>
@@ -2227,12 +2235,14 @@
                     timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 }
                 
-                // Update both countdown displays
+                // Update all countdown displays
                 const mainCountdown = document.getElementById('countdown');
                 const animationCountdown = document.getElementById('countdownTime');
+                const urgencyCountdown = document.getElementById('urgency-countdown');
                 
                 if (mainCountdown) mainCountdown.textContent = timeString;
                 if (animationCountdown) animationCountdown.textContent = timeString;
+                if (urgencyCountdown) urgencyCountdown.textContent = timeString;
             }
             
             // Update immediately and then every second

@@ -1,0 +1,120 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: webhook_file_ops_spreadsheetfile\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Read from Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "options": {},
+        "sheetId": "1uFISwZJ1rzkOnOSNocX-_n-ASSAznWGdpcPK3_KCvVo"
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "19",
+          "name": "Tom's Google Sheets account"
+        }
+      },
+      "typeVersion": 2
+    },
+    {
+      "name": "Create HTML file",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "options": {},
+        "operation": "toFile",
+        "fileFormat": "html"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        240,
+        300
+      ],
+      "webhookId": "08569699-fea2-4856-80aa-fe878ab9dd4f",
+      "parameters": {
+        "path": "08569699-fea2-4856-80aa-fe878ab9dd4f",
+        "options": {},
+        "responseData": "firstEntryBinary",
+        "responseMode": "lastNode"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Read from Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read from Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Create HTML file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "webhook_file_ops_spreadsheetfile"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_file_ops_spreadsheetfile",
+    "template_name": "Webhook File Ops Spreadsheetfile",
+    "original_filename": "webhook_file_ops_spreadsheetfile",
+    "category": "AI & Research",
+    "quality_score": 3,
+    "processed_date": "2025-07-31T07:29:56.482076",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  }
+}

@@ -1,0 +1,266 @@
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Create, update, and get a profile in Humantic AI
+Category: Other & Templates
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Create, update, and get a profile in Humantic AI
+Category: Other & Templates
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Create, update, and get a profile in Humantic AI
+Category: Other & Templates
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Create, update, and get a profile in Humantic AI
+Category: Other & Templates
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+{
+"id": "127",
+"name": "Create, update, and get a profile in Humantic AI",
+"nodes": [
+{
+"name": "On clicking 'execute'",
+"type": "n8n-nodes-base.manualTrigger",
+"position": [
+290,
+300
+],
+"parameters": {},
+"typeVersion": 1
+},
+{
+"name": "Humantic AI",
+"type": "n8n-nodes-base.humanticAi",
+"position": [
+490,
+300
+],
+"parameters": {
+"userId": "https://www.linkedin.com/in/harshil1712/"
+},
+"credentials": {
+"humanticAiApi": "humantic"
+},
+"typeVersion": 1
+},
+{
+"name": "HTTP Request",
+"type": "n8n-nodes-base.httpRequest",
+"position": [
+690,
+300
+],
+"parameters": {
+"url": "",
+"options": {},
+"responseFormat": "file"
+},
+"typeVersion": 1
+},
+{
+"name": "Humantic AI1",
+"type": "n8n-nodes-base.humanticAi",
+"position": [
+890,
+300
+],
+"parameters": {
+"userId": "={{$node[\"Humantic AI\"].json[\"results\"][\"userid\"]}}",
+"operation": "update",
+"sendResume": true
+},
+"credentials": {
+"humanticAiApi": "humantic"
+},
+"typeVersion": 1
+},
+{
+"name": "Humantic AI2",
+"type": "n8n-nodes-base.humanticAi",
+"position": [
+1090,
+300
+],
+"parameters": {
+"userId": "={{$node[\"Humantic AI\"].json[\"results\"][\"userid\"]}}",
+"options": {
+"persona": [
+"hiring"
+]
+},
+"operation": "get"
+},
+"credentials": {
+"humanticAiApi": "humantic"
+},
+"typeVersion": 1
+}
+],
+"active": false,
+"settings": {},
+"connections": {
+"Humantic AI": {
+"main": [
+[
+{
+"node": "HTTP Request",
+"type": "main",
+"index": 0
+}
+]
+]
+},
+"HTTP Request": {
+"main": [
+[
+{
+"node": "Humantic AI1",
+"type": "main",
+"index": 0
+}
+]
+]
+},
+"Humantic AI1": {
+"main": [
+[
+{
+"node": "Humantic AI2",
+"type": "main",
+"index": 0
+}
+]
+]
+},
+"On clicking 'execute'": {
+"main": [
+[
+{
+"node": "Humantic AI",
+"type": "main",
+"index": 0
+}
+]
+]
+}
+}
+}
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->

@@ -1,0 +1,125 @@
+{
+  "id": "191",
+  "name": "Create a screenshot of a website and send it to a telegram channel",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 0645\\n\\n📋 Template: Create_a_screenshot_of_a_website_and_send_it_to_a_telegram_channel\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "file": "={{$node[\"uProc\"].json[\"message\"][\"result\"]}}",
+        "chatId": "",
+        "operation": "sendPhoto",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": "Telegram n8n bot"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "uProc",
+      "type": "n8n-nodes-base.uproc",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "url": "https://n8n.io",
+        "tool": "getUrlScreenshot",
+        "group": "image",
+        "width": "1024",
+        "fullpage": "yes",
+        "additionalOptions": {}
+      },
+      "credentials": {
+        "uprocApi": "uProc credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "uProc": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "uProc",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Create_a_screenshot_of_a_website_and_send_it_to_a_telegram_channel",
+      "rune_number": "0645"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_a_screenshot_of_a_website_and_send_it_to_a_telegram_channel",
+    "template_name": "Create A Screenshot Of A Website And Send It To A Telegram Channel",
+    "original_filename": "Create_a_screenshot_of_a_website_and_send_it_to_a_telegram_channel",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:48.245675",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "0645"
+}

@@ -1,0 +1,124 @@
+{
+  "id": "110",
+  "name": "Get all the stories starting with `release` and publish them",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: automation_storyblok_manual\\n📁 Category: Social & Media\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Storyblok",
+      "type": "n8n-nodes-base.storyblok",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "space": 96940,
+        "source": "managementApi",
+        "filters": {
+          "starts_with": "release"
+        },
+        "operation": "getAll"
+      },
+      "credentials": {
+        "storyblokManagementApi": "storyblok-tanay"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Storyblok1",
+      "type": "n8n-nodes-base.storyblok",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "space": "={{$node[\"Storyblok\"].parameter[\"space\"]}}",
+        "source": "managementApi",
+        "options": {},
+        "storyId": "={{$node[\"Storyblok\"].json[\"id\"]}}",
+        "operation": "publish"
+      },
+      "credentials": {
+        "storyblokManagementApi": "storyblok-tanay"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Storyblok": {
+      "main": [
+        [
+          {
+            "node": "Storyblok1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Storyblok",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Social & Media",
+      "template_name": "automation_storyblok_manual"
+    }
+  },
+  "runeflow_category": "ᛊᛟ Social Media",
+  "runeflow_description": "Content Distribution",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_storyblok_manual",
+    "template_name": "Automation Storyblok Manual",
+    "original_filename": "automation_storyblok_manual",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:30:01.082168",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

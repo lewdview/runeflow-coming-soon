@@ -1,0 +1,139 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 7024\\n\\n📋 Template: scheduled_automation_httprequest_twitter\\n📁 Category: Social & Media\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Request blablagues",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        750,
+        250
+      ],
+      "parameters": {
+        "url": "https://api.blablagues.net/?rub=images",
+        "options": {},
+        "responseFormat": "string"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Recup image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1000,
+        250
+      ],
+      "parameters": {
+        "url": "={{$node[\"Request blablagues\"].json[\"data\"][\"data\"][\"content\"][\"media\"]}}",
+        "options": {},
+        "responseFormat": "file"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "At 17H image jokes",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        500,
+        250
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 17
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Tweet image jokes",
+      "type": "n8n-nodes-base.twitter",
+      "position": [
+        1250,
+        250
+      ],
+      "parameters": {
+        "text": "={{$node[\"Request blablagues\"].json[\"data\"][\"data\"][\"content\"][\"text\"]}}",
+        "additionalFields": {
+          "attachments": "data"
+        }
+      },
+      "credentials": {
+        "twitterOAuth1Api": {
+          "id": "",
+          "name": ""
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Recup image": {
+      "main": [
+        [
+          {
+            "node": "Tweet image jokes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "At 17H image jokes": {
+      "main": [
+        [
+          {
+            "node": "Request blablagues",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request blablagues": {
+      "main": [
+        [
+          {
+            "node": "Recup image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Social & Media",
+      "template_name": "scheduled_automation_httprequest_twitter",
+      "rune_number": "7024"
+    }
+  },
+  "runeflow_category": "ᛊᛟ Social Media",
+  "runeflow_description": "Content Distribution",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "7024"
+}

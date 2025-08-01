@@ -2,7 +2,7 @@
 
 ## ✅ **Configuration Complete**
 
-Your RuneRUSH payment system is now **100% configured** and ready for deployment! Here's everything that's been set up:
+Your RuneRUSH payment system is now **95% configured** with only final deployment steps remaining! Here's everything that's been set up:
 
 ### 🔑 **Your Configured Credentials:**
 
@@ -117,9 +117,9 @@ railway variables
 - **Upsell Ready:** PRO expansion ($39 upgrade)
 - **Commercial Rights:** Customers can resell templates
 
-## 🔥 **Ready to Launch?**
+## 🔥 **Almost Ready to Launch!**
 
-Your RuneRUSH is **production-ready**! Here's what you need:
+Your RuneRUSH is **deployment-ready** with final configuration needed! Here's what you need:
 
 ### **Required (from you):**
 - [ ] Your Stripe **secret key** (sk_test_...)

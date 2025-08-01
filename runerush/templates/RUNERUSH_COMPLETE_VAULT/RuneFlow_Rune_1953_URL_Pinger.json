@@ -1,0 +1,168 @@
+{
+  "id": "F2AEknC2Kc3ujuX4",
+  "meta": {
+    "instanceId": "8437bf0b955ff2039c820e1d56f4a2d7ce67e59f0897cc8ac064cfea1d9dbec6",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Personal & Automation",
+      "template_name": "Scheduled_URL_Health_Check_and_Ping_Monitor",
+      "rune_number": "1953"
+    }
+  },
+  "name": "URL Pinger",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1953\\n\\n📋 Template: Scheduled_URL_Health_Check_and_Ping_Monitor\\n📁 Category: Personal & Automation\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "5b3b5251-d460-4eae-a931-e4772749a927",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        900,
+        460
+      ],
+      "parameters": {
+        "options": {
+          "destinationFieldName": "url"
+        },
+        "fieldToSplitOut": "urls"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "b19bec9b-de09-42a7-8576-2cef3e0f9288",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        460,
+        460
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "584a4340-7053-4afd-ae3e-f0c1f2de2586",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "onError": "continueRegularOutput",
+      "position": [
+        1100,
+        460
+      ],
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "d53b8c24-7408-4e09-8360-f13ecfa5deca",
+      "name": "URLs List",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        680,
+        460
+      ],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9e5e8792-c5ee-4ce2-9a9a-0b3ad274cae6",
+              "name": "urls",
+              "type": "array",
+              "value": "={{ ['http://firsturl.com', 'https://secondurl.com', 'https://thirdurl.com'] }}"
+            }
+          ]
+        }
+      },
+      "typeVersion": 3.3
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "71356023-fe84-4b30-9df8-3c5dc25fbcca",
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URLs List": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "URLs List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚨᚢ Automation",
+  "runeflow_description": "Streamline Workflows",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Scheduled_URL_Health_Check_and_Ping_Monitor",
+    "template_name": "Scheduled Url Health Check And Ping Monitor",
+    "original_filename": "Scheduled_URL_Health_Check_and_Ping_Monitor",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:38.977134",
+    "nodes_count": 5,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1953"
+}

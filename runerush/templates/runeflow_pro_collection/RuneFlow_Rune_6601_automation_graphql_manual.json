@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 6601\\n\\n📋 Template: automation_graphql_manual\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "GraphQL",
+      "type": "n8n-nodes-base.graphql",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "query": "{\n launchesPast(limit: 5) {\n mission_name\n launch_date_local\n launch_site {\n site_name_long\n }\n links {\n article_link\n video_link\n }\n rocket {\n rocket_name\n first_stage {\n cores {\n flight\n core {\n reuse_count\n status\n }\n }\n }\n second_stage {\n payloads {\n payload_type\n payload_mass_kg\n payload_mass_lbs\n }\n }\n }\n ships {\n name\n home_port\n image\n }\n }\n}",
+        "endpoint": "https://api.spacex.land/graphql/",
+        "requestFormat": "json",
+        "responseFormat": "string",
+        "headerParametersUi": {
+          "parameter": []
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "GraphQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "automation_graphql_manual",
+      "rune_number": "6601"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "6601"
+}

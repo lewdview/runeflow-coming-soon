@@ -1,0 +1,151 @@
+{
+  "id": "69",
+  "name": "Create, update, and get an issue on Taiga",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1346\\n\\n📋 Template: Manage_Taiga_Issues_Create,_Update,_and_Retrieve\\n📁 Category: AI & and & Research\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        430,
+        260
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Taiga",
+      "type": "n8n-nodes-base.taiga",
+      "position": [
+        630,
+        260
+      ],
+      "parameters": {
+        "subject": "n8n-docs",
+        "projectId": 385605,
+        "additionalFields": {}
+      },
+      "credentials": {
+        "taigaCloudApi": "taiga"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Taiga1",
+      "type": "n8n-nodes-base.taiga",
+      "position": [
+        830,
+        260
+      ],
+      "parameters": {
+        "issueId": "={{$node[\"Taiga\"].json[\"id\"]}}",
+        "operation": "update",
+        "projectId": "={{$node[\"Taiga\"].json[\"project\"]}}",
+        "updateFields": {
+          "description": "This ticket is for the documentation for the Taiga node"
+        }
+      },
+      "credentials": {
+        "taigaCloudApi": "taiga"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Taiga2",
+      "type": "n8n-nodes-base.taiga",
+      "position": [
+        1030,
+        260
+      ],
+      "parameters": {
+        "issueId": "={{$node[\"Taiga\"].json[\"id\"]}}",
+        "operation": "get"
+      },
+      "credentials": {
+        "taigaCloudApi": "taiga"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Taiga": {
+      "main": [
+        [
+          {
+            "node": "Taiga1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Taiga1": {
+      "main": [
+        [
+          {
+            "node": "Taiga2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Taiga",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "AI & and & Research",
+      "template_name": "Manage_Taiga_Issues_Create,_Update,_and_Retrieve",
+      "rune_number": "1346"
+    }
+  },
+  "runeflow_category": "ᚨᛁ AI & Research",
+  "runeflow_description": "Intelligent Data Processing",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manage_Taiga_Issues_Create_Update_and_Retrieve",
+    "template_name": "Manage Taiga Issues Create Update And Retrieve",
+    "original_filename": "Manage_Taiga_Issues_Create,_Update,_and_Retrieve",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:49.358767",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1346"
+}

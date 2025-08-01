@@ -1,0 +1,44 @@
+{
+  "event": "RUNERUSH SALE EVENT",
+  "description": "Limited Time Automation Template Sale",
+  "created": "2025-07-31T08:14:59.331236",
+  "tiers": {
+    "core": {
+      "name": "RUNERUSH CORE 50",
+      "templates": 50,
+      "price": "$49",
+      "value_per_template": "$0.98",
+      "description": "Essential templates for automation beginners",
+      "target_audience": "New to automation, small businesses"
+    },
+    "pro_upgrade": {
+      "name": "RUNERUSH PRO UPGRADE 50",
+      "templates": 50,
+      "price": "$39",
+      "value_per_template": "$0.78",
+      "description": "Advanced templates for power users",
+      "target_audience": "Experienced users, growing businesses",
+      "note": "Requires CORE purchase"
+    },
+    "bundle_special": {
+      "name": "RUNERUSH CORE+PRO BUNDLE",
+      "templates": 100,
+      "price": "$60",
+      "regular_price": "$88",
+      "savings": "$28 (32% off)",
+      "value_per_template": "$0.60",
+      "description": "Limited special bundle offer",
+      "target_audience": "Smart shoppers, growing businesses",
+      "availability": "Limited to first 100 customers only"
+    },
+    "complete_vault": {
+      "name": "RUNERUSH COMPLETE VAULT",
+      "templates": 8142,
+      "price": "$499",
+      "value_per_template": "$0.061",
+      "description": "Every single automation template",
+      "target_audience": "Agencies, enterprises, automation masters"
+    }
+  },
+  "total_unique_templates": 8142
+}

@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1365\\n\\n📋 Template: Manual_Git_Repository_Operations\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        230,
+        320
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Git",
+      "type": "n8n-nodes-base.git",
+      "position": [
+        430,
+        320
+      ],
+      "parameters": {
+        "operation": "add",
+        "pathsToAdd": "README.md"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Git1",
+      "type": "n8n-nodes-base.git",
+      "position": [
+        630,
+        320
+      ],
+      "parameters": {
+        "message": "✨ First commit from n8n",
+        "options": {},
+        "operation": "commit",
+        "repositoryPath": "={{$node[\"Git\"].parameter[\"repositoryPath\"]}}"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Git2",
+      "type": "n8n-nodes-base.git",
+      "position": [
+        830,
+        320
+      ],
+      "parameters": {
+        "options": {},
+        "repositoryPath": "={{$node[\"Git\"].parameter[\"repositoryPath\"]}}"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Git3",
+      "type": "n8n-nodes-base.git",
+      "position": [
+        1030,
+        320
+      ],
+      "parameters": {
+        "options": {},
+        "operation": "push",
+        "repositoryPath": "={{$node[\"Git\"].parameter[\"repositoryPath\"]}}"
+      },
+      "executeOnce": false,
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Git": {
+      "main": [
+        [
+          {
+            "node": "Git1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Git1": {
+      "main": [
+        [
+          {
+            "node": "Git2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Git2": {
+      "main": [
+        [
+          {
+            "node": "Git3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Git",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "Manual_Git_Repository_Operations",
+      "rune_number": "1365"
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manual_Git_Repository_Operations",
+    "template_name": "Manual Git Repository Operations",
+    "original_filename": "Manual_Git_Repository_Operations",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:40.147070",
+    "nodes_count": 6,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1365"
+}

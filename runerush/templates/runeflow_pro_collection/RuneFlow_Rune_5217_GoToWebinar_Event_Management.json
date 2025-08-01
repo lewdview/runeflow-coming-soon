@@ -1,0 +1,123 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 5217\\n\\n📋 Template: GoToWebinar_Event_Management\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "GoToWebinar2",
+      "type": "n8n-nodes-base.goToWebinar",
+      "position": [
+        930,
+        280
+      ],
+      "parameters": {
+        "resource": "webinar",
+        "webinarKey": "={{$node[\"GoToWebinar\"].json[\"webinarKey\"]}}"
+      },
+      "credentials": {
+        "goToWebinarOAuth2Api": "GoToWebinar OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "GoToWebinar1",
+      "type": "n8n-nodes-base.goToWebinar",
+      "position": [
+        730,
+        280
+      ],
+      "parameters": {
+        "resource": "webinar",
+        "operation": "update",
+        "webinarKey": "={{$json[\"webinarKey\"]}}",
+        "updateFields": {
+          "description": "Get started with n8n and create your first automation workflow"
+        }
+      },
+      "credentials": {
+        "goToWebinarOAuth2Api": "GoToWebinar OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "GoToWebinar",
+      "type": "n8n-nodes-base.goToWebinar",
+      "position": [
+        520,
+        280
+      ],
+      "parameters": {
+        "times": {
+          "timesProperties": [
+            {
+              "endTime": "2021-03-02T10:00:00.000Z",
+              "startTime": "2021-03-02T09:00:00.000Z"
+            }
+          ]
+        },
+        "subject": "Getting started with n8n",
+        "resource": "webinar",
+        "operation": "create",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "goToWebinarOAuth2Api": "GoToWebinar OAuth Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "GoToWebinar": {
+      "main": [
+        [
+          {
+            "node": "GoToWebinar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GoToWebinar1": {
+      "main": [
+        [
+          {
+            "node": "GoToWebinar2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "GoToWebinar_Event_Management",
+      "rune_number": "5217"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "5217"
+}

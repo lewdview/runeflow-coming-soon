@@ -1,0 +1,188 @@
+{
+  "id": "105",
+  "name": "Create a new member, update the information of the member, create a note and a post for the member in Orbit",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Create_a_new_member,_update_the_information_of_the_member,_create_a_note_and_a_post_for_the_member_i\\n📁 Category: Social & Media\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Orbit",
+      "type": "n8n-nodes-base.orbit",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "operation": "upsert",
+        "identityUi": {
+          "identityValue": {
+            "source": "github",
+            "searchBy": "username",
+            "username": ""
+          }
+        },
+        "workspaceId": "425",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "orbitApi": "orbit-review"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Orbit1",
+      "type": "n8n-nodes-base.orbit",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "memberId": "={{$node[\"Orbit\"].json[\"id\"]}}",
+        "operation": "update",
+        "workspaceId": "={{$node[\"Orbit\"].parameter[\"workspaceId\"]}}",
+        "updateFields": {
+          "tagsToAdd": ""
+        }
+      },
+      "credentials": {
+        "orbitApi": "orbit-review"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Orbit2",
+      "type": "n8n-nodes-base.orbit",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "note": "",
+        "memberId": "={{$node[\"Orbit\"].json[\"id\"]}}",
+        "resource": "note",
+        "workspaceId": "={{$node[\"Orbit\"].parameter[\"workspaceId\"]}}"
+      },
+      "credentials": {
+        "orbitApi": "orbit-review"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Orbit3",
+      "type": "n8n-nodes-base.orbit",
+      "position": [
+        1050,
+        300
+      ],
+      "parameters": {
+        "url": "https://medium.com/n8n-io/sending-sms-the-low-code-way-with-airtable-twilio-programmable-sms-and-n8n-90dbde74223e",
+        "memberId": "={{$node[\"Orbit\"].json[\"id\"]}}",
+        "resource": "post",
+        "workspaceId": "={{$node[\"Orbit\"].parameter[\"workspaceId\"]}}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "orbitApi": "orbit-review"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Orbit": {
+      "main": [
+        [
+          {
+            "node": "Orbit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Orbit1": {
+      "main": [
+        [
+          {
+            "node": "Orbit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Orbit2": {
+      "main": [
+        [
+          {
+            "node": "Orbit3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Orbit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Social & Media",
+      "template_name": "Create_a_new_member,_update_the_information_of_the_member,_create_a_note_and_a_post_for_the_member_i"
+    }
+  },
+  "runeflow_category": "ᛊᛟ Social Media",
+  "runeflow_description": "Content Distribution",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_a_new_member_update_the_information_of_the_member_create_a_note_and_a_post_for_the_member_i",
+    "template_name": "Create A New Member Update The Information Of The Member Create A Note And A Post For The Member I",
+    "original_filename": "Create_a_new_member,_update_the_information_of_the_member,_create_a_note_and_a_post_for_the_member_i",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:48.234723",
+    "nodes_count": 6,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

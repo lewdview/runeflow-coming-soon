@@ -1,0 +1,97 @@
+{
+  "id": "92",
+  "name": "Send an SMS to a number whenever you go out",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: SMS_Alert_When_Leaving_Home_via_Pushcut_Trigger\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Pushcut Trigger",
+      "type": "n8n-nodes-base.pushcutTrigger",
+      "position": [
+        470,
+        300
+      ],
+      "webhookId": "",
+      "parameters": {
+        "actionName": "Leaving Home"
+      },
+      "credentials": {
+        "pushcutApi": "Pushcut Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "to": "123",
+        "from": "123",
+        "message": "=I'm {{$node[\"Pushcut Trigger\"].json[\"input\"]}}"
+      },
+      "credentials": {
+        "twilioApi": "twilio"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Pushcut Trigger": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "SMS_Alert_When_Leaving_Home_via_Pushcut_Trigger"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "SMS_Alert_When_Leaving_Home_via_Pushcut_Trigger",
+    "template_name": "Sms Alert When Leaving Home Via Pushcut Trigger",
+    "original_filename": "SMS_Alert_When_Leaving_Home_via_Pushcut_Trigger",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:50.992854",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

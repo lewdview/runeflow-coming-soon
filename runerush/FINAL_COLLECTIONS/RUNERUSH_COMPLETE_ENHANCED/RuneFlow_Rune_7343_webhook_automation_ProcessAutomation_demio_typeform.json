@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 7343\\n\\n📋 Template: webhook_automation_demio_typeform\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "position": [
+        510,
+        260
+      ],
+      "webhookId": "1cbca674-78fb-402e-b225-2aa6f92b5338",
+      "parameters": {
+        "formId": ""
+      },
+      "credentials": {
+        "typeformApi": "Typeform Burner Account"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Demio",
+      "type": "n8n-nodes-base.demio",
+      "position": [
+        710,
+        260
+      ],
+      "parameters": {
+        "email": "={{$json[\"What's your email address?\"]}}",
+        "eventId": 357191,
+        "firstName": "={{$json[\"Let's start with your name.\"]}}",
+        "operation": "register",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "demioApi": "Demio API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Demio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "webhook_automation_demio_typeform",
+      "rune_number": "7343"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "7343"
+}

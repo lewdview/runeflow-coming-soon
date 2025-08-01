@@ -1,0 +1,212 @@
+{
+  "id": "156",
+  "name": "Create, update and get records in Quick Base",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4658\\n\\n📋 Template: Create,_update_and_get_records_in_Quick_Base_6nodes\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Quick Base",
+      "type": "n8n-nodes-base.quickbase",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "columns": "name,age",
+        "options": {},
+        "tableId": ""
+      },
+      "credentials": {
+        "quickbaseApi": "Quick Base Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "age",
+              "value": 8
+            }
+          ],
+          "string": [
+            {
+              "name": "name",
+              "value": "n8n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "age",
+              "value": 10
+            },
+            {
+              "name": "Record ID#",
+              "value": "={{$node[\"Quick Base\"].json[\"Record ID#\"]}}"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Quick Base1",
+      "type": "n8n-nodes-base.quickbase",
+      "position": [
+        1050,
+        300
+      ],
+      "parameters": {
+        "columns": "age",
+        "options": {},
+        "tableId": "={{$node[\"Quick Base\"].parameter[\"tableId\"]}}",
+        "operation": "update",
+        "updateKey": "Record ID#"
+      },
+      "credentials": {
+        "quickbaseApi": "Quick Base Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Quick Base2",
+      "type": "n8n-nodes-base.quickbase",
+      "position": [
+        1250,
+        300
+      ],
+      "parameters": {
+        "options": {},
+        "tableId": "={{$node[\"Quick Base\"].parameter[\"tableId\"]}}",
+        "operation": "getAll"
+      },
+      "credentials": {
+        "quickbaseApi": "Quick Base Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Quick Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Quick Base1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quick Base": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quick Base1": {
+      "main": [
+        [
+          {
+            "node": "Quick Base2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "Create,_update_and_get_records_in_Quick_Base_6nodes",
+      "rune_number": "4658"
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4658"
+}

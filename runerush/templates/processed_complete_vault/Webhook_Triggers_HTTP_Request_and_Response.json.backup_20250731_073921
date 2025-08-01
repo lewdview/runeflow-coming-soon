@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Webhook_Triggers_HTTP_Request_and_Response\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "0357b17f-9fcf-4725-8311-28bd9c76c37c",
+      "name": "On GET request",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        820,
+        400
+      ],
+      "webhookId": "454eb4ea-e460-4196-b31c-284abf234fc3",
+      "parameters": {
+        "path": "download-pdf",
+        "options": {},
+        "responseMode": "responseNode"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "21d8c543-33c2-45eb-b392-2cb7139344c6",
+      "name": "Fetch binary file",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1040,
+        400
+      ],
+      "parameters": {
+        "url": "https://www.deutschebahn.com/resource/blob/8813300/bdf106f07186f66e4448f95aca02bd4a/Faktenblatt-ICE-L_Mai23-data.pdf",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "typeVersion": 4.1
+    },
+    {
+      "id": "3ced3067-d82c-4bb4-b5fe-53a8d79c2177",
+      "name": "Respond with attachment",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        1260,
+        400
+      ],
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-disposition",
+                "value": "=attachment; filename=\"my_document_{{ $now.toFormat('yyyy-MM-dd') }}.pdf\""
+              }
+            ]
+          }
+        },
+        "respondWith": "binary"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "On GET request": {
+      "main": [
+        [
+          {
+            "node": "Fetch binary file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch binary file": {
+      "main": [
+        [
+          {
+            "node": "Respond with attachment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "Webhook_Triggers_HTTP_Request_and_Response"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Webhook_Triggers_HTTP_Request_and_Response",
+    "template_name": "Webhook Triggers Http Request And Response",
+    "original_filename": "Webhook_Triggers_HTTP_Request_and_Response",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:30:01.179989",
+    "nodes_count": 4,
+    "has_credentials": false,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  }
+}

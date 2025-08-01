@@ -1,0 +1,202 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 6185\\n\\n📋 Template: Sync_GitHub_and_GitLab_Repositories_on_Schedule\\n📁 Category: Database & and & Storage\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Get latest release",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        540,
+        340
+      ],
+      "parameters": {
+        "limit": 1,
+        "resource": "release",
+        "operation": "getAll"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        240,
+        500
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyWeek"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        740,
+        420
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "No issue for release?",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        920,
+        420
+      ],
+      "parameters": {
+        "functionCode": "const _ = require('lodash')\n\n// differentiate merged inputs (didnt find a way to get both inputs into one function invocation)\nconst releases = _.filter(items, i => _.has(i, 'json.assets'))\nif (releases.length != 1) throw new Error(`Invalid release count: ${releases.length}`)\nconst release = releases[0]\nconst issues = _.without(items, release)\n//console.log({release,issues})\n\n// check if there's an issue for the release\nconst matchingIssue = _.find(issues, i => i.json.title.includes(release.json.tag_name))\n//console.log({release,issues,matchingIssue})\n\nif (matchingIssue)\n return []\nelse\n return [release]"
+      },
+      "executeOnce": false,
+      "typeVersion": 1
+    },
+    {
+      "name": "Create issue",
+      "type": "n8n-nodes-base.gitlab",
+      "position": [
+        1100,
+        420
+      ],
+      "parameters": {
+        "body": "={{$json[\"url\"]}}\n\n{{$json[\"body\"]}}",
+        "owner": "txlab",
+        "title": "=Upstream release: {{$json[\"tag_name\"]}}",
+        "labels": [],
+        "repository": "docker-linkcheck",
+        "assignee_ids": []
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "List issues",
+      "type": "n8n-nodes-base.gitlab",
+      "position": [
+        540,
+        500
+      ],
+      "parameters": {
+        "owner": "txlab",
+        "resource": "repository",
+        "repository": "docker-linkcheck",
+        "getRepositoryIssuesFilters": {}
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Get latest release",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List issues",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "No release for issue?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get latest release",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List issues",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List issues": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get latest release": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No release for issue?": {
+      "main": [
+        [
+          {
+            "node": "Create issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Database & and & Storage",
+      "template_name": "Sync_GitHub_and_GitLab_Repositories_on_Schedule",
+      "rune_number": "6185"
+    }
+  },
+  "runeflow_category": "ᛞᚢ Database Management",
+  "runeflow_description": "Data Organization",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "6185"
+}

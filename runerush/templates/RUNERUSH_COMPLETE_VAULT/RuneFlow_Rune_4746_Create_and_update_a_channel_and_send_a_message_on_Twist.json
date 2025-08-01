@@ -1,0 +1,157 @@
+{
+  "id": "173",
+  "name": "Create and update a channel, and send a message on Twist",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4746\\n\\n📋 Template: Create_and_update_a_channel,_and_send_a_message_on_Twist\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        470,
+        260
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Twist",
+      "type": "n8n-nodes-base.twist",
+      "position": [
+        670,
+        260
+      ],
+      "parameters": {
+        "name": "n8n-docs",
+        "resource": "channel",
+        "workspaceId": 150329,
+        "additionalFields": {
+          "user_ids": [
+            475370
+          ]
+        }
+      },
+      "credentials": {
+        "twistOAuth2Api": "Twist OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Twist1",
+      "type": "n8n-nodes-base.twist",
+      "position": [
+        870,
+        260
+      ],
+      "parameters": {
+        "resource": "channel",
+        "channelId": "={{$node[\"Twist\"].json[\"id\"]}}",
+        "operation": "update",
+        "updateFields": {
+          "description": "Discussion for documentation"
+        }
+      },
+      "credentials": {
+        "twistOAuth2Api": "Twist OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Twist2",
+      "type": "n8n-nodes-base.twist",
+      "position": [
+        1070,
+        260
+      ],
+      "parameters": {
+        "content": "=Hey [Harshil](twist-mention://475370)!\nYou have been added to the {{$node[\"Twist\"].json[\"name\"]}} channel.\nClick on the button below to quickly navigate to the documentation website.",
+        "workspaceId": 150329,
+        "conversationId": 989141,
+        "additionalFields": {
+          "actionsUi": {
+            "actionValues": [
+              {
+                "url": "https://docs.n8n.io",
+                "type": "action",
+                "action": "open_url",
+                "button_text": "Documentation site"
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "twistOAuth2Api": "Twist OAuth Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Twist": {
+      "main": [
+        [
+          {
+            "node": "Twist1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twist1": {
+      "main": [
+        [
+          {
+            "node": "Twist2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Twist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Create_and_update_a_channel,_and_send_a_message_on_Twist",
+      "rune_number": "4746"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4746"
+}

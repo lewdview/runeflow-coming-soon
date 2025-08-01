@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: webhook_automation_apitemplateio_typeform\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "position": [
+        490,
+        280
+      ],
+      "webhookId": "6c4b1aa0-226a-4875-bdc3-85bf2313085b",
+      "parameters": {
+        "formId": "dpr2kxSL",
+        "simplifyAnswers": false
+      },
+      "credentials": {
+        "typeformApi": "Typeform Burner Account"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "APITemplate.io",
+      "type": "n8n-nodes-base.apiTemplateIo",
+      "position": [
+        690,
+        280
+      ],
+      "parameters": {
+        "options": {
+          "fileName": "invoice.pdf"
+        },
+        "download": true,
+        "resource": "pdf",
+        "pdfTemplateId": "96c77b2b1ab6ac88",
+        "jsonParameters": true,
+        "propertiesJson": "={\n \"company\": \"n8n\",\n \"email\": \"{{$json[\"1\"][\"email\"]}}\",\n \"invoice_no\": \"213223444\",\n \"invoice_date\": \"18-03-2021\",\n \"invoice_due_date\": \"17-04-2021\",\n \"address\": \"Berlin, Germany\",\n \"company_bill_to\": \"{{$json[\"0\"][\"text\"]}}\",\n \"website\": \"https://n8n.io\",\n \"document_id\": \"889856789012\",\n \"items\": [\n {\n \"item_name\": \"{{$json[\"2\"][\"text\"]}}\",\n \"price\": \"EUR {{$json[\"3\"][\"number\"]}}\"\n },\n {\n \"item_name\": \"{{$json[\"4\"][\"text\"]}}\",\n \"price\": \"EUR {{$json[\"5\"][\"number\"]}}\"\n } \n ]\n}"
+      },
+      "credentials": {
+        "apiTemplateIoApi": "APITemplate Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "APITemplate.io",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "webhook_automation_apitemplateio_typeform"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "webhook_automation_apitemplateio_typeform",
+    "template_name": "Webhook Automation Apitemplateio Typeform",
+    "original_filename": "webhook_automation_apitemplateio_typeform",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:44.143228",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

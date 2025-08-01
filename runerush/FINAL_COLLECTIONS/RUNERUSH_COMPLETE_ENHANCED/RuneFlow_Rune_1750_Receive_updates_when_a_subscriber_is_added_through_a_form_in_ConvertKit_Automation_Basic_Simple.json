@@ -1,0 +1,71 @@
+{
+  "id": "28",
+  "name": "Receive updates when a subscriber is added through a form in ConvertKit",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1750\\n\\n📋 Template: Receive_updates_when_a_subscriber_is_added_through_a_form_in_ConvertKit\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "ConvertKit Trigger",
+      "type": "n8n-nodes-base.convertKitTrigger",
+      "position": [
+        690,
+        260
+      ],
+      "webhookId": "55336480-7be1-4432-8fc8-d860572c1c18",
+      "parameters": {
+        "event": "formSubscribe",
+        "formId": 1657198
+      },
+      "credentials": {
+        "convertKitApi": "convertkit"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {},
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Receive_updates_when_a_subscriber_is_added_through_a_form_in_ConvertKit",
+      "rune_number": "1750"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Receive_updates_when_a_subscriber_is_added_through_a_form_in_ConvertKit",
+    "template_name": "Receive Updates When A Subscriber Is Added Through A Form In Convertkit",
+    "original_filename": "Receive_updates_when_a_subscriber_is_added_through_a_form_in_ConvertKit",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:43.671895",
+    "nodes_count": 2,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1750"
+}

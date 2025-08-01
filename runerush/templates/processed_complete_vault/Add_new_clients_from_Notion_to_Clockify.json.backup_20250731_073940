@@ -1,0 +1,156 @@
+{
+  "id": "mbgpq1PH1SFkHi6w",
+  "meta": {
+    "instanceId": "00430fabba021bdf53a110b354e0e10bcfb5ee2de4556eb52b6d49f481ac083e",
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "Add_new_clients_from_Notion_to_Clockify"
+    }
+  },
+  "name": "Add new clients from Notion to Clockify",
+  "tags": [],
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Add_new_clients_from_Notion_to_Clockify\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "f58df180-644e-4e59-a32d-b6b316b8ff97",
+      "name": "Add client to Clockify",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        240,
+        -320
+      ],
+      "parameters": {
+        "name": "={{ $json.Name }}",
+        "resource": "client",
+        "workspaceId": "5da1c2995e326c429dbe6e31"
+      },
+      "credentials": {
+        "clockifyApi": {
+          "id": "U7trUA4hFkSWHagH",
+          "name": "Clockify account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "1f723b4b-30c7-45c9-b3b5-b55211597a93",
+      "name": "Notion Trigger on new client",
+      "type": "n8n-nodes-base.notionTrigger",
+      "position": [
+        -140,
+        -320
+      ],
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "databaseId": {
+          "__rl": true,
+          "mode": "id",
+          "value": ""
+        }
+      },
+      "credentials": {
+        "notionApi": {
+          "id": "ogjRdz4QQPvdkxqo",
+          "name": "Notion account privat"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "f0f1e554-c2f5-4e41-8e9b-86b5ffcab64c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -240,
+        -580
+      ],
+      "parameters": {
+        "width": 300,
+        "height": 460,
+        "content": "## Notion\n### Poll for new clients\n**To-dos**:\n1. Connect your Notion account\n2. Set your polling interval\n3. Select your client Notion database "
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "aab21f54-e577-4f01-9005-0113f83beca0",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        140,
+        -580
+      ],
+      "parameters": {
+        "width": 300,
+        "height": 460,
+        "content": "## Clockify\n### Add new client\n**To-dos**:\n1. Connect your Clockify account\n2. Select your Clockify workspace\n3. Map your Notion client name column to the Clockify \"Client Name\" field"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5edc08ae-df38-4c7f-9367-36dac7578351",
+  "connections": {
+    "Add client to Clockify": {
+      "main": [
+        []
+      ]
+    },
+    "Notion Trigger on new client": {
+      "main": [
+        [
+          {
+            "node": "Add client to Clockify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Add_new_clients_from_Notion_to_Clockify",
+    "template_name": "Add New Clients From Notion To Clockify",
+    "original_filename": "Add_new_clients_from_Notion_to_Clockify",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:41.022837",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: QuickBooks_Data_Sync_and_Update\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "QuickBooks2",
+      "type": "n8n-nodes-base.quickbooks",
+      "position": [
+        870,
+        300
+      ],
+      "parameters": {
+        "email": "",
+        "resource": "invoice",
+        "invoiceId": "={{$json[\"Id\"]}}",
+        "operation": "send"
+      },
+      "credentials": {
+        "quickBooksOAuth2Api": "QuickBooks OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "QuickBooks1",
+      "type": "n8n-nodes-base.quickbooks",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "Line": [
+          {
+            "Amount": 100,
+            "itemId": "1",
+            "DetailType": "SalesItemLineDetail",
+            "Description": "Consulting service"
+          }
+        ],
+        "resource": "invoice",
+        "operation": "create",
+        "CustomerRef": "={{$json[\"Id\"]}}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "quickBooksOAuth2Api": "QuickBooks OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "QuickBooks",
+      "type": "n8n-nodes-base.quickbooks",
+      "position": [
+        470,
+        300
+      ],
+      "parameters": {
+        "operation": "create",
+        "displayName": "Jack Ryan",
+        "additionalFields": {
+          "PrimaryEmailAddr": "jack@ryan.com"
+        }
+      },
+      "credentials": {
+        "quickBooksOAuth2Api": "QuickBooks OAuth Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "QuickBooks": {
+      "main": [
+        [
+          {
+            "node": "QuickBooks1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QuickBooks1": {
+      "main": [
+        [
+          {
+            "node": "QuickBooks2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "QuickBooks_Data_Sync_and_Update"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "QuickBooks_Data_Sync_and_Update",
+    "template_name": "Quickbooks Data Sync And Update",
+    "original_filename": "QuickBooks_Data_Sync_and_Update",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:44.029469",
+    "nodes_count": 4,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

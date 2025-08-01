@@ -1,0 +1,511 @@
+manifest_info:
+  bundle_name: core_50
+  contact: bryan@runeflow.co
+  created_date: '2025-07-31'
+  description: Core 50 RuneFlow Templates - Essential Automation Collection
+  provider: RuneFlow
+  tagline: Unlock the Power of Ancient Wisdom Through Modern Automation
+  total_templates: 50
+  version: '1.0'
+  website: https://runeflow.co
+templates:
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 7
+  original_filename: Discord_Bot_Responds_to_YouTube_Queries_with_AI
+  processed_date: '2025-07-31T07:29:38.807412'
+  quality_score: 7
+  template_id: Discord_Bot_Responds_to_YouTube_Queries_with_AI
+  template_name: Discord Bot Responds To Youtube Queries With Ai
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 24
+  original_filename: Auto-Review_GitLab_Merge_Requests_with_Risk_Assessment
+  processed_date: '2025-07-31T07:29:38.990692'
+  quality_score: 7
+  template_id: Auto-Review_GitLab_Merge_Requests_with_Risk_Assessment
+  template_name: Auto-Review Gitlab Merge Requests With Risk Assessment
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 24
+  original_filename: GitLab_MR_Auto-Review_&_Risk_Assessment_complex_23nodes
+  processed_date: '2025-07-31T07:29:39.035033'
+  quality_score: 7
+  template_id: GitLab_MR_Auto-Review_Risk_Assessment_complex_23nodes
+  template_name: Gitlab Mr Auto-Review Risk Assessment Complex 23Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 37
+  original_filename: 8n0VYmvJgISwezyz_Build_your_first_AI_MCP_Server
+  processed_date: '2025-07-31T07:29:39.307454'
+  quality_score: 7
+  template_id: 8n0VYmvJgISwezyz_Build_your_first_AI_MCP_Server
+  template_name: 8N0Vymvjgiswezyz Build Your First Ai Mcp Server
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 33
+  original_filename: AI_Calendar_Assistant_for_Task_Management
+  processed_date: '2025-07-31T07:29:39.326651'
+  quality_score: 7
+  template_id: AI_Calendar_Assistant_for_Task_Management
+  template_name: Ai Calendar Assistant For Task Management
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: false
+  has_webhooks: true
+  nodes_count: 19
+  original_filename: AI-Powered_Chatbot_with_Webhook_Response_Handler
+  processed_date: '2025-07-31T07:29:39.333985'
+  quality_score: 7
+  template_id: AI-Powered_Chatbot_with_Webhook_Response_Handler
+  template_name: Ai-Powered Chatbot With Webhook Response Handler
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 23
+  original_filename: AI-Powered_Document_Analysis_and_Chat_Interface
+  processed_date: '2025-07-31T07:29:39.342708'
+  quality_score: 7
+  template_id: AI-Powered_Document_Analysis_and_Chat_Interface
+  template_name: Ai-Powered Document Analysis And Chat Interface
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 47
+  original_filename: Automated_Task_Routing_and_Data_Processing_Pipeline
+  processed_date: '2025-07-31T07:29:39.461375'
+  quality_score: 7
+  template_id: Automated_Task_Routing_and_Data_Processing_Pipeline
+  template_name: Automated Task Routing And Data Processing Pipeline
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 20
+  original_filename: Conditional_Task_Routing_with_Multi-Step_Decision_Logic
+  processed_date: '2025-07-31T07:29:39.632198'
+  quality_score: 7
+  template_id: Conditional_Task_Routing_with_Multi-Step_Decision_Logic
+  template_name: Conditional Task Routing With Multi-Step Decision Logic
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 6
+  original_filename: Convert_Text_to_Speech_Using_OpenAI_API
+  processed_date: '2025-07-31T07:29:39.661379'
+  quality_score: 7
+  template_id: Convert_Text_to_Speech_Using_OpenAI_API
+  template_name: Convert Text To Speech Using Openai Api
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 6
+  original_filename: Convert_Text_to_Speech_Using_OpenAI
+  processed_date: '2025-07-31T07:29:39.668955'
+  quality_score: 7
+  template_id: Convert_Text_to_Speech_Using_OpenAI
+  template_name: Convert Text To Speech Using Openai
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 29
+  original_filename: Extract,_Split,_and_Process_File_Data_with_AI_Analysis
+  processed_date: '2025-07-31T07:29:39.761061'
+  quality_score: 7
+  template_id: Extract_Split_and_Process_File_Data_with_AI_Analysis
+  template_name: Extract Split And Process File Data With Ai Analysis
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: Fetch_Airtable_Data_and_Create_Obsidian_Notes
+  processed_date: '2025-07-31T07:29:39.772871'
+  quality_score: 7
+  template_id: Fetch_Airtable_Data_and_Create_Obsidian_Notes
+  template_name: Fetch Airtable Data And Create Obsidian Notes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: Fetch_Airtable_Data_for_Obsidian_Notes_via_Webhook
+  processed_date: '2025-07-31T07:29:39.777834'
+  quality_score: 7
+  template_id: Fetch_Airtable_Data_for_Obsidian_Notes_via_Webhook
+  template_name: Fetch Airtable Data For Obsidian Notes Via Webhook
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 38
+  original_filename: file_ops_code_googlesheets_complex_37nodes
+  processed_date: '2025-07-31T07:29:39.801053'
+  quality_score: 7
+  template_id: file_ops_code_googlesheets_complex_37nodes
+  template_name: File Ops Code Googlesheets Complex 37Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 29
+  original_filename: file_ops_filter_manual_complex_28nodes
+  processed_date: '2025-07-31T07:29:39.824317'
+  quality_score: 7
+  template_id: file_ops_filter_manual_complex_28nodes
+  template_name: File Ops Filter Manual Complex 28Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: Generate_Custom_HTML_Page_Using_AI_from_User_Input
+  processed_date: '2025-07-31T07:29:39.946220'
+  quality_score: 7
+  template_id: Generate_Custom_HTML_Page_Using_AI_from_User_Input
+  template_name: Generate Custom Html Page Using Ai From User Input
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 38
+  original_filename: Generate_Exam_Questions_from_Text_Using_AI
+  processed_date: '2025-07-31T07:29:39.950350'
+  quality_score: 7
+  template_id: Generate_Exam_Questions_from_Text_Using_AI
+  template_name: Generate Exam Questions From Text Using Ai
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: Generate_HTML_Page_from_User_Input_via_AI
+  processed_date: '2025-07-31T07:29:39.955073'
+  quality_score: 7
+  template_id: Generate_HTML_Page_from_User_Input_via_AI
+  template_name: Generate Html Page From User Input Via Ai
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: Generate_HTML_Page_from_User_Input_with_AI
+  processed_date: '2025-07-31T07:29:39.959241'
+  quality_score: 7
+  template_id: Generate_HTML_Page_from_User_Input_with_AI
+  template_name: Generate Html Page From User Input With Ai
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 28
+  original_filename: Movie_Recommendation_Chatbot_Using_AI_and_Vector_Database
+  processed_date: '2025-07-31T07:29:40.172755'
+  quality_score: 7
+  template_id: Movie_Recommendation_Chatbot_Using_AI_and_Vector_Database
+  template_name: Movie Recommendation Chatbot Using Ai And Vector Database
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 28
+  original_filename: Movie_Recommendation_Chatbot_Using_AI_and_Vector_Search
+  processed_date: '2025-07-31T07:29:40.177830'
+  quality_score: 7
+  template_id: Movie_Recommendation_Chatbot_Using_AI_and_Vector_Search
+  template_name: Movie Recommendation Chatbot Using Ai And Vector Search
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 47
+  original_filename: Multi-Step_API_Data_Processing_and_Conditional_Routing
+  processed_date: '2025-07-31T07:29:40.185550'
+  quality_score: 7
+  template_id: Multi-Step_API_Data_Processing_and_Conditional_Routing
+  template_name: Multi-Step Api Data Processing And Conditional Routing
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 25
+  original_filename: scheduled_communicate_code_slack_complex_24nodes
+  processed_date: '2025-07-31T07:29:40.404331'
+  quality_score: 7
+  template_id: scheduled_communicate_code_slack_complex_24nodes
+  template_name: Scheduled Communicate Code Slack Complex 24Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 25
+  original_filename: Scheduled_GitHub_Release_Updates_to_Slack
+  processed_date: '2025-07-31T07:29:40.437399'
+  quality_score: 7
+  template_id: Scheduled_GitHub_Release_Updates_to_Slack
+  template_name: Scheduled Github Release Updates To Slack
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: webhook_automation_httprequest_7nodes_1
+  processed_date: '2025-07-31T07:29:40.648690'
+  quality_score: 7
+  template_id: webhook_automation_httprequest_7nodes_1
+  template_name: Webhook Automation Httprequest 7Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: webhook_automation_httprequest_7nodes_2
+  processed_date: '2025-07-31T07:29:40.655549'
+  quality_score: 7
+  template_id: webhook_automation_httprequest_7nodes_2
+  template_name: Webhook Automation Httprequest 7Nodes 2
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: webhook_automation_httprequest_7nodes
+  processed_date: '2025-07-31T07:29:40.658691'
+  quality_score: 7
+  template_id: webhook_automation_httprequest_7nodes
+  template_name: Webhook Automation Httprequest 7Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 6
+  original_filename: webhook_automation_respondtowebhook_2
+  processed_date: '2025-07-31T07:29:40.690655'
+  quality_score: 7
+  template_id: webhook_automation_respondtowebhook_2
+  template_name: Webhook Automation Respondtowebhook 2
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 6
+  original_filename: webhook_automation_respondtowebhook_4
+  processed_date: '2025-07-31T07:29:40.694463'
+  quality_score: 7
+  template_id: webhook_automation_respondtowebhook_4
+  template_name: Webhook Automation Respondtowebhook 4
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: true
+  nodes_count: 8
+  original_filename: webhook_automation_respondtowebhook_7nodes_3
+  processed_date: '2025-07-31T07:29:40.697372'
+  quality_score: 7
+  template_id: webhook_automation_respondtowebhook_7nodes_3
+  template_name: Webhook Automation Respondtowebhook 7Nodes 3
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 28
+  original_filename: webhook_file_ops_github_executeworkflow_complex_27nodes_1
+  processed_date: '2025-07-31T07:29:40.744855'
+  quality_score: 7
+  template_id: webhook_file_ops_github_executeworkflow_complex_27nodes_1
+  template_name: Webhook File Ops Github Executeworkflow Complex 27Nodes 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 28
+  original_filename: webhook_file_ops_github_executeworkflow_complex_27nodes
+  processed_date: '2025-07-31T07:29:40.755717'
+  quality_score: 7
+  template_id: webhook_file_ops_github_executeworkflow_complex_27nodes
+  template_name: Webhook File Ops Github Executeworkflow Complex 27Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 47
+  original_filename: webhook_process_code_googlesheets_complex_46nodes
+  processed_date: '2025-07-31T07:29:40.798617'
+  quality_score: 7
+  template_id: webhook_process_code_googlesheets_complex_46nodes
+  template_name: Webhook Process Code Googlesheets Complex 46Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 47
+  original_filename: webhook_process_executeworkflow_filter_complex_46nodes
+  processed_date: '2025-07-31T07:29:40.819434'
+  quality_score: 7
+  template_id: webhook_process_executeworkflow_filter_complex_46nodes
+  template_name: Webhook Process Executeworkflow Filter Complex 46Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: false
+  has_webhooks: true
+  nodes_count: 19
+  original_filename: webhook_process_httprequest_complex_14nodes
+  processed_date: '2025-07-31T07:29:40.887445'
+  quality_score: 7
+  template_id: webhook_process_httprequest_complex_14nodes
+  template_name: Webhook Process Httprequest Complex 14Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 20
+  original_filename: webhook_process_httprequest_github_complex_19nodes
+  processed_date: '2025-07-31T07:29:40.894805'
+  quality_score: 7
+  template_id: webhook_process_httprequest_github_complex_19nodes
+  template_name: Webhook Process Httprequest Github Complex 19Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 33
+  original_filename: webhook_process_httprequest_googlecalendartool_complex_32nodes
+  processed_date: '2025-07-31T07:29:40.905437'
+  quality_score: 7
+  template_id: webhook_process_httprequest_googlecalendartool_complex_32nodes
+  template_name: Webhook Process Httprequest Googlecalendartool Complex 32Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 23
+  original_filename: webhook_process_manual_code_complex_22nodes
+  processed_date: '2025-07-31T07:29:40.922853'
+  quality_score: 7
+  template_id: webhook_process_manual_code_complex_22nodes
+  template_name: Webhook Process Manual Code Complex 22Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 27
+  original_filename: 3545_workflow_3545
+  processed_date: '2025-07-31T07:29:40.996524'
+  quality_score: 7
+  template_id: 3545_workflow_3545
+  template_name: 3545 Workflow 3545
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 40
+  original_filename: Adaptive_AI_Chat_Agent_with_Conditional_Responses
+  processed_date: '2025-07-31T07:29:41.004846'
+  quality_score: 7
+  template_id: Adaptive_AI_Chat_Agent_with_Conditional_Responses
+  template_name: Adaptive Ai Chat Agent With Conditional Responses
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 34
+  original_filename: AI_Agent_To_Chat_With_Files_In_Supabase_Storage_complex_33nodes
+  processed_date: '2025-07-31T07:29:41.031707'
+  quality_score: 7
+  template_id: AI_Agent_To_Chat_With_Files_In_Supabase_Storage_complex_33nodes
+  template_name: Ai Agent To Chat With Files In Supabase Storage Complex 33Nodes
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 21
+  original_filename: AI_Chat_Agent_with_Memory_for_Task_Execution
+  processed_date: '2025-07-31T07:29:41.036090'
+  quality_score: 7
+  template_id: AI_Chat_Agent_with_Memory_for_Task_Execution
+  template_name: Ai Chat Agent With Memory For Task Execution
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 30
+  original_filename: AI-Powered_Airtable_Data_Processing_and_Analysis
+  processed_date: '2025-07-31T07:29:41.077720'
+  quality_score: 7
+  template_id: AI-Powered_Airtable_Data_Processing_and_Analysis
+  template_name: Ai-Powered Airtable Data Processing And Analysis
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 51
+  original_filename: AI-Powered_BambooHR_Policy_and_Benefits_Assistant_1
+  processed_date: '2025-07-31T07:29:41.082854'
+  quality_score: 7
+  template_id: AI-Powered_BambooHR_Policy_and_Benefits_Assistant_1
+  template_name: Ai-Powered Bamboohr Policy And Benefits Assistant 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 51
+  original_filename: AI-Powered_BambooHR_Policy_and_Benefits_Assistant
+  processed_date: '2025-07-31T07:29:41.088570'
+  quality_score: 7
+  template_id: AI-Powered_BambooHR_Policy_and_Benefits_Assistant
+  template_name: Ai-Powered Bamboohr Policy And Benefits Assistant
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 22
+  original_filename: AI-Powered_Data_Preparation_for_Language_Models
+  processed_date: '2025-07-31T07:29:41.103439'
+  quality_score: 7
+  template_id: AI-Powered_Data_Preparation_for_Language_Models
+  template_name: Ai-Powered Data Preparation For Language Models
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 27
+  original_filename: AI-Powered_Document_Analysis_and_Chat_Response_System
+  processed_date: '2025-07-31T07:29:41.107654'
+  quality_score: 7
+  template_id: AI-Powered_Document_Analysis_and_Chat_Response_System
+  template_name: Ai-Powered Document Analysis And Chat Response System
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 21
+  original_filename: AI-Powered_Document_Chatbot_with_Google_Drive_Integration_1
+  processed_date: '2025-07-31T07:29:41.125602'
+  quality_score: 7
+  template_id: AI-Powered_Document_Chatbot_with_Google_Drive_Integration_1
+  template_name: Ai-Powered Document Chatbot With Google Drive Integration 1
+- category: AI & Research
+  has_ai_nodes: true
+  has_credentials: true
+  has_webhooks: false
+  nodes_count: 35
+  original_filename: AI-Powered_Document_Q&A_with_Live_Data_Updates
+  processed_date: '2025-07-31T07:29:41.142354'
+  quality_score: 7
+  template_id: AI-Powered_Document_Q_A_with_Live_Data_Updates
+  template_name: Ai-Powered Document Q A With Live Data Updates

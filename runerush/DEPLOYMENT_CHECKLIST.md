@@ -4,8 +4,8 @@
 
 ### ✅ **Completed:**
 - ✅ Stripe product IDs integrated (core, pro_bundle, pro_upgrade)
-- ✅ Webhook secret configured: `whsec_w0910cwCsm67aAzkcKFF39zFLsp6gtjW`
-- ✅ SendGrid API key configured and **TESTED**: `SG.IoJSWrQPT9q26m5MYGw0AA...` ✅
+- ✅ Webhook secret configured (requires your webhook secret from Stripe)
+- ✅ SendGrid API key configured and **TESTED** (requires your SendGrid API key)
 - ✅ Payment flow updated to use Stripe Checkout
 - ✅ Backend API endpoints ready
 - ✅ Frontend payment integration complete
@@ -34,14 +34,14 @@
 ```bash
 NODE_ENV=production
 PORT=3000
-STRIPE_PUBLISHABLE_KEY=pk_test_51QgUHnAZqMCvJvdPVUSlF3xHfW7FmkHHOmzUTg2naNLzYiAqO8MdnQ7a0eqxJaNF9OHQu9JYvQfL1XJHs4qUgS2J00XPYsYcqW
-STRIPE_SECRET_KEY=sk_test_... # Your actual secret key
-STRIPE_WEBHOOK_SECRET=whsec_w0910cwCsm67aAzkcKFF39zFLsp6gtjW
-SENDGRID_API_KEY=SG... # Your SendGrid key
+STRIPE_PUBLISHABLE_KEY=pk_test_YOUR_PUBLISHABLE_KEY_HERE
+STRIPE_SECRET_KEY=sk_test_YOUR_SECRET_KEY_HERE
+STRIPE_WEBHOOK_SECRET=whsec_YOUR_WEBHOOK_SECRET_HERE
+SENDGRID_API_KEY=SG.YOUR_SENDGRID_API_KEY_HERE
 FROM_EMAIL=support@yourdomain.com
 FROM_NAME=RuneRUSH Support
-JWT_SECRET=your-generated-secret
-ADMIN_PASSWORD=RuneRush2024!
+JWT_SECRET=generate-secure-random-string-here
+ADMIN_PASSWORD=create-secure-password-here
 FRONTEND_URL=https://yourdomain.com
 DATABASE_URL=${{Postgres.DATABASE_URL}}
 ```
@@ -64,7 +64,7 @@ Update `js/api.js`:
 ```javascript
 const API_CONFIG = {
     BASE_URL: 'https://your-railway-app.railway.app/api',
-    STRIPE_PUBLISHABLE_KEY: 'pk_test_51QgUHnAZqMCvJvdPVUSlF3xHfW7FmkHHOmzUTg2naNLzYiAqO8MdnQ7a0eqxJaNF9OHQu9JYvQfL1XJHs4qUgS2J00XPYsYcqW'
+    STRIPE_PUBLISHABLE_KEY: 'pk_test_YOUR_PUBLISHABLE_KEY_HERE'
 };
 ```
 
@@ -152,7 +152,7 @@ When ready for production:
 
 ## 🚨 Important Notes
 
-- **Webhook Secret:** `whsec_w0910cwCsm67aAzkcKFF39zFLsp6gtjW` (already configured)
+- **Webhook Secret:** Use your webhook secret from Stripe Dashboard
 - **Product IDs:** Using your actual Stripe products
 - **Security:** Change default admin password in production
 - **Monitoring:** Check Railway logs for any issues

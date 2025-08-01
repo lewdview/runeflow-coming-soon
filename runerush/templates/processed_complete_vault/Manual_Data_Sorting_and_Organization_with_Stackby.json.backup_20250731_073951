@@ -1,0 +1,153 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Manual_Data_Sorting_and_Organization_with_Stackby\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "ID",
+              "value": 1
+            }
+          ],
+          "string": [
+            {
+              "name": "Name",
+              "value": "n8n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Stackby",
+      "type": "n8n-nodes-base.stackby",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "table": "Table 1",
+        "columns": "ID, Name",
+        "stackId": "stbgReRhlmmAgT2suT"
+      },
+      "credentials": {
+        "stackbyApi": "Stackby API credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Stackby1",
+      "type": "n8n-nodes-base.stackby",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "table": "={{$node[\"Stackby\"].parameter[\"table\"]}}",
+        "stackId": "={{$node[\"Stackby\"].parameter[\"stackId\"]}}",
+        "operation": "list",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "stackbyApi": "Stackby API credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Stackby",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stackby": {
+      "main": [
+        [
+          {
+            "node": "Stackby1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Manual_Data_Sorting_and_Organization_with_Stackby"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Manual_Data_Sorting_and_Organization_with_Stackby",
+    "template_name": "Manual Data Sorting And Organization With Stackby",
+    "original_filename": "Manual_Data_Sorting_and_Organization_with_Stackby",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:54.595213",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

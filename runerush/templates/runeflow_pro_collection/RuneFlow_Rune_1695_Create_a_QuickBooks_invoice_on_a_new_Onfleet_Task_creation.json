@@ -1,0 +1,99 @@
+{
+  "name": "Create a QuickBooks invoice on a new Onfleet Task creation",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1695\\n\\n📋 Template: QuickBooks_Invoice_Creation_from_Onfleet_Tasks\\n📁 Category: Personal & Automation\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Onfleet Trigger",
+      "type": "n8n-nodes-base.onfleetTrigger",
+      "position": [
+        460,
+        300
+      ],
+      "webhookId": "6d6a2bee-f83e-4ebd-a1d5-8708c34393dc",
+      "parameters": {
+        "triggerOn": "taskCreated",
+        "additionalFields": {}
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "QuickBooks Online",
+      "type": "n8n-nodes-base.quickbooks",
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "Line": [],
+        "resource": "invoice",
+        "operation": "create",
+        "additionalFields": {
+          "Balance": 0,
+          "TxnDate": "",
+          "ShipAddr": "",
+          "BillEmail": ""
+        }
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Onfleet Trigger": {
+      "main": [
+        [
+          {
+            "node": "QuickBooks Online",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Personal & Automation",
+      "template_name": "QuickBooks_Invoice_Creation_from_Onfleet_Tasks",
+      "rune_number": "1695"
+    }
+  },
+  "runeflow_category": "ᚨᚢ Automation",
+  "runeflow_description": "Streamline Workflows",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "QuickBooks_Invoice_Creation_from_Onfleet_Tasks",
+    "template_name": "Quickbooks Invoice Creation From Onfleet Tasks",
+    "original_filename": "QuickBooks_Invoice_Creation_from_Onfleet_Tasks",
+    "category": "AI & Research",
+    "quality_score": 0,
+    "processed_date": "2025-07-31T07:29:44.031867",
+    "nodes_count": 3,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1695"
+}

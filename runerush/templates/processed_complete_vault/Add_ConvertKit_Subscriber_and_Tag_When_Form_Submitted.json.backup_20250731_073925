@@ -1,0 +1,152 @@
+{
+  "id": "25",
+  "name": "Add subscriber to form, create tag and subscriber to the tag",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Add_ConvertKit_Subscriber_and_Tag_When_Form_Submitted\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        300,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "ConvertKit",
+      "type": "n8n-nodes-base.convertKit",
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "id": 1657198,
+        "email": "",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "convertKitApi": "convertkit"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "ConvertKit1",
+      "type": "n8n-nodes-base.convertKit",
+      "position": [
+        710,
+        300
+      ],
+      "parameters": {
+        "name": "",
+        "resource": "tag"
+      },
+      "credentials": {
+        "convertKitApi": "convertkit"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "ConvertKit2",
+      "type": "n8n-nodes-base.convertKit",
+      "position": [
+        910,
+        300
+      ],
+      "parameters": {
+        "email": "={{$node[\"ConvertKit\"].json[\"subscriber\"][\"email_address\"]}}",
+        "tagId": 1850395,
+        "resource": "tagSubscriber",
+        "operation": "add",
+        "additionalFields": {
+          "fields": {
+            "field": []
+          }
+        }
+      },
+      "credentials": {
+        "convertKitApi": "convertkit"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "ConvertKit": {
+      "main": [
+        [
+          {
+            "node": "ConvertKit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConvertKit1": {
+      "main": [
+        [
+          {
+            "node": "ConvertKit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "ConvertKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "Add_ConvertKit_Subscriber_and_Tag_When_Form_Submitted"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Add_ConvertKit_Subscriber_and_Tag_When_Form_Submitted",
+    "template_name": "Add Convertkit Subscriber And Tag When Form Submitted",
+    "original_filename": "Add_ConvertKit_Subscriber_and_Tag_When_Form_Submitted",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:30:01.111726",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

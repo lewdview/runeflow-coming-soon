@@ -1,0 +1,224 @@
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Update Twitter banner using HTTP request
+Category: Social & Media
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Update Twitter banner using HTTP request
+Category: Social & Media
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Update Twitter banner using HTTP request
+Category: Social & Media
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🔥 WEBHALLA AUTOMATION TEMPLATE 🔥
+==============================================================================
+Template Name: Update Twitter banner using HTTP request
+Category: Social & Media
+Created by: WebHalla - Digital Liberation Movement
+Contact: bryan@webhalla.com
+Website: https://webhalla.com
+Support: 520-999-5116
+
+⚡ DIGITAL LIBERATION THROUGH AUTOMATION ⚡
+This template is part of the WebHalla automation suite designed to free
+businesses from repetitive tasks and unlock their digital potential.
+
+🎯 Need custom automation? Contact WebHalla for enterprise solutions!
+==============================================================================
+-->
+
+{
+"nodes": [
+{
+"name": "On clicking 'execute'",
+"type": "n8n-nodes-base.manualTrigger",
+"position": [
+250,
+300
+],
+"parameters": {},
+"typeVersion": 1
+},
+{
+"name": "Start",
+"type": "n8n-nodes-base.start",
+"position": [
+250,
+300
+],
+"parameters": {},
+"typeVersion": 1
+},
+{
+"name": "HTTP Request",
+"type": "n8n-nodes-base.httpRequest",
+"position": [
+450,
+300
+],
+"parameters": {
+"url": "https://unsplash.com/photos/lUDMZUWFUXE/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2MzczMjY4Mjc&force=true",
+"options": {},
+"responseFormat": "file",
+"headerParametersUi": {
+"parameter": []
+}
+},
+"typeVersion": 1
+},
+{
+"name": "HTTP Request1",
+"type": "n8n-nodes-base.httpRequest",
+"position": [
+650,
+300
+],
+"parameters": {
+"url": "https://api.twitter.com/1.1/account/update_profile_banner.json",
+"options": {},
+"requestMethod": "POST",
+"authentication": "oAuth1",
+"jsonParameters": true,
+"sendBinaryData": true,
+"binaryPropertyName": "banner:data"
+},
+"credentials": {
+"oAuth1Api": {
+"id": "300",
+"name": "Unnamed credential"
+}
+},
+"typeVersion": 1
+}
+],
+"connections": {
+"HTTP Request": {
+"main": [
+[
+{
+"node": "HTTP Request1",
+"type": "main",
+"index": 0
+}
+]
+]
+},
+"On clicking 'execute'": {
+"main": [
+[
+{
+"node": "HTTP Request",
+"type": "main",
+"index": 0
+}
+]
+]
+}
+}
+}
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->
+
+
+<!--
+==============================================================================
+🚀 NEED HELP WITH THIS TEMPLATE? 🚀
+==============================================================================
+✅ Setup Support: bryan@webhalla.com
+✅ Custom Modifications: https://webhalla.com/custom
+✅ Enterprise Solutions: https://webhalla.com/enterprise
+✅ Template Library: https://webhalla.com/templates
+
+⚡ JOIN THE DIGITAL LIBERATION MOVEMENT! ⚡
+==============================================================================
+-->

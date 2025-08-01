@@ -1,0 +1,152 @@
+{
+  "id": "189",
+  "name": "Create, update, and get a subscriber using the e-goi node",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Create,_update,_and_get_a_subscriber_using_the_e-goi_node\\n📁 Category: Forms & and & Surveys\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        270,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "e-goi",
+      "type": "n8n-nodes-base.egoi",
+      "position": [
+        470,
+        300
+      ],
+      "parameters": {
+        "list": 1,
+        "email": "nathan@testmail.com",
+        "additionalFields": {
+          "first_name": "Nathan"
+        }
+      },
+      "credentials": {
+        "egoiApi": "e-goi Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "e-goi1",
+      "type": "n8n-nodes-base.egoi",
+      "position": [
+        670,
+        300
+      ],
+      "parameters": {
+        "list": "={{$node[\"e-goi\"].parameter[\"list\"]}}",
+        "contactId": "={{$node[\"e-goi\"].json[\"base\"][\"contact_id\"]}}",
+        "operation": "update",
+        "updateFields": {
+          "first_name": "Nat"
+        }
+      },
+      "credentials": {
+        "egoiApi": "e-goi Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "e-goi2",
+      "type": "n8n-nodes-base.egoi",
+      "position": [
+        870,
+        300
+      ],
+      "parameters": {
+        "list": "={{$node[\"e-goi\"].parameter[\"list\"]}}",
+        "contactId": "={{$node[\"e-goi1\"].json[\"base\"][\"contact_id\"]}}",
+        "operation": "get"
+      },
+      "credentials": {
+        "egoiApi": "e-goi Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "e-goi": {
+      "main": [
+        [
+          {
+            "node": "e-goi1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "e-goi1": {
+      "main": [
+        [
+          {
+            "node": "e-goi2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "e-goi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Forms & and & Surveys",
+      "template_name": "Create,_update,_and_get_a_subscriber_using_the_e-goi_node"
+    }
+  },
+  "runeflow_category": "ᚦᚨ Task Management",
+  "runeflow_description": "Workflow Orchestration",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_update_and_get_a_subscriber_using_the_e-goi_node",
+    "template_name": "Create Update And Get A Subscriber Using The E-Goi Node",
+    "original_filename": "Create,_update,_and_get_a_subscriber_using_the_e-goi_node",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:48.342055",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

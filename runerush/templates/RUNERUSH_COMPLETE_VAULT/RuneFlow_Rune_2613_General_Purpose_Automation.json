@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2613\\n\\n📋 Template: automation_microsofttodo_manual\\n📁 Category: Personal & Automation\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        250,
+        200
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft To Do",
+      "type": "n8n-nodes-base.microsoftToDo",
+      "position": [
+        450,
+        200
+      ],
+      "parameters": {
+        "title": "Document Microsoft To Do node",
+        "operation": "create",
+        "taskListId": "AQMkADAwATNiZmYAZC0zOTkAMy02ZWZjLTAwAi0wMAoALgAAA3i1fHMTrftIhQBzhywL64UBAFB0wRiJW1FJmmlvlAkVFQA-AAACARIAAAA=",
+        "additionalFields": {
+          "importance": "high"
+        }
+      },
+      "credentials": {
+        "microsoftToDoOAuth2Api": "Microsoft OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft To Do1",
+      "type": "n8n-nodes-base.microsoftToDo",
+      "position": [
+        650,
+        200
+      ],
+      "parameters": {
+        "taskId": "={{$json[\"id\"]}}",
+        "operation": "update",
+        "taskListId": "={{$node[\"Microsoft To Do\"].parameter[\"taskListId\"]}}",
+        "updateFields": {
+          "status": "inProgress"
+        }
+      },
+      "credentials": {
+        "microsoftToDoOAuth2Api": "Microsoft OAuth Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Microsoft To Do2",
+      "type": "n8n-nodes-base.microsoftToDo",
+      "position": [
+        850,
+        200
+      ],
+      "parameters": {
+        "taskId": "={{$json[\"id\"]}}",
+        "taskListId": "={{$node[\"Microsoft To Do\"].parameter[\"taskListId\"]}}"
+      },
+      "credentials": {
+        "microsoftToDoOAuth2Api": "Microsoft OAuth Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Microsoft To Do": {
+      "main": [
+        [
+          {
+            "node": "Microsoft To Do1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft To Do1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft To Do2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Microsoft To Do",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Personal & Automation",
+      "template_name": "automation_microsofttodo_manual",
+      "rune_number": "2613"
+    }
+  },
+  "runeflow_category": "ᚨᚢ Automation",
+  "runeflow_description": "Streamline Workflows",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_microsofttodo_manual",
+    "template_name": "Automation Microsofttodo Manual",
+    "original_filename": "automation_microsofttodo_manual",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:57.840833",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2613"
+}

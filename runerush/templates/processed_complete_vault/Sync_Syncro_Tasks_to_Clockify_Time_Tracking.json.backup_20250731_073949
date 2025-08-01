@@ -1,0 +1,98 @@
+{
+  "id": "2",
+  "name": "Syncro to Clockify",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Sync_Syncro_Tasks_to_Clockify_Time_Tracking\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        490,
+        300
+      ],
+      "webhookId": "43d196b0-63c4-440a-aaf6-9d893907cf3c",
+      "parameters": {
+        "path": "43d196b0-63c4-440a-aaf6-9d893907cf3c",
+        "options": {},
+        "httpMethod": "POST",
+        "responseData": "allEntries",
+        "responseMode": "lastNode"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Clockify",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        690,
+        300
+      ],
+      "parameters": {
+        "name": "=Ticket {{$json[\"body\"][\"attributes\"][\"number\"]}} - {{$json[\"body\"][\"attributes\"][\"customer_business_then_name\"]}} [{{$json[\"body\"][\"attributes\"][\"id\"]}}]",
+        "workspaceId": "xxx",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "clockifyApi": "Clockify"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": true,
+  "settings": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Clockify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Sync_Syncro_Tasks_to_Clockify_Time_Tracking"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Sync_Syncro_Tasks_to_Clockify_Time_Tracking",
+    "template_name": "Sync Syncro Tasks To Clockify Time Tracking",
+    "original_filename": "Sync_Syncro_Tasks_to_Clockify_Time_Tracking",
+    "category": "AI & Research",
+    "quality_score": 3,
+    "processed_date": "2025-07-31T07:29:56.036944",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": true,
+    "has_ai_nodes": false
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "id": 111,
+  "name": "Standup Bot - Initialize",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 1258\\n\\n📋 Template: Initialize_Standup_Bot_with_Binary_File_Setup\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        880,
+        300
+      ],
+      "parameters": {
+        "fileName": "/home/node/.n8n/standup-bot-config.json"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "standup-bot-config.json"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Use Default Config",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "config.slashCmdToken",
+              "value": "xxxxx"
+            },
+            {
+              "name": "config.mattermostBaseUrl",
+              "value": "https://mattermost.yourdomain.tld"
+            },
+            {
+              "name": "config.botUserToken",
+              "value": "xxxxx"
+            },
+            {
+              "name": "config.n8nWebhookUrl",
+              "value": "https://n8n.yourdomain.tld/webhook/standup-bot/action/f6f9b174745fa4651f750c36957d674c"
+            },
+            {
+              "name": "config.botUserId",
+              "value": "xxxxx"
+            }
+          ]
+        },
+        "options": {},
+        "keepOnlySet": true
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use Default Config": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Use Default Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "Initialize_Standup_Bot_with_Binary_File_Setup",
+      "rune_number": "1258"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Initialize_Standup_Bot_with_Binary_File_Setup",
+    "template_name": "Initialize Standup Bot With Binary File Setup",
+    "original_filename": "Initialize_Standup_Bot_with_Binary_File_Setup",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:44.439425",
+    "nodes_count": 5,
+    "has_credentials": false,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "1258"
+}

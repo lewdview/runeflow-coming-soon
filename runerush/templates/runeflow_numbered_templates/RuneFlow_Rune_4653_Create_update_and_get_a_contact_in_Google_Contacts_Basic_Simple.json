@@ -1,0 +1,151 @@
+{
+  "id": "20",
+  "name": "Create, update and get a contact in Google Contacts",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 4653\\n\\n📋 Template: Create,_update_and_get_a_contact_in_Google_Contacts\\n📁 Category: Email & and & Communication\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        190,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Contacts",
+      "type": "n8n-nodes-base.googleContacts",
+      "position": [
+        390,
+        300
+      ],
+      "parameters": {
+        "givenName": "n8n",
+        "familyName": "n8n",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "googleContactsOAuth2Api": "google-contact"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Contacts1",
+      "type": "n8n-nodes-base.googleContacts",
+      "position": [
+        590,
+        300
+      ],
+      "parameters": {
+        "fields": [],
+        "contactId": "={{$node[\"Google Contacts\"].json[\"contactId\"]}}",
+        "operation": "update",
+        "updateFields": {
+          "companyUi": {
+            "companyValues": [
+              {
+                "name": "n8n",
+                "title": "n8n",
+                "domain": "n8n.io",
+                "current": true
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "googleContactsOAuth2Api": "google-contact"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Google Contacts2",
+      "type": "n8n-nodes-base.googleContacts",
+      "position": [
+        790,
+        300
+      ],
+      "parameters": {
+        "fields": [
+          "organizations"
+        ],
+        "contactId": "={{$node[\"Google Contacts\"].json[\"contactId\"]}}",
+        "operation": "get"
+      },
+      "credentials": {
+        "googleContactsOAuth2Api": "google-contact"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "Google Contacts": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Contacts1": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Email & and & Communication",
+      "template_name": "Create,_update_and_get_a_contact_in_Google_Contacts",
+      "rune_number": "4653"
+    }
+  },
+  "runeflow_category": "ᛖᛗ Email Marketing",
+  "runeflow_description": "Engage Customers",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "4653"
+}

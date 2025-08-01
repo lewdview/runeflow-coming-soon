@@ -1,0 +1,964 @@
+{
+  "manifest_info": {
+    "version": "1.0",
+    "created_date": "2025-07-31",
+    "total_templates": 50,
+    "provider": "RuneFlow",
+    "description": "Core bundle of RuneFlow automation templates for platform ingestion",
+    "contact": "bryan@runeflow.co",
+    "website": "https://runeflow.co",
+    "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation"
+  },
+  "templates": [
+    {
+      "template_id": "1744_workflow_1744",
+      "template_name": "1744_workflow_1744",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/1744_workflow_1744.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 14,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "2620_workflow_2620",
+      "template_name": "2620_workflow_2620",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/2620_workflow_2620.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 24,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "3218_workflow_3218",
+      "template_name": "3218_workflow_3218",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/3218_workflow_3218.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 16,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "3251_workflow_3251",
+      "template_name": "3251_workflow_3251",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/3251_workflow_3251.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 11,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "3280_workflow_3280",
+      "template_name": "3280_workflow_3280",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/3280_workflow_3280.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 18,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "AI-Powered_Chatbot_with_Webhook_Response_Handler",
+      "template_name": "AI-Powered_Chatbot_with_Webhook_Response_Handler",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/AI-Powered_Chatbot_with_Webhook_Response_Handler.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 19,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI",
+      "template_name": "AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/AI-Powered_Document_Q&A_Using_LangChain_and_OpenAI.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 8,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Automatically_Adjust_Plex_Server_Performance",
+      "template_name": "Automatically_Adjust_Plex_Server_Performance",
+      "description": "Strategic Insights",
+      "category": "HR & and & Recruitment",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Automatically_Adjust_Plex_Server_Performance.json",
+      "metadata": {
+        "runeflow_category": "ᛒᚢ Business Intelligence",
+        "nodes_count": 22,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "CV_Evaluation_-_Error_Handling_complex_13nodes",
+      "template_name": "CV_Evaluation_-_Error_Handling_complex_13nodes",
+      "description": "Strategic Insights",
+      "category": "HR & and & Recruitment",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/CV_Evaluation_-_Error_Handling_complex_13nodes.json",
+      "metadata": {
+        "runeflow_category": "ᛒᚢ Business Intelligence",
+        "nodes_count": 14,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Chargebee_Event_Notifications",
+      "template_name": "Chargebee_Event_Notifications",
+      "description": "Engage Customers",
+      "category": "Email & and & Communication",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Chargebee_Event_Notifications.json",
+      "metadata": {
+        "runeflow_category": "ᛖᛗ Email Marketing",
+        "nodes_count": 2,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "ConvertKit_Form_Subscriber_Notification",
+      "template_name": "ConvertKit_Form_Subscriber_Notification",
+      "description": "Engage Customers",
+      "category": "Email & and & Communication",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/ConvertKit_Form_Subscriber_Notification.json",
+      "metadata": {
+        "runeflow_category": "ᛖᛗ Email Marketing",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Create_a_company_in_Salesmate",
+      "template_name": "Create_a_company_in_Salesmate",
+      "description": "Strategic Insights",
+      "category": "HR & and & Recruitment",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Create_a_company_in_Salesmate.json",
+      "metadata": {
+        "runeflow_category": "ᛒᚢ Business Intelligence",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Create_a_new_task_in_Todoist",
+      "template_name": "Create_a_new_task_in_Todoist",
+      "description": "Streamline Workflows",
+      "category": "Personal & Automation",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Create_a_new_task_in_Todoist.json",
+      "metadata": {
+        "runeflow_category": "ᚨᚢ Automation",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated",
+      "template_name": "Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated",
+      "description": "Streamline Workflows",
+      "category": "Personal & Automation",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Create_an_Onfleet_task_when_a_file_in_Google_Drive_is_updated.json",
+      "metadata": {
+        "runeflow_category": "ᚨᚢ Automation",
+        "nodes_count": 3,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "FTP_File_Upload_and_HTTP_Request_Automation",
+      "template_name": "FTP_File_Upload_and_HTTP_Request_Automation",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/FTP_File_Upload_and_HTTP_Request_Automation.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 5,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Fetch_Cocktail_Data_and_Save_as_Local_JSON_File",
+      "template_name": "Fetch_Cocktail_Data_and_Save_as_Local_JSON_File",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Fetch_Cocktail_Data_and_Save_as_Local_JSON_File.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 5,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Format_and_Validate_US_Phone_Numbers",
+      "template_name": "Format_and_Validate_US_Phone_Numbers",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Format_and_Validate_US_Phone_Numbers.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 8,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Generate_Images_via_API_Using_OpenAI",
+      "template_name": "Generate_Images_via_API_Using_OpenAI",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Generate_Images_via_API_Using_OpenAI.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 8,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting",
+      "template_name": "Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Gmail_to_Sheets_AI-Powered_Email_Analysis_and_Reporting.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 27,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Image_Generation_via_Webhook_Trigger_and_AI_Response",
+      "template_name": "Image_Generation_via_Webhook_Trigger_and_AI_Response",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Image_Generation_via_Webhook_Trigger_and_AI_Response.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 8,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Initialize_Standup_Bot_with_Binary_File_Setup",
+      "template_name": "Initialize_Standup_Bot_with_Binary_File_Setup",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Initialize_Standup_Bot_with_Binary_File_Setup.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 5,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Manually_Add_New_Task_to_Google_Tasks_List",
+      "template_name": "Manually_Add_New_Task_to_Google_Tasks_List",
+      "description": "Streamline Workflows",
+      "category": "Personal & Automation",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Manually_Add_New_Task_to_Google_Tasks_List.json",
+      "metadata": {
+        "runeflow_category": "ᚨᚢ Automation",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Manually_Triggered_RSS_Feed_Reader",
+      "template_name": "Manually_Triggered_RSS_Feed_Reader",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Manually_Triggered_RSS_Feed_Reader.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 3,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Parse_and_Structure_AI-Generated_Text_Responses",
+      "template_name": "Parse_and_Structure_AI-Generated_Text_Responses",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Parse_and_Structure_AI-Generated_Text_Responses.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 12,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Receive_updates_for_events_in_ClickUp",
+      "template_name": "Receive_updates_for_events_in_ClickUp",
+      "description": "Engage Customers",
+      "category": "Email & and & Communication",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Receive_updates_for_events_in_ClickUp.json",
+      "metadata": {
+        "runeflow_category": "ᛖᛗ Email Marketing",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Receive_updates_when_a_form_is_submitted_in_Wufoo",
+      "template_name": "Receive_updates_when_a_form_is_submitted_in_Wufoo",
+      "description": "Engage Customers",
+      "category": "Email & and & Communication",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Receive_updates_when_a_form_is_submitted_in_Wufoo.json",
+      "metadata": {
+        "runeflow_category": "ᛖᛗ Email Marketing",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Receive_updates_when_a_new_list_is_created_in_Affinity",
+      "template_name": "Receive_updates_when_a_new_list_is_created_in_Affinity",
+      "description": "Engage Customers",
+      "category": "Email & and & Communication",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Receive_updates_when_a_new_list_is_created_in_Affinity.json",
+      "metadata": {
+        "runeflow_category": "ᛖᛗ Email Marketing",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Scheduled_URL_Health_Check_and_Ping_Monitor",
+      "template_name": "Scheduled_URL_Health_Check_and_Ping_Monitor",
+      "description": "Streamline Workflows",
+      "category": "Personal & Automation",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Scheduled_URL_Health_Check_and_Ping_Monitor.json",
+      "metadata": {
+        "runeflow_category": "ᚨᚢ Automation",
+        "nodes_count": 5,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Sync_and_Analyze_Postgres_Data_with_AI_Assistance",
+      "template_name": "Sync_and_Analyze_Postgres_Data_with_AI_Assistance",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Sync_and_Analyze_Postgres_Data_with_AI_Assistance.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 20,
+        "has_credentials": true,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "Track_New_Toggl_Time_Entries_Automatically",
+      "template_name": "Track_New_Toggl_Time_Entries_Automatically",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Track_New_Toggl_Time_Entries_Automatically.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Translate_Web_Content_Using_DeepL_API",
+      "template_name": "Translate_Web_Content_Using_DeepL_API",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Translate_Web_Content_Using_DeepL_API.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Tweet_New_Strava_Activities_Automatically",
+      "template_name": "Tweet_New_Strava_Activities_Automatically",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Tweet_New_Strava_Activities_Automatically.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Twitter_Post_Conditional_Action_Trigger",
+      "template_name": "Twitter_Post_Conditional_Action_Trigger",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Twitter_Post_Conditional_Action_Trigger.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 5,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Web_Request_Handler_with_Email_Notifications",
+      "template_name": "Web_Request_Handler_with_Email_Notifications",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Web_Request_Handler_with_Email_Notifications.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 16,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "Webhook_Triggers_HTTP_Request_and_Response",
+      "template_name": "Webhook_Triggers_HTTP_Request_and_Response",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/Webhook_Triggers_HTTP_Request_and_Response.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 4,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "automation_httprequest_deepl",
+      "template_name": "automation_httprequest_deepl",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/automation_httprequest_deepl.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "automation_manual_googlecalendar",
+      "template_name": "automation_manual_googlecalendar",
+      "description": "Streamline Workflows",
+      "category": "Personal & Automation",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/automation_manual_googlecalendar.json",
+      "metadata": {
+        "runeflow_category": "ᚨᚢ Automation",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "automation_manual_mailjet",
+      "template_name": "automation_manual_mailjet",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/automation_manual_mailjet.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "automation_manual_twitter",
+      "template_name": "automation_manual_twitter",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/automation_manual_twitter.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 5,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "automation_rssfeedread_manual",
+      "template_name": "automation_rssfeedread_manual",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/automation_rssfeedread_manual.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 3,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "process_airtop_manual",
+      "template_name": "process_airtop_manual",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/process_airtop_manual.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 6,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "process_code_wait_7nodes",
+      "template_name": "process_code_wait_7nodes",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/process_code_wait_7nodes.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 8,
+        "has_credentials": false,
+        "has_webhooks": false,
+        "has_manual_trigger": true,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "scheduled_automation_httprequest_twitter",
+      "template_name": "scheduled_automation_httprequest_twitter",
+      "description": "Content Distribution",
+      "category": "Social & Media",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/scheduled_automation_httprequest_twitter.json",
+      "metadata": {
+        "runeflow_category": "ᛊᛟ Social Media",
+        "nodes_count": 5,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_copper",
+      "template_name": "webhook_automation_copper",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_copper.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_demio_typeform",
+      "template_name": "webhook_automation_demio_typeform",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_demio_typeform.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 3,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_jotform",
+      "template_name": "webhook_automation_jotform",
+      "description": "Workflow Orchestration",
+      "category": "Forms & and & Surveys",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_jotform.json",
+      "metadata": {
+        "runeflow_category": "ᚦᚨ Task Management",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_keap",
+      "template_name": "webhook_automation_keap",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_keap.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 2,
+        "has_credentials": true,
+        "has_webhooks": false,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_notion",
+      "template_name": "webhook_automation_notion",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_notion.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 5,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": false
+      }
+    },
+    {
+      "template_id": "webhook_automation_respondtowebhook_7nodes",
+      "template_name": "webhook_automation_respondtowebhook_7nodes",
+      "description": "Connect Everything",
+      "category": "Other & Templates",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_automation_respondtowebhook_7nodes.json",
+      "metadata": {
+        "runeflow_category": "ᛁᚾ Integration Hub",
+        "nodes_count": 8,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    },
+    {
+      "template_id": "webhook_process_httprequest_complex_14nodes",
+      "template_name": "webhook_process_httprequest_complex_14nodes",
+      "description": "Intelligent Data Processing",
+      "category": "AI & and & Research",
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+      "file_path": "runerush-core-50-templates/webhook_process_httprequest_complex_14nodes.json",
+      "metadata": {
+        "runeflow_category": "ᚨᛁ AI & Research",
+        "nodes_count": 19,
+        "has_credentials": false,
+        "has_webhooks": true,
+        "has_manual_trigger": false,
+        "has_ai_nodes": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 7027\\n\\n📋 Template: scheduled_automation_hubspot_pipedrive_7nodes\\n📁 Category: CRM & and & Sales\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        560,
+        350
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Pipedrive",
+      "type": "n8n-nodes-base.pipedrive",
+      "position": [
+        760,
+        250
+      ],
+      "parameters": {
+        "resource": "person",
+        "operation": "getAll",
+        "returnAll": true,
+        "additionalFields": {}
+      },
+      "credentials": {
+        "pipedriveApi": {
+          "id": "28",
+          "name": "pipedrive_api"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Update Pipedrive",
+      "type": "n8n-nodes-base.pipedrive",
+      "position": [
+        1160,
+        250
+      ],
+      "parameters": {
+        "name": "={{$json[\"properties\"][\"firstname\"][\"value\"]}}",
+        "resource": "person",
+        "additionalFields": {
+          "email": [
+            "={{$json[\"identity-profiles\"][0][\"identities\"][0][\"value\"]}}"
+          ]
+        }
+      },
+      "credentials": {
+        "pipedriveApi": {
+          "id": "28",
+          "name": "pipedrive_api"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        760,
+        450
+      ],
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": true,
+        "additionalFields": {}
+      },
+      "credentials": {
+        "hubspotApi": {
+          "id": "21",
+          "name": "hubspot_account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Update HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1160,
+        450
+      ],
+      "parameters": {
+        "email": "={{$json[\"email\"][0][\"value\"]}}",
+        "resource": "contact",
+        "additionalFields": {
+          "firstName": "={{$json[\"first_name\"]}}"
+        }
+      },
+      "credentials": {
+        "hubspotApi": {
+          "id": "21",
+          "name": "hubspot_account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        960,
+        250
+      ],
+      "parameters": {
+        "mode": "removeKeyMatches",
+        "propertyName1": "identity-profiles[0].identities[0].value",
+        "propertyName2": "email[0].value"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        960,
+        450
+      ],
+      "parameters": {
+        "mode": "removeKeyMatches",
+        "propertyName1": "email[0].value",
+        "propertyName2": "identity-profiles[0].identities[0].value"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Pipedrive",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Update Pipedrive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Update HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Pipedrive": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "CRM & and & Sales",
+      "template_name": "scheduled_automation_hubspot_pipedrive_7nodes",
+      "rune_number": "7027"
+    }
+  },
+  "runeflow_category": "ᚲᚱ CRM Integration",
+  "runeflow_description": "Customer Relations",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_rune": "7027"
+}

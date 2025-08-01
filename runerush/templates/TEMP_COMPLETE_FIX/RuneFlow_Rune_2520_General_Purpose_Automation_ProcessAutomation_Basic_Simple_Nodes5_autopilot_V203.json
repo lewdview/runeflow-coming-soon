@@ -1,0 +1,154 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n🆔 Rune: 2520\\n\\n📋 Template: automation_autopilot\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: support@runeflow.xyz\\n🌐 Website: https://RuneFlow.xyz\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://RuneFlow.xyz/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Autopilot",
+      "type": "n8n-nodes-base.autopilot",
+      "position": [
+        470,
+        320
+      ],
+      "parameters": {
+        "name": "n8n-docs",
+        "resource": "list"
+      },
+      "credentials": {
+        "autopilotApi": "Autopilot API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Autopilot1",
+      "type": "n8n-nodes-base.autopilot",
+      "position": [
+        670,
+        320
+      ],
+      "parameters": {
+        "email": "",
+        "additionalFields": {
+          "autopilotList": "={{$json[\"list_id\"]}}"
+        }
+      },
+      "credentials": {
+        "autopilotApi": "Autopilot API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Autopilot2",
+      "type": "n8n-nodes-base.autopilot",
+      "position": [
+        870,
+        320
+      ],
+      "parameters": {
+        "email": "={{$node[\"Autopilot1\"].parameter[\"email\"]}}",
+        "additionalFields": {
+          "Company": "n8n"
+        }
+      },
+      "credentials": {
+        "autopilotApi": "Autopilot API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Autopilot3",
+      "type": "n8n-nodes-base.autopilot",
+      "position": [
+        1070,
+        320
+      ],
+      "parameters": {
+        "listId": "={{$node[\"Autopilot\"].json[\"list_id\"]}}",
+        "resource": "contactList",
+        "operation": "getAll",
+        "returnAll": true
+      },
+      "credentials": {
+        "autopilotApi": "Autopilot API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Autopilot": {
+      "main": [
+        [
+          {
+            "node": "Autopilot1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Autopilot1": {
+      "main": [
+        [
+          {
+            "node": "Autopilot2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Autopilot2": {
+      "main": [
+        [
+          {
+            "node": "Autopilot3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "support@runeflow.xyz",
+      "website": "https://RuneFlow.xyz",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "automation_autopilot",
+      "rune_number": "2520"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@RuneFlow.xyz",
+  "runeflow_website": "https://RuneFlow.xyz",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "automation_autopilot",
+    "template_name": "Automation Autopilot",
+    "original_filename": "automation_autopilot",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:44.308516",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  },
+  "runeflow_rune": "2520"
+}

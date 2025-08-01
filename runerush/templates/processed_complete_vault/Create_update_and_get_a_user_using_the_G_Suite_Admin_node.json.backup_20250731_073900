@@ -1,0 +1,152 @@
+{
+  "id": "215",
+  "name": "Create, update, and get a user using the G Suite Admin node",
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Create,_update,_and_get_a_user_using_the_G_Suite_Admin_node\\n📁 Category: Other & Templates\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "G Suite Admin",
+      "type": "n8n-nodes-base.gSuiteAdmin",
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "domain": "n8n.io",
+        "lastName": "Nat",
+        "password": "sjhdjsdhbajshdb",
+        "username": "nat",
+        "firstName": "Nathan",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "gSuiteAdminOAuth2Api": "Google"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "G Suite Admin1",
+      "type": "n8n-nodes-base.gSuiteAdmin",
+      "position": [
+        640,
+        300
+      ],
+      "parameters": {
+        "userId": "={{$node[\"G Suite Admin\"].json[\"id\"]}}",
+        "operation": "update",
+        "updateFields": {
+          "lastName": "Nate"
+        }
+      },
+      "credentials": {
+        "gSuiteAdminOAuth2Api": "Google"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "G Suite Admin2",
+      "type": "n8n-nodes-base.gSuiteAdmin",
+      "position": [
+        840,
+        300
+      ],
+      "parameters": {
+        "userId": "={{$node[\"G Suite Admin\"].json[\"id\"]}}",
+        "options": {},
+        "operation": "get"
+      },
+      "credentials": {
+        "gSuiteAdminOAuth2Api": "Google"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "settings": {},
+  "connections": {
+    "G Suite Admin": {
+      "main": [
+        [
+          {
+            "node": "G Suite Admin1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "G Suite Admin1": {
+      "main": [
+        [
+          {
+            "node": "G Suite Admin2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "G Suite Admin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Other & Templates",
+      "template_name": "Create,_update,_and_get_a_user_using_the_G_Suite_Admin_node"
+    }
+  },
+  "runeflow_category": "ᛁᚾ Integration Hub",
+  "runeflow_description": "Connect Everything",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Create_update_and_get_a_user_using_the_G_Suite_Admin_node",
+    "template_name": "Create Update And Get A User Using The G Suite Admin Node",
+    "original_filename": "Create,_update,_and_get_a_user_using_the_G_Suite_Admin_node",
+    "category": "AI & Research",
+    "quality_score": 2,
+    "processed_date": "2025-07-31T07:29:48.344307",
+    "nodes_count": 5,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}

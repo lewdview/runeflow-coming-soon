@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "id": "RuneFlow-branding-note",
+      "name": "🔥 RuneFlow Template",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -500
+      ],
+      "parameters": {
+        "color": 2,
+        "width": 400,
+        "height": 300,
+        "content": "🔥 RuneFlow AUTOMATION TEMPLATE 🔥\\n\\n📋 Template: Sync_Calendly_Appointments_to_Notion_Database\\n📁 Category: Data & Analysis\\n👨‍💻 Created by: RuneFlow\\n📧 Contact: bryan@runeflow.co\\n🌐 Website: https://runeflow.co\\n📞 Support: \\n\\n⚡ automation mastery THROUGH AUTOMATION ⚡\\n\\n🎯 Need custom automation?\\nContact RuneFlow for enterprise solutions!\\n\\n🚀 Template Library: https://runeflow.co/templates"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Calendly Trigger",
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "position": [
+        490,
+        320
+      ],
+      "webhookId": "d932d43a-511e-4e54-9a8d-c8da6f6ab7c2",
+      "parameters": {
+        "events": [
+          "invitee.created"
+        ]
+      },
+      "credentials": {
+        "calendlyApi": "Calendly API Credentials"
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        690,
+        320
+      ],
+      "parameters": {
+        "blockUi": {
+          "blockValues": []
+        },
+        "resource": "databasePage",
+        "databaseId": "b40628ca-9000-4576-ab2c-4ed3c37e6ee4",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Name|title",
+              "title": "={{$json[\"payload\"][\"invitee\"][\"name\"]}}",
+              "peopleValue": [],
+              "relationValue": [
+                ""
+              ],
+              "multiSelectValue": []
+            },
+            {
+              "key": "Email|email",
+              "emailValue": "={{$json[\"payload\"][\"invitee\"][\"email\"]}}",
+              "peopleValue": [],
+              "relationValue": [
+                ""
+              ],
+              "multiSelectValue": []
+            },
+            {
+              "key": "Status|select",
+              "peopleValue": [],
+              "selectValue": "6ad3880b-260a-4d12-999f-5b605e096c1c",
+              "relationValue": [
+                ""
+              ],
+              "multiSelectValue": []
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "notionApi": "Notion API Credentials"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "RuneFlow": {
+      "provider": "RuneFlow - Norse Automation Mastery",
+      "contact": "bryan@runeflow.co",
+      "website": "https://runeflow.co",
+      "support": "",
+      "category": "Data & Analysis",
+      "template_name": "Sync_Calendly_Appointments_to_Notion_Database"
+    }
+  },
+  "runeflow_category": "ᛞᚨ Data Analysis",
+  "runeflow_description": "Transform Raw Data",
+  "runeflow_contact": "contact@runeflow.com",
+  "runeflow_website": "https://runeflow.com",
+  "runeflow_tagline": "Unlock the Power of Ancient Wisdom Through Modern Automation",
+  "runeflow_meta": {
+    "template_id": "Sync_Calendly_Appointments_to_Notion_Database",
+    "template_name": "Sync Calendly Appointments To Notion Database",
+    "original_filename": "Sync_Calendly_Appointments_to_Notion_Database",
+    "category": "AI & Research",
+    "quality_score": 1,
+    "processed_date": "2025-07-31T07:29:56.010127",
+    "nodes_count": 3,
+    "has_credentials": true,
+    "has_webhooks": false,
+    "has_ai_nodes": false
+  }
+}
