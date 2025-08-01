@@ -18,9 +18,10 @@
   force = true
 
 [[redirects]]
-  from = "/downloads"
-  to = "/downloads.html"
+  from = "/downloads*"
+  to = "https://runeflow.up.railway.app/downloads:splat"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/offer"
