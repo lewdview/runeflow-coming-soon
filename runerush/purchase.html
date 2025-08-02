@@ -702,19 +702,362 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .purchase-container {
+        @media (max-width: 1024px) {
+            .main-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .sidebar {
+                order: -1; /* Move sidebar above main content on mobile */
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                min-height: auto;
+            }
+            
+            .header {
+                margin-bottom: 2rem;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .step-indicator {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+            
+            .step {
+                margin: 0;
+                justify-content: center;
+            }
+            
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .product-card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .card-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .product-card .price {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .product-card .features {
+                margin: 15px 0;
+            }
+            
+            .product-card .features li {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .corner-ribbon {
+                font-size: 10px;
+                padding: 4px 12px;
+                top: 10px;
+                right: -8px;
             }
             
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
             
-            .main-content,
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            select {
+                padding: 10px;
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+            
+            .payment-methods {
+                gap: 10px;
+            }
+            
+            .payment-method {
+                padding: 15px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .payment-method .method-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .payment-method .method-icon {
+                margin-right: 0;
+                font-size: 32px;
+            }
+            
+            .radio-input {
+                order: 1;
+                margin-top: 10px;
+            }
+            
             .sidebar {
                 padding: 20px;
+                position: static;
+                top: auto;
+                margin-top: 0;
             }
+            
+            .product-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 0;
+                gap: 8px;
+            }
+            
+            .product-info h4 {
+                font-size: 15px;
+            }
+            
+            .product-info p {
+                font-size: 13px;
+            }
+            
+            .product-price {
+                font-size: 16px;
+                align-self: flex-end;
+            }
+            
+            .total-section {
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+            
+            .total-row {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            #purchaseNowBtn {
+                font-size: 16px !important;
+                padding: 15px !important;
+            }
+            
+            .security-info {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                font-size: 13px;
+                padding: 10px 15px;
+            }
+            
+            .upsell-section {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .upsell-section h3 {
+                font-size: 20px;
+            }
+            
+            .upsell-features li {
+                font-size: 14px;
+            }
+            
+            .upsell-toggle {
+                padding: 12px;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .error-message,
+            .success-message {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .header {
+                margin-bottom: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+            }
+            
+            .step-indicator {
+                margin-bottom: 20px;
+            }
+            
+            .step {
+                font-size: 14px;
+            }
+            
+            .step-number {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .card {
+                padding: 15px;
+                border-radius: 12px;
+            }
+            
+            .card-title {
+                font-size: 18px;
+            }
+            
+            .product-card .price {
+                font-size: 22px;
+            }
+            
+            .product-card .features li {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            
+            .corner-ribbon {
+                font-size: 9px;
+                padding: 3px 8px;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            select {
+                padding: 8px;
+                font-size: 16px;
+            }
+            
+            .payment-method {
+                padding: 12px;
+            }
+            
+            .payment-method .method-icon {
+                font-size: 28px;
+            }
+            
+            .sidebar {
+                padding: 15px;
+            }
+            
+            .product-item {
+                padding: 10px 0;
+            }
+            
+            .total-row {
+                font-size: 13px;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+            
+            #purchaseNowBtn {
+                font-size: 15px !important;
+                padding: 12px !important;
+            }
+            
+            .security-info {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            .upsell-section {
+                padding: 15px;
+            }
+            
+            .upsell-section h3 {
+                font-size: 18px;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            overflow-x: hidden;
+        }
+        
+        .main-grid {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .product-card-grid {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .card {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -743,49 +1086,57 @@
                 <!-- Product Selection -->
                 <div class="product-card-grid">
                     <!-- Core Bundle Card -->
-                        <div class="card product-card" data-product="core" data-price="49">
-                            <div class="card-header">
-                                <div class="card-icon">📦</div>
-                                <h3 class="card-title">Core Bundle</h3>
-                            </div>
-                            <div class="price">$49</div>
-                            <ul class="features">
-                                <li>50 Premium n8n Templates</li>
-                                <li>Essential Workflow Automations</li>
-                                <li>Community Support Access</li>
-                            </ul>
+                    <div class="card product-card" data-product="core" data-price="49">
+                        <div class="card-header">
+                            <div class="card-icon">📦</div>
+                            <h3 class="card-title">Core Bundle</h3>
                         </div>
+                        <div class="price">$49</div>
+                        <ul class="features">
+                            <li>50 Premium n8n Templates</li>
+                            <li>Essential Workflow Automations</li>
+                            <li>Community Support Access</li>
+                        </ul>
+                        <button class="btn btn-primary buy-now-btn" data-product="core" style="width: 100%; margin-top: 15px;">
+                            🛒 Select Core Bundle
+                        </button>
+                    </div>
 
-                        <!-- Pro Bundle Card -->
-                        <!-- Complete Bundle Card -->
-                        <div class="card product-card" data-product="complete_bundle" data-price="499">
-                            <div class="card-header">
-                                <div class="card-icon">🏆</div>
-                                <h3 class="card-title">Complete Bundle</h3>
-                                <span class="corner-ribbon">Only 47 Left</span>
-                            </div>
-                            <div class="price">$499</div>
-                            <ul class="features">
-                                <li>8100+ Premium n8n Templates</li>
-                                <li>Master Automation Suite</li>
-                                <li>Exclusive Lifetime Access</li>
-                            </ul>
+                    <!-- Complete Bundle Card -->
+                    <div class="card product-card" data-product="complete_bundle" data-price="499">
+                        <div class="card-header">
+                            <div class="card-icon">🏆</div>
+                            <h3 class="card-title">Complete Bundle</h3>
+                            <span class="corner-ribbon">Only 47 Left</span>
                         </div>
+                        <div class="price">$499</div>
+                        <ul class="features">
+                            <li>8100+ Premium n8n Templates</li>
+                            <li>Master Automation Suite</li>
+                            <li>Exclusive Lifetime Access</li>
+                        </ul>
+                        <button class="btn btn-primary buy-now-btn" data-product="complete_bundle" style="width: 100%; margin-top: 15px;">
+                            🏆 Select Complete Bundle
+                        </button>
+                    </div>
 
-                        <!-- Pro Bundle Card -->
-                        <div class="card product-card" data-product="pro_bundle" data-price="60">
-                            <div class="card-header">
-                                <div class="card-icon">💼</div>
-                                <h3 class="card-title">Pro Bundle</h3>
-                                <span class="corner-ribbon">Only 92 Left</span>
-                            </div>
-                            <div class="price">$60</div>
-                            <ul class="features">
-                                <li>100 Premium n8n Templates</li>
-                                <li>Advanced Workflow Automations</li>
-                                <li>Priority Customer Support</li>
-                            </ul>
+                    <!-- Pro Bundle Card -->
+                    <div class="card product-card" data-product="pro_bundle" data-price="60">
+                        <div class="card-header">
+                            <div class="card-icon">💼</div>
+                            <h3 class="card-title">Pro Bundle</h3>
+                            <span class="corner-ribbon">Only 92 Left</span>
                         </div>
+                        <div class="price">$60</div>
+                        <ul class="features">
+                            <li>100 Premium n8n Templates</li>
+                            <li>Advanced Workflow Automations</li>
+                            <li>Priority Customer Support</li>
+                        </ul>
+                        <button class="btn btn-primary buy-now-btn" data-product="pro_bundle" style="width: 100%; margin-top: 15px;">
+                            💼 Select Pro Bundle
+                        </button>
+                    </div>
 
                     <!-- Pro Upgrade Card -->
                     <div class="card product-card" data-product="pro_upgrade" data-price="39">
@@ -799,6 +1150,9 @@
                             <li>Advanced Marketing & Sales Workflows</li>
                             <li>Priority Email Support</li>
                         </ul>
+                        <button class="btn btn-primary buy-now-btn" data-product="pro_upgrade" style="width: 100%; margin-top: 15px;">
+                            🚀 Add Pro Upgrade
+                        </button>
                     </div>
                 </div>
 
@@ -812,7 +1166,6 @@
                     <span class="icon">🔒</span>
                     Secure checkout • 30-day money-back guarantee • Instant delivery
                 </div>
-            </form>
             
             <!-- Messages -->
             <div id="errorMessage" class="error-message" style="display: none;"></div>
@@ -831,6 +1184,16 @@
                     <p>Please select a product to begin.</p>
                 </div>
 
+                
+                <!-- Promo Code Section -->
+                <div class="promo-section" style="margin: 20px 0;">
+                    <label for="promoCode" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Promo Code (Optional)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="promoCode" placeholder="Enter promo code" style="flex: 1; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
+                        <button type="button" id="applyPromoBtn" class="btn" style="background: #667eea; color: white; padding: 10px 15px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; white-space: nowrap;">Apply</button>
+                    </div>
+                    <div id="promoMessage" style="margin-top: 8px; font-size: 14px; display: none;"></div>
+                </div>
                 
                 <div class="total-section">
                     <div class="total-row">
@@ -871,18 +1234,34 @@
         const finalTotalSpan = document.getElementById('finalTotal');
         let selectedProducts = [];
 
+        // Handle card clicks (but not when clicking on button)
         productCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                // Don't trigger card selection if clicking on the button
+                if (e.target.closest('.buy-now-btn')) {
+                    return;
+                }
                 const product = card.dataset.product;
                 toggleProductSelection(product, card);
             });
         });
 
+        // Handle button clicks - these should just select the product, not submit
         buyNowButtons.forEach(button => {
-            button.addEventListener('click', async (e) => {
-                e.stopPropagation(); // prevent card click event
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 const product = button.dataset.product;
-                await handleFormSubmit(product);
+                const card = button.closest('.product-card');
+                
+                // Select this product
+                toggleProductSelection(product, card);
+                
+                // Scroll to sidebar so user can see the purchase button
+                document.getElementById('purchaseNowBtn').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
             });
         });
 
@@ -945,8 +1324,25 @@ function toggleProductSelection(product, card) {
                 });
             }
 
+            // Calculate discount
+            const discountAmount = appliedPromoCode ? (subtotal * promoDiscount / 100) : 0;
+            const finalTotal = subtotal - discountAmount;
+
+            // Update totals
             subtotalSpan.textContent = subtotal.toFixed(2);
-            finalTotalSpan.textContent = subtotal.toFixed(2);
+            
+            // Show/hide discount row
+            const discountRow = document.getElementById('discountRow');
+            const discountSpan = document.getElementById('discount');
+            
+            if (appliedPromoCode && discountAmount > 0) {
+                discountRow.style.display = 'flex';
+                discountSpan.textContent = discountAmount.toFixed(2);
+            } else {
+                discountRow.style.display = 'none';
+            }
+            
+            finalTotalSpan.textContent = finalTotal.toFixed(2);
         }
         
         async function handleFormSubmit(product) {
@@ -1164,46 +1560,82 @@ function toggleProductSelection(product, card) {
         // Also run immediately in case DOMContentLoaded already fired
         autoSelectProductFromURL();
         
-        // Purchase Now button click handler
-        document.getElementById('purchaseNowBtn').addEventListener('click', () => {
-            if (selectedProducts.length > 0) {
-                let productKey;
-                
-                // Determine which Stripe link to use
-                if (selectedProducts.includes('core') && selectedProducts.includes('pro_upgrade')) {
-                    productKey = 'core_plus_upgrade'; // Core + Pro Upgrade combination
-                } else if (selectedProducts.includes('complete_bundle')) {
-                    productKey = 'complete_bundle';
-                } else if (selectedProducts.includes('pro_bundle')) {
-                    productKey = 'pro_bundle';
-                } else if (selectedProducts.includes('core')) {
-                    productKey = 'core';
-                } else if (selectedProducts.includes('pro_upgrade')) {
-                    productKey = 'pro_upgrade';
-                }
-                
-                // Define Stripe product links
-                const stripeLinks = {
-                    'core': 'https://buy.stripe.com/fZu9AT82n2wO6ew8b057W02',
-                    'pro_bundle': 'https://buy.stripe.com/bJe3cv4Qbdbs7iA1MC57W04',
-                    'complete_bundle': 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00',
-                    'pro_upgrade': 'https://buy.stripe.com/14AfZhfuPefw8mE2QG57W03',
-                    'core_plus_upgrade': 'https://buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01'
+        // Promo code handling
+        let appliedPromoCode = null;
+        let promoDiscount = 0;
+        
+        document.getElementById('applyPromoBtn').addEventListener('click', async () => {
+            const promoCodeInput = document.getElementById('promoCode');
+            const promoMessage = document.getElementById('promoMessage');
+            const applyBtn = document.getElementById('applyPromoBtn');
+            const promoCode = promoCodeInput.value.trim().toUpperCase();
+            
+            if (!promoCode) {
+                showPromoMessage('Please enter a promo code', 'error');
+                return;
+            }
+            
+            // Show loading state
+            applyBtn.disabled = true;
+            applyBtn.textContent = 'Checking...';
+            
+            try {
+                // Since Stripe handles promo codes, we'll pass it directly to checkout
+                // For now, we'll validate against common promo codes you might have
+                const validPromoCodes = {
+                    'SAVE10': 10,     // 10% off
+                    'SAVE20': 20,     // 20% off
+                    'EARLYBIRD': 15,  // 15% off
+                    'LAUNCH': 25,     // 25% off
+                    'NEWUSER': 30     // 30% off
                 };
                 
-                // Track purchase attempt
-                trackEvent('purchase_attempt', {
-                    event_category: 'Purchase Flow',
-                    event_label: productKey,
-                    value: parseFloat(finalTotalSpan.textContent)
-                });
-                
-                // Redirect to Stripe product link
-                if (stripeLinks[productKey]) {
-                    window.location.href = stripeLinks[productKey];
+                if (validPromoCodes[promoCode]) {
+                    appliedPromoCode = promoCode;
+                    promoDiscount = validPromoCodes[promoCode];
+                    showPromoMessage(`✅ Promo code applied! ${promoDiscount}% discount`, 'success');
+                    updateOrderSummary();
+                    
+                    // Track promo code usage
+                    trackEvent('promo_code_applied', {
+                        event_category: 'Purchase Flow',
+                        event_label: promoCode,
+                        value: promoDiscount
+                    });
                 } else {
-                    showError('Product not available. Please contact support.');
+                    showPromoMessage('❌ Invalid promo code', 'error');
+                    trackEvent('promo_code_invalid', {
+                        event_category: 'Purchase Flow',
+                        event_label: promoCode
+                    });
                 }
+                
+            } catch (error) {
+                console.error('Promo code validation error:', error);
+                showPromoMessage('Error validating promo code', 'error');
+            } finally {
+                applyBtn.disabled = false;
+                applyBtn.textContent = 'Apply';
+            }
+        });
+        
+        function showPromoMessage(message, type) {
+            const promoMessage = document.getElementById('promoMessage');
+            promoMessage.textContent = message;
+            promoMessage.style.display = 'block';
+            promoMessage.style.color = type === 'success' ? '#10b981' : '#ef4444';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                promoMessage.style.display = 'none';
+            }, 5000);
+        }
+        
+// Purchase Now button click handler
+        document.getElementById('purchaseNowBtn').addEventListener('click', () => {
+            if (selectedProducts.length > 0) {
+                // Redirect directly to the Stripe payment link
+                window.location.href = 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00';
             } else {
                 showError('Please select a product first.');
             }
