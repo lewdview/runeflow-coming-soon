@@ -1634,12 +1634,53 @@ function toggleProductSelection(product, card) {
 // Purchase Now button click handler
         document.getElementById('purchaseNowBtn').addEventListener('click', () => {
             if (selectedProducts.length > 0) {
-                // Redirect directly to the Stripe payment link
-                window.location.href = 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00';
+                // Get the appropriate payment link based on selected products
+                const paymentLink = getPaymentLinkForProducts(selectedProducts);
+                
+                if (paymentLink) {
+                    // Track the purchase attempt
+                    trackEvent('purchase_now_clicked', {
+                        event_category: 'Purchase Flow',
+                        event_label: selectedProducts.join(','),
+                        value: parseFloat(finalTotalSpan.textContent)
+                    });
+                    
+                    // Redirect to the appropriate Stripe payment link
+                    window.location.href = paymentLink;
+                } else {
+                    showError('Payment link not available for this product selection.');
+                }
             } else {
                 showError('Please select a product first.');
             }
         });
+        
+        // Function to get the correct payment link based on selected products
+        function getPaymentLinkForProducts(products) {
+            // Define payment links for each product combination
+            const paymentLinks = {
+                // Single products
+                'core': 'https://buy.stripe.com/fZu9AT82n2wO6ew8b057W02',
+                'pro_bundle': 'https://buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01', 
+                'complete_bundle': 'https://buy.stripe.com/9B6cN5fuPefwfP6bnc57W00',
+                'pro_upgrade': 'https://buy.stripe.com/14AfZhfuPefw8mE2QG57W03',
+                'pro_limited': 'https://buy.stripe.com/bJe3cv4Qbdbs7iA1MC57W04',
+                
+                // Combinations (Core + Pro Upgrade should redirect to Pro Bundle)
+                'core,pro_upgrade': 'https://buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01',
+            };
+            
+            // Sort products for consistent key matching
+            const sortedProducts = products.slice().sort();
+            const key = sortedProducts.join(',');
+            
+            console.log('Selected products:', products);
+            console.log('Payment key:', key);
+            console.log('Payment link:', paymentLinks[key]);
+            
+            // Return the specific link or fallback to core if not found
+            return paymentLinks[key] || paymentLinks['core'];
+        }
     </script>
 </body>
 </html>
