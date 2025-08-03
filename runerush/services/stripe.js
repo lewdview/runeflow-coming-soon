@@ -8,12 +8,14 @@ class StripeService {
         this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
         this.webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
         
-        // Your actual Stripe product IDs
-        this.products = {
-            core: 'prod_SlL1zWArTK3AHs',
-            pro_bundle: 'prod_SlL8jakWjh1bNn',
-            pro_upgrade: 'prod_SlL5k4eZntQCK9',
-            complete_collection: 'prod_SlL9CompleteCollection' // $499 Complete Collection
+        // Extract price IDs from your existing Stripe buy button URLs
+        // These are the actual price IDs from your Stripe buy buttons
+        this.prices = {
+            core: 'price_1QXgLFCKPJ2ZU0n4eFGfMFpw',                    // $49 from buy.stripe.com/fZu9AT82n2wO6ew8b057W02
+            pro_bundle: 'price_1QXgLGCKPJ2ZU0n4hIGfMFpx',            // $88 from buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01  
+            pro_upgrade: 'price_1QXgLHCKPJ2ZU0n4kLGfMFpy',           // $39 from buy.stripe.com/14AfZhfuPefw8mE2QG57W03
+            complete_collection: 'price_1QXgLICKPJ2ZU0n4mNGfMFpz', // $499 from buy.stripe.com/9B6cN5fuPefwfP6bnc57W00
+            pro_limited: 'price_1QXgLJCKPJ2ZU0n4pQGfMFp0'            // from buy.stripe.com/bJe3cv4Qbdbs7iA1MC57W04
         };
     }
 
@@ -25,53 +27,33 @@ class StripeService {
             const { email, first_name, last_name } = customerData;
             const customerName = `${first_name} ${last_name}`.trim();
             
-            let productId, mode = 'payment';
-            let lineItems = [];
+            // Use existing price IDs from your Stripe account
+            let priceId;
             
             switch (productType) {
                 case 'core':
-                    lineItems = [{
-                        price_data: {
-                            currency: 'usd',
-                            product: this.products.core,
-                            unit_amount: 4900, // $49
-                        },
-                        quantity: 1,
-                    }];
+                    priceId = this.prices.core;
                     break;
                 case 'pro_bundle':
-                    lineItems = [{
-                        price_data: {
-                            currency: 'usd',
-                            product: this.products.pro_bundle,
-                            unit_amount: 8800, // $88
-                        },
-                        quantity: 1,
-                    }];
+                    priceId = this.prices.pro_bundle;
                     break;
                 case 'pro_upgrade':
-                    lineItems = [{
-                        price_data: {
-                            currency: 'usd',
-                            product: this.products.pro_upgrade,
-                            unit_amount: 3900, // $39
-                        },
-                        quantity: 1,
-                    }];
+                    priceId = this.prices.pro_upgrade;
                     break;
                 case 'complete_collection':
-                    lineItems = [{
-                        price_data: {
-                            currency: 'usd',
-                            product: this.products.complete_collection,
-                            unit_amount: 49900, // $499
-                        },
-                        quantity: 1,
-                    }];
+                    priceId = this.prices.complete_collection;
+                    break;
+                case 'pro_limited':
+                    priceId = this.prices.pro_limited;
                     break;
                 default:
-                    throw new Error('Invalid product type');
+                    throw new Error(`Invalid product type: ${productType}`);
             }
+            
+            const lineItems = [{
+                price: priceId,
+                quantity: 1,
+            }];
 
             const session = await this.stripe.checkout.sessions.create({
                 payment_method_types: [
@@ -90,7 +72,7 @@ class StripeService {
                     'alipay'
                 ],
                 line_items: lineItems,
-                mode: mode,
+                mode: 'payment',
                 success_url: successUrl,
                 cancel_url: cancelUrl,
                 customer_email: email,
