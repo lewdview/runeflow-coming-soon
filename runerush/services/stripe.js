@@ -57,19 +57,7 @@ class StripeService {
 
             const session = await this.stripe.checkout.sessions.create({
                 payment_method_types: [
-                    'card',
-                    'klarna',
-                    'afterpay_clearpay',
-                    'affirm',
-                    'bancontact',
-                    'ideal',
-                    'sofort',
-                    'p24',
-                    'giropay',
-                    'eps',
-                    'grabpay',
-                    'wechat_pay',
-                    'alipay'
+                    'card'
                 ],
                 line_items: lineItems,
                 mode: 'payment',
@@ -90,9 +78,7 @@ class StripeService {
                 invoice_creation: {
                     enabled: true,
                 },
-                payment_intent_data: {
-                    setup_future_usage: 'off_session', // For future payments
-                },
+                // Remove payment_intent_data as it conflicts with some payment methods
             });
 
             return {
