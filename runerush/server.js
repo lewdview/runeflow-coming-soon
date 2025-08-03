@@ -341,6 +341,47 @@ app.get('/api/download/:token', async (req, res) => {
 // USER ROUTES
 // =============================================================================
 
+// Get user info by Stripe session ID
+app.get('/api/session/:session_id', async (req, res) => {
+    try {
+        const { session_id } = req.params;
+        
+        // Get session from Stripe
+        const session = await stripeService.stripe.checkout.sessions.retrieve(session_id);
+        
+        if (!session || session.payment_status !== 'paid') {
+            return res.status(404).json(createApiResponse(
+                false, null, 'Session not found or payment not completed'
+            ));
+        }
+        
+        // Find user by email
+        const user = await db.getUserByEmail(session.customer_details?.email);
+        
+        if (!user) {
+            return res.status(404).json(createApiResponse(
+                false, null, 'User not found - please check your email for the download link'
+            ));
+        }
+        
+        // Return user data with license key
+        const userData = {
+            license_key: user.license_key,
+            email: user.email,
+            first_name: user.first_name,
+            is_lifetime: user.is_lifetime
+        };
+        
+        res.json(createApiResponse(true, userData, 'Session data retrieved successfully'));
+        
+    } catch (error) {
+        console.error('Session lookup failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to retrieve session data'
+        ));
+    }
+});
+
 // Get user info by license key
 app.get('/api/user/:license_key', async (req, res) => {
     try {
@@ -415,10 +456,10 @@ app.post('/api/analytics/pageview', [
 app.get('/api/test/downloads', async (req, res) => {
     try {
         // Get all files from database
-        const files = await db.all('SELECT * FROM files WHERE is_active = 1');
+        const files = await db.query('SELECT * FROM files WHERE is_active = 1');
         
         // Get sample user
-        const users = await db.all('SELECT * FROM users LIMIT 1');
+        const users = await db.query('SELECT * FROM users LIMIT 1');
         
         res.json({
             success: true,
@@ -733,19 +774,6 @@ app.use((error, req, res, next) => {
 });
 
 // =============================================================================
-// BACKGROUND JOBS
-// =============================================================================
-
-// Process scheduled emails every minute
-cron.schedule('* * * * *', async () => {
-    try {
-        await emailService.processScheduledEmails();
-    } catch (error) {
-        console.error('Email processing failed:', error);
-    }
-});
-
-// =============================================================================
 // SERVER STARTUP
 // =============================================================================
 
@@ -758,6 +786,20 @@ async function startServer() {
         // Run migrations
         await db.migrate();
         console.log('✅ Database migrations completed');
+
+        // Start background jobs after database is ready
+        console.log('🔄 Starting background jobs...');
+        
+        // Process scheduled emails every minute
+        cron.schedule('* * * * *', async () => {
+            try {
+                await emailService.processScheduledEmails();
+            } catch (error) {
+                console.error('Failed to process scheduled emails:', error);
+            }
+        });
+        
+        console.log('✅ Background jobs started');
 
         // Start server
         const HOST = process.env.HOST || '0.0.0.0';

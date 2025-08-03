@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Success Flow - RuneRush</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .test-button.secondary {
+            background: #2196F3;
+        }
+        .test-button.secondary:hover {
+            background: #1976D2;
+        }
+        .test-url {
+            background: #f8f8f8;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f1b0b7;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #b7d4ea;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 RuneRush Success Flow Test</h1>
+    
+    <div class="test-section">
+        <h2>📋 Test Overview</h2>
+        <p>This test page simulates the Stripe payment success redirect flow to verify everything works correctly.</p>
+        
+        <div class="status info">
+            <strong>Current Setup:</strong><br>
+            • Stripe redirects to: <code>runeflow.xyz/runerush/success.html</code><br>
+            • Server route <code>/success</code> is commented out<br>
+            • Direct success page rendering with URL parameters
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔗 Test Different Success Scenarios</h2>
+        <p>Click the buttons below to test different product purchase success scenarios:</p>
+        
+        <h3>Core Bundle Success</h3>
+        <div class="test-url">
+            /runerush/success.html?session_id=cs_test_123&product_type=core&license_key=RR-ABCD-1234-WXYZ
+        </div>
+        <a href="/runerush/success.html?session_id=cs_test_123&product_type=core&license_key=RR-ABCD-1234-WXYZ" 
+           class="test-button" target="_blank">Test Core Bundle</a>
+
+        <h3>Pro Bundle Success</h3>
+        <div class="test-url">
+            /runerush/success.html?session_id=cs_test_456&product_type=pro_bundle&license_key=RR-EFGH-5678-STUV
+        </div>
+        <a href="/runerush/success.html?session_id=cs_test_456&product_type=pro_bundle&license_key=RR-EFGH-5678-STUV" 
+           class="test-button" target="_blank">Test Pro Bundle</a>
+
+        <h3>Complete Collection Success</h3>
+        <div class="test-url">
+            /runerush/success.html?session_id=cs_test_789&product_type=complete_collection&license_key=RR-IJKL-9012-MNOP
+        </div>
+        <a href="/runerush/success.html?session_id=cs_test_789&product_type=complete_collection&license_key=RR-IJKL-9012-MNOP" 
+           class="test-button" target="_blank">Test Complete Collection</a>
+
+        <h3>Success Without License Key</h3>
+        <div class="test-url">
+            /runerush/success.html?session_id=cs_test_000&product_type=core
+        </div>
+        <a href="/runerush/success.html?session_id=cs_test_000&product_type=core" 
+           class="test-button secondary" target="_blank">Test Without License Key</a>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 What to Check</h2>
+        <p>When testing the success page, verify:</p>
+        <ul>
+            <li>✅ Page loads correctly with cyberpunk design</li>
+            <li>✅ Correct product name and template count display</li>
+            <li>✅ License key shows if provided in URL</li>
+            <li>✅ Download button works (redirects to /downloads?key=...)</li>
+            <li>✅ Google Analytics tracking fires</li>
+            <li>✅ Mobile responsive design</li>
+            <li>✅ No console errors</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Server Routes Test</h2>
+        <p>Test that the server routes are working correctly:</p>
+        
+        <a href="/runerush/" class="test-button secondary" target="_blank">Test /runerush/ Route</a>
+        <a href="/runerush/success.html" class="test-button secondary" target="_blank">Test Success Page Direct</a>
+        
+        <div class="status info">
+            <strong>Note:</strong> The <code>/success</code> route is now commented out to avoid conflicts with the vault page.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Analytics Test</h2>
+        <p>Open browser developer tools (F12) and check:</p>
+        <ul>
+            <li>Console for Google Analytics events</li>
+            <li>Network tab for gtag requests</li>
+            <li>Look for "purchase", "conversion", and "purchase_success" events</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🚨 Error Scenarios</h2>
+        <p>Test edge cases:</p>
+        
+        <h3>Invalid Product Type</h3>
+        <a href="/runerush/success.html?session_id=cs_test_999&product_type=invalid_product" 
+           class="test-button secondary" target="_blank">Test Invalid Product</a>
+        
+        <h3>No Parameters</h3>
+        <a href="/runerush/success.html" 
+           class="test-button secondary" target="_blank">Test No Parameters</a>
+    </div>
+
+    <script>
+        // Add some basic testing functionality
+        console.log('🧪 RuneRush Success Flow Test Page Loaded');
+        console.log('Ready to test the payment success flow!');
+        
+        // Check if we're running locally
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('🏠 Running locally - test links should work');
+        } else {
+            console.log('🌐 Running on server - test links should work');
+        }
+    </script>
+</body>
+</html>

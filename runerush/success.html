@@ -180,7 +180,34 @@
                 if (licenseKey) {
                     window.location.href = `/downloads?key=${licenseKey}`;
                 } else {
-                    alert('Please check your email for the download link.');
+                    // Try to get user info from session_id if available
+                    if (sessionId && sessionId !== 'unknown') {
+                        // Show loading state
+                        const btn = document.getElementById('instant-download-btn');
+                        btn.innerHTML = '🔄 Loading...';
+                        btn.disabled = true;
+                        
+                        // Try to fetch user data from session
+                        fetch(`/api/session/${sessionId}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success && data.data.license_key) {
+                                    window.location.href = `/downloads?key=${data.data.license_key}`;
+                                } else {
+                                    alert('Please check your email for the download link. If you don\'t receive it within 10 minutes, contact support.');
+                                    btn.innerHTML = '📥 Instant Download';
+                                    btn.disabled = false;
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching session:', error);
+                                alert('Please check your email for the download link. If you don\'t receive it within 10 minutes, contact support.');
+                                btn.innerHTML = '📥 Instant Download';
+                                btn.disabled = false;
+                            });
+                    } else {
+                        alert('Please check your email for the download link. If you don\'t receive it within 10 minutes, contact support.');
+                    }
                 }
             }
         </script>

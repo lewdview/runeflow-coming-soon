@@ -176,6 +176,9 @@ class Database {
 
     async query(sql, params = []) {
         if (this.isPostgres) {
+            if (!this.pool) {
+                throw new Error('Database connection not established (PostgreSQL pool is null)');
+            }
             try {
                 const pgSql = this.convertSqlToPostgres(sql, params);
                 const result = await this.pool.query(pgSql, params);
@@ -184,6 +187,9 @@ class Database {
                 throw err;
             }
         } else {
+            if (!this.db) {
+                throw new Error('Database connection not established (SQLite db is null)');
+            }
             return new Promise((resolve, reject) => {
                 this.db.all(sql, params, (err, rows) => {
                     if (err) {
@@ -198,6 +204,9 @@ class Database {
 
     async run(sql, params = []) {
         if (this.isPostgres) {
+            if (!this.pool) {
+                throw new Error('Database connection not established (PostgreSQL pool is null)');
+            }
             try {
                 const pgSql = this.convertSqlToPostgres(sql, params);
                 let finalSql = pgSql;
@@ -216,6 +225,9 @@ class Database {
                 throw err;
             }
         } else {
+            if (!this.db) {
+                throw new Error('Database connection not established (SQLite db is null)');
+            }
             return new Promise((resolve, reject) => {
                 this.db.run(sql, params, function(err) {
                     if (err) {
@@ -230,6 +242,9 @@ class Database {
 
     async get(sql, params = []) {
         if (this.isPostgres) {
+            if (!this.pool) {
+                throw new Error('Database connection not established (PostgreSQL pool is null)');
+            }
             try {
                 const pgSql = this.convertSqlToPostgres(sql, params);
                 const result = await this.pool.query(pgSql, params);
@@ -238,6 +253,9 @@ class Database {
                 throw err;
             }
         } else {
+            if (!this.db) {
+                throw new Error('Database connection not established (SQLite db is null)');
+            }
             return new Promise((resolve, reject) => {
                 this.db.get(sql, params, (err, row) => {
                     if (err) {
@@ -369,7 +387,7 @@ class Database {
     }
 
     async markEmailAsSent(emailId) {
-        const sql = 'UPDATE email_sequences SET status = "sent", sent_at = CURRENT_TIMESTAMP WHERE id = ?';
+        const sql = "UPDATE email_sequences SET status = 'sent', sent_at = CURRENT_TIMESTAMP WHERE id = ?";
         return await this.run(sql, [emailId]);
     }
 

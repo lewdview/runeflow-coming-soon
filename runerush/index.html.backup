@@ -374,7 +374,9 @@
         }
         
         /* CTA Button - Phase 4 */
-        #animation-overlay .cta-button {
+        #animation-overlay .cta-button, 
+        .payment-button, 
+        .enhanced-btn {
             font-size: 28px;
             font-weight: 700;
             padding: 15px 30px;
@@ -394,35 +396,6 @@
             animation: 
                 ctaAppear 1.5s 8.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
                 ctaPulse 2s 10s ease-in-out infinite;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 99999 !important;
-            pointer-events: auto !important;
-            -webkit-tap-highlight-color: rgba(255, 69, 0, 0.3);
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            touch-action: manipulation;
-        }
-        
-        .payment-button, 
-        .enhanced-btn {
-            font-size: 28px;
-            font-weight: 700;
-            padding: 15px 30px;
-            color: #ffffff;
-            background: linear-gradient(135deg, #ff4500, #ff6b35, #ff8c42);
-            border: none;
-            border-radius: 50px;
-            box-shadow: 
-                0 0 40px rgba(255, 69, 0, 0.6),
-                inset 0 2px 0 rgba(255, 255, 255, 0.2);
-            position: relative;
-            display: block;
-            margin: 0 auto;
-            cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 99999 !important;
             pointer-events: auto !important;
@@ -1368,51 +1341,6 @@
             .price-strike { font-size: 40px; }
             #animation-overlay .runerush { font-size: 80px; }
             #animation-overlay .cta-button { font-size: 24px; padding: 15px 30px; }
-            
-            /* Mobile Layout Fix: Move overlapping elements up to prevent CTA button overlap */
-            .countdown-display {
-                top: 55% !important; /* Move up from 70% to give CTA button space */
-            }
-            
-            .price-strike {
-                bottom: 25% !important; /* Move up from 15% to prevent overlap */
-            }
-            
-            /* Ensure template counter doesn't interfere */
-            .template-counter {
-                top: 10% !important; /* Move up slightly from 15% */
-            }
-            
-            /* Fix CTA Button Overflow Issues on Mobile */
-            .payment-button, .enhanced-btn {
-                max-width: 90% !important;
-                padding: 15px 20px !important;
-                font-size: 16px !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                margin: 0 auto !important;
-                display: block !important;
-                box-sizing: border-box !important;
-            }
-            
-            /* Ensure CTA containers are properly centered */
-            .cta-container {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                padding: 0 10px !important;
-                box-sizing: border-box !important;
-            }
-            
-            /* Fix button text overflow */
-            .payment-button span, .enhanced-btn span {
-                display: inline-block !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                white-space: nowrap !important;
-            }
             
             .enhanced-btn i { font-size: 16px !important; }
             
