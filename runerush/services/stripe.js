@@ -347,8 +347,8 @@ class StripeService {
                 user = existingUser;
                 // Update to lifetime if upsell, pro_bundle, or complete_collection
                 if (product_type === 'upsell' || product_type === 'pro_bundle' || product_type === 'complete_collection') {
-                    await db.run('UPDATE users SET is_lifetime = 1 WHERE id = ?', [user.id]);
-                    user.is_lifetime = 1;
+                    await db.run('UPDATE users SET is_lifetime = TRUE WHERE id = ?', [user.id]);
+                    user.is_lifetime = true;
                 }
             } else {
                 // Create new user
@@ -361,7 +361,7 @@ class StripeService {
                     license_key: licenseKey,
                     first_name,
                     last_name,
-                    is_lifetime: (product_type === 'upsell' || product_type === 'pro_bundle' || product_type === 'complete_collection') ? 1 : 0
+                    is_lifetime: (product_type === 'upsell' || product_type === 'pro_bundle' || product_type === 'complete_collection') ? true : false
                 });
 
                 user = await db.getUserByEmail(customer_email);
