@@ -71,6 +71,20 @@ app.use(cors({
 }));
 
 app.use(morgan('combined'));
+
+// Stripe webhook handler (must be before express.json middleware)
+app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+    try {
+        const signature = req.headers['stripe-signature'];
+        await stripeService.handleWebhook(req.body, signature);
+        res.json({ received: true });
+    } catch (error) {
+        console.error('Stripe webhook error:', error);
+        res.status(400).json({ error: 'Webhook error' });
+    }
+});
+
+// JSON parsing middleware (after webhook handler)
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -238,17 +252,6 @@ app.post('/api/payments/stripe/create-upsell-intent', [
     }
 });
 
-// Stripe webhook handler
-app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
-    try {
-        const signature = req.headers['stripe-signature'];
-        await stripeService.handleWebhook(req.body, signature);
-        res.json({ received: true });
-    } catch (error) {
-        console.error('Stripe webhook error:', error);
-        res.status(400).json({ error: 'Webhook error' });
-    }
-});
 
 // =============================================================================
 // DOWNLOAD ROUTES
