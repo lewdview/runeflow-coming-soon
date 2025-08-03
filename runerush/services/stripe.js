@@ -8,14 +8,13 @@ class StripeService {
         this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
         this.webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
         
-        // Extract price IDs from your existing Stripe buy button URLs
-        // These are the actual price IDs from your Stripe buy buttons
+        // Actual price IDs from your Stripe account
         this.prices = {
-            core: 'price_1QXgLFCKPJ2ZU0n4eFGfMFpw',                    // $49 from buy.stripe.com/fZu9AT82n2wO6ew8b057W02
-            pro_bundle: 'price_1QXgLGCKPJ2ZU0n4hIGfMFpx',            // $88 from buy.stripe.com/cNi4gzdmH7R8dGYcrg57W01  
-            pro_upgrade: 'price_1QXgLHCKPJ2ZU0n4kLGfMFpy',           // $39 from buy.stripe.com/14AfZhfuPefw8mE2QG57W03
-            complete_collection: 'price_1QXgLICKPJ2ZU0n4mNGfMFpz', // $499 from buy.stripe.com/9B6cN5fuPefwfP6bnc57W00
-            pro_limited: 'price_1QXgLJCKPJ2ZU0n4pQGfMFp0'            // from buy.stripe.com/bJe3cv4Qbdbs7iA1MC57W04
+            core: 'price_1RpoLwG1VJxSkYsRLCQCPByT',              // $49 - RuneRUSH 50 CORE n8n premium templates
+            complete_collection: 'price_1RpoRnG1VJxSkYsR6zllfJCs', // $88 - RuneRUSH Complete - 100 Premium n8n Templates  
+            pro_upgrade: 'price_1RpoOsG1VJxSkYsR2elpDJl7',        // $39 - RuneRUSH PRO - 50 Additional Advanced Templates
+            pro_limited: 'price_1RqmK7G1VJxSkYsRrJs7pUI3',        // $60 - RuneRUSH PRO Limited
+            runeflow_collection: 'price_1RqGCFG1VJxSkYsRlIH2XISe'  // $499 - RuneFlow n8n template collection (8100+)
         };
     }
 
@@ -34,17 +33,18 @@ class StripeService {
                 case 'core':
                     priceId = this.prices.core;
                     break;
-                case 'pro_bundle':
-                    priceId = this.prices.pro_bundle;
+                case 'complete_bundle':
+                case 'complete_collection':
+                    priceId = this.prices.complete_collection;
                     break;
                 case 'pro_upgrade':
                     priceId = this.prices.pro_upgrade;
                     break;
-                case 'complete_collection':
-                    priceId = this.prices.complete_collection;
-                    break;
                 case 'pro_limited':
                     priceId = this.prices.pro_limited;
+                    break;
+                case 'runeflow_collection':
+                    priceId = this.prices.runeflow_collection;
                     break;
                 default:
                     throw new Error(`Invalid product type: ${productType}`);
