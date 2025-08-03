@@ -456,7 +456,7 @@ app.post('/api/analytics/pageview', [
 app.get('/api/test/downloads', async (req, res) => {
     try {
         // Get all files from database
-        const files = await db.query('SELECT * FROM files WHERE is_active = 1');
+        const files = await db.query('SELECT * FROM files WHERE is_active = TRUE');
         
         // Get sample user
         const users = await db.query('SELECT * FROM users LIMIT 1');
@@ -543,7 +543,7 @@ app.get('/api/admin/analytics', adminAuth, async (req, res) => {
         const userCounts = await db.query(`
             SELECT 
                 COUNT(*) as total_users,
-                SUM(CASE WHEN is_lifetime = 1 THEN 1 ELSE 0 END) as lifetime_users
+                SUM(CASE WHEN is_lifetime = TRUE THEN 1 ELSE 0 END) as lifetime_users
             FROM users
         `);
 
