@@ -441,6 +441,57 @@
             });
         });
     </script>
+    
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 50%, rgba(15, 15, 35, 0.95) 100%); padding: 30px 40px; margin-top: 50px; border-top: 1px solid rgba(0, 255, 255, 0.2); backdrop-filter: blur(15px);">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <!-- Left: Logo -->
+            <a href="https://runeflow.xyz/index.html" style="display: flex; align-items: center;">
+                <img src="assets/logo.png" alt="RuneFlow Logo" style="height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));">
+            </a>
+            
+            <!-- Center: Navigation Links -->
+            <div style="text-align: center; color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 500;">
+                <div style="margin-bottom: 8px;">
+                    <a href="contact.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; hover: color: #00ffff;">Contact</a>
+                    <span style="margin: 0 8px; color: rgba(255, 255, 255, 0.5);">|</span>
+                    <a href="privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; hover: color: #00ffff;">Privacy</a>
+                </div>
+                <div>
+                    <a href="core.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; hover: color: #00ffff;">Core</a>
+                    <span style="margin: 0 8px; color: rgba(255, 255, 255, 0.5);">|</span>
+                    <a href="pro.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; hover: color: #00ffff;">Pro</a>
+                    <span style="margin: 0 8px; color: rgba(255, 255, 255, 0.5);">|</span>
+                    <a href="complete.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; hover: color: #00ffff;">Complete</a>
+                </div>
+            </div>
+            
+            <!-- Right: Made with Warp -->
+            <div style="text-align: right; color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 500;">
+                made with <a href="https://app.warp.dev/referral/N36M5R" style="color: #00ffff; font-weight: 700; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); text-decoration: none;">warp</a>
+            </div>
+        </div>
+        
+        <!-- Mobile responsive styles -->
+        <style>
+            @media (max-width: 768px) {
+                footer > div {
+                    justify-content: center !important;
+                    text-align: center !important;
+                    flex-direction: column !important;
+                    gap: 15px !important;
+                }
+                footer > div > div {
+                    text-align: center !important;
+                }
+            }
+            
+            /* Hover effects */
+            footer a:hover {
+                color: #00ffff !important;
+            }
+        </style>
+    </footer>
 </body>
 </html>
 

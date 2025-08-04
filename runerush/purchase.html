@@ -74,9 +74,20 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
+            height: 100%;
             overflow-x: hidden;
             position: relative;
+        }
+
+        html {
+            height: 100%;
+            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 25%, #be185d 50%, #b91c1c 75%, #3730a3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
         body::before {
@@ -1682,5 +1693,32 @@ function toggleProductSelection(product, card) {
             return paymentLinks[key] || paymentLinks['core'];
         }
     </script>
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 50%, rgba(15, 15, 35, 0.95) 100%); padding: 30px 40px; margin-top: 50px; border-top: 1px solid rgba(0, 255, 255, 0.2); backdrop-filter: blur(15px);">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <a href="https://runeflow.xyz/index.html" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo.png" alt="RuneFlow Logo" style="height: 120px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));">
+            </a>
+            <div style="color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 500; text-align: right;">
+                <a href="#" style="color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; transition: color 0.3s;">Contact</a>
+                <a href="privacy.html" style="color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; transition: color 0.3s;">Privacy Policy</a>
+                <a href="https://runeflow.xyz/index.html" style="color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; transition: color 0.3s;">Back to RuneFlow</a>
+            </div>
+        </div>
+        <!-- Mobile responsive styles -->
+        <style>
+            @media (max-width: 768px) {
+                footer > div {
+                    justify-content: center !important;
+                    text-align: center !important;
+                    flex-direction: column !important;
+                    gap: 15px !important;
+                }
+                footer > div > div:last-child {
+                    text-align: center !important;
+                }
+            }
+        </style>
+    </footer>
 </body>
 </html>

@@ -22,10 +22,10 @@ async function testCompletePurchaseFlow() {
         });
 
         console.log('✅ Checkout session created successfully');
-        console.log('Checkout URL:', checkoutResponse.data.checkout_url);
+        console.log('Checkout URL:', checkoutResponse.data.data.url);
         
-        // Extract session ID from the checkout URL
-        const sessionId = checkoutResponse.data.checkout_url.match(/cs_[a-zA-Z0-9_]+/)?.[0];
+        // Extract session ID from the response data
+        const sessionId = checkoutResponse.data.data.session_id;
         console.log('Session ID:', sessionId);
 
         if (!sessionId) {
@@ -53,7 +53,7 @@ async function testCompletePurchaseFlow() {
 
         return {
             success: true,
-            checkoutUrl: checkoutResponse.data.checkout_url,
+            checkoutUrl: checkoutResponse.data.data.url,
             sessionId: sessionId
         };
 
