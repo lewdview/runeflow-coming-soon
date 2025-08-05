@@ -1,25 +1,63 @@
 #!/usr/bin/env node
 
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
+const { body, validationResult } = require('express-validator');
+const { RateLimiterMemory } = require('rate-limiter-flexible');
+
+// Services (create mock services if they don't exist)
+let db, stripeService, emailService, s3Service;
+try {
+  db = require('../runerush/database/db');
+  stripeService = require('../runerush/services/stripe');
+  emailService = require('../runerush/services/email');
+  s3Service = require('../runerush/services/s3');
+} catch (error) {
+  console.warn('Some RuneRush services not found, creating mock services');
+  db = {
+    getUserByLicenseKey: async () => null,
+    logAnalytics: async () => {},
+    createContactSubmission: async () => 'mock-id'
+  };
+  stripeService = {
+    handleWebhook: async () => {},
+    createCheckoutSession: async () => ({ url: 'mock-url' })
+  };
+  emailService = {
+    sendContactNotification: async () => {},
+    sendContactAutoReply: async () => {}
+  };
+  s3Service = {};
+}
+
+// Utils
+const getClientIP = (req) => req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
+const createApiResponse = (success, data, message, errors) => ({
+  success,
+  data,
+  message,
+  errors: errors || undefined,
+  timestamp: new Date().toISOString()
+});
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 8080;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Database connection
+// Database connection using Railway PostgreSQL or local fallback
 const pool = new Pool({
-  user: 'db_user',
-  host: 'localhost',
-  database: 'runeflow',
-  password: 'password',
-  port: 5432,
+  connectionString: process.env.DATABASE_URL || 'postgresql://db_user:password@localhost:5432/runeflow',
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
 // Load static template data
@@ -31,7 +69,68 @@ try {
   console.error('Error loading template data:', error);
 }
 
-// Routes
+// Payment and User Routes
+
+// Stripe webhook handler
+app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+    try {
+        const signature = req.headers['stripe-signature'];
+        await stripeService.handleWebhook(req.body, signature);
+        res.json({ received: true });
+    } catch (error) {
+        console.error('Stripe webhook error:', error);
+        res.status(400).json({ error: 'Webhook error' });
+    }
+});
+
+// Payments
+app.post('/api/payments/stripe/create-checkout', [
+    body('email').isEmail().normalizeEmail(),
+    body('first_name').trim().isLength({ min: 1 }),
+    body('last_name').trim().isLength({ min: 1 }),
+    body('product_type').isIn(['core', 'pro_bundle', 'pro_upgrade', 'complete_collection']),
+    body('success_url').isURL(),
+    body('cancel_url').isURL()
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(createApiResponse(
+                false, null, 'Validation error', errors.array()
+            ));
+        }
+
+        const { email, first_name, last_name, product_type, success_url, cancel_url } = req.body;
+
+        const checkoutSession = await stripeService.createCheckoutSession(
+            product_type,
+            { email, first_name, last_name },
+            success_url,
+            cancel_url
+        );
+
+        // Log analytics
+        await db.logAnalytics({
+            event_type: 'checkout_initiated',
+            user_id: null,
+            metadata: { product_type, payment_method: 'stripe_checkout' },
+            ip_address: getClientIP(req),
+            user_agent: req.get('User-Agent'),
+            referrer: req.get('Referer')
+        });
+
+        res.json(createApiResponse(true, checkoutSession, 'Checkout session created successfully'));
+
+    } catch (error) {
+        console.error('Checkout session creation failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to create checkout session'
+        ));
+    }
+});
+
+
+// Middleware
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -508,7 +607,113 @@ app.get('/api/v1/templates/:id/download', async (req, res) => {
   }
 });
 
-// Export templates endpoint
+// User Information and Contact Routes
+
+app.get('/api/user/:license_key', async (req, res) => {
+    try {
+        const { license_key } = req.params;
+
+        const user = await db.getUserByLicenseKey(license_key);
+        if (!user) {
+            return res.status(404).json(createApiResponse(
+                false, null, 'User not found'
+            ));
+        }
+
+        // Return safe user data
+        const userData = {
+            email: user.email,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            is_lifetime: user.is_lifetime,
+            created_at: user.created_at
+        };
+
+        res.json(createApiResponse(true, userData, 'User retrieved successfully'));
+
+    } catch (error) {
+        console.error('User retrieval failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to retrieve user'
+        ));
+    }
+});
+
+// Handle contact form submissions
+app.post('/api/contact', [
+    body('name').trim().isLength({ min: 1 }).withMessage('Name is required'),
+    body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
+    body('subject').trim().isLength({ min: 1 }).withMessage('Subject is required'),
+    body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters'),
+    body('category').isIn(['questions', 'support', 'partners']).withMessage('Valid category is required')
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(createApiResponse(
+                false, null, 'Validation error', errors.array()
+            ));
+        }
+
+        const { name, email, subject, message, category } = req.body;
+        const ip_address = getClientIP(req);
+        const user_agent = req.get('User-Agent');
+
+        // Store contact submission in database
+        const contactId = await db.createContactSubmission({
+            name,
+            email,
+            subject,
+            message,
+            category,
+            ip_address,
+            user_agent,
+            referrer: req.get('Referer')
+        });
+
+        // Send notification email to admin
+        await emailService.sendContactNotification({
+            name,
+            email,
+            subject,
+            message,
+            category,
+            contactId
+        });
+
+        // Send auto-reply to user
+        await emailService.sendContactAutoReply({
+            name,
+            email,
+            category
+        });
+
+        // Log analytics
+        await db.logAnalytics({
+            event_type: 'contact_form_submitted',
+            user_id: null,
+            metadata: { category, subject_length: subject.length, message_length: message.length },
+            ip_address,
+            user_agent,
+            referrer: req.get('Referer')
+        });
+
+        res.json(createApiResponse(
+            true,
+            { contactId },
+            'Thank you for your message! We\'ll get back to you soon.'
+        ));
+
+    } catch (error) {
+        console.error('Contact form submission failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to send message. Please try again later.'
+        ));
+    }
+});
+
+
+// Download Templates and Files
 app.get('/api/v1/export', async (req, res) => {
   try {
     const { format = 'json', category = 'All', difficulty = 'All' } = req.query;

@@ -1,11 +1,14 @@
 {
   "name": "runeflow-deployment",
   "version": "1.0.0",
-  "description": "RuneFlow.xyz - RuneRUSH Backend",
-  "main": "runerush/server.js",
+  "description": "RuneFlow.xyz Deployment Package",
+  "private": true,
   "scripts": {
-    "start": "node runerush/server.js",
-    "dev": "nodemon runerush/server.js",
+    "start:runeflow": "cd api && npm start",
+    "start:runerush": "cd runerush && npm start",
+    "dev:runeflow": "cd api && npm run dev",
+    "dev:runerush": "cd runerush && npm run dev",
+    "install:all": "npm install && cd api && npm install && cd ../runerush && npm install",
     "build": "echo 'No build needed'"
   },
   "keywords": [
