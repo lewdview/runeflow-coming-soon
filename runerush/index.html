@@ -74,24 +74,100 @@
             box-sizing: border-box !important;
         }
         
-        /* SPECIFIC TABLE OVERRIDES - Higher specificity */
-        table,
-        table.template-grid,
-        .main-content table,
-        .template-showcase table {
-            max-width: none !important;
-            width: auto !important;
-            table-layout: auto !important;
-            white-space: nowrap !important;
-            overflow: visible !important;
+        /* MAIN CONTENT SECTION CONSTRAINTS - Force all sections to stay within bounds */
+        .main-content {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Force all direct children of main-content to respect the width */
+        .main-content > * {
+            max-width: 1200px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Specific section overrides to ensure 1200px constraint - HIGHEST PRIORITY */
+        .hero-container,
+        .benefits-section,
+        .template-showcase,
+        div[style*="background: linear-gradient"],
+        .main-content .hero-container,
+        .main-content .benefits-section,
+        .main-content .template-showcase {
+            max-width: 1200px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Override any inline styles that might be causing full-width */
+        .main-content [style],
+        .main-content div[style] {
+            max-width: 1200px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
         
-        table td,
-        table th,
-        .main-content table td,
-        .main-content table th,
-        .template-showcase table td,
-        .template-showcase table th {
+        /* FORCE BENEFITS SECTION WIDTH CONSTRAINT - CRITICAL FIX */
+        .benefits-section,
+        div[style*="Benefits Section"],
+        div[style*="padding: 50px"],
+        div[style*="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95)"] {
+            max-width: 1160px !important;
+            width: calc(100% - 40px) !important;
+            margin: 0 auto 40px auto !important;
+            box-sizing: border-box !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+        }
+        
+        /* FORCE TEMPLATE SHOWCASE WIDTH CONSTRAINT - CRITICAL FIX */
+        .template-showcase,
+        div[style*="template-showcase"],
+        div[style*="padding: 80px 40px"],
+        div[style*="background: linear-gradient(135deg, rgba(20, 20, 40, 0.98)"] {
+            max-width: 1160px !important;
+            width: calc(100% - 40px) !important;
+            margin: 0 auto 40px auto !important;
+            box-sizing: border-box !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+        }
+
+        /* TEMPLATE GRID CONSTRAINTS */
+        .template-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+            gap: 15px !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+        }
+
+        /* SPECIFIC TABLE OVERRIDES - Only for actual HTML tables if any exist */
+        table:not(.template-grid),
+        .main-content table:not(.template-grid),
+        .template-showcase table:not(.template-grid) {
+            max-width: 1200px !important;
+            width: 100% !important;
+            margin: 20px auto !important;
+            table-layout: auto !important;
+            white-space: nowrap !important;
+            overflow: auto !important;
+        }
+        
+        table:not(.template-grid) td,
+        table:not(.template-grid) th,
+        .main-content table:not(.template-grid) td,
+        .main-content table:not(.template-grid) th,
+        .template-showcase table:not(.template-grid) td,
+        .template-showcase table:not(.template-grid) th {
             max-width: none !important;
             width: auto !important;
             white-space: nowrap !important;
@@ -1027,56 +1103,75 @@
             margin-bottom: 40px;
         }
         
-        /* Enhanced Button Styles */
-        .enhanced-btn:hover .btn-shine {
-            left: 100%;
+        /* Enhanced Button Styles - Fixed Shine Effect */
+        .btn-shine {
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%) !important;
+            transition: left 0.6s ease !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            border-radius: inherit !important;
         }
         
+        .enhanced-btn:hover .btn-shine,
+        .payment-button:hover .btn-shine {
+            left: 100% !important;
+        }
+        
+        /* Base button styles */
+        .payment-button, 
+        .enhanced-btn {
+            position: relative !important;
+            overflow: hidden !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transform-origin: center center !important;
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            display: inline-block !important;
+        }
+        
+        /* Ensure button text stays above shine */
+        .enhanced-btn span,
+        .payment-button span {
+            position: relative !important;
+            z-index: 10 !important;
+            display: inline-block !important;
+        }
+        
+        /* Button icons */
+        .payment-button i,
+        .enhanced-btn i {
+            position: absolute !important;
+            right: 20px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            transition: all 0.3s ease !important;
+            z-index: 10 !important;
+        }
+        
+        /* Hover effects */
         .enhanced-btn:hover {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
         }
         
-        .payment-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center center;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            z-index: 1;
-        }
-        
         .payment-button:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
         }
         
-        .payment-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .payment-button:hover::before {
-            transform: translateX(100%);
-        }
-        
-        /* Button Icon Animations */
-        .payment-button i {
-            transition: all 0.3s ease;
-        }
-        
-        .payment-button:hover i {
-            transform: translateY(-50%) scale(1.1);
+        .payment-button:hover i,
+        .enhanced-btn:hover i {
+            transform: translateY(-50%) scale(1.1) !important;
             color: rgba(255,255,255,1) !important;
         }
         
@@ -1677,6 +1772,9 @@
             <!-- Phase 4: CTA -->
             <button class="cta-button" onclick="hideAnimationOverlay()">GET ACCESS NOW</button>
             
+            <!-- Skip Intro Button -->
+            <button class="skip-intro-btn" onclick="hideAnimationOverlay()" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.5); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; z-index: 99999; transition: all 0.3s ease; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(0,0,0,0.7)'; this.style.color='#ffffff'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'; this.style.color='rgba(255,255,255,0.8)'; this.style.borderColor='rgba(255,255,255,0.3)'">Skip Intro</button>
+            
             <!-- Countdown -->
             <div class="countdown-display">
                 <div>WEEKEND OFFER EXPIRES:</div>
@@ -1749,7 +1847,7 @@
             <div class="cta-container" style="position: relative; z-index: 2;">
                 <button id="payment-btn-hero" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #10b981, #2dd4bf, #14b8a6); color: white; padding: 25px 50px; border: none; border-radius: 50px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">
                     <span style="position: relative; z-index: 2;">🟢 Get Instant Access → $49</span>
-                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                     <i class="fas fa-shopping-cart" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.8); font-size: 20px;"></i>
                 </button>
                 <div style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 10px;">
@@ -2145,7 +2243,7 @@
             
             <button id="payment-btn-urgency" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #F7931E 100%); color: #1a1a2e; padding: 25px 50px; border: none; border-radius: 50px; font-size: 24px; font-weight: 900; cursor: pointer; margin-top: 25px; box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 3s ease-in-out infinite alternate;">
                 <span style="position: relative; z-index: 2;">🚀 CLAIM MY VAULT NOW → $49</span>
-                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                 <i class="fas fa-bolt" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 20px;"></i>
             </button>
         </div>
@@ -2243,7 +2341,7 @@
                 <!-- Main CTA Button -->
                 <button id="payment-btn-final" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 30%, #F7931E 60%, #10b981 100%); color: #1a1a2e; padding: 30px 60px; border: none; border-radius: 60px; font-size: 28px; font-weight: 900; cursor: pointer; box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4), 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 25px; transition: all 0.3s ease; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 4s ease-in-out infinite alternate;">
                     <span style="position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">🚀 GET MY WEEKEND VAULT → $49</span>
-                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                     <i class="fas fa-rocket" style="position: absolute; right: 25px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 22px;"></i>
                 </button>
                 
@@ -2274,11 +2372,11 @@
                         <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
                             <button id="stripe-btn" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #1a73e8, #4285f4, #1565c0); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(26, 115, 232, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
                                 <span style="position: relative; z-index: 2;">💳 Stripe Checkout - $49</span>
-                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                             </button>
                             <button id="coinbase-btn" class="payment-button enhanced-btn coinbase-btn" style="position: relative; background: linear-gradient(135deg, #0052ff, #1652f0, #0040e6); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(0, 82, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
                                 <span style="position: relative; z-index: 2;">₿ Crypto Payment - $49</span>
-                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                             </button>
                         </div>
                     </div>
@@ -2404,7 +2502,7 @@
             <!-- CTA Button -->
             <button class="purchase-complete-collection" onclick="handleCompleteCollectionClick()" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #667eea 100%); color: #1a1a2e; padding: 25px 50px; border: none; border-radius: 50px; font-size: 24px; font-weight: 900; cursor: pointer; box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4), 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; overflow: hidden;">
                 <span style="position: relative; z-index: 2;">🚀 Claim Your Master Vault → $499</span>
-                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; pointer-events: none;"></div>
+                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
             </button>
             <a href="purchase.html?product=core" class="decline-link">No thank you, I'll just take the 50 runes for now.</a>
             
@@ -2515,7 +2613,7 @@
         // Countdown Timer Function
         function initCountdown() {
             // Set target date to August 4, 2025 at midnight (00:00:00)
-            const targetTime = new Date('2025-08-04T00:00:00').getTime();
+            const targetTime = new Date('2025-08-10T00:00:00').getTime();
             
             function updateCountdown() {
                 const now = new Date().getTime();

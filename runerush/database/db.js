@@ -135,6 +135,21 @@ class Database {
                     status VARCHAR(20) DEFAULT 'pending',
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
+                
+                CREATE TABLE IF NOT EXISTS contact_submissions (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(255) NOT NULL,
+                    email VARCHAR(255) NOT NULL,
+                    subject VARCHAR(500) NOT NULL,
+                    message TEXT NOT NULL,
+                    category VARCHAR(20) NOT NULL CHECK (category IN ('questions', 'support', 'partners')),
+                    status VARCHAR(20) DEFAULT 'new',
+                    ip_address INET,
+                    user_agent TEXT,
+                    referrer VARCHAR(500),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
             `;
             
             try {
@@ -436,6 +451,36 @@ class Database {
             ORDER BY date DESC
         `;
         return await this.query(sql);
+    }
+
+    // Contact form operations
+    async createContactSubmission(contactData) {
+        const { name, email, subject, message, category, ip_address, user_agent, referrer } = contactData;
+        const sql = `
+            INSERT INTO contact_submissions (name, email, subject, message, category, ip_address, user_agent, referrer)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+        const result = await this.run(sql, [name, email, subject, message, category, ip_address, user_agent, referrer]);
+        return result.id;
+    }
+
+    async getContactSubmissions(limit = 50, offset = 0) {
+        const sql = `
+            SELECT * FROM contact_submissions 
+            ORDER BY created_at DESC 
+            LIMIT ? OFFSET ?
+        `;
+        return await this.query(sql, [limit, offset]);
+    }
+
+    async updateContactStatus(contactId, status) {
+        const sql = 'UPDATE contact_submissions SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?';
+        return await this.run(sql, [status, contactId]);
+    }
+
+    async getContactById(contactId) {
+        const sql = 'SELECT * FROM contact_submissions WHERE id = ?';
+        return await this.get(sql, [contactId]);
     }
 }
 

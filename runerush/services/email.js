@@ -93,6 +93,80 @@ class EmailService {
     }
 
     /**
+     * Send contact notification to admin
+     */
+    async sendContactNotification(contactData) {
+        try {
+            const { name, email, subject, message, category, contactId } = contactData;
+            
+            // Determine admin email based on category
+            let adminEmail = process.env.ADMIN_EMAIL || process.env.FROM_EMAIL;
+            let categoryEmoji = '📧';
+            
+            switch (category) {
+                case 'support':
+                    adminEmail = process.env.SUPPORT_EMAIL || adminEmail;
+                    categoryEmoji = '🛟';
+                    break;
+                case 'partners':
+                    adminEmail = process.env.PARTNERSHIPS_EMAIL || adminEmail;
+                    categoryEmoji = '🤝';
+                    break;
+                case 'questions':
+                default:
+                    categoryEmoji = '❓';
+                    break;
+            }
+            
+            const emailData = {
+                to: adminEmail,
+                from: {
+                    email: this.fromEmail,
+                    name: this.fromName
+                },
+                subject: `${categoryEmoji} New ${category.charAt(0).toUpperCase() + category.slice(1)} Inquiry - ${subject}`,
+                html: this.getContactNotificationTemplate(contactData),
+                text: this.getContactNotificationText(contactData),
+                replyTo: email
+            };
+            
+            await sgMail.send(emailData);
+            console.log(`✅ Contact notification sent to admin for ${category} inquiry from ${email}`);
+            
+        } catch (error) {
+            console.error('Failed to send contact notification:', error);
+            throw error;
+        }
+    }
+    
+    /**
+     * Send auto-reply to contact form submitter
+     */
+    async sendContactAutoReply(contactData) {
+        try {
+            const { name, email, category } = contactData;
+            
+            const emailData = {
+                to: email,
+                from: {
+                    email: this.fromEmail,
+                    name: this.fromName
+                },
+                subject: '✅ We received your message - Rune Rush Support',
+                html: this.getContactAutoReplyTemplate(contactData),
+                text: this.getContactAutoReplyText(contactData)
+            };
+            
+            await sgMail.send(emailData);
+            console.log(`✅ Auto-reply sent to ${email} for ${category} inquiry`);
+            
+        } catch (error) {
+            console.error('Failed to send contact auto-reply:', error);
+            // Don't throw here - auto-reply failure shouldn't break the contact form
+        }
+    }
+
+    /**
      * Process scheduled emails
      */
     async processScheduledEmails() {

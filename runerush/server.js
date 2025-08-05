@@ -341,6 +341,83 @@ app.get('/api/download/:token', async (req, res) => {
 });
 
 // =============================================================================
+// CONTACT ROUTES
+// =============================================================================
+
+// Handle contact form submissions
+app.post('/api/contact', [
+    body('name').trim().isLength({ min: 1 }).withMessage('Name is required'),
+    body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
+    body('subject').trim().isLength({ min: 1 }).withMessage('Subject is required'),
+    body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters'),
+    body('category').isIn(['questions', 'support', 'partners']).withMessage('Valid category is required')
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(createApiResponse(
+                false, null, 'Validation error', errors.array()
+            ));
+        }
+
+        const { name, email, subject, message, category } = req.body;
+        const ip_address = getClientIP(req);
+        const user_agent = req.get('User-Agent');
+        
+        // Store contact submission in database
+        const contactId = await db.createContactSubmission({
+            name,
+            email,
+            subject,
+            message,
+            category,
+            ip_address,
+            user_agent,
+            referrer: req.get('Referer')
+        });
+
+        // Send notification email to admin
+        await emailService.sendContactNotification({
+            name,
+            email,
+            subject,
+            message,
+            category,
+            contactId
+        });
+
+        // Send auto-reply to user
+        await emailService.sendContactAutoReply({
+            name,
+            email,
+            category
+        });
+
+        // Log analytics
+        await db.logAnalytics({
+            event_type: 'contact_form_submitted',
+            user_id: null,
+            metadata: { category, subject_length: subject.length, message_length: message.length },
+            ip_address,
+            user_agent,
+            referrer: req.get('Referer')
+        });
+
+        res.json(createApiResponse(
+            true, 
+            { contactId }, 
+            'Thank you for your message! We\'ll get back to you soon.'
+        ));
+
+    } catch (error) {
+        console.error('Contact form submission failed:', error);
+        res.status(500).json(createApiResponse(
+            false, null, 'Failed to send message. Please try again later.'
+        ));
+    }
+});
+
+// =============================================================================
 // USER ROUTES
 // =============================================================================
 
