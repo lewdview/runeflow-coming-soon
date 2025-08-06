@@ -28,3 +28,11 @@ create_*.py
 analyze_*.py
 update_*.py
 runerush_sale_organizer.py
+
+# Make sure these critical files are NOT ignored
+!package.json
+!server.js
+!start.js
+!Procfile
+!railway.toml
+!nixpacks.toml

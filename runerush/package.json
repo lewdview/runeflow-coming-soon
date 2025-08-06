@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "start:debug": "node start.js",
     "test-connection": "node test-connection.js",
     "test-stripe": "node test-stripe.js",
     "migrate": "node scripts/migrate.js",

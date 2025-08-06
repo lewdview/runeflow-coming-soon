@@ -2,12 +2,11 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "node server.js"
+startCommand = "npm run start:debug"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 
 [variables]
 NODE_ENV = "production"
-PORT = "8080"
 HOST = "0.0.0.0"

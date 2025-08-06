@@ -36,118 +36,121 @@
     <!-- API Client -->
     <script src="js/api.js"></script>
     <style>
-        * { 
+        /* ===========================================
+           OPTIMIZED CSS RESET & BASE STYLES
+           =========================================== */
+        * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box !important;
+            box-sizing: border-box;
             scroll-behavior: smooth;
-            max-width: 100% !important;
         }
         
         html {
-            overflow-x: hidden !important;
-            width: 100% !important;
-            max-width: 100% !important;
+            overflow-x: hidden;
+            width: 100%;
         }
         
-        body { 
+        body {
             font-family: 'Inter', sans-serif;
             background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f0f23);
-            overflow-x: hidden !important;
+            overflow-x: hidden;
             position: relative;
-            width: 100% !important;
-            max-width: 100vw !important;
+            width: 100%;
         }
         
-        /* Prevent any element from causing horizontal overflow - EXCLUDE TABLES */
-        body *, 
-        html *,
-        .main-content *:not(table):not(td):not(th):not(tr),
-        .template-showcase *:not(table):not(td):not(th):not(tr),
-        div:not(.table-wrapper), span, p, h1, h2, h3, h4, h5, h6,
-        button, input, textarea,
-        img, video, canvas {
-            max-width: 100% !important;
-            word-wrap: break-word !important;
-            word-break: break-word !important;
-            overflow-wrap: break-word !important;
-            box-sizing: border-box !important;
-        }
+        /* ===========================================
+           LAYOUT CONTAINER SYSTEM
+           =========================================== */
         
-        /* MAIN CONTENT SECTION CONSTRAINTS - Force all sections to stay within bounds */
+        /* Main content wrapper - consistent 1200px max width */
         .main-content {
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 20px !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: none; /* Hidden initially for animation */
         }
-
-        /* Force all direct children of main-content to respect the width */
+        
+        .main-content.visible {
+            display: block;
+        }
+        
+        /* Ensure child elements respect container bounds */
         .main-content > * {
-            max-width: 1200px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-
-        /* Specific section overrides to ensure 1200px constraint - HIGHEST PRIORITY */
-        .hero-container,
-        .benefits-section,
-        .template-showcase,
-        div[style*="background: linear-gradient"],
-        .main-content .hero-container,
-        .main-content .benefits-section,
-        .main-content .template-showcase {
-            max-width: 1200px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-
-        /* Override any inline styles that might be causing full-width */
-        .main-content [style],
-        .main-content div[style] {
-            max-width: 1200px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
-        /* FORCE BENEFITS SECTION WIDTH CONSTRAINT - CRITICAL FIX */
-        .benefits-section,
-        div[style*="Benefits Section"],
-        div[style*="padding: 50px"],
-        div[style*="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95)"] {
-            max-width: 1160px !important;
-            width: calc(100% - 40px) !important;
-            margin: 0 auto 40px auto !important;
-            box-sizing: border-box !important;
-            padding-left: 40px !important;
-            padding-right: 40px !important;
+        /* ===========================================
+           SECTION CONTAINERS
+           =========================================== */
+        
+        /* Hero section container */
+        .hero-container {
+            position: relative;
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 50%, rgba(139, 92, 246, 0.95) 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            overflow: hidden;
         }
         
-        /* FORCE TEMPLATE SHOWCASE WIDTH CONSTRAINT - CRITICAL FIX */
-        .template-showcase,
-        div[style*="template-showcase"],
-        div[style*="padding: 80px 40px"],
-        div[style*="background: linear-gradient(135deg, rgba(20, 20, 40, 0.98)"] {
-            max-width: 1160px !important;
-            width: calc(100% - 40px) !important;
-            margin: 0 auto 40px auto !important;
-            box-sizing: border-box !important;
-            padding-left: 40px !important;
-            padding-right: 40px !important;
+        /* Hero sub-containers */
+        .headline-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 35px;
         }
-
-        /* TEMPLATE GRID CONSTRAINTS */
+        
+        .stats-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        /* Benefits and showcase sections - slightly narrower for better readability */
+        .benefits-section,
+        .template-showcase {
+            max-width: calc(100% - 40px);
+            margin: 0 auto 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* ===========================================
+           GRID SYSTEMS
+           =========================================== */
+        
+        /* Category grid for template sections */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* Individual template grid */
         .template-grid {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-            gap: 15px !important;
-            max-width: 100% !important;
-            overflow: hidden !important;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         /* SPECIFIC TABLE OVERRIDES - Only for actual HTML tables if any exist */
@@ -1103,76 +1106,46 @@
             margin-bottom: 40px;
         }
         
-        /* Enhanced Button Styles - Fixed Shine Effect */
-        .btn-shine {
-            position: absolute !important;
-            top: 0 !important;
-            left: -100% !important;
-            width: 100% !important;
-            height: 100% !important;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%) !important;
-            transition: left 0.6s ease !important;
-            pointer-events: none !important;
-            z-index: 1 !important;
-            border-radius: inherit !important;
-        }
-        
-        .enhanced-btn:hover .btn-shine,
-        .payment-button:hover .btn-shine {
-            left: 100% !important;
-        }
-        
-        /* Base button styles */
+        /* Enhanced Button Styles - Clean and Simple */
         .payment-button, 
         .enhanced-btn {
-            position: relative !important;
-            overflow: hidden !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            transform-origin: center center !important;
-            backface-visibility: hidden !important;
-            -webkit-backface-visibility: hidden !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            display: inline-block !important;
-        }
-        
-        /* Ensure button text stays above shine */
-        .enhanced-btn span,
-        .payment-button span {
-            position: relative !important;
-            z-index: 10 !important;
-            display: inline-block !important;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center center;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
         }
         
         /* Button icons */
         .payment-button i,
         .enhanced-btn i {
-            position: absolute !important;
-            right: 20px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            transition: all 0.3s ease !important;
-            z-index: 10 !important;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            z-index: 2;
         }
         
         /* Hover effects */
         .enhanced-btn:hover {
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
         }
         
         .payment-button:hover {
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
         }
         
         .payment-button:hover i,
         .enhanced-btn:hover i {
-            transform: translateY(-50%) scale(1.1) !important;
-            color: rgba(255,255,255,1) !important;
+            transform: translateY(-50%) scale(1.1);
+            color: rgba(255,255,255,1);
         }
         
         /* Template Showcase Enhancements */
@@ -1743,7 +1716,7 @@
             <div class="circuit-grid"></div>
 
             <!-- Phase 1: Logo -->
-            <div class="logo">RuneFlow</div>
+			<div class="logo">Rune Flow</div>
             
             <!-- Logo Fragments for Destruction -->
             <div class="logo-fragment fragment-1">Run</div>
@@ -1767,7 +1740,7 @@
             <div class="runerush-fragment runerush-h">H</div>
             
             <!-- Final Assembled Logo -->
-            <div class="runerush-final">RuneRUSH</div>
+			<div class="runerush-final">Rune RUSH</div>
 
             <!-- Phase 4: CTA -->
             <button class="cta-button" onclick="hideAnimationOverlay()">GET ACCESS NOW</button>
@@ -1816,7 +1789,7 @@
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%); animation: float 15s ease-in-out infinite; pointer-events: none;"></div>
             
             <!-- Main Headline Container -->
-        <div class="headline-container">
+            <div class="headline-container">
                 <div style="display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b35); color: white; padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);">
                     ⚡ WEEKEND FLASH SALE ⚡
                 </div>
@@ -1829,7 +1802,7 @@
             </div>
             
             <!-- Stats and Social Proof Container -->
-        <div class="stats-container">
+            <div class="stats-container">
                 <!-- Countdown Timer -->
                 <div class="countdown-card" style="background: rgba(0,0,0,0.2); padding: 25px 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 25px rgba(0,0,0,0.2); min-width: 250px;">
                     <div style="font-size: 16px; margin-bottom: 10px; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px;">⏳ Offer Expires In</div>
@@ -1847,7 +1820,6 @@
             <div class="cta-container" style="position: relative; z-index: 2;">
                 <button id="payment-btn-hero" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #10b981, #2dd4bf, #14b8a6); color: white; padding: 25px 50px; border: none; border-radius: 50px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">
                     <span style="position: relative; z-index: 2;">🟢 Get Instant Access → $49</span>
-                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                     <i class="fas fa-shopping-cart" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.8); font-size: 20px;"></i>
                 </button>
                 <div style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 10px;">
@@ -1883,8 +1855,7 @@
             </ul>
         </div>
         
-
-<div class="template-showcase" style="background: linear-gradient(135deg, rgba(20, 20, 40, 0.98) 0%, rgba(30, 30, 50, 0.98) 50%, rgba(40, 20, 60, 0.98) 100%); padding: 80px 40px; border-radius: 30px; margin: 0 auto 40px auto; max-width: 1200px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 200px rgba(255, 215, 0, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 3px solid rgba(255, 215, 0, 0.3); position: relative; overflow: hidden;">
+        <div class="template-showcase" style="background: linear-gradient(135deg, rgba(20, 20, 40, 0.98) 0%, rgba(30, 30, 50, 0.98) 50%, rgba(40, 20, 60, 0.98) 100%); padding: 80px 40px; border-radius: 30px; margin: 0 auto 40px auto; max-width: 1200px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 200px rgba(255, 215, 0, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 3px solid rgba(255, 215, 0, 0.3); position: relative; overflow: hidden;">
             <!-- Enhanced Background Effects -->
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.06) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.04) 0%, transparent 50%); animation: float 30s ease-in-out infinite; pointer-events: none;"></div>
             
@@ -2047,9 +2018,8 @@
                         </div>
                     </div>
                 </div>
-<!-- Removed old categories to focus on core bundle -->
-                    <!-- Social Media & Content -->
-                    	<div class="category-card category-social">
+                <!-- Social Media & Content -->
+                <div class="category-card category-social">
                         <div class="category-header">
                             <div class="category-icon"><span>📱</span></div>
                             <div>
@@ -2175,26 +2145,26 @@
             <!-- Audience Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 35px 0; max-width: 900px; margin-left: auto; margin-right: auto;">
                 <div style="background: rgba(34, 197, 94, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(34, 197, 94, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(34, 197, 94, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
-                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">🏢</div>
+                    <div style="font-size: 48px; margin-bottom: 15px;">🏢</div>
                     <h3 style="color: #ecfdf5; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Agencies</h3>
                     <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Resell these templates to clients and charge premium rates for automation services</p>
                 </div>
                 
                 <div style="background: rgba(244, 114, 182, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(244, 114, 182, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(244, 114, 182, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
-                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">🚀</div>
+                    <div style="font-size: 48px; margin-bottom: 15px;">🚀</div>
                     <h3 style="color: #fdf2f8; font-size: 22px; font-weight: bold; margin-bottom: 10px;">SaaS Founders</h3>
                     <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Automate your operations and scale without hiring expensive developers</p>
                 </div>
                 
                 <div style="background: rgba(16, 185, 129, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(16, 185, 129, 0.3); position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(16, 185, 129, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
-                    <div style="font-size: 48px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">💼</div>
+                    <div style="font-size: 48px; margin-bottom: 15px;">💼</div>
                     <h3 style="color: #ecfdf5; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Freelancers</h3>
                     <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0; line-height: 1.5;">Deliver client projects faster and increase your hourly value significantly</p>
                 </div>
                 
                 <div style="background: rgba(59, 130, 246, 0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(59, 130, 246, 0.3); position: relative; transition: all 0.3s ease; transform: scale(1.05); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-3px) scale(1.07)'; this.style.boxShadow='0 20px 50px rgba(59, 130, 246, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.3)'">
                     <div style="position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">MOST POPULAR</div>
-                    <div style="font-size: 48px; margin: 20px 0 15px 0; filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));">⚡</div>
+                    <div style="font-size: 48px; margin: 20px 0 15px 0;">⚡</div>
                     <h3 style="color: #eff6ff; font-size: 22px; font-weight: bold; margin-bottom: 10px;">Indie Hackers</h3>
                     <p style="color: rgba(255,255,255,0.95); font-size: 16px; margin: 0; line-height: 1.5;">Save 20+ hours per month and focus on what really matters—growing your business</p>
                 </div>
@@ -2243,7 +2213,6 @@
             
             <button id="payment-btn-urgency" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #F7931E 100%); color: #1a1a2e; padding: 25px 50px; border: none; border-radius: 50px; font-size: 24px; font-weight: 900; cursor: pointer; margin-top: 25px; box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 3s ease-in-out infinite alternate;">
                 <span style="position: relative; z-index: 2;">🚀 CLAIM MY VAULT NOW → $49</span>
-                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                 <i class="fas fa-bolt" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 20px;"></i>
             </button>
         </div>
@@ -2341,7 +2310,6 @@
                 <!-- Main CTA Button -->
                 <button id="payment-btn-final" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #FFD700 0%, #FF6B35 30%, #F7931E 60%, #10b981 100%); color: #1a1a2e; padding: 30px 60px; border: none; border-radius: 60px; font-size: 28px; font-weight: 900; cursor: pointer; box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4), 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 25px; transition: all 0.3s ease; overflow: hidden; text-transform: uppercase; letter-spacing: 1px; animation: glow 4s ease-in-out infinite alternate;">
                     <span style="position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">🚀 GET MY WEEKEND VAULT → $49</span>
-                    <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                     <i class="fas fa-rocket" style="position: absolute; right: 25px; top: 50%; transform: translateY(-50%); color: rgba(26, 26, 46, 0.8); font-size: 22px;"></i>
                 </button>
                 
@@ -2372,11 +2340,9 @@
                         <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
                             <button id="stripe-btn" class="payment-button enhanced-btn" style="position: relative; background: linear-gradient(135deg, #1a73e8, #4285f4, #1565c0); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(26, 115, 232, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
                                 <span style="position: relative; z-index: 2;">💳 Stripe Checkout - $49</span>
-                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                             </button>
                             <button id="coinbase-btn" class="payment-button enhanced-btn coinbase-btn" style="position: relative; background: linear-gradient(135deg, #0052ff, #1652f0, #0040e6); color: white; padding: 18px 35px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; box-shadow: 0 8px 25px rgba(0, 82, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s; overflow: hidden; font-weight: 700;">
                                 <span style="position: relative; z-index: 2;">₿ Crypto Payment - $49</span>
-                                <div class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transition: left 0.6s ease; pointer-events: none; z-index: 10; border-radius: inherit;"></div>
                             </button>
                         </div>
                     </div>
@@ -3004,7 +2970,7 @@
         <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
             <!-- Left: Logo -->
             <a href="https://runeflow.xyz/index.html" style="display: flex; align-items: center;">
-                <img src="assets/logo.png" alt="RuneFlow Logo" style="height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));">
+                <img src="assets/logo.png" alt="RuneFlow Logo" style="height: 60px; width: auto;">
             </a>
             
             <!-- Center: Navigation Links -->
