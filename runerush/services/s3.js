@@ -119,7 +119,7 @@ class S3Service {
             }
 
             // Determine which files user has access to based on purchase history
-            const userOrders = await db.query('SELECT DISTINCT product_type FROM orders WHERE user_id = ? AND status = "completed"', [userId]);
+            const userOrders = await db.query('SELECT DISTINCT product_type FROM orders WHERE user_id = ? AND status = ?', [userId, 'completed']);
             const purchasedTypes = userOrders.map(order => order.product_type);
             
             const productTypes = ['core']; // Everyone gets core files
