@@ -395,15 +395,15 @@ class Database {
     async getPendingEmails() {
         const sql = `
             SELECT * FROM email_sequences 
-            WHERE status = 'pending' AND scheduled_at <= NOW()
+            WHERE status = ? AND scheduled_at <= NOW()
             ORDER BY scheduled_at ASC
         `;
-        return await this.query(sql);
+        return await this.query(sql, ['pending']);
     }
 
     async markEmailAsSent(emailId) {
-        const sql = "UPDATE email_sequences SET status = 'sent', sent_at = CURRENT_TIMESTAMP WHERE id = ?";
-        return await this.run(sql, [emailId]);
+        const sql = "UPDATE email_sequences SET status = ?, sent_at = CURRENT_TIMESTAMP WHERE id = ?";
+        return await this.run(sql, ['sent', emailId]);
     }
 
     // File operations
@@ -430,11 +430,11 @@ class Database {
                 AVG(amount) as avg_order_value,
                 product_type
             FROM orders 
-            WHERE status = 'completed' 
+            WHERE status = ? 
             AND created_at >= NOW() - INTERVAL '${days} days'
             GROUP BY product_type
         `;
-        return await this.query(sql);
+        return await this.query(sql, ['completed']);
     }
 
     async getConversionStats(days = 30) {
@@ -445,12 +445,12 @@ class Database {
                 SUM(amount) as revenue,
                 product_type
             FROM orders 
-            WHERE status = 'completed' 
+            WHERE status = ? 
             AND created_at >= NOW() - INTERVAL '${days} days'
             GROUP BY DATE(created_at), product_type
             ORDER BY date DESC
         `;
-        return await this.query(sql);
+        return await this.query(sql, ['completed']);
     }
 
     // Contact form operations
