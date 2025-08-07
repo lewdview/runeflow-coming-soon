@@ -98,6 +98,14 @@ app.use('/runerush', express.static(path.join(__dirname)));
 app.use(express.static(path.join(__dirname, '..')));
 
 // =============================================================================
+// DAILY TEMPLATE ROUTES
+// =============================================================================
+
+// Mount daily template routes
+const dailyTemplateRoutes = require('./routes/dailyTemplates');
+app.use('/', dailyTemplateRoutes);
+
+// =============================================================================
 // API ROUTES
 // =============================================================================
 
