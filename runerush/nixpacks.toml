@@ -2,7 +2,7 @@
 cmds = ["npm ci --omit=dev"]
 
 [phases.start]
-cmd = "npm run start:debug"
+cmd = "node debug-start.js"
 
 [variables]
 NODE_ENV = "production"
