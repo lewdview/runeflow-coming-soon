@@ -7,7 +7,8 @@ class Database {
     constructor() {
         this.db = null;
         this.pool = null;
-        this.isPostgres = !!process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('postgresql');
+        // Detect both "postgres://" and "postgresql://" forms (Railway often uses postgres://)
+        this.isPostgres = !!process.env.DATABASE_URL && /^postgres(ql)?:\/\//.test(process.env.DATABASE_URL);
         this.dbPath = './database/rune_rush.db'; // SQLite fallback
     }
 
