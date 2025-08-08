@@ -1,0 +1,8 @@
+# API Proxy
+/api/*  https://runeflow.up.railway.app/api/:splat  200
+
+# Netlify Functions
+/capture-email  /.netlify/functions/capture-email  200
+/health  /.netlify/functions/health  200
+/admin/emails  /.netlify/functions/admin-emails  200
+/webhook/coinbase  /.netlify/functions/coinbase-webhook  200
