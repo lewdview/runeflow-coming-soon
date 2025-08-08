@@ -1,10 +1,17 @@
-require('dotenv').config();
+// Load environment variables from .env.local in development
+const dotenv = require('dotenv');
+const path = require('path');
+
+const envFile = process.env.NODE_ENV === 'production' ? '.env' : '.env.local';
+dotenv.config({ path: path.resolve(__dirname, envFile) });
+
+console.log(`🔧 Environment loaded from: ${envFile}`);
+console.log(`📍 Port configured: ${process.env.PORT || 8080}`);
 
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const path = require('path');
 const cron = require('node-cron');
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 const { body, validationResult } = require('express-validator');

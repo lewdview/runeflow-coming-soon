@@ -57,17 +57,27 @@
   to = "/.netlify/functions/coinbase-webhook"
   status = 200
 
-# RuneRush app redirect
+# Ensure trailing slash for runerush directory
 [[redirects]]
-  from = "/runerush/*"
-  to = "/runerush/index.html"
-  status = 200
+  from = "/runerush"
+  to = "/runerush/"
+  status = 301
+  force = true
 
-# Catch-all for SPA (vault page)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# DO NOT redirect runerush files - let them serve normally
+# Only use this if you have a React/Vue SPA in runerush
+# [[redirects]]
+#   from = "/runerush/*"
+#   to = "/runerush/index.html"
+#   status = 200
+#   conditions = {Language = ["en"], Country = ["US"]}
+
+# Note: Remove the catch-all redirect as it will break runerush
+# Only use if main site is SPA
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
 # Headers for security and performance
 [[headers]]

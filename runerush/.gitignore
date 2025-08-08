@@ -1,2 +1,29 @@
-sendgrid.env
+# Environment files - NEVER commit these!
 .env
+.env.local
+.env.production
+.env.*
+sendgrid.env
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database
+*.sqlite
+*.db
