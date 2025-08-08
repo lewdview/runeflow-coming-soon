@@ -57,12 +57,12 @@
   to = "/.netlify/functions/coinbase-webhook"
   status = 200
 
-# Ensure trailing slash for runerush directory
-[[redirects]]
-  from = "/runerush"
-  to = "/runerush/"
-  status = 301
-  force = true
+# Remove this redirect - it's causing a loop
+# The runerush directory will be served naturally
+# [[redirects]]
+#   from = "/runerush"
+#   to = "/runerush/"
+#   status = 301
 
 # DO NOT redirect runerush files - let them serve normally
 # Only use this if you have a React/Vue SPA in runerush
