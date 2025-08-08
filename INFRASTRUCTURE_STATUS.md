@@ -13,9 +13,10 @@
 - **Direct Netlify**: https://runeflowxyz.netlify.app ✅
 
 ### Backend API (Railway)
-- **API Subdomain**: https://api.runeflow.xyz ✅
+- **API Subdomain**: https://api.runeflow.xyz ✅ (SSL Active)
 - **Railway Direct**: https://runeflow.up.railway.app ✅
 - **Gateway**: https://runeflow.gateway.railway.app ✅
+- **Health Check**: https://api.runeflow.xyz/api/health ✅
 
 ---
 
