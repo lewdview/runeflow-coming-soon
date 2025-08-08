@@ -9,7 +9,8 @@ restartPolicyType = "on_failure"
 
 [env]
 NODE_ENV = "production"
-PORT = { default = "3000" }
+PORT = { default = "8080" }
+HOST = "0.0.0.0"
 
 [[services]]
 name = "runeflow-coming-soon"
