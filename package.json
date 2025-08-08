@@ -4,8 +4,10 @@
   "description": "RuneFlow.xyz Deployment Package",
   "private": true,
   "scripts": {
+    "start": "node start.js",
     "start:runeflow": "cd api && npm start",
     "start:runerush": "cd runerush && npm start",
+    "start:dashboard": "cd dashboard && npm start",
     "dev:runeflow": "cd api && npm run dev",
     "dev:runerush": "cd runerush && npm run dev",
     "install:all": "npm install && cd api && npm install && cd ../runerush && npm install",
