@@ -27,8 +27,8 @@ class EmailService {
                     name: this.fromName
                 },
                 subject: productType === 'main' 
-                    ? '🎉 Your Rune Rush Templates Are Ready!' 
-                    : '🚀 Welcome to Lifetime Vault Access!',
+                    ? '🎉 Your RuneFlow Templates Are Ready!' 
+                    : '🚀 Welcome to RuneFlow Lifetime Vault Access!',
                 html: this.getWelcomeEmailTemplate(user, downloadFiles, productType),
                 text: this.getWelcomeEmailText(user, downloadFiles, productType)
             };
@@ -152,7 +152,7 @@ class EmailService {
                     email: this.fromEmail,
                     name: this.fromName
                 },
-                subject: '✅ We received your message - Rune Rush Support',
+                subject: '✅ We received your message - RuneFlow Support',
                 html: this.getContactAutoReplyTemplate(contactData),
                 text: this.getContactAutoReplyText(contactData)
             };
@@ -243,14 +243,14 @@ class EmailService {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to Rune Rush!</title>
+            <title>Welcome to RuneFlow!</title>
         </head>
         <body style="margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #f8fafc;">
             <div style="max-width: 600px; margin: 0 auto; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                 <!-- Header -->
                 <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 40px 20px; text-align: center;">
                     <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 700;">
-                        ⚡ RUNE RUSH
+                        ⚡ RUNEFLOW
                     </h1>
                     <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
                         ${productType === 'main' ? 'Your Templates Are Ready!' : 'Welcome to Lifetime Access!'}
@@ -265,8 +265,8 @@ class EmailService {
                     
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 30px 0;">
                         ${productType === 'main' 
-                            ? 'Thank you for purchasing Rune Rush! Your 50 premium n8n templates are ready for download. Each template has been battle-tested and optimized for maximum efficiency.'
-                            : 'Welcome to the exclusive Lifetime Vault! You now have access to our premium collection of templates, courses, and ongoing updates.'
+                            ? 'Thank you for purchasing RuneFlow templates! Your premium n8n automation templates are ready for download. Each template has been battle-tested and optimized for maximum efficiency.'
+                            : 'Welcome to the exclusive RuneFlow Lifetime Vault! You now have access to our premium collection of automation templates, courses, and ongoing updates.'
                         }
                     </p>
 
@@ -328,14 +328,14 @@ class EmailService {
 
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 30px 0 0 0;">
                         Happy automating! 🎉<br>
-                        <strong>The Rune Rush Team</strong>
+                        <strong>The RuneFlow Team</strong>
                     </p>
                 </div>
 
                 <!-- Footer -->
                 <div style="background: #f7fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
                     <p style="color: #64748b; font-size: 14px; margin: 0;">
-                        © 2024 Rune Rush. All rights reserved.
+                        © 2025 RuneFlow. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -353,13 +353,13 @@ class EmailService {
         ).join('\n\n');
 
         return `
-RUNE RUSH - Your Templates Are Ready!
+RUNEFLOW - Your Templates Are Ready!
 
 Hi ${user.first_name || 'there'}!
 
 ${productType === 'main' 
-    ? 'Thank you for purchasing Rune Rush! Your 50 premium n8n templates are ready for download.'
-    : 'Welcome to the exclusive Lifetime Vault! You now have access to our premium collection.'
+    ? 'Thank you for purchasing RuneFlow templates! Your premium n8n automation templates are ready for download.'
+    : 'Welcome to the exclusive RuneFlow Lifetime Vault! You now have access to our premium collection.'
 }
 
 YOUR DOWNLOADS:
@@ -380,9 +380,9 @@ ${process.env.FRONTEND_URL}/upsell?user=${user.license_key}
 ` : ''}
 
 Happy automating!
-The Rune Rush Team
+The RuneFlow Team
 
-© 2024 Rune Rush. All rights reserved.
+© 2025 RuneFlow. All rights reserved.
         `.trim();
     }
 
@@ -416,7 +416,7 @@ The Rune Rush Team
                     </h2>
 
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 30px 0;">
-                        I noticed you just grabbed the Rune Rush templates - smart move! 
+                        I noticed you just grabbed the RuneFlow templates - smart move! 
                         But I have something even better for you...
                     </p>
 
@@ -467,7 +467,7 @@ The Rune Rush Team
 
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 30px 0 0 0;">
                         Don't miss out on this exclusive opportunity!<br>
-                        <strong>The Rune Rush Team</strong>
+                        <strong>The RuneFlow Team</strong>
                     </p>
                 </div>
             </div>
@@ -485,7 +485,7 @@ EXCLUSIVE 24-HOUR OFFER
 
 Hi ${user.first_name || 'there'}!
 
-I noticed you just grabbed the Rune Rush templates - smart move! 
+I noticed you just grabbed the RuneFlow templates - smart move!
 But I have something even better for you...
 
 LIFETIME VAULT ACCESS
@@ -508,7 +508,7 @@ After that, the price goes back to $997 and you'll lose this exclusive discount.
 UPGRADE NOW: ${process.env.FRONTEND_URL}/upsell?user=${user.license_key}
 
 Don't miss out!
-The Rune Rush Team
+The RuneFlow Team
         `.trim();
     }
 
@@ -532,7 +532,7 @@ The Rune Rush Team
                     </h2>
 
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">
-                        It's been a few days since you downloaded your Rune Rush templates. 
+                        It's been a few days since you downloaded your RuneFlow templates. 
                         How are your n8n automations going?
                     </p>
 
@@ -558,7 +558,7 @@ The Rune Rush Team
 
                     <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin: 30px 0 0 0;">
                         Keep automating!<br>
-                        <strong>The Rune Rush Team</strong>
+                        <strong>The RuneFlow Team</strong>
                     </p>
                 </div>
             </div>
@@ -574,7 +574,7 @@ The Rune Rush Team
         return `
 Hi ${user.first_name || 'there'}!
 
-It's been a few days since you downloaded your Rune Rush templates. 
+It's been a few days since you downloaded your RuneFlow templates.
 How are your n8n automations going?
 
 I'd love to hear about:
@@ -587,7 +587,7 @@ Reply to this email with any questions. I personally read every message
 and will help you get the most out of your templates!
 
 Keep automating!
-The Rune Rush Team
+The RuneFlow Team
         `.trim();
     }
 
